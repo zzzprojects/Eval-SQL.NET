@@ -6,7 +6,6 @@
 
 *From simple expression*
 ```sql
-/* Use string.Format in SELECT clause */
 SELECT  SQLNET::New('x + y')
 	.Val('x', ColumnValueX)
 	.Val('y', ColumnValueY)
