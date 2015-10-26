@@ -17,8 +17,7 @@ FROM [CustomerTable]
 ```sql
 /* SELECT * FROM [desktop_files] ORDER BY path */
 DECLARE @sqlnet SQLNET = SQLNET::New().SetImpersonate(1).SetCode('
-var path = Environment.GetFolderPath(
-	Environment.SpecialFolder.Desktop);
+var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 var dir = new DirectoryInfo(Path);
 var files = dir.GetFiles("*.*");
 return files.Select(x => x.FullName).OrderBy(x => x).ToList();')
