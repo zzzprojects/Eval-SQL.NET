@@ -7,10 +7,10 @@
 *From simple expression*
 ```sql
 /* Use string.Format in SELECT clause */
-SELECT  SQLNET::New('string.format("Hi firstname, lastname")')
-	.Val('firstname', [ColumnFirstName])
-	.Val('lastname', [ColumnLastName])
-FROM [CustomerTable]
+SELECT  SQLNET::New('x + y')
+	.Val('x', [ColumnValueX])
+	.Val('y', [ColumnValueY])
+FROM [TableFormula]
 ```
 *To complex code*
 ```sql
