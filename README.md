@@ -6,11 +6,15 @@
 
 *From simple expression*
 ```sql
-SELECT  SQLNET::New('x + y')
-	.Val('x', ColumnValueX)
-	.Val('y', ColumnValueY)
-	.Eval()
-FROM TableFormula
+CREATE PROCEDURE [dbo].[select_formula]
+AS
+BEGIN
+	SELECT  SQLNET::New('x + y')
+		.Val('x', ColumnValueX)
+		.Val('y', ColumnValueY)
+		.Eval()
+	FROM TableFormula
+END
 ```
 
 *To regex in where clause*
