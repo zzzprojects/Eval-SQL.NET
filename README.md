@@ -9,6 +9,7 @@
 SELECT  SQLNET::New('x + y')
 	.Val('x', ColumnValueX)
 	.Val('y', ColumnValueY)
+	.Eval()
 FROM TableFormula
 ```
 *To complex code*
