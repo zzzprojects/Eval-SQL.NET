@@ -8,9 +8,9 @@
 ```sql
 /* Use string.Format in SELECT clause */
 SELECT  SQLNET::New('x + y')
-	.Val('x', [ColumnValueX])
-	.Val('y', [ColumnValueY])
-FROM [TableFormula]
+	.Val('x', ColumnValueX)
+	.Val('y', ColumnValueY)
+FROM TableFormula
 ```
 *To complex code*
 ```sql
