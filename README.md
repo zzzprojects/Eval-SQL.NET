@@ -1,4 +1,8 @@
 ###Eval .NET expression in SQL stored procedure, function and trigger.###
+- Dynamically evaluate expression
+- Use column value as code and parameter
+- Extend SQL Syntax with regex
+- Make IO operator easy again
 
 *From simple expression*
 ```csharp
@@ -19,21 +23,6 @@ zip file...
 2. Change script mode to SQLCMD Mode (Query -> SQLCMD Mode).
 3. Change DatabaseName variable for your database name (See 'CHANGE ME' section).
 4. Run the sql script in your database server to install assemblies & objects.
-
-## Eval
-**Evaluate and execute a code or expression.**
-- Feature 1
-- Feature 2
-- Feature 3
-
-*Using Extension Methods*
-```csharp
-string code = "x + y";
-var compiled = code.Compile<Func<int, int>>("x", "y");
-foreach(var item in list)
-{
-}
-```
 
 [Learn more](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)
 
