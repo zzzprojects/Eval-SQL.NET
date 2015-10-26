@@ -11,7 +11,14 @@ return list.Where(x => x > 2).Sum(x);", new { x = 1, y = 2, z = 3 });
 ```
 
 ## Download
-ToDo
+zip file...
+
+*Setup script*
+
+1. Open the script with Microsoft SQL Server Management Studio (SSMS).
+2. Change script mode to SQLCMD Mode (Query -> SQLCMD Mode).
+3. Change DatabaseName variable for your database name (See 'CHANGE ME' section).
+4. Run the sql script in your database server to install assemblies & objects.
 
 ## Eval
 **Evaluate and execute a code or expression.**
