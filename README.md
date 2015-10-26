@@ -15,10 +15,8 @@ FROM TableFormula
 ```sql
 /* SELECT * FROM [desktop_files] ORDER BY path */
 DECLARE @sqlnet SQLNET = SQLNET::New('
-var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-var dir = new DirectoryInfo(Path);
-var files = dir.GetFiles("*.*");
-return files.Select(x => x.FullName).OrderBy(x => x).ToList();').SetImpersonate(1)
+var dir = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
 
 EXEC SQLNET_EvalResultSet @sqlnet
 ```
