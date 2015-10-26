@@ -8,8 +8,8 @@
 ```sql
 /* Use string.Format in SELECT clause */
 SELECT  SQLNET::New('string.format("Hi firstname, lastname")')
-	.SetValueString('firstname', [ColumnFirstName])
-	.SetValueString('lastname', [ColumnLastName])
+	.Val('firstname', [ColumnFirstName])
+	.Val('lastname', [ColumnLastName])
 FROM [CustomerTable]
 ```
 *To complex code*
