@@ -12,7 +12,7 @@ SELECT  SQLNET::New('x + y')
 	.Eval()
 FROM TableFormula
 ```
-*To complex code*
+*To complex code (returning a result set)*
 ```sql
 /* SELECT * FROM [desktop_files] ORDER BY path */
 DECLARE @sqlnet SQLNET = SQLNET::New('
