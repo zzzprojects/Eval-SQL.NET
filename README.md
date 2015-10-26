@@ -7,8 +7,7 @@
 *From simple expression*
 ```sql
 /* Use string.Format in SELECT clause */
-SELECT  SQLNET::New()
-	.SetCode('string.format("Hi firstname, lastname")')
+SELECT  SQLNET::New('string.format("Hi firstname, lastname")')
 	.SetValueString('firstname', [ColumnFirstName])
 	.SetValueString('lastname', [ColumnLastName])
 FROM [CustomerTable]
@@ -16,11 +15,11 @@ FROM [CustomerTable]
 *To complex code*
 ```sql
 /* SELECT * FROM [desktop_files] ORDER BY path */
-DECLARE @sqlnet SQLNET = SQLNET::New().SetImpersonate(1).SetCode('
+DECLARE @sqlnet SQLNET = SQLNET::New('
 var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 var dir = new DirectoryInfo(Path);
 var files = dir.GetFiles("*.*");
-return files.Select(x => x.FullName).OrderBy(x => x).ToList();')
+return files.Select(x => x.FullName).OrderBy(x => x).ToList();').SetImpersonate(1)
 
 EXEC SQLNET_EvalResultSet @sqlnet
 ```
