@@ -14,6 +14,8 @@ var sum = Eval.Execute(@"var list = new List<int>(x, y, z);
 return list.Where(x => x > 2).Sum(x);", new { x = 1, y = 2, z = 3 });
 ```
 
+[Learn more](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)
+
 ## Download
 zip file...
 
@@ -23,8 +25,6 @@ zip file...
 2. Change script mode to SQLCMD Mode (Query -> SQLCMD Mode).
 3. Change DatabaseName variable for your database name (See 'CHANGE ME' section).
 4. Run the sql script in your database server to install assemblies & objects.
-
-[Learn more](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)
 
 ## Free VS Pro
 Features | FREE Version | [PRO Version](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)
