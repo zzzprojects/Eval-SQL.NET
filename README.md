@@ -19,22 +19,28 @@ END
 
 *To regex in where clause*
 ```sql
+CREATE PROCEDURE [dbo].[select_where_regex_filter]
+AS
+BEGIN
 DECLARE @sqlnet_filterFile SQLNET = SQLNET::New().SetCode('
 return Regex.IsMatch(filePath, "^.*\.(jpg|gif|docx|pdf)$");')
 
 SELECT  *
 FROM    [FileTable]
 WHERE	@sqlnet_filterFile.SetValue('filePath', FilePathColumn).Eval() = 1
+END
 ```
 
 *and more complex code returning result set*
 ```sql
+CREATE PROCEDURE [dbo].[select_desktop_files]
 /* SELECT * FROM [desktop_files] ORDER BY path */
 DECLARE @sqlnet SQLNET = SQLNET::New('
 var dir = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
 return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
 
 EXEC SQLNET_EvalResultSet @sqlnet
+END
 ```
 
 [Learn more](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)
