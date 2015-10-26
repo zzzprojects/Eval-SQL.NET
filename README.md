@@ -12,6 +12,18 @@ SELECT  SQLNET::New('x + y')
 	.Eval()
 FROM TableFormula
 ```
+
+*Using REGEX in WHERE clause*
+```sql
+DECLARE @sqlnet_filterFile SQLNET = SQLNET::New().SetCode('
+return Regex.IsMatch(filePath, "^.*\.(jpg|gif|docx|pdf)$");')
+
+SELECT  *
+FROM    [FileTable]
+WHERE	@sqlnet_filterFile.SetValue('filePath', [FilePathColumn])
+        .Eval() = 1
+```
+
 *To complex code (returning a result set)*
 ```sql
 /* SELECT * FROM [desktop_files] ORDER BY path */
