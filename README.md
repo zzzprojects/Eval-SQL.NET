@@ -20,8 +20,7 @@ return Regex.IsMatch(filePath, "^.*\.(jpg|gif|docx|pdf)$");')
 
 SELECT  *
 FROM    [FileTable]
-WHERE	@sqlnet_filterFile.SetValue('filePath', [FilePathColumn])
-        .Eval() = 1
+WHERE	@sqlnet_filterFile.SetValue('filePath', FilePathColumn).Eval() = 1
 ```
 
 *and more complex code returning result set*
