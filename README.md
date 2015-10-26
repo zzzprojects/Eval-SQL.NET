@@ -29,7 +29,7 @@ EXEC SQLNET_EvalResultSet @sqlnet
 ## Download
 zip file...
 
-*Setup script*
+*Setup*
 
 1. Open the script with Microsoft SQL Server Management Studio (SSMS).
 2. Change script mode to SQLCMD Mode (Query -> SQLCMD Mode).
