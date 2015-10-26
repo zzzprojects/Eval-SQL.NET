@@ -5,13 +5,25 @@
 - Make IO operator easy again
 
 *From simple expression*
-```csharp
-int result = Eval.Execute<int>("x + y", new { x = 1, y = 2})
+```sql
+/* Use string.Format in SELECT clause */
+SELECT  SQLNET::New()
+	.SetCode('string.format("Hi firstname, lastname")')
+	.SetValueString('firstname', [ColumnFirstName])
+	.SetValueString('lastname', [ColumnLastName])
+FROM [CustomerTable]
 ```
 *To complex code*
-```csharp
-var sum = Eval.Execute(@"var list = new List<int>(x, y, z);
-return list.Where(x => x > 2).Sum(x);", new { x = 1, y = 2, z = 3 });
+```sql
+/* SELECT * FROM [desktop_files] ORDER BY path */
+DECLARE @sqlnet SQLNET = SQLNET::New().SetImpersonate(1).SetCode('
+var path = Environment.GetFolderPath(
+	Environment.SpecialFolder.Desktop);
+var dir = new DirectoryInfo(Path);
+var files = dir.GetFiles("*.*");
+return files.Select(x => x.FullName).OrderBy(x => x).ToList();')
+
+EXEC SQLNET_EvalResultSet @sqlnet
 ```
 
 [Learn more](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)
