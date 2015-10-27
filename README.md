@@ -9,7 +9,6 @@
 CREATE PROCEDURE [dbo].[select_formula]
 AS
 BEGIN
-
 	SELECT  SQLNET::New('x + y')
 		.Val('x', ColumnValueX)
 		.Val('y', ColumnValueY)
@@ -23,7 +22,6 @@ END
 CREATE PROCEDURE [dbo].[select_where_regex_filter]
 AS
 BEGIN
-
 	DECLARE @sqlnet_filterFile SQLNET = SQLNET::New().SetCode('
 	return Regex.IsMatch(filePath, "^.*\.(jpg|gif|docx|pdf)$");')
 	
@@ -38,12 +36,11 @@ END
 CREATE PROCEDURE [dbo].[select_desktop_files]
 AS
 BEGIN
-
-	/* SELECT * FROM [desktop_files] ORDER BY path */
 	DECLARE @sqlnet SQLNET = SQLNET::New('
 	var dir = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
 	return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
 	
+	/* SELECT * FROM [desktop_files] ORDER BY path */
 	EXEC SQLNET_EvalResultSet @sqlnet
 END
 ```
