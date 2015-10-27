@@ -4,7 +4,7 @@
 - Extend SQL Syntax with regex
 - Make IO operator easy again
 
-*From simple expression*
+*From simple expression...*
 ```sql
 CREATE PROCEDURE [dbo].[select_formula]
 AS
@@ -17,7 +17,7 @@ BEGIN
 END
 ```
 
-*and regex in where clause*
+*and regex in where clause...*
 ```sql
 CREATE PROCEDURE [dbo].[select_where_regex_filter]
 AS
@@ -31,7 +31,7 @@ BEGIN
 END
 ```
 
-*to more complex code returning a result set*
+*to more complex code returning a result set.*
 ```sql
 CREATE PROCEDURE [dbo].[select_desktop_files]
 AS
