@@ -17,7 +17,7 @@ BEGIN
 END
 ```
 
-*To regex in where clause*
+*and regex in where clause*
 ```sql
 CREATE PROCEDURE [dbo].[select_where_regex_filter]
 AS
@@ -31,7 +31,7 @@ BEGIN
 END
 ```
 
-*and more complex code returning result set*
+*to more complex code returning result set*
 ```sql
 CREATE PROCEDURE [dbo].[select_desktop_files]
 AS
