@@ -31,7 +31,7 @@ BEGIN
 END
 ```
 
-*to more complex code returning result set*
+*to more complex code returning a result set*
 ```sql
 CREATE PROCEDURE [dbo].[select_desktop_files]
 AS
