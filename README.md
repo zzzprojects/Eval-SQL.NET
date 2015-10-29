@@ -1,5 +1,5 @@
 ###Eval .NET code and expression in SQL stored procedure, function and trigger.###
-- Dynamically evaluate expression
+- Dynamically evaluate .NET expression in SQL
 - Use column value as code and parameter
 - Extend SQL Syntax with regex
 - Make IO operator easy again
