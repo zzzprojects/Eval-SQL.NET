@@ -45,7 +45,7 @@ BEGIN
 END
 ```
 
-[Learn more](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)
+[Learn more](http://eval-sql.net/documentations/#more)
 
 ## Download
 [SQLNET.zip](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net) <sub>(~525 KB)</sub>
@@ -58,24 +58,24 @@ END
 4. Run the sql script in your database server to install assemblies & objects.
 
 ## Free VS Pro
-Features | FREE Version | [PRO Version](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)
+Features | FREE Version | [PRO Version](http://eval-sql.net/#pro)
 ------------ | :-------------: | :-------------:
 Maximum Characters | 50 | Unlimited
 Maximum Variables | 2 | Unlimited
-Learn more about the [PRO Version](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)
+Learn more about the [PRO Version](http://eval-sql.net/#pro)
 
 ## Support
 - [Website](http://eval-sql.net/)
-- [Documentation](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)
-- [Forum](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)
+- [Documentation](http://eval-sql.net/documentations/)
+- [Forum](https://zzzprojects.uservoice.com/forums/328452-eval-sql-net)
 - sales@zzzprojects.com
 
 Contact our outstanding customer support for any request. We usually answer within the next business day, hour, or minutes!
 
 ## More Projects
-  - [NET Entity Framework Ext.](sales@zzzprojects.com)
-  - [NET Bulk Operations](sales@zzzprojects.com)
-  - [Eval Expression.NET](sales@zzzprojects.com)
-  - [Eval SQL.NET](sales@zzzprojects.com)
+  - [NET Entity Framework Ext.](http://www.zzzprojects.com/products/dotnet-development/entity-framework-extensions/)
+  - [NET Bulk Operations](http://www.zzzprojects.com/products/dotnet-development/bulk-operations/)
+  - [Eval Expression.NET](http://eval-expression.net/)
+  - [Eval SQL.NET](http://eval-sql.net/)
 
 
