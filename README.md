@@ -48,7 +48,7 @@ END
 [Learn more](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)
 
 ## Download
-[SQLNET.zip](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net) (~525 KB)
+[SQLNET.zip](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net) <sub>(~525 KB)</sub>
 
 *Setup*
 
