@@ -65,6 +65,7 @@ Maximum Variables | 2 | Unlimited
 Learn more about the [PRO Version](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)
 
 ## Support
+- [Website](http://eval-sql.net/)
 - [Documentation](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)
 - [Forum](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)
 - sales@zzzprojects.com
