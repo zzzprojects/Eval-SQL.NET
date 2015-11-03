@@ -57,7 +57,9 @@ END
 3. Change DatabaseName variable for your database name (See 'CHANGE ME' section).
 4. Run the sql script in your database server to install assemblies & objects.
 
-Enjoy all free features for an unlimited period and PRO features during the current month.
+Enjoy all free features for an unlimited period and PRO features for the current month.
+
+To unlock all PRO features, visit http://eval-expression.net/
 
 ## Free VS Pro
 Features | FREE Version | [PRO Version](http://eval-sql.net/#pro)
