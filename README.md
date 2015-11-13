@@ -73,16 +73,7 @@ END
 ## Download
 [SQLNET.zip](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net) <sub>(~525 KB)</sub>
 
-*Setup*
-
-1. Open the script with Microsoft SQL Server Management Studio (SSMS).
-2. Change script mode to SQLCMD Mode (Query -> SQLCMD Mode).
-3. Change DatabaseName variable for your database name (See 'CHANGE ME' section).
-4. Run the sql script in your database server to install assemblies & objects.
-
-Enjoy all free features for an unlimited period and PRO features for the current month.
-
-To unlock all PRO features, visit http://eval-expression.net/
+*FREE Version - up to 50 characters
 
 ## Free VS Pro
 Features | FREE Version | [PRO Version](http://eval-sql.net/#pro)
