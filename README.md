@@ -50,7 +50,7 @@ BEGIN
 END
 ```
 
-_EXEC SQLNET_EvalResultSet_
+_Result Set_
 ```sql
 CREATE PROCEDURE [dbo].[select_desktop_files]
 AS
