@@ -1,7 +1,18 @@
 ##Evaluate code and expression using .NET in T-SQL stored procedure, function and trigger##
+
+Extend SQL syntax with the full C# syntax and have the best of both language.
+
+- Access to .NET objects
+	- Math
+	- Regex
+	- String.Format
 - Evaluate expression at runtime
-- Extend SQL Syntax with .NET object: Regex, String.Format, Math, ...
-- Perform IO Operation with DirectoryInfo, FileInfo, Impersonalization, ...
+	- Use column as code
+	- Use column as parameter
+- Perform IO Operation
+	- DirectoryInfo
+	- FileInfo
+	- Impersonate
 
 ## Download
 **[SQLNET.zip](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net) <sub>(~525 KB)</sub>** 
