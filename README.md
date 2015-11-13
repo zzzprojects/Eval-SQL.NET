@@ -1,4 +1,4 @@
-###Eval .NET code and expression in SQL stored procedure, function and trigger.###
+###Evaluate code and expression using .NET in T-SQL stored procedure, function and trigger.###
 - Dynamically evaluate .NET expression in SQL
 - Use column value as code and parameter
 - Extend SQL Syntax with regex
