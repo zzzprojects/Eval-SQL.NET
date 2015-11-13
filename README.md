@@ -17,6 +17,7 @@ BEGIN
 	FROM TableFormula
 END
 ```
+**[Learn more](http://eval-sql.net/documentations/#more)**
 
 ## EXEC SQLNET_EvalResultSet
 **Stored Procedures that evaluate the code and return a Result Set.**
@@ -36,7 +37,7 @@ BEGIN
 END
 ```
 
-[Learn more](http://eval-sql.net/documentations/#more)
+**[Learn more](http://eval-sql.net/documentations/#more)**
 
 ## Download
 [SQLNET.zip](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net) <sub>(~525 KB)</sub>
