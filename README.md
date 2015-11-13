@@ -85,15 +85,15 @@ Support & Upgrades (1 year) | No | Yes
 Learn more about the **[PRO Version](http://eval-sql.net/#pro)**
 
 ## Support
-- [Website](http://eval-sql.net/)
-- [Documentation](http://eval-sql.net/documentations/)
-- [Forum](https://zzzprojects.uservoice.com/forums/328452-eval-sql-net)
-- sales@zzzprojects.com
-
 Contact our outstanding customer support for any request. We usually answer within the next business day, hour, or minutes!
 
+- [Website](http://eval-sql.net/)
+- [Documentation](https://github.com/zzzprojects/Eval-SQL.NET/wiki)
+- [Forum](http://zzzprojects.uservoice.com/forums/328452-eval-sql-net)
+- sales@zzzprojects.com
+
 ## More Projects
-  - [NET Entity Framework Ext.](http://www.zzzprojects.com/products/dotnet-development/entity-framework-extensions/)
+  - [NET Entity Framework Extensions](http://www.zzzprojects.com/products/dotnet-development/entity-framework-extensions/)
   - [NET Bulk Operations](http://www.zzzprojects.com/products/dotnet-development/bulk-operations/)
   - [Eval Expression.NET](http://eval-expression.net/)
   - [Eval SQL.NET](http://eval-sql.net/)
