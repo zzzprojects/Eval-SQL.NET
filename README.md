@@ -3,6 +3,11 @@
 - Extend SQL Syntax with .NET object: Regex, String.Format, Math, ...
 - Perform IO Operation with DirectoryInfo, FileInfo, Impersonalization, ...
 
+## Download
+**[SQLNET.zip](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net)** <sub>(~525 KB)</sub>
+
+*FREE Version - up to 50 characters
+
 ## Eval
 **Evaluate and execute the code or expression.**
 
@@ -69,11 +74,6 @@ END
 ```
 
 **[Learn more](http://eval-sql.net/documentations/#more)**
-
-## Download
-[SQLNET.zip](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net) <sub>(~525 KB)</sub>
-
-*FREE Version - up to 50 characters
 
 ## Free VS Pro
 Features | FREE Version | [PRO Version](http://eval-sql.net/#pro)
