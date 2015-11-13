@@ -7,8 +7,8 @@ Extend SQL syntax with the full C# syntax and have the best of both language.
 	- Regex
 	- String.Format
 - Evaluate expression at runtime
-	- Use column as code
-	- Use column as parameter
+	- Use column value as code
+	- Use column value as parameter
 - Perform IO Operation
 	- DirectoryInfo
 	- FileInfo
