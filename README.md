@@ -1,7 +1,6 @@
 ##Evaluate code and expression using .NET in T-SQL stored procedure, function and trigger.##
 
-## Eval
-_From simple expression..._
+_Eval_
 ```sql
 CREATE PROCEDURE [dbo].[select_formula]
 AS
@@ -14,8 +13,7 @@ BEGIN
 END
 ```
 
-## EXEC SQLNET_EvalResultSet
-_to more complex code returning a result set._
+_EXEC SQLNET_EvalResultSet_
 ```sql
 CREATE PROCEDURE [dbo].[select_desktop_files]
 AS
