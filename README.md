@@ -3,8 +3,8 @@
 - Extend SQL Syntax with .NET object: Regex, String.Format, Math, ...
 - Perform IO Operation with DirectoryInfo, FileInfo, Impersonalization, ...
 
-## Eval_
-*aaaaaa klsadj saldkjsa ldkjsad*
+## Eval
+**Evaluate and execute the code or expression.**
 
 ```sql
 CREATE PROCEDURE [dbo].[select_formula]
@@ -18,7 +18,7 @@ BEGIN
 END
 ```
 
-## EXEC SQLNET_EvalResultSet_
+## EXEC SQLNET_EvalResultSet
 *aaaaaa klsadj saldkjsa ldkjsad*
 
 ```sql
