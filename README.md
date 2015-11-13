@@ -20,7 +20,7 @@ END
 **[Learn more](http://eval-sql.net/documentations/#more)**
 
 ## EXEC SQLNET_EvalResultSet
-**Execute a stored procedure to evaluate the code or expression and return a Result Set.**
+**Execute a stored procedure to evaluate the code or expression and return a result set.**
 
 > _You can output the result to the client or insert it in a table like a normal procedure with a SELECT statement._
 
