@@ -6,6 +6,22 @@
 ## Eval
 **Evaluate and execute the code or expression.**
 
+** Support:**
+
+_Runtime Evaluation_
+```sql
+CREATE PROCEDURE [dbo].[select_formula]
+AS
+BEGIN
+	SELECT  SQLNET::New('x + y')
+		.Val('x', ColumnValueX)
+		.Val('y', ColumnValueY)
+		.Eval()
+	FROM TableFormula
+END
+```
+
+_Regex_
 ```sql
 CREATE PROCEDURE [dbo].[select_formula]
 AS
