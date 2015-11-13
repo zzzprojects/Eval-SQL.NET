@@ -19,7 +19,9 @@ END
 ```
 
 ## EXEC SQLNET_EvalResultSet
-*aaaaaa klsadj saldkjsa ldkjsad*
+**Stored Procedures that evaluate the code and return a Result Set.**
+
+> _You can output the result to the client or insert it in a table like a normal procedure with a SELECT statement._
 
 ```sql
 CREATE PROCEDURE [dbo].[select_desktop_files]
