@@ -28,7 +28,6 @@ BEGIN
 	EXEC SQLNET_EvalResultSet @sqlnet
 END
 ```
-```
 
 [Learn more](http://eval-sql.net/documentations/#more)
 
