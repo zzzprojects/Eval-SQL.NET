@@ -67,11 +67,11 @@ Options | Value | Eval
 SQLNET::New(code) | Val(key, object) | Eval()
 Code(code) | Value(key, object) | EvalBigInt()
 Cache(bit) | ValueBinary(key, byte[]) | EvalBit()
-Impersonate(bit) | ValueString(key, string) | EvalInt()
- | ValueXml(key, XML) | EvalSmallInt()
- | ValueSQLNET(key, SQLNET) | EvalString()
- | | EvalTinyInt()
- | | EvalSQLNET()
+Dispose() | ValueString(key, string) | EvalInt()
+DisposeAll() | ValueXml(key, XML) | EvalSmallInt()
+Impersonate(bit) | ValueSQLNET(key, SQLNET) | EvalString()
+ExpireObject | | EvalTinyInt()
+ExpireDelegate | | EvalSQLNET()
  | | EXEC SQLNET_EvalResultSet
 
 ## Free VS Pro
