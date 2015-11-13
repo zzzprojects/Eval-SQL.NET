@@ -1,6 +1,12 @@
 ##Evaluate code and expression using .NET in T-SQL stored procedure, function and trigger##
+1. Open the script with Microsoft SQL Server Management Studio (SSMS).
+2. Change script mode to SQLCMD Mode (Query -> SQLCMD Mode).
+3. Change DatabaseName variable for your database name (See 'CHANGE ME' section).
+4. Run the sql script in your database server to install assemblies & objects.
 
-_Eval_
+## Eval_
+*aaaaaa klsadj saldkjsa ldkjsad*
+
 ```sql
 CREATE PROCEDURE [dbo].[select_formula]
 AS
@@ -13,7 +19,9 @@ BEGIN
 END
 ```
 
-_EXEC SQLNET_EvalResultSet_
+## EXEC SQLNET_EvalResultSet_
+*aaaaaa klsadj saldkjsa ldkjsad*
+
 ```sql
 CREATE PROCEDURE [dbo].[select_desktop_files]
 AS
