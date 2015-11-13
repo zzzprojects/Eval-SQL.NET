@@ -61,6 +61,19 @@ Enjoy all free features for an unlimited period and PRO features for the current
 
 To unlock all PRO features, visit http://eval-expression.net/
 
+## API - Cheat Sheet
+Options | Value | Eval
+------------ | ------------- | -------------
+SQLNET::New(code) | Val(key, object) | Eval()
+Code(code) | Value(key, object) | EvalBigInt()
+Cache(bit) | ValueBinary(key, byte[]) | EvalBit()
+Impersonate(bit) | ValueString(key, string) | EvalInt()
+ | ValueXml(key, XML) | EvalSmallInt()
+ | ValueSQLNET(key, SQLNET) | EvalString()
+ | | EvalTinyInt()
+ | | EvalSQLNET()
+ | | EXEC SQLNET_EvalResultSet
+
 ## Free VS Pro
 Features | FREE Version | [PRO Version](http://eval-sql.net/#pro)
 ------------ | :-------------: | :-------------:
