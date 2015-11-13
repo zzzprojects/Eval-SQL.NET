@@ -6,7 +6,7 @@
 ## Eval
 **Evaluate and execute the code or expression.**
 
-** Support:**
+**Support:**
 
 _Runtime Evaluation_
 ```sql
