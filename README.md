@@ -1,10 +1,7 @@
 ##Evaluate code and expression using .NET in T-SQL stored procedure, function and trigger.##
-- Dynamically evaluate .NET expression in SQL
-- Use column value as code and parameter
-- Extend SQL Syntax with regex
-- Make IO operator easy again
 
-*From simple expression...*
+## Eval
+_From simple expression..._
 ```sql
 CREATE PROCEDURE [dbo].[select_formula]
 AS
@@ -17,49 +14,8 @@ BEGIN
 END
 ```
 
-*and regex in where clause...*
-```sql
-CREATE PROCEDURE [dbo].[select_where_regex_filter]
-AS
-BEGIN
-	DECLARE @sqlnet_filterFile SQLNET = SQLNET::New().SetCode('
-	return Regex.IsMatch(filePath, "^.*\.(jpg|gif|docx|pdf)$");')
-	
-	SELECT  *
-	FROM    [FileTable]
-	WHERE	@sqlnet_filterFile.SetValue('filePath', FilePathColumn).Eval() = 1
-END
-```
-
-*to more complex code returning a result set.*
-```sql
-CREATE PROCEDURE [dbo].[select_desktop_files]
-AS
-BEGIN
-	DECLARE @sqlnet SQLNET = SQLNET::New('
-	var dir = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
-	return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
-	
-	/* SELECT * FROM [desktop_files] ORDER BY path */
-	EXEC SQLNET_EvalResultSet @sqlnet
-END
-```
-
-## Eval
-```sql
-CREATE PROCEDURE [dbo].[select_desktop_files]
-AS
-BEGIN
-	DECLARE @sqlnet SQLNET = SQLNET::New('
-	var dir = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
-	return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
-	
-	/* SELECT * FROM [desktop_files] ORDER BY path */
-	EXEC SQLNET_EvalResultSet @sqlnet
-END
-```
-
 ## EXEC SQLNET_EvalResultSet
+_to more complex code returning a result set._
 ```sql
 CREATE PROCEDURE [dbo].[select_desktop_files]
 AS
@@ -71,6 +27,7 @@ BEGIN
 	/* SELECT * FROM [desktop_files] ORDER BY path */
 	EXEC SQLNET_EvalResultSet @sqlnet
 END
+```
 ```
 
 [Learn more](http://eval-sql.net/documentations/#more)
