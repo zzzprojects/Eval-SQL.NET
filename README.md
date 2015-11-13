@@ -62,6 +62,11 @@ Enjoy all free features for an unlimited period and PRO features for the current
 To unlock all PRO features, visit http://eval-expression.net/
 
 ## API - Cheat Sheet
+Easy to use API
+
+```sql
+SELECT  SQLNET::New('X+Y').Val('X', 1).Val('Y', 2).Eval()
+```
 Options | Value | Eval
 ------------ | ------------- | -------------
 SQLNET::New(code) | Val(key, object) | Eval()
