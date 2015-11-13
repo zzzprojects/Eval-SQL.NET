@@ -1,7 +1,7 @@
 ##Evaluate code and expression using .NET in T-SQL stored procedure, function and trigger##
 - Evaluate expression at runtime
-- Extend SQL Syntax with Regex, conversion, string manipulation
-- Perform IO Operation with DirectoryInfo, FileInfo, Impersonalization
+- Extend SQL Syntax with Regex, conversion, string manipulation, ...
+- Perform IO Operation with DirectoryInfo, FileInfo, Impersonalization, ...
 
 ## Eval_
 *aaaaaa klsadj saldkjsa ldkjsad*
