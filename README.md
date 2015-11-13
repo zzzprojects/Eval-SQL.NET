@@ -1,4 +1,4 @@
-##Evaluate code and expression using .NET in T-SQL stored procedure, function and trigger.##
+##Evaluate code and expression using .NET in T-SQL stored procedure, function and trigger##
 
 _Eval_
 ```sql
