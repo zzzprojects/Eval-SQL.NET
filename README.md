@@ -49,28 +49,8 @@ BEGIN
 	FROM TableFormula
 END
 ```
-**[Learn more](http://eval-sql.net/documentations/#more)**
 
-## EXEC SQLNET_EvalResultSet
-**Execute a stored procedure to evaluate the code or expression and return a result set.**
-
-**Support:**
-
-_Output result set_
-```sql
-CREATE PROCEDURE [dbo].[select_desktop_files]
-AS
-BEGIN
-	DECLARE @sqlnet SQLNET = SQLNET::New('
-	var dir = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
-	return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
-	
-	/* SELECT * FROM [desktop_files] ORDER BY path */
-	EXEC SQLNET_EvalResultSet @sqlnet
-END
-```
-
-_Insert result set_
+_EXEC SQLNET_EvalResultSet_
 ```sql
 CREATE PROCEDURE [dbo].[select_desktop_files]
 AS
