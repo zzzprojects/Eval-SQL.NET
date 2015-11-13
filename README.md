@@ -75,14 +75,14 @@ END
 
 **[Learn more](http://eval-sql.net/documentations/#more)**
 
-## Free VS Pro
+## FREE vs PRO
 Features | FREE Version | [PRO Version](http://eval-sql.net/#pro)
 ------------ | :-------------: | :-------------:
 Maximum Characters | 50 | Unlimited
 Commercial License | No | Yes
 Royalty-Free | No | Yes
 Support & Upgrades (1 year) | No | Yes
-Learn more about the [PRO Version](http://eval-sql.net/#pro)
+Learn more about the **[PRO Version](http://eval-sql.net/#pro)**
 
 ## Support
 - [Website](http://eval-sql.net/)
