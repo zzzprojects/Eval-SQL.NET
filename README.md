@@ -45,6 +45,34 @@ BEGIN
 END
 ```
 
+## Eval
+```sql
+CREATE PROCEDURE [dbo].[select_desktop_files]
+AS
+BEGIN
+	DECLARE @sqlnet SQLNET = SQLNET::New('
+	var dir = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+	return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
+	
+	/* SELECT * FROM [desktop_files] ORDER BY path */
+	EXEC SQLNET_EvalResultSet @sqlnet
+END
+```
+
+## EXEC SQLNET_EvalResultSet
+```sql
+CREATE PROCEDURE [dbo].[select_desktop_files]
+AS
+BEGIN
+	DECLARE @sqlnet SQLNET = SQLNET::New('
+	var dir = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+	return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
+	
+	/* SELECT * FROM [desktop_files] ORDER BY path */
+	EXEC SQLNET_EvalResultSet @sqlnet
+END
+```
+
 [Learn more](http://eval-sql.net/documentations/#more)
 
 ## Download
