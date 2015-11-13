@@ -1,6 +1,6 @@
 ##Evaluate code and expression using .NET in T-SQL stored procedure, function and trigger##
 
-Extend SQL syntax with the full C# syntax and have the best of both language.
+**Extend SQL syntax with the full C# syntax and have the best of both language.**
 
 - Access to .NET objects
 	- Math
