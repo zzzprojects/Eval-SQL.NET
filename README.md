@@ -74,7 +74,7 @@ BEGIN
 	DECLARE @sqlnet SQLNET = SQLNET::New('
 	var dir = new DirectoryInfo(path);
 	return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
-	.Val(path, @PATH)
+	.Val('path', @PATH)
 	
 	/* SELECT * FROM [desktop_files] ORDER BY path */
 	EXEC SQLNET_EvalResultSet @sqlnet
