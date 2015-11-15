@@ -68,12 +68,13 @@ END
 
 _Result Set_
 ```sql
-CREATE PROCEDURE [dbo].[select_desktop_files]
+CREATE PROCEDURE [dbo].[select_directiry_files] @PATH VARCHAR(255)
 AS
 BEGIN
 	DECLARE @sqlnet SQLNET = SQLNET::New('
-	var dir = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+	var dir = new DirectoryInfo(path);
 	return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
+	.Val(path, @PATH)
 	
 	/* SELECT * FROM [desktop_files] ORDER BY path */
 	EXEC SQLNET_EvalResultSet @sqlnet
