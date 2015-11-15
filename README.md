@@ -22,9 +22,9 @@
 CREATE PROCEDURE [dbo].[select_formula]
 AS
 BEGIN
-	SELECT  SQLNET::New('x + y')
-		.Val('x', ColumnValueX)
-		.Val('y', ColumnValueY)
+	SELECT  SQLNET::New('X + Y')
+		.Val('X', ColumnValueX)
+		.Val('Y', ColumnValueY)
 		.Eval()
 	FROM TableFormula
 END
@@ -45,9 +45,9 @@ _Runtime Evaluation_
 CREATE PROCEDURE [dbo].[select_formula]
 AS
 BEGIN
-	SELECT  SQLNET::New('x + y')
-		.Val('x', ColumnValueX)
-		.Val('y', ColumnValueY)
+	SELECT  SQLNET::New('X + Y')
+		.Val('X', ColumnValueX)
+		.Val('Y', ColumnValueY)
 		.Eval()
 	FROM TableFormula
 END
@@ -59,11 +59,11 @@ CREATE PROCEDURE [dbo].[select_where_regex_filter]
 AS
 BEGIN
     DECLARE @sqlnet_filterFile SQLNET = SQLNET::New('
-    return Regex.IsMatch(filePath, "^.*\.(jpg|gif|docx|pdf)$");')
+    return Regex.IsMatch(FILEPATH, "^.*\.(jpg|gif|docx|pdf)$");')
 
     SELECT  *
     FROM    [FileTable]
-    WHERE   @sqlnet_filterFile.SetValue('filePath', FilePathColumn).Eval() = 1
+    WHERE   @sqlnet_filterFile.SetValue('FILEPATH', FilePathColumn).Eval() = 1
 END
 ```
 
@@ -73,9 +73,9 @@ CREATE PROCEDURE [dbo].[select_directiry_files] @PATH VARCHAR(255)
 AS
 BEGIN
 	DECLARE @sqlnet SQLNET = SQLNET::New('
-	var dir = new DirectoryInfo(path);
+	var dir = new DirectoryInfo(PATH);
 	return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
-	.Val('path', @PATH)
+	.Val('PATH', @PATH)
 	
 	/* SELECT * FROM [path_files] ORDER BY path */
 	EXEC SQLNET_EvalResultSet @sqlnet
