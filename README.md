@@ -10,9 +10,25 @@
 	- Use column value as code
 	- Use column value as parameter
 - Perform IO Operation
+	- Replace xp_cmdshell with C# Syntax
 	- DirectoryInfo
 	- FileInfo
 	- Impersonate
+- Function Improvment
+	- Modify Table State
+	- Try/Catch Error Handling
+    
+```sql
+CREATE PROCEDURE [dbo].[select_formula]
+AS
+BEGIN
+	SELECT  SQLNET::New('x + y')
+		.Val('x', ColumnValueX)
+		.Val('y', ColumnValueY)
+		.Eval()
+	FROM TableFormula
+END
+```
 
 ## Download
 **[SQLNET.zip](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net) <sub>(~525 KB)</sub>** 
