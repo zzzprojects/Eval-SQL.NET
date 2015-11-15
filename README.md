@@ -76,7 +76,7 @@ BEGIN
 	return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
 	.Val('path', @PATH)
 	
-	/* SELECT * FROM [desktop_files] ORDER BY path */
+	/* SELECT * FROM [path_files] ORDER BY path */
 	EXEC SQLNET_EvalResultSet @sqlnet
 END
 ```
