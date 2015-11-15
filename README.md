@@ -1,4 +1,4 @@
-##Evaluate code and expression using .NET in T-SQL stored procedure, function and trigger##
+##Evaluate C# code and expression in T-SQL stored procedure, function and trigger##
 
 **Extend SQL with the full C# syntax and get the best of both languages:**
 
