@@ -55,14 +55,15 @@ END
 
 _Regex_
 ```sql
-CREATE PROCEDURE [dbo].[select_formula]
+CREATE PROCEDURE [dbo].[select_where_regex_filter]
 AS
 BEGIN
-	SELECT  SQLNET::New('x + y')
-		.Val('x', ColumnValueX)
-		.Val('y', ColumnValueY)
-		.Eval()
-	FROM TableFormula
+    DECLARE @sqlnet_filterFile SQLNET = SQLNET::New().SetCode('
+    return Regex.IsMatch(filePath, "^.*\.(jpg|gif|docx|pdf)$");')
+
+    SELECT  *
+    FROM    [FileTable]
+    WHERE   @sqlnet_filterFile.SetValue('filePath', FilePathColumn).Eval() = 1
 END
 ```
 
