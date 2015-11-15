@@ -85,6 +85,8 @@ END
 **[Learn more](http://eval-sql.net/documentations/#more)**
 
 ## FREE vs PRO
+With the free version comes a month long trial of the pro license to let you evaluate all its functonalities without limits.
+
 Features | FREE Version | [PRO Version](http://eval-sql.net/#pro)
 ------------ | :-------------: | :-------------:
 Maximum Characters | 50 | Unlimited
