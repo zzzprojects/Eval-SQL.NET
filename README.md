@@ -58,7 +58,7 @@ _Regex_
 CREATE PROCEDURE [dbo].[select_where_regex_filter]
 AS
 BEGIN
-    DECLARE @sqlnet_filterFile SQLNET = SQLNET::New().SetCode('
+    DECLARE @sqlnet_filterFile SQLNET = SQLNET::New('
     return Regex.IsMatch(filePath, "^.*\.(jpg|gif|docx|pdf)$");')
 
     SELECT  *
