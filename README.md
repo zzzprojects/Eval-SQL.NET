@@ -82,7 +82,7 @@ BEGIN
 END
 ```
 
-**[Learn more](http://eval-sql.net/documentations/#more)**
+**[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki)**
 
 ## FREE vs PRO
 With the free version comes a month long trial of the pro license to let you evaluate all its functonalities without limits.
