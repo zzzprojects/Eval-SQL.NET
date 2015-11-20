@@ -31,7 +31,7 @@ END
 ```
 
 ## Download
-**[SQLNET.zip](https://zzzprojects.uservoice.com/forums/327759-eval-expression-net) <sub>(~525 KB)</sub>** 
+**[SQLNET.zip](https://github.com/zzzprojects/Eval-SQL.NET/releases) <sub>(~525 KB)</sub>** 
 
 *FREE Version - up to 50 characters
 
