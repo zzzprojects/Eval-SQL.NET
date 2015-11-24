@@ -102,7 +102,7 @@ Contact our outstanding customer support for any request. We usually answer with
 
 - [Website](http://eval-sql.net/)
 - [Documentation](https://github.com/zzzprojects/Eval-SQL.NET/wiki)
-- [Forum](http://zzzprojects.uservoice.com/forums/328452-eval-sql-net)
+- [Forum](https://zzzprojects.uservoice.com/forums/328452-eval-sql-net)
 - sales@zzzprojects.com
 
 ## More Projects
