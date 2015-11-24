@@ -31,6 +31,8 @@ END
 ```
 
 ## Download
+**_Stable version available on December 01 2015_**
+
 **[SQLNET.zip](https://github.com/zzzprojects/Eval-SQL.NET/releases) <sub>(~525 KB)</sub>** 
 
 *FREE Version - up to 50 characters
