@@ -43,7 +43,7 @@ END
 
 **Support:**
 
-_Runtime Evaluation_
+_SQL Runtime Evaluation_
 ```sql
 CREATE PROCEDURE [dbo].[select_formula]
 AS
@@ -70,7 +70,7 @@ BEGIN
 END
 ```
 
-_Result Set_
+_SQL Result Set_
 ```sql
 CREATE PROCEDURE [dbo].[select_directiry_files] @PATH VARCHAR(255)
 AS
