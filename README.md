@@ -97,7 +97,7 @@ Eval SQL.NET support all C# Syntax:
 - Lambda Expression
 - Number Suffix
 
-You can even access to C# 6.0 features even if you are using C# 4.0.
+You can even access to C# 6.0 features even in C# 4.0.
 - string interpolation
 - typename
 - null conditional member access
