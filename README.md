@@ -56,7 +56,7 @@ BEGIN
 END
 ```
 
-_Regex_
+_SQL Regex_
 ```sql
 CREATE PROCEDURE [dbo].[select_where_regex_filter]
 AS
