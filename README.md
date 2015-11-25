@@ -5,7 +5,7 @@
 - Access to .NET objects
 	- Math
 	- Regex
-	- String.Format
+	- String Interpolation
 - Evaluate expression at runtime
 	- Use column value as code
 	- Use column value as parameter
