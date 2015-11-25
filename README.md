@@ -66,7 +66,7 @@ BEGIN
 
     SELECT  *
     FROM    [FileTable]
-    WHERE   @sqlnet_filterFile.SetValue('FILEPATH', FilePathColumn).Eval() = 1
+    WHERE   @sqlnet_filterFile.Val('FILEPATH', FilePathColumn).Eval() = 1
 END
 ```
 
