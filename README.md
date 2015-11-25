@@ -23,7 +23,7 @@ CREATE PROCEDURE [dbo].[select_pricing]
 AS
 BEGIN
     -- SELECT [FormattedTotalPrice] FROM TableItems
-    SELECT  SQLNET::New('(X+Y).ToString("$#.00")')
+    SELECT  SQLNET::New('(X*Y).ToString("$#.00")')
         .Val('X', UnitPrice)
         .Val('Y', Quantity)
         .Eval()
