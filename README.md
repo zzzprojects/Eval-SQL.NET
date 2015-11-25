@@ -35,7 +35,7 @@ END
 
 **[SQLNET.zip](https://github.com/zzzprojects/Eval-SQL.NET/releases) <sub>(~525 KB)</sub>** 
 
-*FREE Version - up to 50 characters
+*FREE Version limited to 50 characters
 
 ## Eval
 **Evaluate and execute the code or expression.**
