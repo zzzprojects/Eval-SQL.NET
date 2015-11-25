@@ -19,14 +19,15 @@
 	- Try/Catch Error Handling
     
 ```sql
-CREATE PROCEDURE [dbo].[select_formula]
+CREATE PROCEDURE [dbo].[select_pricing]
 AS
 BEGIN
-	SELECT  SQLNET::New('X + Y')
-		.Val('X', ColumnValueX)
-		.Val('Y', ColumnValueY)
-		.Eval()
-	FROM TableFormula
+    -- SELECT [FormattedTotalPrice] FROM TableItems
+    SELECT  SQLNET::New('(X+Y).ToString("$#.00")')
+        .Val('X', UnitPrice)
+        .Val('Y', Quantity)
+        .Eval()
+    FROM TableItems
 END
 ```
 
