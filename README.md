@@ -88,7 +88,7 @@ END
 **[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki)**
 
 ## What's supported?
-Eval SQL.NETsupport all C# Syntax:
+Eval SQL.NET support all C# Syntax:
 - All C# Keywords ([MSDN Documentation](https://msdn.microsoft.com/en-us/library/x53a06bb.aspx))
 - All C# Operators ([MSDN Documentation](https://msdn.microsoft.com/en-CA/library/6a71f45d.aspx))
 - Constant Folding
