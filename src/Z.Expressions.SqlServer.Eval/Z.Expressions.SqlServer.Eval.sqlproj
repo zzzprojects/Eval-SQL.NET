@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Z.Expressions.SqlServer.Eval</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{a494b55e-94a3-4914-a03f-4d0432d16420}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Z.Expressions.SqlServer.Eval</RootNamespace>
+    <AssemblyName>Z.Expressions.SqlServer.Eval</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <Trustworthy>True</Trustworthy>
+    <PermissionSet>UNSAFE</PermissionSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="EvalCompiler" />
+    <Folder Include="EvalCompiler\Parameter" />
+    <Folder Include="EvalContext" />
+    <Folder Include="EvalContext\Compile" />
+    <Folder Include="EvalContext\Register" />
+    <Folder Include="EvalContext\Unregister" />
+    <Folder Include="EvalDelegate" />
+    <Folder Include="EvalManager" />
+    <Folder Include="Helper" />
+    <Folder Include="SQLNET" />
+    <Folder Include="SQLNET\Configuration" />
+    <Folder Include="SQLNET\Eval" />
+    <Folder Include="SQLNET\Getter" />
+    <Folder Include="SQLNET\License" />
+    <Folder Include="SQLNET\Options" />
+    <Folder Include="SQLNET\Value" />
+    <Folder Include="SQLNETItem" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Core" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Z.Expressions.Compiler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=59b66d028979105b">
+      <HintPath>..\..\..\..\..\..\OneDrive\Documents\Release\Z.Expressions.Compiler\Z.Expressions.Compiler.dll</HintPath>
+      <IsVisible>True</IsVisible>
+      <SqlPermissionSet>UNSAFE</SqlPermissionSet>
+      <GenerateSqlClrDdl>True</GenerateSqlClrDdl>
+      <IsModelAware>True</IsModelAware>
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EvalCompiler\Parameter\ResolveCacheKey.cs" />
+    <Compile Include="EvalCompiler\Parameter\ResolveParameter.cs" />
+    <Compile Include="EvalCompiler\EvalCompiler.cs" />
+    <Compile Include="EvalContext\Compile\EvalContext.Compile.cs" />
+    <Compile Include="EvalContext\Register\EvalContext.RegisterAlias.cs" />
+    <Compile Include="EvalContext\Register\EvalContext.RegisterAssembly.cs" />
+    <Compile Include="EvalContext\Register\EvalContext.RegisterDomainAssemblies.cs" />
+    <Compile Include="EvalContext\Register\EvalContext.RegisterExtensionMethod.cs" />
+    <Compile Include="EvalContext\Register\EvalContext.RegisterGlobalConstant.cs" />
+    <Compile Include="EvalContext\Register\EvalContext.RegisterGlobalVariable.cs" />
+    <Compile Include="EvalContext\Register\EvalContext.RegisterStaticMember.cs" />
+    <Compile Include="EvalContext\Register\EvalContext.RegisterType.cs" />
+    <Compile Include="EvalContext\Unregister\EvalContext.UnregisterAlias.cs" />
+    <Compile Include="EvalContext\Unregister\EvalContext.UnregisterAll.cs" />
+    <Compile Include="EvalContext\Unregister\EvalContext.UnregisterAssembly.cs" />
+    <Compile Include="EvalContext\Unregister\EvalContext.UnregisterExtensionMethod.cs" />
+    <Compile Include="EvalContext\Unregister\EvalContext.UnregisterGlobalConstant.cs" />
+    <Compile Include="EvalContext\Unregister\EvalContext.UnregisterGlobalVariable.cs" />
+    <Compile Include="EvalContext\Unregister\EvalContext.UnregisterStaticMember.cs" />
+    <Compile Include="EvalContext\Unregister\EvalContext.UnregisterType.cs" />
+    <Compile Include="EvalContext\_EvalContext.cs" />
+    <Compile Include="EvalContext\EvalContext.RegisterDefaultAlias.cs" />
+    <Compile Include="EvalDelegate\EvalDelegate.cs" />
+    <Compile Include="EvalManager\EvalManager.cs" />
+    <Compile Include="Helper\SqlContextHelper.cs" />
+    <Compile Include="Helper\SqlTypeHelper.cs" />
+    <Compile Include="SQLNET\Configuration\LoadGlobalConfiguration.cs" />
+    <Compile Include="SQLNET\Eval\Eval.cs" />
+    <Compile Include="SQLNET\Eval\EvalBigInt.cs" />
+    <Compile Include="SQLNET\Eval\EvalBit.cs" />
+    <Compile Include="SQLNET\Eval\EvalInt.cs" />
+    <Compile Include="SQLNET\Eval\EvalSmallInt.cs" />
+    <Compile Include="SQLNET\Eval\EvalSQLNET.cs" />
+    <Compile Include="SQLNET\Eval\EvalString.cs" />
+    <Compile Include="SQLNET\Eval\EvalTinyInt.cs" />
+    <Compile Include="SQLNET\Eval\SQLNET_EvalResultSet.cs" />
+    <Compile Include="SQLNET\Getter\GetAutoDispose.cs" />
+    <Compile Include="SQLNET\Getter\GetCode.cs" />
+    <Compile Include="SQLNET\Getter\GetImpersonate.cs" />
+    <Compile Include="SQLNET\Getter\GetValue.cs" />
+    <Compile Include="SQLNET\Getter\GetValueBigInt.cs" />
+    <Compile Include="SQLNET\Getter\GetValueBit.cs" />
+    <Compile Include="SQLNET\Getter\GetValueInt.cs" />
+    <Compile Include="SQLNET\Getter\GetValueSmallInt.cs" />
+    <Compile Include="SQLNET\Getter\GetValueString.cs" />
+    <Compile Include="SQLNET\Getter\GetValueTinyInt.cs" />
+    <Compile Include="SQLNET\License\AddLicense.cs" />
+    <Compile Include="SQLNET\Options\AutoDispose.cs" />
+    <Compile Include="SQLNET\Options\Code.cs" />
+    <Compile Include="SQLNET\Options\Impersonate.cs" />
+    <Compile Include="SQLNET\Value\Val.cs" />
+    <Compile Include="SQLNET\Value\Value.cs" />
+    <Compile Include="SQLNET\Value\ValueBinary.cs" />
+    <Compile Include="SQLNET\Value\ValueSQLNET.cs" />
+    <Compile Include="SQLNET\Value\ValueString.cs" />
+    <Compile Include="SQLNET\Value\ValueXml.cs" />
+    <Compile Include="SQLNET\SQLNET.cs" />
+    <Compile Include="SQLNETItem\SQLNETItem.cs" />
+    <Compile Include="EvalCompilerParameterKind.cs" />
+    <Compile Include="ExceptionMessage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+</Project>
