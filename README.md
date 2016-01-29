@@ -109,7 +109,6 @@ Features | FREE Version | [PRO Version](http://eval-sql.net/#pro)
 ------------ | :-------------: | :-------------:
 Maximum Characters | 50 | Unlimited
 Commercial License | No | Yes
-Royalty-Free | No | Yes
 Support & Upgrades (1 year) | No | Yes
 Learn more about the **[PRO Version](http://eval-sql.net/#pro)**
 
