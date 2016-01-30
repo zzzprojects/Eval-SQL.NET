@@ -31,7 +31,7 @@ BEGIN
 END
 ```
 
-**[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki)
+**[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki)**
 
 ## Download
 **[SQLNET.zip](https://github.com/zzzprojects/Eval-SQL.NET/releases) <sub>(~525 KB)</sub>** 
