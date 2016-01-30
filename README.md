@@ -37,11 +37,10 @@ END
 *FREE Version limited to 50 characters
 
 ## Eval
-**Evaluate and execute the code or expression.**
+**SQL Runtime Evaluation**
 
-**Support:**
+Evaluate and execute the code or expression.
 
-_SQL Runtime Evaluation_
 ```sql
 CREATE PROCEDURE [dbo].[select_formula]
 AS
@@ -54,7 +53,10 @@ BEGIN
 END
 ```
 
-_SQL Regex_
+**SQL Regex**
+
+Evaluate and execute the code or expression.
+
 ```sql
 CREATE PROCEDURE [dbo].[select_where_regex_filter]
 AS
@@ -68,7 +70,10 @@ BEGIN
 END
 ```
 
-_SQL Result Set_
+**SQL Result Set**
+
+Evaluate and execute the code or expression.
+
 ```sql
 CREATE PROCEDURE [dbo].[select_directiry_files] @PATH VARCHAR(255)
 AS
