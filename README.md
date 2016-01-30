@@ -103,7 +103,7 @@ You can even access to C# 6.0 features even in C# 4.0.
 **[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki/Syntax-Supported)**
 
 ## FREE vs PRO
-Every month, a [FREE trial](https://github.com/zzzprojects/Eval-SQL.NET/releases) of the PRO version is available to let you evaluate all its features without limitations.
+Every month, a **[FREE trial](https://github.com/zzzprojects/Eval-SQL.NET/releases)** of the PRO version is available to let you evaluate all its features without limitations.
 
 Features | FREE Version | [PRO Version](http://eval-sql.net/#pro)
 ------------ | :-------------: | :-------------:
