@@ -98,7 +98,7 @@ END
 
 Every month, a **[FREE trial](https://github.com/zzzprojects/Eval-SQL.NET/releases)** of the PRO version is available to let you evaluate all its features without limitations.
 
-Features | FREE Version | [PRO Version](http://eval-sql.net/#pro)
+Features | FREE Version | PRO Version
 ------------ | :-------------: | :-------------:
 Maximum Characters | 50 | Unlimited
 Commercial License | No | Yes
