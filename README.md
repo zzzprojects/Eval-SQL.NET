@@ -36,7 +36,7 @@ END
 
 *FREE Version limited to 50 characters
 
-## SQL.NET Main Features
+## Main Features
 **SQL Runtime Evaluation**
 
 Evaluate and execute the code or expression.
