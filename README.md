@@ -37,7 +37,7 @@ END
 *FREE Version limited to 50 characters
 
 ## Main Features
-### SQL Runtime Evaluation
+#### SQL Runtime Evaluation
 
 Evaluate and execute the code or expression.
 
@@ -55,7 +55,7 @@ END
 
 **[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki)**
 
-### SQL Regex
+#### SQL Regex
 
 Evaluate and execute the code or expression.
 
@@ -74,7 +74,7 @@ END
 
 **[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki)**
 
-### SQL Result Set
+#### SQL Result Set
 
 Evaluate and execute the code or expression.
 
