@@ -95,7 +95,6 @@ END
 **[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki)**
 
 ## FREE vs PRO
-Every month, a **[FREE trial](https://github.com/zzzprojects/Eval-SQL.NET/releases)** of the PRO version is available to let you evaluate all its features without limitations.
 
 Features | FREE Version | [PRO Version](http://eval-sql.net/#pro)
 ------------ | :-------------: | :-------------:
@@ -103,6 +102,8 @@ Maximum Characters | 50 | Unlimited
 Commercial License | No | Yes
 Support & Upgrades (1 year) | No | Yes
 Learn more about the **[PRO Version](http://eval-sql.net/#pro)**
+
+Every month, a **[FREE trial](https://github.com/zzzprojects/Eval-SQL.NET/releases)** of the PRO version is available to let you evaluate all its features without limitations.
 
 ## Contributing
 _You received support from us and/or the FREE version helped you?_
