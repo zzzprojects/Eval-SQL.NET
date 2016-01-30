@@ -36,7 +36,7 @@ END
 
 *FREE Version limited to 50 characters
 
-## Eval C# in T-SQL
+## Easy to use features
 **SQL Runtime Evaluation**
 
 Evaluate and execute the code or expression.
