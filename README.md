@@ -53,6 +53,8 @@ BEGIN
 END
 ```
 
+**[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki)**
+
 **SQL Regex**
 
 Evaluate and execute the code or expression.
@@ -69,6 +71,8 @@ BEGIN
     WHERE   @sqlnet_filterFile.Val('FILEPATH', FilePathColumn).Eval() = 1
 END
 ```
+
+**[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki)**
 
 **SQL Result Set**
 
