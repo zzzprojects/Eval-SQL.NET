@@ -39,8 +39,6 @@ _Minimum Requirements_
 - SQL 2012
 - .NET Framework 4.0
 
-*FREE Version limited to 50 characters
-
 ## Main Features
 #### SQL Runtime Evaluation
 
