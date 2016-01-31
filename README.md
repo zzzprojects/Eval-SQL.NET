@@ -35,7 +35,7 @@ END
 **[SQLNET.zip](https://github.com/zzzprojects/Eval-SQL.NET/releases) <sub>(~525 KB)</sub>** 
 
 _Minimum Requirements_
-- SQL CLR Permission Level: SAFE
+- SQL CLR Permission Level: **SAFE**
 - SQL 2012
 - .NET Framework 4.0
 
