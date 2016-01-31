@@ -32,7 +32,7 @@ END
 ```
 
 ## Download
-**[SQLNET.zip](https://github.com/zzzprojects/Eval-SQL.NET/releases)** 
+**[SQLNET.zip (FREE and PRO Version)](https://github.com/zzzprojects/Eval-SQL.NET/releases)** 
 
 _Minimum Requirements_
 - SQL CLR Permission Level: **SAFE**
