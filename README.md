@@ -34,6 +34,11 @@ END
 ## Download
 **[SQLNET.zip](https://github.com/zzzprojects/Eval-SQL.NET/releases) <sub>(~525 KB)</sub>** 
 
+_Requirements_
+- SQL CLR Permission: SAFE, EXTERNAL ACESS or UNSAFE
+- SQL 2012 or better
+- .NET Framework 4.0 or better
+
 *FREE Version limited to 50 characters
 
 ## Main Features
