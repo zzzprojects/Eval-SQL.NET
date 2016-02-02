@@ -13,14 +13,14 @@
  - Use column value as parameter
 - Perform File Operation
  - Replace xp_cmdshell with C# Syntax
- - DirectoryInfo
- - FileInfo
- - Impersonate
+ - Use DirectoryInfo, FileInfo
+ - Impersonate context
 - T-SQL Function Enhancement
- - Execute stored procedure
+ - Error Handling (Try/Catch)
+ - Call stored procedure
  - Modify Table State
- - Run Dynamic SQL
- - Try/Catch Error Handling
+ - Run dynamic SQL
+ 
     
 ```sql
 DECLARE @tableFormula TABLE
