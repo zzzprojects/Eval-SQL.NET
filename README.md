@@ -19,16 +19,22 @@
 	- Try/Catch Error Handling
     
 ```sql
-CREATE PROCEDURE [dbo].[select_pricing]
-AS
-BEGIN
-    -- SELECT [FormattedTotalPrice] FROM TableItems
-    SELECT  SQLNET::New('(X*Y).ToString("$#.00")')
-        .Val('X', UnitPrice)
-        .Val('Y', Quantity)
-        .Eval()
-    FROM TableItems
-END
+DECLARE @tableFormula TABLE
+    (
+      Formula VARCHAR(255) ,
+      X INT ,
+      Y INT ,
+      Z INT
+    )
+
+INSERT  INTO @tableFormula
+VALUES  ( 'x+y*z', 1, 2, 3 ),
+        ( '(x+y)*z', 1, 2, 3 )
+
+-- SELECT 7
+-- SELECT 9
+SELECT  SQLNET::New(Formula).Val('x', X).Val('y', Y).Val('z', Z).EvalInt()
+FROM    @tableFormula
 ```
 
 ## Download
@@ -45,15 +51,34 @@ _Minimum Requirements_
 Evaluate and execute the code or expression.
 
 ```sql
-CREATE PROCEDURE [dbo].[select_formula]
+CREATE PROCEDURE [dbo].[Select_Switch] @x INT, @y INT, @z INT
 AS
-BEGIN
-	SELECT  SQLNET::New('X + Y')
-		.Val('X', ColumnValueX)
-		.Val('Y', ColumnValueY)
-		.Eval()
-	FROM TableFormula
-END
+    BEGIN
+        DECLARE @result INT
+
+        SET @result = SQLNET::New('
+switch(x)
+{
+    case 1: return y + z;
+    case 2: return y - z;
+    case 3: return y * z;
+    default: return Convert.ToInt32(y ^^ z); // Pow
+}
+   ').Val('x', @x).Val('y', @y).Val('z', @z).EvalInt()
+
+        SELECT  @result
+    END
+
+GO
+
+-- RETURN 5
+EXEC Select_Switch 1, 2, 3
+-- RETURN -1
+EXEC Select_Switch 2, 2, 3
+-- RETURN 6
+EXEC Select_Switch 3, 2, 3
+-- RETURN 8
+EXEC Select_Switch 4, 2, 3
 ```
 
 **[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki)**
@@ -63,16 +88,27 @@ END
 Evaluate and execute the code or expression.
 
 ```sql
-CREATE PROCEDURE [dbo].[select_where_regex_filter]
-AS
-BEGIN
-    DECLARE @sqlnet_filterFile SQLNET = SQLNET::New('
-    return Regex.IsMatch(FILEPATH, "^.*\.(jpg|gif|docx|pdf)$");')
+CREATE FUNCTION [dbo].[fn_Split]
+    (
+      @input VARCHAR(MAX) ,
+      @pattern VARCHAR(8000) = ','
+    )
+RETURNS @split TABLE ( item VARCHAR(8000) )
+    BEGIN
+        DECLARE @regex_split SQLNET = SQLNET::New('Regex.Split(input, pattern)')
+                                             .ValueString('input', @input)
+                                             .Val('pattern', @pattern)
 
-    SELECT  *
-    FROM    [FileTable]
-    WHERE   @sqlnet_filterFile.Val('FILEPATH', FilePathColumn).Eval() = 1
-END
+        INSERT  INTO @split
+                SELECT  CAST(Value_1 AS VARCHAR(8000))
+                FROM    [dbo].[SQLNET_EvalTVF_1](@regex_split)
+        RETURN
+    END
+
+GO
+
+-- SPLIT with multiple delimiters (',' and ';')
+SELECT * FROM dbo.fn_Split('1, 2, 3; 4; 5', ',|;')
 ```
 
 **[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki)**
@@ -82,17 +118,16 @@ END
 Evaluate and execute the code or expression.
 
 ```sql
-CREATE PROCEDURE [dbo].[select_directiry_files] @PATH VARCHAR(255)
-AS
-BEGIN
-	DECLARE @sqlnet SQLNET = SQLNET::New('
-	var dir = new DirectoryInfo(PATH);
-	return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
-	.Val('PATH', @PATH)
-	
-	/* SELECT * FROM [path_files] ORDER BY path */
-	EXEC SQLNET_EvalResultSet @sqlnet
-END
+-- REQUIRE EXTERNAL_ACCESS permission
+DECLARE @sqlnet SQLNET = SQLNET::New('
+string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+var dir = new DirectoryInfo(path);
+return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
+    .Impersonate()
+
+-- SELECT * FROM DesktopFiles ORDER BY File.Fullname
+EXEC dbo.SQLNET_EvalResultSet @sqlnet
 ```
 
 **[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki)**
