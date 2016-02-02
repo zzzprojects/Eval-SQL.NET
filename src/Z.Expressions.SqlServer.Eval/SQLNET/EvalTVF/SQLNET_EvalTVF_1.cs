@@ -5,21 +5,25 @@
 // More projects: http://www.zzzprojects.com/
 // Copyright (c) 2015 ZZZ Projects. All rights reserved.
 
-using System;
+using System.Collections;
+using System.Data;
 using Microsoft.SqlServer.Server;
 
 namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
     {
-        /// <summary>Eval the code or expression and return a small int value.</summary>
-        /// <returns>The small int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public short? EvalSmallInt()
+        [SqlFunction(DataAccess = DataAccessKind.Read, FillRowMethodName = "Fill_SQLNET_EvalTVF_1", TableDefinition = "Value_1 sql_variant")]
+        public static IEnumerable SQLNET_EvalTVF_1(SQLNET sqlnet)
         {
-            var value = Eval();
+            var obj = sqlnet.Eval();
+            return DataTableHelper.GetDataRows(obj);
+        }
 
-            return value == null || value == DBNull.Value ? (short?) null : Convert.ToInt16(value);
+        public static void Fill_SQLNET_EvalTVF_1(object obj, out object value1)
+        {
+            var row = (DataRow) obj;
+            value1 = row[0];
         }
     }
 }

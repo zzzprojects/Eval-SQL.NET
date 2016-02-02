@@ -5,6 +5,7 @@
 // More projects: http://www.zzzprojects.com/
 // Copyright (c) 2015 ZZZ Projects. All rights reserved.
 
+using System;
 using System.Data.SqlTypes;
 using System.IO;
 using Microsoft.SqlServer.Server;
@@ -15,13 +16,24 @@ namespace Z.Expressions.SqlServer.Eval
     [SqlUserDefinedType(Format.UserDefined, MaxByteSize = -1)]
     public partial struct SQLNET : INullable, IBinarySerialize
     {
-        public static int CacheCount()
-        {
-            return EvalManager.CacheDelegate.Count;
-        }
+        /// <summary>Name of internal value.</summary>
+        public static readonly string InternalValueName = "value";
 
         /// <summary>The SQLNETItem used to compile the code or expression.</summary>
         public SQLNETItem Item;
+
+        /// <summary>The template connection when SqlClrCommand is used.</summary>
+        private static readonly string TemplateConnection = @"
+using (SqlConnection connection = new SqlConnection(""context connection = true""))
+{
+    using (SqlCommand defaultCommand = new SqlCommand()) 
+	{
+		defaultCommand.Connection = connection;
+        connection.Open();
+        [SQLNET_Code]
+    }
+}
+";
 
         /// <summary>Gets a value indicating whether this object is null.</summary>
         /// <value>true if this object is null, false if not.</value>
@@ -37,6 +49,55 @@ namespace Z.Expressions.SqlServer.Eval
             get { return new SQLNET(); }
         }
 
+        /// <summary>Get the cache delegate count.</summary>
+        /// <returns>The number of items in the cache delegate.</returns>
+        public static int CacheDelegateCount()
+        {
+            return EvalManager.CacheDelegate.Count;
+        }
+
+        /// <summary>Get the cache item count.</summary>
+        /// <returns>The number of items in the cache item.</returns>
+        public static int CacheItemCount()
+        {
+            return EvalManager.CacheItem.Count;
+        }
+
+        /// <summary>Expire caching item.</summary>
+        /// <returns>true if it succeeds, false if it fails which usually means another process is already cleaning it.</returns>
+        public static bool ExpireCache()
+        {
+            return EvalManager.ExpireCache();
+        }
+
+        /// <summary>News.</summary>
+        /// <param name="code">The code.</param>
+        /// <returns>A SQLNET to evaluate the code or expression.</returns>
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)] // Required for static constructor
+        public static SQLNET New(string code)
+        {
+            if (code.Contains("defaultCommand") && !code.Contains("new SqlConnection("))
+            {
+                code = TemplateConnection.Replace("[SQLNET_Code]", code);
+            }
+
+            var sqlnet = new SQLNET {Item = new SQLNETItem()};
+            sqlnet.Item.Code = code;
+
+            return sqlnet;
+        }
+
+        /// <summary>Releases all locks.</summary>
+        /// <returns>true if it succeeds, false if it fails.</returns>
+        public static bool ReleaseLocks()
+        {
+            EvalManager.CacheDelegate.ReleaseLock();
+            EvalManager.CacheItem.ReleaseLock();
+            SharedLock.ReleaseLock(ref EvalManager.SharedLock.ExpireCacheLock);
+
+            return true;
+        }
+
         /// <summary>
         ///     Performs application-defined tasks associated with freeing, releasing, or resetting
         ///     unmanaged resources.
@@ -45,22 +106,11 @@ namespace Z.Expressions.SqlServer.Eval
         {
             if (Item.Delegate != null)
             {
-                EvalDelegate @delegate;
-                EvalManager.CacheDelegate.TryRemove(Item.Delegate.CacheKey, out @delegate);
+                EvalDelegate evalDelegate;
+                EvalManager.CacheDelegate.TryRemove(Item.Delegate.CacheKey, out evalDelegate);
             }
 
             EvalManager.CacheItem.TryRemove(Item.CacheKey, out Item);
-        }
-
-        /// <summary>News.</summary>
-        /// <param name="code">The code.</param>
-        /// <returns>A SQLNET to evaluate the code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public static SQLNET New(string code)
-        {
-            var sqlnet = new SQLNET {Item = new SQLNETItem()};
-            sqlnet.Item.Code = code;
-            return sqlnet;
         }
 
         /// <summary>Parses the given value to a SQLNET object from the string representation.</summary>
@@ -70,13 +120,6 @@ namespace Z.Expressions.SqlServer.Eval
         public static SQLNET Parse(SqlString value)
         {
             return new SQLNET();
-        }
-
-        /// <summary>Convert the SQLNET object into a string representation.</summary>
-        /// <returns>A string that reprensent a SQLNET object.</returns>
-        public override string ToString()
-        {
-            return Item.Code;
         }
 
         /// <summary>Reads the given reader to retrieve the SQLNETItem from the cache.</summary>
@@ -89,9 +132,16 @@ namespace Z.Expressions.SqlServer.Eval
 
                 if (!EvalManager.CacheItem.TryGetValue(cacheKey, out Item))
                 {
-                    Item = new SQLNETItem();
+                    throw new Exception(ExceptionMessage.Unexpected_CacheItemExpired);
                 }
             }
+        }
+
+        /// <summary>Convert the SQLNET object into a string representation.</summary>
+        /// <returns>A string that represents a SQLNET object.</returns>
+        public override string ToString()
+        {
+            return Item.Code;
         }
 
         /// <summary>Writes the given writer to store the SQLNETItem in the cache.</summary>

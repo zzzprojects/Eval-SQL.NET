@@ -12,19 +12,19 @@ namespace Z.Expressions.SqlServer.Eval
     public partial struct SQLNET
     {
         /// <summary>Gets the value associated with the specified key.</summary>
-        /// <exception cref="Exception">Throw an exception if no value is associated with the specified key.</exception>
+        /// <exception cref="Exception">Throws an exception if no value is associated with the specified key.</exception>
         /// <param name="key">The key of the value to get.</param>
         /// <returns>The value associated with the specified key.</returns>
         public object GetValue(string key)
         {
             object value;
 
-            if (Item.Parameters.TryGetValue(key, out value))
+            if (Item.ParameterValues.TryGetValue(key, out value))
             {
                 return value;
             }
 
-            throw new Exception(string.Format(ExceptionMessage.UnexpectedKeyNotFound, key));
+            throw new Exception(string.Format(ExceptionMessage.Unexpected_ParameterKeyNotFound, key));
         }
     }
 }

@@ -6,21 +6,22 @@
 // Copyright (c) 2015 ZZZ Projects. All rights reserved.
 
 using System;
+using Z.Expressions.SqlServer.Eval;
 
 namespace Z.Expressions
 {
     public partial class EvalContext
     {
         /// <summary>Registers a global variable.</summary>
-        /// <exception cref="Exception">Thrown an exception if the global variable name already exists.</exception>
+        /// <exception cref="Exception">Throws an exception if the global variable name already exists.</exception>
         /// <param name="name">The global variable name.</param>
         /// <param name="value">The global variable value.</param>
-        /// <returns>An Fluent EvalContext.</returns>
+        /// <returns>A Fluent EvalContext.</returns>
         public EvalContext RegisterGlobalVariable(string name, object value)
         {
             if (!AliasGlobalVariables.TryAdd(name, value))
             {
-                throw new Exception(string.Format(ExceptionMessage.UnexpectedAliasRegistered, name));
+                throw new Exception(string.Format(ExceptionMessage.Unexpected_AliasRegistered, name));
             }
             return this;
         }

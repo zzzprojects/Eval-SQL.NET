@@ -6,6 +6,7 @@
 // Copyright (c) 2015 ZZZ Projects. All rights reserved.
 
 using System;
+using Z.Expressions.SqlServer.Eval;
 
 namespace Z.Expressions
 {
@@ -13,7 +14,7 @@ namespace Z.Expressions
     {
         /// <summary>Unregisters specified types using Type.Name and Type.FullName as alias.</summary>
         /// <param name="types">A variable-length parameters list containing types to unregister.</param>
-        /// <returns>An Fluent EvalContext.</returns>
+        /// <returns>A Fluent EvalContext.</returns>
         public EvalContext UnregisterType(params Type[] types)
         {
             foreach (var type in types)

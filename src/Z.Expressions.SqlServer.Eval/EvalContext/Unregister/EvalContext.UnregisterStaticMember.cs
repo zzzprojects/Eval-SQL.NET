@@ -7,7 +7,9 @@
 
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Reflection;
+using Z.Expressions.SqlServer.Eval;
 
 namespace Z.Expressions
 {
@@ -15,7 +17,7 @@ namespace Z.Expressions
     {
         /// <summary>Unregisters static member from specified types.</summary>
         /// <param name="types">A variable-length parameters list containing types to unregister static members from.</param>
-        /// <returns>An Fluent EvalContext.</returns>
+        /// <returns>A Fluent EvalContext.</returns>
         public EvalContext UnregisterStaticMember(params Type[] types)
         {
             foreach (var type in types)
@@ -34,12 +36,16 @@ namespace Z.Expressions
 
         /// <summary>Unregisters static member from specified types.</summary>
         /// <param name="members">A variable-length parameters list containing members.</param>
-        /// <returns>An Fluent EvalContext.</returns>
+        /// <returns>A Fluent EvalContext.</returns>
         public EvalContext UnregisterStaticMember(params MemberInfo[] members)
         {
             foreach (var member in members)
             {
+#if SQLNET
+                Dictionary<MemberInfo, byte> values;
+#else
                 ConcurrentDictionary<MemberInfo, byte> values;
+#endif
                 if (AliasStaticMembers.TryGetValue(member.Name, out values))
                 {
                     byte outByte;

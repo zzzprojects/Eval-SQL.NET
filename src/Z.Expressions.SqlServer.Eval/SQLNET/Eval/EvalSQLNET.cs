@@ -18,9 +18,9 @@ namespace Z.Expressions.SqlServer.Eval
         {
             var value = Eval();
 
-            var sqlnet = New("value");
-            sqlnet.Item = new SQLNETItem {UseImpersonate = Item.UseImpersonate};
-            sqlnet.Val("value", value);
+            var sqlnet = New(InternalValueName);
+            sqlnet.Item = new SQLNETItem {IsImpersonate = Item.IsImpersonate};
+            sqlnet.Val(InternalValueName, value);
 
             return sqlnet;
         }

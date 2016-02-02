@@ -9,8 +9,8 @@ namespace Z.Expressions
 {
     public partial class EvalContext
     {
-        /// <summary>Unregisters all kind of alias (Extension Methods, Names, Static Members, Types and Values).</summary>
-        /// <returns>An Fluent EvalContext.</returns>
+        /// <summary>Unregisters all kinds of alias (Extension Methods, Names, Static Members, Types and Values).</summary>
+        /// <returns>A Fluent EvalContext.</returns>
         public EvalContext UnregisterAll()
         {
             AliasExtensionMethods.Clear();

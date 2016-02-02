@@ -14,6 +14,11 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET Code(string code)
         {
+            if (code.Contains("defaultCommand") && !code.Contains("new SqlConnection("))
+            {
+                code = TemplateConnection.Replace("[SQLNET_Code]", code);
+            }
+
             Item.Delegate = null;
             Item.Code = code;
             return this;

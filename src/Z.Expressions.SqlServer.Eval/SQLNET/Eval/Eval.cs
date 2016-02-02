@@ -6,7 +6,6 @@
 // Copyright (c) 2015 ZZZ Projects. All rights reserved.
 
 using System;
-using System.Linq;
 using System.Security.Principal;
 using Microsoft.SqlServer.Server;
 
@@ -19,9 +18,23 @@ namespace Z.Expressions.SqlServer.Eval
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
         public object Eval()
         {
+            var now = DateTime.Now;
+
+            // Overwrite last access
+            Item.LastAccess = now;
+            if (Item.Delegate != null)
+            {
+                Item.Delegate.LastAccess = now;
+            }
+
+            if (now > EvalManager.Configuration.ExpireCacheNextScheduled)
+            {
+                EvalManager.ExpireCache();
+            }
+
             object result;
 
-            if (Item.UseImpersonate)
+            if (Item.IsImpersonate)
             {
                 WindowsImpersonationContext impersonatedIdentity = null;
 
@@ -35,10 +48,10 @@ namespace Z.Expressions.SqlServer.Eval
                 {
                     if (Item.Delegate == null)
                     {
-                        Item.Delegate = Item.Context.Compile(Item.Code, Item.Parameters.ToDictionary(x => x.Key, x => x.Value.GetType()));
+                        Item.Delegate = EvalManager.Configuration.Compile(Item.Code, Item.ParameterTypes);
                     }
 
-                    result = Item.Delegate.Delegate(Item.Parameters);
+                    result = Item.Delegate.Delegate(Item.ParameterValues);
                 }
                 finally
                 {
@@ -52,17 +65,13 @@ namespace Z.Expressions.SqlServer.Eval
             {
                 if (Item.Delegate == null)
                 {
-                    Item.Delegate = Item.Context.Compile(Item.Code, Item.Parameters.ToDictionary(x => x.Key, x => x.Value.GetType()));
+                    Item.Delegate = EvalManager.Configuration.Compile(Item.Code, Item.ParameterTypes);
                 }
 
-                result = Item.Delegate.Delegate(Item.Parameters);
+                result = Item.Delegate.Delegate(Item.ParameterValues);
             }
 
-            // Overwrite last access
-            Item.LastAccess = DateTime.Now;
-            Item.Delegate.LastAccess = DateTime.Now;
-            
-            if (Item.AutoDispose)
+            if (Item.IsAutoDispose)
             {
                 Dispose();
             }

@@ -21,7 +21,7 @@ namespace Z.Expressions.SqlServer.Eval
         {
             if (ds == null)
             {
-                throw new Exception(ExceptionMessage.UnexpectedNullResultSet);
+                throw new Exception(ExceptionMessage.Unexpected_NullResultSet);
             }
 
             foreach (DataTable dt in ds.Tables)
@@ -37,7 +37,7 @@ namespace Z.Expressions.SqlServer.Eval
         {
             if (dt == null)
             {
-                throw new Exception(ExceptionMessage.UnexpectedNullResultSet);
+                throw new Exception(ExceptionMessage.Unexpected_NullResultSet);
             }
 
             bool[] useToString;
@@ -150,9 +150,9 @@ namespace Z.Expressions.SqlServer.Eval
                 case TypeCode.UInt16:
                 case TypeCode.UInt32:
                 case TypeCode.UInt64:
-                    throw new Exception(string.Format(ExceptionMessage.InvalidDataType, typeCode));
+                    throw new Exception(string.Format(ExceptionMessage.Unsupported_SqlMetaData_TypeCode, typeCode));
                 default:
-                    throw new Exception(string.Format(ExceptionMessage.UnexpectedDataType, clrType));
+                    throw new Exception(string.Format(ExceptionMessage.Unsupported_SqlMetaData_Type, clrType));
             }
 
             return sqlMetaData;

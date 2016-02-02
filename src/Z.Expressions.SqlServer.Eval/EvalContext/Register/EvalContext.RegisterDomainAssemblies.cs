@@ -13,7 +13,7 @@ namespace Z.Expressions
     public partial class EvalContext
     {
         /// <summary>Registers all types from all domain assemblies.</summary>
-        /// <returns>An Fluent EvalContext.</returns>
+        /// <returns>A Fluent EvalContext.</returns>
         public EvalContext RegisterDomainAssemblies()
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();

@@ -13,7 +13,7 @@ namespace Z.Expressions
     {
         /// <summary>Unregisters all types from all specified assemblies.</summary>
         /// <param name="assemblies">A variable-length parameters list containing assemblies to unregister type from.</param>
-        /// <returns>An Fluent EvalContext.</returns>
+        /// <returns>A Fluent EvalContext.</returns>
         public EvalContext UnregisterAssembly(params Assembly[] assemblies)
         {
             foreach (var assembly in assemblies)

@@ -12,7 +12,7 @@ using System.Reflection;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ZZZ Projects Inc.")]
 [assembly: AssemblyProduct("Eval SQL.NET")]
-[assembly: AssemblyCopyright("ZZZ Projects Inc. Copyright © 2015")]
+[assembly: AssemblyCopyright("ZZZ Projects Inc. Copyright © 2016")]
 [assembly: AssemblyTrademark("SQL & .NET Tools")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyVersion("1.0.0")]

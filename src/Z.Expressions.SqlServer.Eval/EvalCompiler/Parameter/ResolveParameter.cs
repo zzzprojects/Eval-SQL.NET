@@ -17,7 +17,7 @@ namespace Z.Expressions
     {
         /// <summary>Resolve parameters used for the code or expression.</summary>
         /// <param name="scope">The expression scope for the code or expression to compile.</param>
-        /// <param name="parameterTypes">The dictionary of parameter (name / type) used in the code or expression to compile.</param>
+        /// <param name="parameterTypes">The dictionary of parameters (name / type) used in the code or expression to compile.</param>
         /// <returns>A ParameterExpression list used in code or expression to compile.</returns>
         private static List<ParameterExpression> ResolveParameter(ExpressionScope scope, IDictionary<string, Type> parameterTypes)
         {
@@ -28,7 +28,11 @@ namespace Z.Expressions
 
             foreach (var parameter in parameterTypes)
             {
+#if SQLNET
+                scope.CreateLazyVariable(parameter.Key, new LazySingleThread<Expression>(() =>
+#else
                 scope.CreateLazyVariable(parameter.Key, new Lazy<Expression>(() =>
+#endif
                 {
                     var innerParameter = scope.CreateVariable(parameter.Value, parameter.Key);
 

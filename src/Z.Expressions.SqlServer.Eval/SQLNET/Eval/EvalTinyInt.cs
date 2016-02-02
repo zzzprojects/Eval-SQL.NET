@@ -19,7 +19,7 @@ namespace Z.Expressions.SqlServer.Eval
         {
             var value = Eval();
 
-            return value == DBNull.Value ? (byte?) null : Convert.ToByte(value);
+            return value == null || value == DBNull.Value ? (byte?) null : Convert.ToByte(value);
         }
     }
 }

@@ -9,11 +9,11 @@ namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
     {
-        /// <summary>Set the AutoDispose value to true.</summary>
+        /// <summary>Set the IsAutoDispose value to true.</summary>
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET AutoDispose()
         {
-            Item.AutoDispose = true;
+            Item.IsAutoDispose = true;
             return this;
         }
     }

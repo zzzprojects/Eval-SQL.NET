@@ -6,7 +6,6 @@
 // Copyright (c) 2015 ZZZ Projects. All rights reserved.
 
 using System;
-using System.Collections.Generic;
 
 namespace Z.Expressions.SqlServer.Eval
 {
@@ -14,31 +13,39 @@ namespace Z.Expressions.SqlServer.Eval
     [Serializable]
     public class SQLNETItem
     {
-        /// <summary>True if the object should AutoDipose once it's has been evaluated.</summary>
-        public bool AutoDispose;
+        /// <summary>Gets or sets the cache key used to cache the SQLNETItem.</summary>
+        public string CacheKey;
 
-        /// <summary>The cache key used to cache the SQLNETItem.</summary>
-        public string CacheKey = Guid.NewGuid().ToString();
-
-        /// <summary>The code or expression to evaluate.</summary>
+        /// <summary>Gets or sets the code or expression to evaluate.</summary>
         public string Code;
 
-        /// <summary>The default context used to compile the code or expression.</summary>
-        public EvalContext Context = EvalManager.DefaultContext;
-
-        /// <summary>The compiled code or expression.</summary>
+        /// <summary>Gets or sets the compiled code or expression.</summary>
         public EvalDelegate Delegate;
 
-        /// <summary>true if this object is cached.</summary>
+        /// <summary>Gets or sets if the object should AutoDispose once it has been evaluated.</summary>
+        public bool IsAutoDispose;
+
+        /// <summary>Gets or sets if this object is cached.</summary>
         public bool IsCached;
 
-        /// <summary>The last access Date/Time from the cache.</summary>
+        /// <summary>Gets or sets if an impersonate context should be used to evaluate the code or expression.</summary>
+        public bool IsImpersonate;
+
+        /// <summary>Gets or sets the last access Date/Time from the cache.</summary>
         public DateTime LastAccess;
 
-        /// <summary>The parameter values used to evaluate the code or expression.</summary>
-        public Dictionary<string, object> Parameters = new Dictionary<string, object>();
+        /// <summary>Gets or sets the parameter types used to evaluate the code or expression.</summary>
+        public ListDictionary ParameterTypes;
 
-        /// <summary>true to use an impersonate context to evaluate the code or expression.</summary>
-        public bool UseImpersonate;
+        /// <summary>Gets or sets the parameter values used to evaluate the code or expression.</summary>
+        public ListDictionary ParameterValues;
+
+        /// <summary>Default constructor.</summary>
+        public SQLNETItem()
+        {
+            CacheKey = Guid.NewGuid().ToString();
+            ParameterTypes = new ListDictionary();
+            ParameterValues = new ListDictionary();
+        }
     }
 }

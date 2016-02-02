@@ -344,6 +344,10 @@ namespace Z.Expressions
                 RegisterType(typeof (Tuple<,,,,,,,>));
             }
 
+            // New
+            RegisterType(typeof (CommandType));
+            RegisterType(typeof(Match));
+
             // Library
             RegisterType(typeof (EvalManager));
         }

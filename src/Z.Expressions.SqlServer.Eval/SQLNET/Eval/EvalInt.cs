@@ -19,7 +19,7 @@ namespace Z.Expressions.SqlServer.Eval
         {
             var value = Eval();
 
-            return value == DBNull.Value ? (int?) null : Convert.ToInt32(value);
+            return value == null || value == DBNull.Value ? (int?) null : Convert.ToInt32(value);
         }
     }
 }

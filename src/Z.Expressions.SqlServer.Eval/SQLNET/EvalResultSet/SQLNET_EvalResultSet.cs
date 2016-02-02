@@ -6,7 +6,6 @@
 // Copyright (c) 2015 ZZZ Projects. All rights reserved.
 
 using System;
-using System.Collections;
 using System.Data;
 using Microsoft.SqlServer.Server;
 
@@ -15,40 +14,27 @@ namespace Z.Expressions.SqlServer.Eval
     public partial struct SQLNET
     {
         /// <summary>Eval the code or expression and return a result set.</summary>
-        /// <exception cref="Exception">Throw an exception if the result from the code or expression is unsupported.</exception>
+        /// <exception cref="Exception">Throw an exception if the result from the code or expression is not supported.</exception>
         /// <param name="sqlnet">The SQLNET object to evaluate.</param>
         [SqlProcedure]
         public static void SQLNET_EvalResultSet(SQLNET sqlnet)
         {
             var value = sqlnet.Eval();
 
+            if (value is DataTable)
+            {
+                SqlContextHelper.SendDataTable((DataTable)value);
+                return;
+            }
+
             if (value is DataSet)
             {
                 var ds = (DataSet) value;
                 SqlContextHelper.SendDataSet(ds);
+                return;
             }
-            else if (value is DataTable)
-            {
-                var dt = (DataTable) value;
-                SqlContextHelper.SendDataTable(dt);
-            }
-            else if (value is IEnumerable && value.GetType().IsGenericType && value.GetType().GetGenericArguments().Length == 1)
-            {
-                var list = (IEnumerable) value;
 
-                var dt = new DataTable();
-                dt.Columns.Add("value");
-                foreach (var item in list)
-                {
-                    dt.Rows.Add(item);
-                }
-
-                SqlContextHelper.SendDataTable(dt);
-            }
-            else
-            {
-                throw new Exception(string.Format(ExceptionMessage.InvalidResultSet, value.GetType()));
-            }
+            SqlContextHelper.SendDataTable(DataTableHelper.GetDataTable(value));
         }
     }
 }

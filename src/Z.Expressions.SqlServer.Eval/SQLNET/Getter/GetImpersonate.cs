@@ -13,7 +13,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>true if the context should use an impersonate context to evaluate the code or expressions, otherwise false.</returns>
         public bool GetImpersonate()
         {
-            return Item.UseImpersonate;
+            return Item.IsImpersonate;
         }
     }
 }

@@ -9,11 +9,11 @@ namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
     {
-        /// <summary>Set the Impersonate value to true.</summary>
+        /// <summary>Set the IsImpersonate value to true.</summary>
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET Impersonate()
         {
-            Item.UseImpersonate = true;
+            Item.IsImpersonate = true;
             return this;
         }
     }

@@ -6,8 +6,7 @@
 // Copyright (c) 2015 ZZZ Projects. All rights reserved.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Text;
 
 namespace Z.Expressions
 {
@@ -18,9 +17,16 @@ namespace Z.Expressions
         /// <param name="tdelegate">Type of the delegate (Func or Action) to use to compile the code or expression.</param>
         /// <param name="code">The code or expression to compile.</param>
         /// <param name="parameterTypes">List of parameter types used to compile the code or expression.</param>
-        /// <returns>A string representing a unique key for the combinaison delegate/code/parameter types.</returns>
-        private static string ResolveCacheKey(EvalContext context, Type tdelegate, string code, IDictionary<string, Type> parameterTypes)
+        /// <returns>A string representing a unique key for the combination delegate/code/parameter types.</returns>
+        private static string ResolveCacheKey(EvalContext context, Type tdelegate, string code, ListDictionary parameterTypes)
         {
+            var sb = new StringBuilder();
+
+            foreach (var value in parameterTypes.Values)
+            {
+                sb.Append(((Type)value).FullName);
+            }
+
             // Concatenate:
             // - CacheKey Prefix
             // - Code or expression
@@ -32,7 +38,7 @@ namespace Z.Expressions
                 ";",
                 tdelegate.FullName,
                 ";",
-                parameterTypes == null ? "" : string.Join(";", parameterTypes.Values.Select(x => x.FullName)));
+                sb.ToString());
         }
     }
 }

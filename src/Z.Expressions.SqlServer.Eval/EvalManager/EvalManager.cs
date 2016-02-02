@@ -6,8 +6,7 @@
 // Copyright (c) 2015 ZZZ Projects. All rights reserved.
 
 using System;
-using System.Collections.Concurrent;
-using System.Threading;
+using System.Collections.Generic;
 using Z.Expressions.SqlServer.Eval;
 
 namespace Z.Expressions
@@ -16,64 +15,100 @@ namespace Z.Expressions
     public static class EvalManager
     {
         /// <summary>The cache for EvalDelegate.</summary>
-        public static ConcurrentDictionary<string, EvalDelegate> CacheDelegate = new ConcurrentDictionary<string, EvalDelegate>();
+        public static readonly SharedCache<string, EvalDelegate> CacheDelegate = new SharedCache<string, EvalDelegate>();
 
         /// <summary>The cache for SQLNETItem.</summary>
-        public static ConcurrentDictionary<string, SQLNETItem> CacheItem = new ConcurrentDictionary<string, SQLNETItem>();
+        public static readonly SharedCache<string, SQLNETItem> CacheItem = new SharedCache<string, SQLNETItem>();
 
         /// <summary>The default context used to compile the code or expression.</summary>
-        public static EvalContext DefaultContext = new EvalContext();
+        public static readonly EvalContext Configuration;
 
-        /// <summary>The sliding expiration for delegate cache.</summary>
-        public static TimeSpan SlidingExpirationDelegate = TimeSpan.FromDays(1);
+        /// <summary>The shared lock.</summary>
+        public static readonly SharedLock SharedLock;
 
-        /// <summary>The sliding expiration for item cache.</summary>
-        public static TimeSpan SlidingExpirationItem = TimeSpan.FromMinutes(5);
-
-        /// <summary>The thread to auto expire cached delegate and item.</summary>
-        private static readonly Thread ThreadAutoExpireCache = new Thread(ExecuteThreadAutoExpireCache) {Name = "Eval SQL.NET - AutoExpire Cache", IsBackground = true};
-
-        /// <summary>The wait lock for the ThreadAutoExpireCache.</summary>
-        private static readonly object WaitLock = new object();
-
-        /// <summary>Static constructor.</summary>
         static EvalManager()
         {
-            SQLNET.LoadGlobalConfiguration();
-            ThreadAutoExpireCache.Start();
+            // ENSURE to create lock first
+            SharedLock = new SharedLock();
+            Configuration = new EvalContext();
+            SQLNET.LoadConfiguration();
         }
 
-        /// <summary>Executes the thread to automatically expire cached delegate and item.</summary>
-        private static void ExecuteThreadAutoExpireCache()
+        public static bool ExpireCache()
         {
-            while (true)
+            try
             {
-                lock (WaitLock)
+                if (SharedLock.TryAcquireLock(ref SharedLock.ExpireCacheLock))
                 {
-                    Monitor.Wait(WaitLock, TimeSpan.FromMinutes(1));
+                    // Change the next schedule, so other threads will not try to expire the cache
+                    Configuration.ExpireCacheNextScheduled = DateTime.Now.Add(Configuration.ExpireCacheDelay);
 
-                    // EXPIRE delegate
-                    var expireDateDelegate = DateTime.Now.Subtract(SlidingExpirationDelegate);
-                    foreach (var keyvalue in CacheDelegate)
+                    // EXPIRE delegate cache
                     {
-                        if (keyvalue.Value.LastAccess < expireDateDelegate)
+                        var expireDateDelegate = DateTime.Now.Subtract(Configuration.SlidingExpirationDelegate);
+                        var keyToRemoves = new List<string>();
+
+                        try
                         {
-                            EvalDelegate value;
-                            CacheDelegate.TryRemove(keyvalue.Key, out value);
+                            CacheDelegate.AcquireLock();
+
+                            foreach (var keyvalue in CacheDelegate.InnerDictionary)
+                            {
+                                if (keyvalue.Value.LastAccess < expireDateDelegate)
+                                {
+                                    keyToRemoves.Add(keyvalue.Key);
+                                }
+                            }
+
+                            foreach (var key in keyToRemoves)
+                            {
+                                CacheDelegate.InnerDictionary.Remove(key);
+                            }
+                        }
+                        finally
+                        {
+                            CacheDelegate.ReleaseLock();
                         }
                     }
 
-                    // EXPIRE item
-                    var expireDateItem = DateTime.Now.Subtract(SlidingExpirationItem);
-                    foreach (var keyvalue in CacheItem)
+
+                    // EXPIRE item cache
                     {
-                        if (keyvalue.Value.LastAccess < expireDateItem)
+                        var expireDateItem = DateTime.Now.Subtract(Configuration.SlidingExpirationItem);
+                        var keyToRemoves = new List<string>();
+
+                        try
                         {
-                            SQLNETItem value;
-                            CacheItem.TryRemove(keyvalue.Key, out value);
+                            CacheItem.AcquireLock();
+
+                            foreach (var keyvalue in CacheItem.InnerDictionary)
+                            {
+                                if (keyvalue.Value.LastAccess < expireDateItem)
+                                {
+                                    keyvalue.Value.IsCached = false;
+                                    keyToRemoves.Add(keyvalue.Key);
+                                }
+                            }
+
+                            foreach (var key in keyToRemoves)
+                            {
+                                CacheItem.InnerDictionary.Remove(key);
+                            }
+                        }
+                        finally
+                        {
+                            CacheItem.ReleaseLock();
                         }
                     }
+
+                    return true;
                 }
+
+                return false;
+            }
+            finally
+            {
+                SharedLock.ReleaseLock(ref SharedLock.ExpireCacheLock);
             }
         }
     }

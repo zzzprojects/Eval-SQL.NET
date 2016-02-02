@@ -6,6 +6,7 @@
 // Copyright (c) 2015 ZZZ Projects. All rights reserved.
 
 using System.Linq.Expressions;
+using Z.Expressions.SqlServer.Eval;
 
 namespace Z.Expressions
 {
@@ -13,7 +14,7 @@ namespace Z.Expressions
     {
         /// <summary>Unregisters a global constant.</summary>
         /// <param name="aliases">The global constant name.</param>
-        /// <returns>An Fluent EvalContext.</returns>
+        /// <returns>A Fluent EvalContext.</returns>
         public EvalContext UnregisterGlobalConstant(params string[] aliases)
         {
             foreach (var alias in aliases)

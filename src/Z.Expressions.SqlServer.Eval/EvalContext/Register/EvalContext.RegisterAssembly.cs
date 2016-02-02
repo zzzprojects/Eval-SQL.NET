@@ -14,7 +14,7 @@ namespace Z.Expressions
     {
         /// <summary>Registers all types from all specified assemblies.</summary>
         /// <param name="assemblies">A variable-length parameters list containing assemblies to register type from.</param>
-        /// <returns>An Fluent EvalContext.</returns>
+        /// <returns>A Fluent EvalContext.</returns>
         public EvalContext RegisterAssembly(params Assembly[] assemblies)
         {
             foreach (var assembly in assemblies)

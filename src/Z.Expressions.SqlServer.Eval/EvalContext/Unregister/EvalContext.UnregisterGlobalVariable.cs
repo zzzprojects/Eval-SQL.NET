@@ -5,13 +5,15 @@
 // More projects: http://www.zzzprojects.com/
 // Copyright (c) 2015 ZZZ Projects. All rights reserved.
 
+using Z.Expressions.SqlServer.Eval;
+
 namespace Z.Expressions
 {
     public partial class EvalContext
     {
         /// <summary>Unregisters a global variable.</summary>
         /// <param name="aliases">The global variable name.</param>
-        /// <returns>An Fluent EvalContext.</returns>
+        /// <returns>A Fluent EvalContext.</returns>
         public EvalContext UnregisterGlobalVariable(params string[] aliases)
         {
             foreach (var alias in aliases)

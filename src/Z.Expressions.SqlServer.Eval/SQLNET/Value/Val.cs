@@ -5,6 +5,8 @@
 // More projects: http://www.zzzprojects.com/
 // Copyright (c) 2015 ZZZ Projects. All rights reserved.
 
+using System;
+
 namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
@@ -16,14 +18,48 @@ namespace Z.Expressions.SqlServer.Eval
         public SQLNET Val(string key, object value)
         {
             value = SqlTypeHelper.ConvertToType(value);
+            Type type;
 
-            if (!Item.Parameters.ContainsKey(key))
+            // CHECK for key containing type: int? x
+            if (key.Contains(" "))
             {
-                Item.Parameters.Add(key, value);
+                var split = key.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+                if (split.Length == 1)
+                {
+                    type = value.GetType();
+                    key = key.Trim();
+                }
+                else if (split.Length == 2)
+                {
+                    type = TypeHelper.GetTypeFromName(split[0]);
+                    key = split[1];
+                }
+                else
+                {
+                    throw new Exception(string.Format(ExceptionMessage.Invalid_ValueKey, key));
+                }
             }
             else
             {
-                Item.Parameters[key] = value;
+                type = value.GetType();
+            }
+
+            object oldType;
+            if (Item.ParameterTypes.TryGetValue(key, out oldType))
+            {
+                if (!Equals(oldType, type))
+                {
+                    Item.ParameterTypes[key] = type;
+                    Item.Delegate = null;
+                }
+
+                Item.ParameterValues[key] = value;
+            }
+            else
+            {
+                Item.ParameterTypes.Add(key, type);
+                Item.ParameterValues.Add(key, value);
             }
 
             return this;

@@ -5,6 +5,7 @@
 // More projects: http://www.zzzprojects.com/
 // Copyright (c) 2015 ZZZ Projects. All rights reserved.
 
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using Microsoft.SqlServer.Server;
@@ -13,9 +14,9 @@ namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
     {
-        /// <summary>Loads configuration from the SQL store procedure: SQLNET_GlobalConfiguration.</summary>
+        /// <summary>Loads configuration from the SQL stored procedure: SQLNET_GlobalConfiguration.</summary>
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public static void LoadGlobalConfiguration()
+        public static bool LoadConfiguration()
         {
             try
             {
@@ -23,16 +24,19 @@ namespace Z.Expressions.SqlServer.Eval
                 {
                     connection.Open();
 
-                    using (var command = new SqlCommand("SQLNET_GlobalConfiguration", connection))
+                    using (var command = new SqlCommand("SQLNET_Configuration", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.ExecuteNonQuery();
                     }
                 }
+
+                return true;
             }
             catch
             {
-                // Oops! It's k, the procedure is optional for FREE Version.
+                // Oops! it's okay, the procedure does not always exist
+                return false;
             }
         }
     }

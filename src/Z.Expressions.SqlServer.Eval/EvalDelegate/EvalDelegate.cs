@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace Z.Expressions
 {
-    /// <summary>An eval delegate used to cache delegate item.</summary>
+    /// <summary>An eval delegate used to cache delegate items.</summary>
     public class EvalDelegate
     {
         /// <summary>The key used to cache the EvalDelegate.</summary>

@@ -9,11 +9,11 @@ namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
     {
-        /// <summary>Gets the value if the object should AutoDipose once it's has been evaluated.</summary>
+        /// <summary>Gets the value if the object should AutoDispose once it has been evaluated.</summary>
         /// <returns>true if the object AutoDispose, otherwise false.</returns>
         public bool GetAutoDispose()
         {
-            return Item.AutoDispose;
+            return Item.IsAutoDispose;
         }
     }
 }

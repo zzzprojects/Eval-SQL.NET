@@ -5,13 +5,15 @@
 // More projects: http://www.zzzprojects.com/
 // Copyright (c) 2015 ZZZ Projects. All rights reserved.
 
+using Z.Expressions.SqlServer.Eval;
+
 namespace Z.Expressions
 {
     public partial class EvalContext
     {
         /// <summary>Unregisters all alias for a variable, constant or type name.</summary>
         /// <param name="aliases">A variable-length parameters list containing alias to unregister.</param>
-        /// <returns>An Fluent EvalContext.</returns>
+        /// <returns>A Fluent EvalContext.</returns>
         public EvalContext UnregisterAlias(params string[] aliases)
         {
             foreach (var alias in aliases)

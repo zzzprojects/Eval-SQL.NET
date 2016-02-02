@@ -21,7 +21,7 @@ namespace Z.Expressions.SqlServer.Eval
         {
             var value = Eval();
 
-            return value == DBNull.Value ? null : new SqlString(value.ToString());
+            return value == null || value == DBNull.Value ? SqlString.Null : new SqlString(value.ToString());
         }
     }
 }

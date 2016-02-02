@@ -7,9 +7,11 @@
 
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Z.Expressions.SqlServer.Eval;
 
 namespace Z.Expressions
 {
@@ -17,13 +19,13 @@ namespace Z.Expressions
     {
         /// <summary>Registers all extension methods from specified types.</summary>
         /// <param name="types">A variable-length parameters list containing types to register extension methods from.</param>
-        /// <returns>An Fluent EvalContext.</returns>
+        /// <returns>A Fluent EvalContext.</returns>
         public EvalContext RegisterExtensionMethod(params Type[] types)
         {
             foreach (var type in types)
             {
                 var extensionMethods = type.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-                    .Where(x => x.IsDefined(typeof (ExtensionAttribute), false)).ToArray();
+                    .Where(x => x.IsDefined(typeof(ExtensionAttribute), false)).ToArray();
 
                 RegisterExtensionMethod(extensionMethods);
             }
@@ -33,19 +35,23 @@ namespace Z.Expressions
 
         /// <summary>Registers all specified extension methods.</summary>
         /// <param name="extensionMethods">A variable-length parameters list containing extension methods to register.</param>
-        /// <returns>An Fluent EvalContext.</returns>
+        /// <returns>A Fluent EvalContext.</returns>
         public EvalContext RegisterExtensionMethod(params MethodInfo[] extensionMethods)
         {
             foreach (var method in extensionMethods)
             {
                 AliasExtensionMethods.AddOrUpdate(method.Name, s =>
                 {
+#if SQLNET
+                    var dict = new Dictionary<MethodInfo, byte>();
+#else
                     var dict = new ConcurrentDictionary<MethodInfo, byte>();
-                    dict.TryAdd(method, 1);
+#endif
+                    dict.TryAdd(method, (byte)1);
                     return dict;
                 }, (s, list) =>
                 {
-                    list.TryAdd(method, 1);
+                    list.TryAdd(method, (byte)1);
                     return list;
                 });
             }
