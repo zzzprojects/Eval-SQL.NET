@@ -2,21 +2,25 @@
 
 **Extend SQL with the full C# Syntax and get the best of both languages:**
 
-- Access to .NET objects
-	- Math
-	- Regex
-	- String Interpolation
+- Access to .NET features and objects
+ - LINQ
+ - Math
+ - Regex
+ - String Interpolation
+ - Web Service
 - Evaluate expression at runtime
-	- Use column value as code
-	- Use column value as parameter
-- Perform IO Operation
-	- Replace xp_cmdshell with C# Syntax
-	- DirectoryInfo
-	- FileInfo
-	- Impersonate
-- Function Improvment
-	- Modify Table State
-	- Try/Catch Error Handling
+ - Use column value as formula
+ - Use column value as parameter
+- Perform File Operation
+ - Replace xp_cmdshell with C# Syntax
+ - DirectoryInfo
+ - FileInfo
+ - Impersonate
+- T-SQL Function Enhancement
+ - Execute stored procedure
+ - Modify Table State
+ - Run Dynamic SQL
+ - Try/Catch Error Handling
     
 ```sql
 DECLARE @tableFormula TABLE
