@@ -50,9 +50,8 @@ _Minimum Requirements_
 - .NET Framework 4.0
 
 ## Main Features
-#### SQL Server Eval | Dynamically evaluate arithmetic operation and expression in SQL
-
-Evaluate and execute the code or expression.
+#### SQL Server Eval
+Dynamically evaluate arithmetic operation and expression in SQL
 
 ```sql
 CREATE PROCEDURE [dbo].[Select_Switch] @x INT, @y INT, @z INT
@@ -87,9 +86,8 @@ EXEC Select_Switch 4, 2, 3
 
 **[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki/SQL-Server-Eval-%7C-Dynamically-evaluate-arithmetic-operation-and-expression-in-SQL)**
 
-#### SQL Server File Operation | xp_cmdshell alternative to read and write files in SQL
-
-Evaluate and execute the code or expression.
+#### SQL Server Regex
+Use regular expression to search, replace and split text in SQL
 
 ```sql
 CREATE FUNCTION [dbo].[fn_Split]
@@ -117,9 +115,8 @@ SELECT * FROM dbo.fn_Split('1, 2, 3; 4; 5', ',|;')
 
 **[Learn more]https://github.com/zzzprojects/Eval-SQL.NET/wiki/SQL-Server-Regex-%7C-Use-regular-expression-to-search,-replace-and-split-text-in-SQL)**
 
-#### SQL Result Set
-
-Evaluate and execute the code or expression.
+#### SQL Server File Operation 
+xp_cmdshell alternative to read and write files in SQL
 
 ```sql
 -- REQUIRE EXTERNAL_ACCESS permission
