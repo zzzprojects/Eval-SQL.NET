@@ -50,7 +50,7 @@ _Minimum Requirements_
 - .NET Framework 4.0
 
 ## Main Features
-#### SQL Runtime Evaluation
+#### SQL Server Eval | Dynamically evaluate arithmetic operation and expression in SQL
 
 Evaluate and execute the code or expression.
 
@@ -85,9 +85,9 @@ EXEC Select_Switch 3, 2, 3
 EXEC Select_Switch 4, 2, 3
 ```
 
-**[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki)**
+**[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki/SQL-Server-Eval-%7C-Dynamically-evaluate-arithmetic-operation-and-expression-in-SQL)**
 
-#### SQL Regex
+#### SQL Server File Operation | xp_cmdshell alternative to read and write files in SQL
 
 Evaluate and execute the code or expression.
 
@@ -115,7 +115,7 @@ GO
 SELECT * FROM dbo.fn_Split('1, 2, 3; 4; 5', ',|;')
 ```
 
-**[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki)**
+**[Learn more]https://github.com/zzzprojects/Eval-SQL.NET/wiki/SQL-Server-Regex-%7C-Use-regular-expression-to-search,-replace-and-split-text-in-SQL)**
 
 #### SQL Result Set
 
@@ -134,7 +134,7 @@ return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
 EXEC dbo.SQLNET_EvalResultSet @sqlnet
 ```
 
-**[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki)**
+**[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki/SQL-Server-File-Operation-%7C-xp_cmdshell-alternative-to-read-and-write-files-in-SQL)**
 
 ## FREE vs PRO
 
