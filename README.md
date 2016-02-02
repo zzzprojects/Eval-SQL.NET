@@ -112,7 +112,7 @@ GO
 SELECT * FROM dbo.fn_Split('1, 2, 3; 4; 5', ',|;')
 ```
 
-**[Learn more]https://github.com/zzzprojects/Eval-SQL.NET/wiki/SQL-Server-Regex-%7C-Use-regular-expression-to-search,-replace-and-split-text-in-SQL)**
+**[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki/SQL-Server-Regex-%7C-Use-regular-expression-to-search,-replace-and-split-text-in-SQL)**
 
 ## SQL Server File Operation 
 xp_cmdshell alternative to read and write files in SQL
