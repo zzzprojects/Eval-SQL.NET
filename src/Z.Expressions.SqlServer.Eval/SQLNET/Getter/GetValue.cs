@@ -1,11 +1,13 @@
 // Description: Evaluate C# code and expression in T-SQL stored procedure, function and trigger.
 // Website & Documentation: https://github.com/zzzprojects/Eval-SQL.NET
-// Forum: https://zzzprojects.uservoice.com/forums/328452-eval-sql-net
-// License: http://www.zzzprojects.com/license-agreement/
+// Forum & Issues: https://github.com/zzzprojects/Eval-SQL.NET/issues
+// License: https://github.com/zzzprojects/Eval-SQL.NET/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
-// Copyright (c) 2015 ZZZ Projects. All rights reserved.
+// Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
 
 using System;
+
+// ReSharper disable InconsistentNaming
 
 namespace Z.Expressions.SqlServer.Eval
 {
@@ -25,6 +27,24 @@ namespace Z.Expressions.SqlServer.Eval
             }
 
             throw new Exception(string.Format(ExceptionMessage.Unexpected_ParameterKeyNotFound, key));
+        }
+
+        /// <summary>Gets the value associated with the specified key.</summary>
+        /// <exception cref="Exception">Throws an exception if no value is associated with the specified key.</exception>
+        /// <param name="key">The key of the value to get.</param>
+        /// <returns>The value associated with the specified key.</returns>
+        public object getvalue(string key)
+        {
+            return GetValue(key);
+        }
+
+        /// <summary>Gets the value associated with the specified key.</summary>
+        /// <exception cref="Exception">Throws an exception if no value is associated with the specified key.</exception>
+        /// <param name="key">The key of the value to get.</param>
+        /// <returns>The value associated with the specified key.</returns>
+        public object GETVALUE(string key)
+        {
+            return GetValue(key);
         }
     }
 }

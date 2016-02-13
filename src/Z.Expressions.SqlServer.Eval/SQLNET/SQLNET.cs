@@ -1,14 +1,16 @@
 // Description: Evaluate C# code and expression in T-SQL stored procedure, function and trigger.
 // Website & Documentation: https://github.com/zzzprojects/Eval-SQL.NET
-// Forum: https://zzzprojects.uservoice.com/forums/328452-eval-sql-net
-// License: http://www.zzzprojects.com/license-agreement/
+// Forum & Issues: https://github.com/zzzprojects/Eval-SQL.NET/issues
+// License: https://github.com/zzzprojects/Eval-SQL.NET/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
-// Copyright (c) 2015 ZZZ Projects. All rights reserved.
+// Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
 
 using System;
 using System.Data.SqlTypes;
 using System.IO;
 using Microsoft.SqlServer.Server;
+
+// ReSharper disable InconsistentNaming
 
 namespace Z.Expressions.SqlServer.Eval
 {
@@ -56,6 +58,20 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
             return EvalManager.CacheDelegate.Count;
         }
 
+        /// <summary>Get the cache delegate count.</summary>
+        /// <returns>The number of items in the cache delegate.</returns>
+        public static int cachedelegatecount()
+        {
+            return CacheDelegateCount();
+        }
+
+        /// <summary>Get the cache delegate count.</summary>
+        /// <returns>The number of items in the cache delegate.</returns>
+        public static int CACHEDELEGATECOUNT()
+        {
+            return CacheDelegateCount();
+        }
+
         /// <summary>Get the cache item count.</summary>
         /// <returns>The number of items in the cache item.</returns>
         public static int CacheItemCount()
@@ -68,6 +84,20 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
         public static bool ExpireCache()
         {
             return EvalManager.ExpireCache();
+        }
+
+        /// <summary>Expire caching item.</summary>
+        /// <returns>true if it succeeds, false if it fails which usually means another process is already cleaning it.</returns>
+        public static bool expirecache()
+        {
+            return ExpireCache();
+        }
+
+        /// <summary>Expire caching item.</summary>
+        /// <returns>true if it succeeds, false if it fails which usually means another process is already cleaning it.</returns>
+        public static bool EXPIRECACHE()
+        {
+            return ExpireCache();
         }
 
         /// <summary>News.</summary>
@@ -87,6 +117,15 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
             return sqlnet;
         }
 
+        /// <summary>News.</summary>
+        /// <param name="code">The code.</param>
+        /// <returns>A SQLNET to evaluate the code or expression.</returns>
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)] // Required for static constructor
+        public static SQLNET NEW(string code)
+        {
+            return New(code);
+        }
+
         /// <summary>Releases all locks.</summary>
         /// <returns>true if it succeeds, false if it fails.</returns>
         public static bool ReleaseLocks()
@@ -98,11 +137,25 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
             return true;
         }
 
+        /// <summary>Releases all locks.</summary>
+        /// <returns>true if it succeeds, false if it fails.</returns>
+        public static bool releaselock()
+        {
+            return ReleaseLocks();
+        }
+
+        /// <summary>Releases all locks.</summary>
+        /// <returns>true if it succeeds, false if it fails.</returns>
+        public static bool RELEASELOCK()
+        {
+            return ReleaseLocks();
+        }
+
         /// <summary>
         ///     Performs application-defined tasks associated with freeing, releasing, or resetting
         ///     unmanaged resources.
         /// </summary>
-        public void Dispose()
+        public bool Dispose()
         {
             if (Item.Delegate != null)
             {
@@ -111,6 +164,25 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
             }
 
             EvalManager.CacheItem.TryRemove(Item.CacheKey, out Item);
+            return true;
+        }
+
+        /// <summary>
+        ///     Performs application-defined tasks associated with freeing, releasing, or resetting
+        ///     unmanaged resources.
+        /// </summary>
+        public bool dispose()
+        {
+            return Dispose();
+        }
+
+        /// <summary>
+        ///     Performs application-defined tasks associated with freeing, releasing, or resetting
+        ///     unmanaged resources.
+        /// </summary>
+        public bool DISPOSE()
+        {
+            return Dispose();
         }
 
         /// <summary>Parses the given value to a SQLNET object from the string representation.</summary>

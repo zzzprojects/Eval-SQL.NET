@@ -1,81 +1,43 @@
-//------------------------------------------------------------------------------
-// <copyright file="ListDictionary.cs" company="Microsoft">
-//     Copyright (c) Microsoft Corporation.  All rights reserved.
-// </copyright>                                                                
-//------------------------------------------------------------------------------
+// Description: Evaluate C# code and expression in T-SQL stored procedure, function and trigger.
+// Website & Documentation: https://github.com/zzzprojects/Eval-SQL.NET
+// Forum & Issues: https://github.com/zzzprojects/Eval-SQL.NET/issues
+// License: https://github.com/zzzprojects/Eval-SQL.NET/blob/master/LICENSE
+// More projects: http://www.zzzprojects.com/
+// Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
 
 using System;
 using System.Collections;
+using System.Threading;
 
 namespace Z.Expressions
 {
     /// <devdoc>
-    ///  <para> 
-    ///    This is a simple implementation of IDictionary using a singly linked list. This
-    ///    will be smaller and faster than a Hashtable if the number of elements is 10 or less.
-    ///    This should not be used if performance is important for large numbers of elements.
-    ///  </para>
+    ///     <para>
+    ///         This is a simple implementation of IDictionary using a singly linked list. This
+    ///         will be smaller and faster than a Hashtable if the number of elements is 10 or less.
+    ///         This should not be used if performance is important for large numbers of elements.
+    ///     </para>
     /// </devdoc>
     [Serializable]
     public class ListDictionary : IDictionary
     {
-        public bool TryGetValue(object key, out object value)
-        {
-            if (key == null)
-            {
-                throw new ArgumentNullException("key", "error");
-            }
-            DictionaryNode node = head;
-            if (comparer == null)
-            {
-                while (node != null)
-                {
-                    object oldKey = node.key;
-                    if (oldKey != null && oldKey.Equals(key))
-                    {
-                        value = node.value;
-                        return true;
-                    }
-                    node = node.next;
-                }
-            }
-            else
-            {
-                while (node != null)
-                {
-                    object oldKey = node.key;
-                    if (oldKey != null && comparer.Compare(oldKey, key) == 0)
-                    {
-                        value = node.value;
-                        return true;
-                    }
-                    node = node.next;
-                }
-            }
+        [NonSerialized] private object _syncRoot;
 
-            value = null;
-            return false;
-        }
+        private readonly IComparer comparer;
 
 
-
-
-        DictionaryNode head;
-        int version;
-        int count;
-        IComparer comparer;
-        [NonSerialized]
-        private Object _syncRoot;
+        private DictionaryNode head;
+        private int version;
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
         public ListDictionary()
         {
         }
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
         public ListDictionary(IComparer comparer)
         {
@@ -83,7 +45,7 @@ namespace Z.Expressions
         }
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
         public object this[object key]
         {
@@ -93,12 +55,12 @@ namespace Z.Expressions
                 {
                     throw new ArgumentNullException("key", "error");
                 }
-                DictionaryNode node = head;
+                var node = head;
                 if (comparer == null)
                 {
                     while (node != null)
                     {
-                        object oldKey = node.key;
+                        var oldKey = node.key;
                         if (oldKey != null && oldKey.Equals(key))
                         {
                             return node.value;
@@ -110,7 +72,7 @@ namespace Z.Expressions
                 {
                     while (node != null)
                     {
-                        object oldKey = node.key;
+                        var oldKey = node.key;
                         if (oldKey != null && comparer.Compare(oldKey, key) == 0)
                         {
                             return node.value;
@@ -131,7 +93,7 @@ namespace Z.Expressions
                 DictionaryNode node;
                 for (node = head; node != null; node = node.next)
                 {
-                    object oldKey = node.key;
+                    var oldKey = node.key;
                     if ((comparer == null) ? oldKey.Equals(key) : comparer.Compare(oldKey, key) == 0)
                     {
                         break;
@@ -145,7 +107,7 @@ namespace Z.Expressions
                     return;
                 }
                 // Not found, so add a new one
-                DictionaryNode newNode = new DictionaryNode();
+                var newNode = new DictionaryNode();
                 newNode.key = key;
                 newNode.value = value;
                 if (last != null)
@@ -156,67 +118,49 @@ namespace Z.Expressions
                 {
                     head = newNode;
                 }
-                count++;
+                Count++;
             }
         }
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
-        public int Count
-        {
-            get
-            {
-                return count;
-            }
-        }
+        public int Count { get; private set; }
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
         public ICollection Keys
         {
-            get
-            {
-                return new NodeKeyValueCollection(this, true);
-            }
+            get { return new NodeKeyValueCollection(this, true); }
         }
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
         public bool IsReadOnly
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
         public bool IsFixedSize
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
         public bool IsSynchronized
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
         public object SyncRoot
         {
@@ -224,25 +168,22 @@ namespace Z.Expressions
             {
                 if (_syncRoot == null)
                 {
-                    System.Threading.Interlocked.CompareExchange(ref _syncRoot, new Object(), null);
+                    Interlocked.CompareExchange(ref _syncRoot, new object(), null);
                 }
                 return _syncRoot;
             }
         }
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
         public ICollection Values
         {
-            get
-            {
-                return new NodeKeyValueCollection(this, false);
-            }
+            get { return new NodeKeyValueCollection(this, false); }
         }
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
         public void Add(object key, object value)
         {
@@ -255,7 +196,7 @@ namespace Z.Expressions
             DictionaryNode node;
             for (node = head; node != null; node = node.next)
             {
-                object oldKey = node.key;
+                var oldKey = node.key;
                 if ((comparer == null) ? oldKey.Equals(key) : comparer.Compare(oldKey, key) == 0)
                 {
                     throw new ArgumentException("error");
@@ -263,7 +204,7 @@ namespace Z.Expressions
                 last = node;
             }
             // Not found, so add a new one
-            DictionaryNode newNode = new DictionaryNode();
+            var newNode = new DictionaryNode();
             newNode.key = key;
             newNode.value = value;
             if (last != null)
@@ -274,21 +215,21 @@ namespace Z.Expressions
             {
                 head = newNode;
             }
-            count++;
+            Count++;
         }
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
         public void Clear()
         {
-            count = 0;
+            Count = 0;
             head = null;
             version++;
         }
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
         public bool Contains(object key)
         {
@@ -296,9 +237,9 @@ namespace Z.Expressions
             {
                 throw new ArgumentNullException("key", "error");
             }
-            for (DictionaryNode node = head; node != null; node = node.next)
+            for (var node = head; node != null; node = node.next)
             {
-                object oldKey = node.key;
+                var oldKey = node.key;
                 if ((comparer == null) ? oldKey.Equals(key) : comparer.Compare(oldKey, key) == 0)
                 {
                     return true;
@@ -308,7 +249,7 @@ namespace Z.Expressions
         }
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
         public void CopyTo(Array array, int index)
         {
@@ -317,10 +258,10 @@ namespace Z.Expressions
             if (index < 0)
                 throw new ArgumentOutOfRangeException("index", "error");
 
-            if (array.Length - index < count)
+            if (array.Length - index < Count)
                 throw new ArgumentException("error");
 
-            for (DictionaryNode node = head; node != null; node = node.next)
+            for (var node = head; node != null; node = node.next)
             {
                 array.SetValue(new DictionaryEntry(node.key, node.value), index);
                 index++;
@@ -328,7 +269,7 @@ namespace Z.Expressions
         }
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
         public IDictionaryEnumerator GetEnumerator()
         {
@@ -341,7 +282,7 @@ namespace Z.Expressions
         }
 
         /// <devdoc>
-        ///    <para>[To be supplied.]</para>
+        ///     <para>[To be supplied.]</para>
         /// </devdoc>
         public void Remove(object key)
         {
@@ -354,7 +295,7 @@ namespace Z.Expressions
             DictionaryNode node;
             for (node = head; node != null; node = node.next)
             {
-                object oldKey = node.key;
+                var oldKey = node.key;
                 if ((comparer == null) ? oldKey.Equals(key) : comparer.Compare(oldKey, key) == 0)
                 {
                     break;
@@ -373,15 +314,53 @@ namespace Z.Expressions
             {
                 last.next = node.next;
             }
-            count--;
+            Count--;
+        }
+
+        public bool TryGetValue(object key, out object value)
+        {
+            if (key == null)
+            {
+                throw new ArgumentNullException("key", "error");
+            }
+            var node = head;
+            if (comparer == null)
+            {
+                while (node != null)
+                {
+                    var oldKey = node.key;
+                    if (oldKey != null && oldKey.Equals(key))
+                    {
+                        value = node.value;
+                        return true;
+                    }
+                    node = node.next;
+                }
+            }
+            else
+            {
+                while (node != null)
+                {
+                    var oldKey = node.key;
+                    if (oldKey != null && comparer.Compare(oldKey, key) == 0)
+                    {
+                        value = node.value;
+                        return true;
+                    }
+                    node = node.next;
+                }
+            }
+
+            value = null;
+            return false;
         }
 
         private class NodeEnumerator : IDictionaryEnumerator
         {
-            ListDictionary list;
-            DictionaryNode current;
-            int version;
-            bool start;
+            private DictionaryNode current;
+            private readonly ListDictionary list;
+            private bool start;
+            private readonly int version;
 
 
             public NodeEnumerator(ListDictionary list)
@@ -394,10 +373,7 @@ namespace Z.Expressions
 
             public object Current
             {
-                get
-                {
-                    return Entry;
-                }
+                get { return Entry; }
             }
 
             public DictionaryEntry Entry
@@ -463,14 +439,13 @@ namespace Z.Expressions
                 start = true;
                 current = null;
             }
-
         }
 
 
         private class NodeKeyValueCollection : ICollection
         {
-            ListDictionary list;
-            bool isKeys;
+            private readonly bool isKeys;
+            private readonly ListDictionary list;
 
             public NodeKeyValueCollection(ListDictionary list, bool isKeys)
             {
@@ -484,7 +459,7 @@ namespace Z.Expressions
                     throw new ArgumentNullException("array");
                 if (index < 0)
                     throw new ArgumentOutOfRangeException("index", "error");
-                for (DictionaryNode node = list.head; node != null; node = node.next)
+                for (var node = list.head; node != null; node = node.next)
                 {
                     array.SetValue(isKeys ? node.key : node.value, index);
                     index++;
@@ -495,8 +470,8 @@ namespace Z.Expressions
             {
                 get
                 {
-                    int count = 0;
-                    for (DictionaryNode node = list.head; node != null; node = node.next)
+                    var count = 0;
+                    for (var node = list.head; node != null; node = node.next)
                     {
                         count++;
                     }
@@ -506,18 +481,12 @@ namespace Z.Expressions
 
             bool ICollection.IsSynchronized
             {
-                get
-                {
-                    return false;
-                }
+                get { return false; }
             }
 
             object ICollection.SyncRoot
             {
-                get
-                {
-                    return list.SyncRoot;
-                }
+                get { return list.SyncRoot; }
             }
 
             IEnumerator IEnumerable.GetEnumerator()
@@ -528,19 +497,19 @@ namespace Z.Expressions
 
             private class NodeKeyValueEnumerator : IEnumerator
             {
-                ListDictionary list;
-                DictionaryNode current;
-                int version;
-                bool isKeys;
-                bool start;
+                private DictionaryNode current;
+                private readonly bool isKeys;
+                private readonly ListDictionary list;
+                private bool start;
+                private readonly int version;
 
                 public NodeKeyValueEnumerator(ListDictionary list, bool isKeys)
                 {
                     this.list = list;
                     this.isKeys = isKeys;
-                    this.version = list.version;
-                    this.start = true;
-                    this.current = null;
+                    version = list.version;
+                    start = true;
+                    current = null;
                 }
 
                 public object Current
@@ -589,8 +558,8 @@ namespace Z.Expressions
         private class DictionaryNode
         {
             public object key;
-            public object value;
             public DictionaryNode next;
+            public object value;
         }
     }
 }

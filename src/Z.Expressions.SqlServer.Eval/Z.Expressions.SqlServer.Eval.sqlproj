@@ -89,6 +89,8 @@
     <Folder Include="Extensions\Dictionary`2" />
     <Folder Include="Shared" />
     <Folder Include="SQLNET\Type" />
+    <Folder Include="ExtensionMethods" />
+    <Folder Include="ExtensionMethods\String" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -96,11 +98,10 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Core" />
-    <Reference Include="Z.Expressions.Compiler, Version=1.0.1.0, Culture=neutral, PublicKeyToken=59b66d028979105b">
+    <Reference Include="Z.Expressions.Compiler">
       <HintPath>..\..\..\..\..\OneDrive\Documents\Release\Z.Expressions.Compiler\Z.Expressions.Compiler.dll</HintPath>
       <GenerateSqlClrDdl>True</GenerateSqlClrDdl>
       <IsModelAware>True</IsModelAware>
-      <SpecificVersion>True</SpecificVersion>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -178,5 +179,6 @@
     <Compile Include="Shared\SharedCache.cs" />
     <Compile Include="ListDictionary.cs" />
     <Compile Include="SQLNET\Type\Type.cs" />
+    <Compile Include="ExtensionMethods\String\String.Split.cs" />
   </ItemGroup>
 </Project>
