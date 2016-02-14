@@ -1,6 +1,6 @@
 using System;
 
-public static class Extensions
+public static partial class Extensions
 {
     public static string[] Split(this string @this, string separator, StringSplitOptions option = StringSplitOptions.None)
     {

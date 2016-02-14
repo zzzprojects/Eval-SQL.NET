@@ -7,7 +7,6 @@
 
 using System;
 using System.Data.SqlTypes;
-using System.IO;
 using Microsoft.SqlServer.Server;
 
 // ReSharper disable InconsistentNaming
@@ -15,14 +14,34 @@ using Microsoft.SqlServer.Server;
 namespace Z.Expressions.SqlServer.Eval
 {
     /// <summary>A SQLNET used to compile the code or expression.</summary>
-    [SqlUserDefinedType(Format.UserDefined, MaxByteSize = -1)]
-    public partial struct SQLNET : INullable, IBinarySerialize
+    [SqlUserDefinedType(Format.Native, IsByteOrdered = true)]
+    public partial struct SQLNET : INullable
     {
+        //public static bool IsMatch(SqlString value)
+        //{
+        //    return Regex.IsMatch(value.Value, "toto");
+        //}
+
+        /// <summary>The value serializable.</summary>
+        public int ValueSerializable;
+
         /// <summary>Name of internal value.</summary>
         public static readonly string InternalValueName = "value";
 
         /// <summary>The SQLNETItem used to compile the code or expression.</summary>
-        public SQLNETItem Item;
+        public SQLNETItem Item
+        {
+            get
+            {
+                SQLNETItem item;
+                if (!EvalManager.CacheItem.TryGetValue(ValueSerializable, out item))
+                {
+                    throw new Exception(ExceptionMessage.GeneralException);
+                }
+
+                return item;
+            }
+        }
 
         /// <summary>The template connection when SqlClrCommand is used.</summary>
         private static readonly string TemplateConnection = @"
@@ -111,8 +130,9 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
                 code = TemplateConnection.Replace("[SQLNET_Code]", code);
             }
 
-            var sqlnet = new SQLNET {Item = new SQLNETItem()};
-            sqlnet.Item.Code = code;
+            var sqlnet = new SQLNET {ValueSerializable = EvalManager.DefaultContext.GetNextCounter()};
+            var sqlnetitem = new SQLNETItem {Code = code};
+            EvalManager.CacheItem.TryAdd(sqlnet.ValueSerializable, sqlnetitem);
 
             return sqlnet;
         }
@@ -163,7 +183,8 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
                 EvalManager.CacheDelegate.TryRemove(Item.Delegate.CacheKey, out evalDelegate);
             }
 
-            EvalManager.CacheItem.TryRemove(Item.CacheKey, out Item);
+            SQLNETItem item;
+            EvalManager.CacheItem.TryRemove(ValueSerializable, out item);
             return true;
         }
 
@@ -191,45 +212,14 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
         [SqlMethod(OnNullCall = false)]
         public static SQLNET Parse(SqlString value)
         {
-            return new SQLNET();
-        }
-
-        /// <summary>Reads the given reader to retrieve the SQLNETItem from the cache.</summary>
-        /// <param name="reader">The reader to read.</param>
-        public void Read(BinaryReader reader)
-        {
-            if (reader.BaseStream.Length > 0)
-            {
-                var cacheKey = reader.ReadString();
-
-                if (!EvalManager.CacheItem.TryGetValue(cacheKey, out Item))
-                {
-                    throw new Exception(ExceptionMessage.Unexpected_CacheItemExpired);
-                }
-            }
+            throw new Exception(ExceptionMessage.GeneralException);
         }
 
         /// <summary>Convert the SQLNET object into a string representation.</summary>
         /// <returns>A string that represents a SQLNET object.</returns>
         public override string ToString()
         {
-            return Item.Code;
-        }
-
-        /// <summary>Writes the given writer to store the SQLNETItem in the cache.</summary>
-        /// <param name="writer">The writer to write.</param>
-        public void Write(BinaryWriter writer)
-        {
-            if (Item != null)
-            {
-                if (!Item.IsCached)
-                {
-                    EvalManager.CacheItem.TryAdd(Item.CacheKey, Item);
-                    Item.IsCached = true;
-                }
-
-                writer.Write(Item.CacheKey);
-            }
+            throw new Exception(ExceptionMessage.GeneralException);
         }
     }
 }

@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
+using Z.Expressions.SqlServer.Eval;
 
 namespace Z.Expressions
 {
@@ -32,6 +33,9 @@ namespace Z.Expressions
 
             ExpireCacheNextScheduled = DateTime.Now.Add(ExpireCacheDelay);
         }
+
+        /// <summary>The counter.</summary>
+        public int Counter = int.MinValue;
 
         /// <summary>The delay between expire cache call.</summary>
         public TimeSpan ExpireCacheDelay = TimeSpan.FromMinutes(5);
@@ -123,5 +127,21 @@ namespace Z.Expressions
         /// </summary>
         /// <value>true if the caret should be used for exponent, false if not.</value>
         public bool UseCaretForExponent { get; set; }
+
+        /// <summary>Gets the next counter.</summary>
+        /// <returns>The next counter.</returns>
+        public int GetNextCounter()
+        {
+            try
+            {
+                SharedLock.AcquireLock(ref EvalManager.SharedLock.CounterLock);
+                Counter++;
+                return Counter;
+            }
+            finally
+            {
+                SharedLock.ReleaseLock(ref EvalManager.SharedLock.CounterLock);
+            }
+        }
     }
 }

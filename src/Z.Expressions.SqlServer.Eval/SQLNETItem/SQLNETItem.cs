@@ -10,7 +10,7 @@ using System;
 namespace Z.Expressions.SqlServer.Eval
 {
     /// <summary>A SQLNETItem used to compile the code or expression.</summary>
-    [Serializable]
+    //[Serializable]
     public class SQLNETItem
     {
         /// <summary>Gets or sets the cache key used to cache the SQLNETItem.</summary>
@@ -34,6 +34,9 @@ namespace Z.Expressions.SqlServer.Eval
         /// <summary>Gets or sets the last access Date/Time from the cache.</summary>
         public DateTime LastAccess;
 
+        /// <summary>Gets or sets the parameter table used to evaluate the code or expression.</summary>
+        public ListDictionary ParameterTables;
+
         /// <summary>Gets or sets the parameter types used to evaluate the code or expression.</summary>
         public ListDictionary ParameterTypes;
 
@@ -44,6 +47,7 @@ namespace Z.Expressions.SqlServer.Eval
         public SQLNETItem()
         {
             CacheKey = Guid.NewGuid().ToString();
+            ParameterTables = new ListDictionary();
             ParameterTypes = new ListDictionary();
             ParameterValues = new ListDictionary();
         }

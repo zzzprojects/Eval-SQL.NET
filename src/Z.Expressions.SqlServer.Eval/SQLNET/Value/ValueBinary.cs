@@ -7,6 +7,8 @@
 
 // ReSharper disable InconsistentNaming
 
+using System.Data.SqlTypes;
+
 namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
@@ -15,7 +17,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueBinary(string key, byte[] value)
+        public SQLNET ValueBinary(SqlString key, SqlBinary value)
         {
             Val(key, value);
             return this;
@@ -25,18 +27,18 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET valuebinary(string key, byte[] value)
+        public SQLNET valuebinary(SqlString key, SqlBinary value)
         {
-            return ValueBinary(key, value);
+            return ValueBinary(key.Value, value);
         }
 
         /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUEBINARY(string key, byte[] value)
+        public SQLNET VALUEBINARY(SqlString key, SqlBinary value)
         {
-            return ValueBinary(key, value);
+            return ValueBinary(key.Value, value);
         }
     }
 }

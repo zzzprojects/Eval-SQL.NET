@@ -24,7 +24,7 @@
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
     <Trustworthy>True</Trustworthy>
-    <PermissionSet>SAFE</PermissionSet>
+    <PermissionSet>EXTERNAL_ACCESS</PermissionSet>
     <SccProjectName>SAK</SccProjectName>
     <SccProvider>SAK</SccProvider>
     <SccAuxPath>SAK</SccAuxPath>
@@ -91,6 +91,10 @@
     <Folder Include="SQLNET\Type" />
     <Folder Include="ExtensionMethods" />
     <Folder Include="ExtensionMethods\String" />
+    <Folder Include="ExtensionMethods\SqlCommand" />
+    <Folder Include="ExtensionMethods\System.Data" />
+    <Folder Include="Eval" />
+    <Folder Include="EvalContext\Execute" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -180,5 +184,36 @@
     <Compile Include="ListDictionary.cs" />
     <Compile Include="SQLNET\Type\Type.cs" />
     <Compile Include="ExtensionMethods\String\String.Split.cs" />
+    <Compile Include="SQLNET\Value\ValueTable.cs" />
+    <Compile Include="ExtensionMethods\SqlCommand\ExecuteDataTable.cs" />
+    <Compile Include="ExtensionMethods\System.Data\AsEnumerable.cs" />
+    <Compile Include="Eval\Eval.Compile.cs" />
+    <Compile Include="Eval\Eval.Compile`.cs" />
+    <Compile Include="Eval\Eval.Execute.cs" />
+    <Compile Include="Eval\Eval.Execute`.cs" />
+    <Compile Include="EvalContext\Execute\EvalContext.Execute.cs" />
+    <Compile Include="EvalContext\Execute\EvalContext.Execute`.cs" />
+    <Compile Include="EvalContext\Compile\EvalContext.Compile`.cs" />
+    <Compile Include="EvalCompilerParameterKind.cs" />
+    <Compile Include="EvalCompiler\Parameter\ResolveLazyMember.cs" />
+    <Compile Include="EvalCompiler\Parameter\ResolveParameterDictionary.cs" />
+    <Compile Include="EvalCompiler\Parameter\ResolveParameterEnumerable.cs" />
+    <Compile Include="EvalCompiler\Parameter\ResolveParameterSingleDictionary.cs" />
+    <Compile Include="EvalCompiler\Parameter\ResolveParameterTyped.cs" />
+    <Compile Include="EvalCompiler\Parameter\ResolveParameterUntyped.cs" />
+    <Compile Include="ExtensionMethods\System.Data\SaveChanges.cs" />
+    <Compile Include="SQLNET\Value\ValueInt.cs" />
+    <Compile Include="SQLNET\Value\ValueBoolean.cs" />
+    <Compile Include="SQLNET\Value\ValueBool.cs" />
+    <Compile Include="SQLNET\Value\ValueByte.cs" />
+    <Compile Include="SQLNET\Value\ValueChars.cs" />
+    <Compile Include="SQLNET\Value\ValueDateTime.cs" />
+    <Compile Include="SQLNET\Value\ValueGuid.cs" />
+    <Compile Include="SQLNET\Value\ValueInt16.cs" />
+    <Compile Include="SQLNET\Value\ValueInt32.cs" />
+    <Compile Include="SQLNET\Value\ValueShort.cs" />
+    <Compile Include="SQLNET\Value\ValueInt64.cs" />
+    <Compile Include="SQLNET\Value\ValueLong.cs" />
+    <Compile Include="SQLNET\Value\ValueBytes.cs" />
   </ItemGroup>
 </Project>

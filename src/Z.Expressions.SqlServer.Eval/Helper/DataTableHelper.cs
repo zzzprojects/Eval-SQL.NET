@@ -31,6 +31,25 @@ namespace Z.Expressions.SqlServer.Eval
             {
                 dt = (DataTable) value;
             }
+            else if (value is IEnumerable<DataRow>)
+            {
+                var drs = (IEnumerable<DataRow>) value;
+                dt = new DataTable();
+
+                bool isFirst = true;
+
+                foreach (var dr in drs)
+                {
+                    if (isFirst)
+                    {
+                        var ownerTable = dr.Table;
+                        dt = ownerTable.Clone();
+                        isFirst = false;
+                    }
+
+                    dt.ImportRow(dr);
+                }
+            }
             else if (value is IEnumerable && value.GetType().IsGenericType && value.GetType().GetGenericArguments().Length == 1)
             {
                 var genericType = value.GetType().GetGenericArguments()[0];

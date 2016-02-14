@@ -13,32 +13,32 @@ namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
     {
-        /// <summary>Add or update a value associated with the specified key.</summary>
+        /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
-        /// <param name="value">The value to add or update associated with the specified key.</param>
+        /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET Value(SqlString key, object value)
+        public SQLNET ValueByte(SqlString key, SqlByte value)
         {
             Val(key, value);
             return this;
         }
 
-        /// <summary>Add or update a value associated with the specified key.</summary>
+        /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
-        /// <param name="value">The value to add or update associated with the specified key.</param>
+        /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET value(SqlString key, object value)
+        public SQLNET valuebyte(SqlString key, SqlByte value)
         {
-            return Value(key, value);
+            return ValueByte(key, value);
         }
 
-        /// <summary>Add or update a value associated with the specified key.</summary>
+        /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
-        /// <param name="value">The value to add or update associated with the specified key.</param>
+        /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUE(SqlString key, object value)
+        public SQLNET VALUEBYTE(SqlString key, SqlByte value)
         {
-            return Value(key, value);
+            return ValueByte(key, value);
         }
     }
 }

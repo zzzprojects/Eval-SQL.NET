@@ -17,7 +17,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The xml value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueXml(string key, SqlXml value)
+        public SQLNET ValueXml(SqlString key, SqlXml value)
         {
             Val(key, value);
             return this;
@@ -27,7 +27,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The xml value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET valuexml(string key, SqlXml value)
+        public SQLNET valuexml(SqlString key, SqlXml value)
         {
             return ValueXml(key, value);
         }
@@ -36,7 +36,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The xml value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUEXML(string key, SqlXml value)
+        public SQLNET VALUEXML(SqlString key, SqlXml value)
         {
             return ValueXml(key, value);
         }

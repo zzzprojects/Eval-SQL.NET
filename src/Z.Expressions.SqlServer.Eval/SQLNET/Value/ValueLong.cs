@@ -17,7 +17,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET Value(SqlString key, object value)
+        public SQLNET ValueLong(SqlString key, SqlInt64 value)
         {
             Val(key, value);
             return this;
@@ -27,18 +27,18 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET value(SqlString key, object value)
+        public SQLNET valuelong(SqlString key, SqlInt64 value)
         {
-            return Value(key, value);
+            return ValueLong(key, value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUE(SqlString key, object value)
+        public SQLNET VALUELONG(SqlString key, SqlInt64 value)
         {
-            return Value(key, value);
+            return ValueLong(key, value);
         }
     }
 }

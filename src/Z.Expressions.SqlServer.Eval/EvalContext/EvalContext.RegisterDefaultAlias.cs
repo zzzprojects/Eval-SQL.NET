@@ -59,6 +59,7 @@ namespace Z.Expressions
         {
             // Extension Methods
             RegisterExtensionMethod(typeof (Enumerable));
+            RegisterExtensionMethod(typeof (Queryable));
 
             // Static Members
             RegisterStaticMember(typeof (Math));
@@ -344,17 +345,18 @@ namespace Z.Expressions
                 RegisterType(typeof (Tuple<,,,,,,,>));
             }
 
+            // Library
+            RegisterType(typeof (EvalManager));
+            RegisterType(typeof (Eval));
+
             // New
             RegisterType(typeof (CommandType));
             RegisterType(typeof (Match));
-
-            // Library
-            RegisterType(typeof (EvalManager));
-
+            RegisterType(typeof (SqlCommandBuilder));
             RegisterExtensionMethod(typeof (Extensions));
 
             // Static Members
-            RegisterStaticMember(typeof(Regex));
+            RegisterStaticMember(typeof (Regex));
         }
     }
 }

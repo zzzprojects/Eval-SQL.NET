@@ -21,6 +21,11 @@ namespace Z.Expressions.SqlServer.Eval
         {
             var value = sqlnet.Eval();
 
+            if (value == null || value == DBNull.Value)
+            {
+                return;
+            }
+
             if (value is DataTable)
             {
                 SqlContextHelper.SendDataTable((DataTable) value);

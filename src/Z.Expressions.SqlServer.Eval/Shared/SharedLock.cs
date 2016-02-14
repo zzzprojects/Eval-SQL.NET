@@ -12,6 +12,9 @@ namespace Z.Expressions.SqlServer.Eval
     /// <summary>A shared lock.</summary>
     public class SharedLock
     {
+        /// <summary>The counter lock.</summary>
+        public int CounterLock = 0;
+
         /// <summary>The expire cache lock.</summary>
         public int ExpireCacheLock = 0;
 

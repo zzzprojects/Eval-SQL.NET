@@ -18,10 +18,13 @@ namespace Z.Expressions
         public static readonly SharedCache<string, EvalDelegate> CacheDelegate = new SharedCache<string, EvalDelegate>();
 
         /// <summary>The cache for SQLNETItem.</summary>
-        public static readonly SharedCache<string, SQLNETItem> CacheItem = new SharedCache<string, SQLNETItem>();
+        public static readonly SharedCache<int, SQLNETItem> CacheItem = new SharedCache<int, SQLNETItem>();
 
         /// <summary>The default context used to compile the code or expression.</summary>
         public static readonly EvalContext Configuration;
+
+        /// <summary>The default context.</summary>
+        internal static readonly EvalContext DefaultContext;
 
         /// <summary>The shared lock.</summary>
         public static readonly SharedLock SharedLock;
@@ -31,9 +34,12 @@ namespace Z.Expressions
             // ENSURE to create lock first
             SharedLock = new SharedLock();
             Configuration = new EvalContext();
+            DefaultContext = Configuration;
             SQLNET.LoadConfiguration();
         }
 
+        /// <summary>Determines if we can expire cache.</summary>
+        /// <returns>true if it succeeds, false if it fails.</returns>
         public static bool ExpireCache()
         {
             try
@@ -75,7 +81,7 @@ namespace Z.Expressions
                     // EXPIRE item cache
                     {
                         var expireDateItem = DateTime.Now.Subtract(Configuration.SlidingExpirationItem);
-                        var keyToRemoves = new List<string>();
+                        var keyToRemoves = new List<int>();
 
                         try
                         {

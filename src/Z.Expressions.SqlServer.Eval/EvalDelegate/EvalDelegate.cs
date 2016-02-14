@@ -19,6 +19,8 @@ namespace Z.Expressions
         /// <summary>The delegate to cache.</summary>
         public Func<IDictionary, object> Delegate;
 
+        public object InnerDelegate;
+
         /// <summary>The last access Date/Time of the delegate.</summary>
         public DateTime LastAccess;
 

@@ -6,6 +6,8 @@
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Security.Principal;
 using Microsoft.SqlServer.Server;
 
@@ -20,13 +22,14 @@ namespace Z.Expressions.SqlServer.Eval
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
         public object Eval()
         {
+            var item = Item;
             var now = DateTime.Now;
 
             // Overwrite last access
-            Item.LastAccess = now;
-            if (Item.Delegate != null)
+            item.LastAccess = now;
+            if (item.Delegate != null)
             {
-                Item.Delegate.LastAccess = now;
+                item.Delegate.LastAccess = now;
             }
 
             if (now > EvalManager.Configuration.ExpireCacheNextScheduled)
@@ -35,8 +38,35 @@ namespace Z.Expressions.SqlServer.Eval
             }
 
             object result;
+            var code = item.Code;
 
-            if (Item.IsImpersonate)
+            if (item.ParameterTables.Count > 0)
+            {
+                var s = @"
+using (SqlConnection connection = new SqlConnection(""context connection = true""))
+{
+    using (SqlCommand command = new SqlCommand()) 
+	{
+		command.Connection = connection;
+        connection.Open();
+        [SQLNET_Code]
+    }
+}
+";
+                var list = new List<string>();
+                foreach (DictionaryEntry parameterTable in item.ParameterTables)
+                {
+                    list.Add(string.Concat("command.CommandText = 'SELECT * FROM ", parameterTable.Value, "';"));
+                    list.Add(string.Concat(parameterTable.Key, " = command.ExecuteDataTable();"));
+                    list.Add(parameterTable.Key + ".ExtendedProperties['ZZZ_Select'] = command.CommandText");
+                }
+
+                code = s.Replace("[SQLNET_Code]", string.Join(Environment.NewLine, list)) + code;
+
+                //throw new Exception(code);
+            }
+
+            if (item.IsImpersonate)
             {
                 WindowsImpersonationContext impersonatedIdentity = null;
 
@@ -48,12 +78,12 @@ namespace Z.Expressions.SqlServer.Eval
 
                 try
                 {
-                    if (Item.Delegate == null)
+                    if (item.Delegate == null)
                     {
-                        Item.Delegate = EvalManager.Configuration.Compile(Item.Code, Item.ParameterTypes);
+                        item.Delegate = EvalManager.Configuration.Compile(code, item.ParameterTypes);
                     }
 
-                    result = Item.Delegate.Delegate(Item.ParameterValues);
+                    result = item.Delegate.Delegate(item.ParameterValues);
                 }
                 finally
                 {
@@ -65,12 +95,12 @@ namespace Z.Expressions.SqlServer.Eval
             }
             else
             {
-                if (Item.Delegate == null)
+                if (item.Delegate == null)
                 {
-                    Item.Delegate = EvalManager.Configuration.Compile(Item.Code, Item.ParameterTypes);
+                    item.Delegate = EvalManager.Configuration.Compile(code, item.ParameterTypes);
                 }
 
-                result = Item.Delegate.Delegate(Item.ParameterValues);
+                result = item.Delegate.Delegate(item.ParameterValues);
             }
 
             if (Item.IsAutoDispose)

@@ -21,7 +21,7 @@ namespace Z.Expressions.SqlServer.Eval
             var value = Eval();
 
             var sqlnet = New(InternalValueName);
-            sqlnet.Item = new SQLNETItem {IsImpersonate = Item.IsImpersonate};
+            sqlnet.Item.IsImpersonate = Item.IsImpersonate;
             sqlnet.Val(InternalValueName, value);
 
             return sqlnet;

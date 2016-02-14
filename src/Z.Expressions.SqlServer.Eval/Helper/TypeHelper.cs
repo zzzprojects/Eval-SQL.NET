@@ -6,6 +6,7 @@
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
 
 using System;
+using System.Data;
 
 namespace Z.Expressions.SqlServer.Eval
 {
@@ -55,6 +56,9 @@ namespace Z.Expressions.SqlServer.Eval
                     break;
                 case "DateTime?":
                     type = typeof (DateTime?);
+                    break;
+                case "DataTable":
+                    type = typeof (DataTable);
                     break;
                 default:
                     throw new Exception("Unsupported");

@@ -96,5 +96,75 @@ namespace Z.Expressions
 
             return evalDelegate;
         }
+
+        /// <summary>Compile the code or expression and return a TDelegate of type Func or Action to execute.</summary>
+        /// <typeparam name="TDelegate">Type of the delegate (Func or Action) to use to compile the code or expression.</typeparam>
+        /// <param name="context">The eval context used to compile the code or expression.</param>
+        /// <param name="code">The code or expression to compile.</param>
+        /// <param name="parameterTypes">The dictionary of parameter (name / type) used in the code or expression to compile.</param>
+        /// <param name="resultType">Type of the compiled code or expression result.</param>
+        /// <param name="parameterKind">The parameter kind for the code or expression to compile.</param>
+        /// <returns>A TDelegate of type Func or Action that represents the compiled code or expression.</returns>
+        internal static TDelegate Compile<TDelegate>(EvalContext context, string code, IDictionary<string, Type> parameterTypes, Type resultType, EvalCompilerParameterKind parameterKind)
+        {
+            var cacheKey = ResolveCacheKey(context, typeof (Func<IDictionary, object>), code, parameterTypes);
+
+            EvalDelegate cachedDelegate;
+            if (EvalManager.CacheDelegate.TryGetValue(cacheKey, out cachedDelegate))
+            {
+                return (TDelegate) cachedDelegate.InnerDelegate;
+            }
+
+            // Options
+            var scope = new ExpressionScope
+            {
+                AliasExtensionMethods = context.AliasExtensionMethods,
+                AliasNames = context.AliasNames,
+                AliasStaticMembers = context.AliasStaticMembers,
+                AliasTypes = context.AliasTypes,
+                BindingFlags = context.BindingFlags,
+                UseCaretForExponent = context.UseCaretForExponent
+            };
+
+            // Resolve Parameter
+            var parameterExpressions = ResolveParameter(scope, parameterKind, parameterTypes);
+
+            // ADD global constants
+            if (context.AliasGlobalConstants.Count > 0)
+            {
+                scope.Constants = new Dictionary<string, ConstantExpression>(context.AliasGlobalConstants);
+            }
+
+            // ADD global variables
+            if (context.AliasGlobalVariables.Count > 0)
+            {
+                foreach (var keyValue in context.AliasGlobalVariables)
+                {
+                    scope.CreateLazyVariable(keyValue.Key, new LazySingleThread<Expression>(() =>
+                    {
+                        var innerParameter = scope.CreateVariable(keyValue.Value.GetType(), keyValue.Key);
+                        var innerExpression = Expression.Assign(innerParameter, Expression.Constant(keyValue.Value));
+                        scope.Expressions.Add(innerExpression);
+                        return innerParameter;
+                    }));
+                }
+            }
+
+            // CodeAnalysis
+            var syntaxRoot = SyntaxParser.ParseText(code);
+
+            // CodeCompiler
+            var expression = ExpressionParser.ParseSyntax(scope, syntaxRoot, resultType);
+
+            // Compile the expression
+            var compiled = Expression.Lambda<TDelegate>(expression, parameterExpressions).Compile();
+
+            var evalDelegate = new EvalDelegate(cacheKey, null);
+            evalDelegate.InnerDelegate = compiled;
+
+            EvalManager.CacheDelegate.TryAdd(cacheKey, evalDelegate);
+
+            return compiled;
+        }
     }
 }

@@ -7,6 +7,8 @@
 
 // ReSharper disable InconsistentNaming
 
+using System.Data.SqlTypes;
+
 namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
@@ -15,7 +17,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The SQLNET value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueSQLNET(string key, SQLNET value)
+        public SQLNET ValueSQLNET(SqlString key, SQLNET value)
         {
             Val(key, value.GetValue(InternalValueName));
             return this;
@@ -25,7 +27,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The SQLNET value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET valuesqlnet(string key, SQLNET value)
+        public SQLNET valuesqlnet(SqlString key, SQLNET value)
         {
             return ValueSQLNET(key, value);
         }
@@ -34,7 +36,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The SQLNET value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUESQLNET(string key, SQLNET value)
+        public SQLNET VALUESQLNET(SqlString key, SQLNET value)
         {
             return ValueSQLNET(key, value);
         }
