@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using Z.Expressions.CodeCompiler;
 
 namespace Z.Expressions.SqlServer.Eval
 {
@@ -48,6 +49,33 @@ namespace Z.Expressions.SqlServer.Eval
                     }
 
                     dt.ImportRow(dr);
+                }
+            }
+            else if (value is IEnumerable<FakeAnonymousType>)
+            {
+                var list = (IEnumerable<FakeAnonymousType>)value;
+
+                bool isFirst = true;
+
+                dt = new DataTable();
+
+                foreach (var item in list)
+                {
+                    if (isFirst)
+                    {
+                        foreach (var property in item.Properties)
+                        {
+                            dt.Columns.Add(property.Key);
+                        }
+                        isFirst = false;
+                    }
+
+                    var row = dt.NewRow();
+                    dt.Rows.Add(row);
+                    foreach (var property in item.Properties)
+                    {
+                        row[property.Key] = property.Value;
+                    }
                 }
             }
             else if (value is IEnumerable && value.GetType().IsGenericType && value.GetType().GetGenericArguments().Length == 1)

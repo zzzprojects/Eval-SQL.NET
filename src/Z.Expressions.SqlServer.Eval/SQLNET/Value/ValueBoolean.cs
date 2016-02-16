@@ -19,8 +19,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET ValueBoolean(SqlString key, SqlBoolean value)
         {
-            Val(key, value);
-            return this;
+            return ValueInternal(key, typeof (bool), value.Value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>

@@ -16,8 +16,8 @@ namespace Z.Expressions.SqlServer.Eval
     {
         /// <summary>Eval the code or expression and return an int value.</summary>
         /// <returns>The int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public int? EvalInt()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public int? EvalReadAccessInt()
         {
             var value = Eval();
 
@@ -26,16 +26,16 @@ namespace Z.Expressions.SqlServer.Eval
 
         /// <summary>Eval the code or expression and return an int value.</summary>
         /// <returns>The int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public int? evalint()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public int? evalreadaccessint()
         {
             return EvalInt();
         }
 
         /// <summary>Eval the code or expression and return an int value.</summary>
         /// <returns>The int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public int? EVALINT()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public int? EVALREADACCESSINT()
         {
             return EvalInt();
         }

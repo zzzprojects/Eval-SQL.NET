@@ -16,8 +16,8 @@ namespace Z.Expressions.SqlServer.Eval
     {
         /// <summary>Eval the code or expression and return a big int value.</summary>
         /// <returns>The big int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public long? EvalBigInt()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public long? EvalReadAccessBigInt()
         {
             var value = Eval();
 
@@ -26,8 +26,8 @@ namespace Z.Expressions.SqlServer.Eval
 
         /// <summary>Eval the code or expression and return a big int value.</summary>
         /// <returns>The big int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public long? evalbigint()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public long? evalreadaccessbigint()
 
         {
             return EvalBigInt();
@@ -35,8 +35,8 @@ namespace Z.Expressions.SqlServer.Eval
 
         /// <summary>Eval the code or expression and return a big int value.</summary>
         /// <returns>The big int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public long? EVALBIGINT()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public long? EVALREADACCESSBIGINT()
         {
             return EvalBigInt();
         }

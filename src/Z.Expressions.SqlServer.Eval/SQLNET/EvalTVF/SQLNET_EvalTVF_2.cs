@@ -13,7 +13,7 @@ namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
     {
-        [SqlFunction(DataAccess = DataAccessKind.Read, FillRowMethodName = "Fill_SQLNET_EvalTVF_2", TableDefinition = "Value_1 sql_variant, Value_2 sql_variant")]
+        [SqlFunction(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None, FillRowMethodName = "Fill_SQLNET_EvalTVF_2", TableDefinition = "Value_1 sql_variant, Value_2 sql_variant")]
         public static IEnumerable SQLNET_EvalTVF_2(SQLNET sqlnet)
         {
             var obj = sqlnet.Eval();

@@ -8,6 +8,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Security.Principal;
 using Microsoft.SqlServer.Server;
 
@@ -19,9 +20,11 @@ namespace Z.Expressions.SqlServer.Eval
     {
         /// <summary>Eval the code or expression and return an object value.</summary>
         /// <returns>The object value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.None)]
         public object Eval()
         {
+          
+
             var item = Item;
             var now = DateTime.Now;
 
@@ -113,7 +116,7 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
 
         /// <summary>Eval the code or expression and return an object value.</summary>
         /// <returns>The object value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
         public object eval()
         {
             return Eval();
@@ -121,7 +124,7 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
 
         /// <summary>Eval the code or expression and return an object value.</summary>
         /// <returns>The object value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
         public object EVAL()
 
         {

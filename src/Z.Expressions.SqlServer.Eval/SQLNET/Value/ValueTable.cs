@@ -15,11 +15,13 @@ namespace Z.Expressions.SqlServer.Eval
     public partial struct SQLNET
     {
         /// <summary>Add or update a string value associated with the specified key.</summary>
-        /// <param name="key">The key of the value to add or update.</param>
-        /// <param name="value">The string value to add or update associated with the specified key.</param>
+        /// <param name="keyString">The key of the value to add or update.</param>
+        /// <param name="valueString">The string value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueTable(SqlString key, string value)
+        public SQLNET ValueTable(SqlString keyString, SqlString valueString)
         {
+            var key = keyString.Value;
+            var value = valueString.Value;
             var type = typeof (DataTable);
 
             object oldValue;

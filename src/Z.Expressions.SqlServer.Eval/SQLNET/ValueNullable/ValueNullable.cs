@@ -7,6 +7,7 @@
 
 // ReSharper disable InconsistentNaming
 
+using System;
 using System.Data.SqlTypes;
 
 namespace Z.Expressions.SqlServer.Eval
@@ -17,27 +18,55 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueInt16(SqlString key, SqlInt16 value)
+        public SQLNET ValueNullable(SqlString key, object value)
         {
-            return ValueInternal(key, typeof (short), value.Value);
+            Type type;
+            value = SqlTypeHelper.ConvertToType(value);
+
+            // CHECK for key containing type: int? x
+            if (key.Value.Contains(" "))
+            {
+                var split = key.Value.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+                if (split.Length == 1)
+                {
+                    type = value.GetType();
+                    key = key.Value.Trim();
+                }
+                else if (split.Length == 2)
+                {
+                    type = TypeHelper.GetTypeFromName(split[0]);
+                    key = split[1];
+                }
+                else
+                {
+                    throw new Exception(string.Format(ExceptionMessage.Invalid_ValueKey, key));
+                }
+            }
+            else
+            {
+                type = value.GetType();
+            }
+
+            return ValueInternal(key, type, value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET valueint16(SqlString key, SqlInt16 value)
+        public SQLNET valuenullable(SqlString key, object value)
         {
-            return ValueInt16(key, value);
+            return Value(key, value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUEINT16(SqlString key, SqlInt16 value)
+        public SQLNET VALUENULLABLE(SqlString key, object value)
         {
-            return ValueInt16(key, value);
+            return Value(key, value);
         }
     }
 }

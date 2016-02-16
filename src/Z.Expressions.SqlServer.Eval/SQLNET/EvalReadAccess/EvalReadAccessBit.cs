@@ -16,8 +16,8 @@ namespace Z.Expressions.SqlServer.Eval
     {
         /// <summary>Eval the code or expression and return a bit value.</summary>
         /// <returns>The bit value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public bool? EvalBit()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public bool? EvalReadAccessBit()
         {
             var value = Eval();
 
@@ -26,8 +26,8 @@ namespace Z.Expressions.SqlServer.Eval
 
         /// <summary>Eval the code or expression and return a bit value.</summary>
         /// <returns>The bit value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public bool? evalbit()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public bool? evalreadaccessbit()
 
         {
             return EvalBit();
@@ -35,8 +35,8 @@ namespace Z.Expressions.SqlServer.Eval
 
         /// <summary>Eval the code or expression and return a bit value.</summary>
         /// <returns>The bit value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public bool? EVALBIT()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public bool? EVALREADACCESSBIT()
         {
             return EvalBit();
         }

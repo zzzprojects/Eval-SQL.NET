@@ -7,6 +7,7 @@
 
 // ReSharper disable InconsistentNaming
 
+using System;
 using System.Data.SqlTypes;
 
 namespace Z.Expressions.SqlServer.Eval
@@ -17,27 +18,27 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueBytes(SqlString key, SqlBytes value)
+        public SQLNET ValueNullableDateTime(SqlString key, SqlDateTime value)
         {
-            return ValueInternal(key, typeof (byte[]), value.Value);
+            return ValueInternal(key, typeof (DateTime?), value.IsNull ? (DateTime?)null : value.Value);
         }
 
         /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET valuebytes(SqlString key, SqlBytes value)
+        public SQLNET valuenullabledatetime(SqlString key, SqlDateTime value)
         {
-            return ValueBytes(key, value);
+            return ValueDateTime(key, value);
         }
 
         /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUEBYTES(SqlString key, SqlBytes value)
+        public SQLNET VALUENULLABLEDATETIME(SqlString key, SqlDateTime value)
         {
-            return ValueBytes(key, value);
+            return ValueDateTime(key, value);
         }
     }
 }

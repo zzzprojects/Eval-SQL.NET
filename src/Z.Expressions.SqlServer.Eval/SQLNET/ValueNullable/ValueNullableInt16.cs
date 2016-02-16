@@ -17,16 +17,16 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueInt16(SqlString key, SqlInt16 value)
+        public SQLNET ValueNullableInt16(SqlString key, SqlInt16 value)
         {
-            return ValueInternal(key, typeof (short), value.Value);
+            return ValueInternal(key, typeof (short?), value.IsNull ? (short?)null : value.Value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET valueint16(SqlString key, SqlInt16 value)
+        public SQLNET valuenullableint16(SqlString key, SqlInt16 value)
         {
             return ValueInt16(key, value);
         }
@@ -35,7 +35,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUEINT16(SqlString key, SqlInt16 value)
+        public SQLNET VALUENULLABLEINT16(SqlString key, SqlInt16 value)
         {
             return ValueInt16(key, value);
         }

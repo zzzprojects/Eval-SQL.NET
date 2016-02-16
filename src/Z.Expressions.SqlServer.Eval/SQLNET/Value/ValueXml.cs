@@ -19,8 +19,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET ValueXml(SqlString key, SqlXml value)
         {
-            Val(key, value);
-            return this;
+            return ValueInternal(key, typeof (string), value.Value);
         }
 
         /// <summary>Add or update a xml value associated with the specified key.</summary>

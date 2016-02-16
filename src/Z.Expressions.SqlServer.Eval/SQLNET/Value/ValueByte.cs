@@ -19,8 +19,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET ValueByte(SqlString key, SqlByte value)
         {
-            Val(key, value);
-            return this;
+            return ValueInternal(key, typeof (byte), value.Value);
         }
 
         /// <summary>Add or update a binary value associated with the specified key.</summary>

@@ -19,8 +19,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET ValueChars(SqlString key, SqlChars value)
         {
-            Val(key, value);
-            return this;
+            return ValueInternal(key, typeof (char[]), value.Value);
         }
 
         /// <summary>Add or update a binary value associated with the specified key.</summary>

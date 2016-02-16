@@ -47,7 +47,7 @@ namespace Z.Expressions.SqlServer.Eval
                     return valueDouble.IsNull ? (double?) null : valueDouble.Value;
                 case "SqlGuid":
                     var valueGuid = (SqlGuid) value;
-                    return valueGuid.IsNull ? Guid.Empty : valueGuid.Value;
+                    return valueGuid.IsNull ? (Guid?) null : valueGuid.Value;
                 case "SqlInt16":
                     var valueInt16 = (SqlInt16) value;
                     return valueInt16.IsNull ? (short?) null : valueInt16.Value;
@@ -74,6 +74,49 @@ namespace Z.Expressions.SqlServer.Eval
             }
 
             return rValue;
+        }
+
+        public static Type GetNullableType(object value)
+        {
+            switch (value.GetType().Name)
+            {
+                case "SqlBinary":
+                    return typeof (byte[]);
+                case "SqlBoolean":
+                    return typeof (bool?);
+                case "SqlByte":
+                    return typeof (byte?);
+                case "SqlBytes":
+                    return typeof (byte[]);
+                case "SqlChars":
+                    return typeof (char[]);
+                case "SqlDateTime":
+                    return typeof (DateTime?);
+                case "SqlDecimal":
+                    return typeof (decimal?);
+                case "SqlDouble":
+                    return typeof (double?);
+                case "SqlGuid":
+                    return typeof (Guid?);
+                case "SqlInt16":
+                    return typeof (short?);
+                case "SqlInt32":
+                    return typeof (int?);
+                case "SqlInt64":
+                    return typeof (long?);
+                case "SqlMoney":
+                    return typeof (decimal?);
+                case "SqlSingle":
+                    return typeof (float?);
+                case "SqlString":
+                    return typeof (string);
+                case "SqlXml":
+                    return typeof (string);
+                case "DBNull":
+                    return null;
+            }
+
+            return typeof (object);
         }
     }
 }

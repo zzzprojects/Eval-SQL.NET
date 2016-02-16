@@ -17,9 +17,9 @@ namespace Z.Expressions.SqlServer.Eval
     {
         /// <summary>Eval the code or expression and return a string value.</summary>
         /// <returns>The string value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
         [return: SqlFacet(MaxSize = -1)]
-        public SqlString EvalString()
+        public SqlString EvalReadAccessString()
         {
             var value = Eval();
 
@@ -28,18 +28,18 @@ namespace Z.Expressions.SqlServer.Eval
 
         /// <summary>Eval the code or expression and return a string value.</summary>
         /// <returns>The string value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
         [return: SqlFacet(MaxSize = -1)]
-        public SqlString evalstring()
+        public SqlString evalreadaccessstring()
         {
             return EvalString();
         }
 
         /// <summary>Eval the code or expression and return a string value.</summary>
         /// <returns>The string value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
         [return: SqlFacet(MaxSize = -1)]
-        public SqlString EVALSTRING()
+        public SqlString EVALREADACCESSSTRING()
         {
             return EvalString();
         }

@@ -7,6 +7,7 @@
 
 using System;
 using System.Data.SqlTypes;
+using System.Dynamic;
 using Microsoft.SqlServer.Server;
 
 // ReSharper disable InconsistentNaming
@@ -33,6 +34,7 @@ namespace Z.Expressions.SqlServer.Eval
         {
             get
             {
+               
                 SQLNETItem item;
                 if (!EvalManager.CacheItem.TryGetValue(ValueSerializable, out item))
                 {
@@ -204,6 +206,30 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
         public bool DISPOSE()
         {
             return Dispose();
+        }
+
+        public SQLNET ValueInternal(SqlString keyString, Type type, object value)
+        {
+            var key = keyString.Value;
+
+            object oldType;
+            if (Item.ParameterTypes.TryGetValue(key, out oldType))
+            {
+                if (!Equals(oldType, type))
+                {
+                    Item.ParameterTypes[key] = type;
+                    Item.Delegate = null;
+                }
+
+                Item.ParameterValues[key] = value;
+            }
+            else
+            {
+                Item.ParameterTypes.Add(key, type);
+                Item.ParameterValues.Add(key, value);
+            }
+
+            return this;
         }
 
         /// <summary>Parses the given value to a SQLNET object from the string representation.</summary>

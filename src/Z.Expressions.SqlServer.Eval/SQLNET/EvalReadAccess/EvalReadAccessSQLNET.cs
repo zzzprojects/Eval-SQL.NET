@@ -15,8 +15,8 @@ namespace Z.Expressions.SqlServer.Eval
     {
         /// <summary>Eval the code or expression and return a SQLNET object value.</summary>
         /// <returns>The SQLNET object value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public SQLNET EvalSQLNET()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public SQLNET EvalReadAccessSQLNET()
         {
             var value = Eval();
 
@@ -29,16 +29,16 @@ namespace Z.Expressions.SqlServer.Eval
 
         /// <summary>Eval the code or expression and return a SQLNET object value.</summary>
         /// <returns>The SQLNET object value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public SQLNET evalsqlnet()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public SQLNET evalreadaccesssqlnet()
         {
             return EvalSQLNET();
         }
 
         /// <summary>Eval the code or expression and return a SQLNET object value.</summary>
         /// <returns>The SQLNET object value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public SQLNET EVALSQLNET()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public SQLNET EVALREADACCESSSQLNET()
         {
             return EvalSQLNET();
         }

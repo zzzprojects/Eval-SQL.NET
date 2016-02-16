@@ -16,8 +16,8 @@ namespace Z.Expressions.SqlServer.Eval
     {
         /// <summary>Eval the code or expression and return a tiny int value.</summary>
         /// <returns>The tiny int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public byte? EvalTinyInt()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public byte? EvalReadAccessTinyInt()
         {
             var value = Eval();
 
@@ -26,16 +26,16 @@ namespace Z.Expressions.SqlServer.Eval
 
         /// <summary>Eval the code or expression and return a tiny int value.</summary>
         /// <returns>The tiny int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public byte? evaltinyint()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public byte? evalreadaccesstinyint()
         {
             return EvalTinyInt();
         }
 
         /// <summary>Eval the code or expression and return a tiny int value.</summary>
         /// <returns>The tiny int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public byte? EVALTINYINT()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public byte? EVALREADACCESSTINYINT()
         {
             return EvalTinyInt();
         }

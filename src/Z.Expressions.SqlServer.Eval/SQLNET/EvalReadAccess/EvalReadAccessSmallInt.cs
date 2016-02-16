@@ -16,8 +16,8 @@ namespace Z.Expressions.SqlServer.Eval
     {
         /// <summary>Eval the code or expression and return a small int value.</summary>
         /// <returns>The small int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public short? EvalSmallInt()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public short? EvalReadAccessSmallInt()
         {
             var value = Eval();
 
@@ -26,16 +26,16 @@ namespace Z.Expressions.SqlServer.Eval
 
         /// <summary>Eval the code or expression and return a small int value.</summary>
         /// <returns>The small int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public short? evalsmallint()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public short? evalreadaccesssmallint()
         {
             return EvalSmallInt();
         }
 
         /// <summary>Eval the code or expression and return a small int value.</summary>
         /// <returns>The small int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public short? EVALSMALLINT()
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public short? EVALREADACCESSSMALLINT()
         {
             return EvalSmallInt();
         }

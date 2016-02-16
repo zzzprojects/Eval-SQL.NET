@@ -19,8 +19,8 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET Value(SqlString key, object value)
         {
-            Val(key, value);
-            return this;
+            value = SqlTypeHelper.ConvertToType(value);
+            return ValueInternal(key, value.GetType(), value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>

@@ -17,27 +17,27 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueInt16(SqlString key, SqlInt16 value)
+        public SQLNET ValueBigInt(SqlString key, SqlInt64 value)
         {
-            return ValueInternal(key, typeof (short), value.Value);
+            return ValueInternal(key, typeof (long), value.Value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET valueint16(SqlString key, SqlInt16 value)
+        public SQLNET valuebigint(SqlString key, SqlInt64 value)
         {
-            return ValueInt16(key, value);
+            return ValueBigInt(key, value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUEINT16(SqlString key, SqlInt16 value)
+        public SQLNET VALUEBIGINT(SqlString key, SqlInt64 value)
         {
-            return ValueInt16(key, value);
+            return ValueBigInt(key, value);
         }
     }
 }

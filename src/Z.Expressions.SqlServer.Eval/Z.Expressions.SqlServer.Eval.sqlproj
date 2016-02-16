@@ -24,7 +24,7 @@
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
     <Trustworthy>True</Trustworthy>
-    <PermissionSet>EXTERNAL_ACCESS</PermissionSet>
+    <PermissionSet>SAFE</PermissionSet>
     <SccProjectName>SAK</SccProjectName>
     <SccProvider>SAK</SccProvider>
     <SccAuxPath>SAK</SccAuxPath>
@@ -95,6 +95,8 @@
     <Folder Include="ExtensionMethods\System.Data" />
     <Folder Include="Eval" />
     <Folder Include="EvalContext\Execute" />
+    <Folder Include="SQLNET\ValueNullable" />
+    <Folder Include="SQLNET\EvalReadAccess" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -215,5 +217,29 @@
     <Compile Include="SQLNET\Value\ValueInt64.cs" />
     <Compile Include="SQLNET\Value\ValueLong.cs" />
     <Compile Include="SQLNET\Value\ValueBytes.cs" />
+    <Compile Include="SQLNET\Value\ValueTinyInt.cs" />
+    <Compile Include="SQLNET\Value\ValueBigInt.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableBigInt.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableBool.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableBoolean.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableDateTime.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableInt.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableInt32.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableLong.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableInt64.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableShort.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableTinyInt.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableByte.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValNullable.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullable.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableInt16.cs" />
+    <Compile Include="SQLNET\EvalReadAccess\EvalReadAccess.cs" />
+    <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessBigInt.cs" />
+    <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessBit.cs" />
+    <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessInt.cs" />
+    <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessSmallInt.cs" />
+    <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessSQLNET.cs" />
+    <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessString.cs" />
+    <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessTinyInt.cs" />
   </ItemGroup>
 </Project>
