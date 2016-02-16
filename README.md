@@ -92,27 +92,11 @@ EXEC Select_Switch 4, 2, 3
 Use regular expression to search, replace and split text in SQL
 
 ```sql
-CREATE FUNCTION [dbo].[fn_Split]
-    (
-      @input VARCHAR(MAX) ,
-      @pattern VARCHAR(8000) = ','
-    )
-RETURNS @split TABLE ( item VARCHAR(8000) )
-    BEGIN
-        DECLARE @regex_split SQLNET = SQLNET::New('Regex.Split(input, pattern)')
-                                             .ValueString('input', @input)
-                                             .Val('pattern', @pattern)
+DECLARE @s VARCHAR(MAX) = '1, 2, 3; 4; 5'
+DECLARE @sqlnet SQLNET = SQLNET::New('Split(input, ",|;")')
 
-        INSERT  INTO @split
-                SELECT  CAST(Value_1 AS VARCHAR(8000))
-                FROM    [dbo].[SQLNET_EvalTVF_1](@regex_split)
-        RETURN
-    END
-
-GO
-
--- SPLIT with multiple delimiters (',' and ';')
-SELECT * FROM dbo.fn_Split('1, 2, 3; 4; 5', ',|;')
+SELECT  *
+FROM    dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', @s))
 ```
 
 **[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki/SQL-Server-Regex-%7C-Use-regular-expression-to-search,-replace-and-split-text-in-SQL)**
@@ -134,6 +118,18 @@ EXEC dbo.SQLNET_EvalResultSet @sqlnet
 ```
 
 **[Learn more](https://github.com/zzzprojects/Eval-SQL.NET/wiki/SQL-Server-File-Operation-%7C-xp_cmdshell-alternative-to-read-and-write-files-in-SQL)**
+
+## Security
+You can install Eval SQL.NET with any SQL CLR permissions
+- SAFE
+- EXTERNAL_ACCESS
+- UNSAFE
+
+
+## Performance
+Eval SQL.NET is fast, very fast! The performance is very close to SQL CLR.
+
+You can evaluate over **150,000** expression in a loop under one seconds and over *1,000,000* expression from a table!
 
 ## FREE vs PRO
 
