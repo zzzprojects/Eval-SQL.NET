@@ -93,7 +93,7 @@ Use regular expression to search, replace and split text in SQL
 
 ```sql
 DECLARE @s VARCHAR(MAX) = '1, 2, 3; 4; 5'
-DECLARE @sqlnet SQLNET = SQLNET::New('Split(input, ",|;")')
+DECLARE @sqlnet SQLNET = SQLNET::New('Regex.Split(input, ",|;")')
 
 SELECT  *
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', @s))
