@@ -147,7 +147,7 @@ namespace Z.Expressions.SqlServer.Eval
                     var list = (IEnumerable) value;
 
                     dt = new DataTable();
-                    dt.Columns.Add("value1");
+                    dt.Columns.Add("Value_1");
                     foreach (var item in list)
                     {
                         dt.Rows.Add(item);
@@ -161,7 +161,7 @@ namespace Z.Expressions.SqlServer.Eval
                 bool isFirst = false;
 
                 dt = new DataTable();
-                dt.Columns.Add("value1");
+                dt.Columns.Add("Value_1");
                 foreach (var item in list)
                 {
                     dt.Rows.Add(item);
@@ -172,7 +172,7 @@ namespace Z.Expressions.SqlServer.Eval
                 var list = (IEnumerable) value;
 
                 dt = new DataTable();
-                dt.Columns.Add("value1");
+                dt.Columns.Add("Value_1");
                 foreach (var item in list)
                 {
                     dt.Rows.Add(item);
@@ -181,7 +181,7 @@ namespace Z.Expressions.SqlServer.Eval
             else if (value is MatchCollection)
             {
                 dt = new DataTable();
-                dt.Columns.Add("value1");
+                dt.Columns.Add("Value_1");
                 foreach (Match item in (MatchCollection)value)
                 {
                     dt.Rows.Add(item.Value);

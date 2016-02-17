@@ -15,29 +15,30 @@ namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
     {
-        /// <summary>Eval the code or expression and return a small int value.</summary>
-        /// <returns>The small int value from the evaluated code or expression.</returns>
+        /// <summary>Eval the code or expression and return a DateTime value.</summary>
+        /// <returns>The DateTime value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public SqlInt16 EvalSmallInt()
+        public SqlDateTime EvalDateTime()
         {
             var value = InternalEval();
-            return value == null || value == DBNull.Value ? SqlInt16.Null : new SqlInt16(Convert.ToInt16(value));
+            return value == null || value == DBNull.Value ? SqlDateTime.Null : new SqlDateTime(Convert.ToDateTime(value));
         }
 
-        /// <summary>Eval the code or expression and return a small int value.</summary>
-        /// <returns>The small int value from the evaluated code or expression.</returns>
+        /// <summary>Eval the code or expression and return a DateTime value.</summary>
+        /// <returns>The DateTime value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public SqlInt16 evalsmallint()
+        public SqlDateTime evaldatetime()
+
         {
-            return EvalSmallInt();
+            return EvalDateTime();
         }
 
-        /// <summary>Eval the code or expression and return a small int value.</summary>
-        /// <returns>The small int value from the evaluated code or expression.</returns>
+        /// <summary>Eval the code or expression and return a DateTime value.</summary>
+        /// <returns>The DateTime value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public SqlInt16 EVALSMALLINT()
+        public SqlDateTime EVALDATETIME()
         {
-            return EvalSmallInt();
+            return EvalDateTime();
         }
     }
 }

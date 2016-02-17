@@ -20,7 +20,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET ValueBinary(SqlString key, SqlBinary value)
         {
-            return ValueInternal(key, typeof(byte[]), value.Value);
+            return InternalValue(key, typeof(byte[]), value.Value);
         }
 
         /// <summary>Add or update a binary value associated with the specified key.</summary>

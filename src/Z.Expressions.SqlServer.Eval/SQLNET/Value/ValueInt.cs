@@ -19,7 +19,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET ValueInt(SqlString key, SqlInt32 value)
         {
-            return ValueInternal(key, typeof (int), value.Value);
+            return InternalValue(key, typeof (int), value.Value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>

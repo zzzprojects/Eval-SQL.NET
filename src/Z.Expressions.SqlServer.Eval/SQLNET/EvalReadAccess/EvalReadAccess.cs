@@ -26,7 +26,7 @@ namespace Z.Expressions.SqlServer.Eval
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
         public object evalreadaccess()
         {
-            return Eval();
+            return EvalReadAccess();
         }
 
         /// <summary>Eval the code or expression and return an object value.</summary>
@@ -35,7 +35,7 @@ namespace Z.Expressions.SqlServer.Eval
         public object EVALREADACCESS()
 
         {
-            return Eval();
+            return EvalReadAccess();
         }
     }
 }

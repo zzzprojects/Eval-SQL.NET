@@ -7,7 +7,6 @@
 
 // ReSharper disable InconsistentNaming
 
-using System;
 using System.Data.SqlTypes;
 
 namespace Z.Expressions.SqlServer.Eval
@@ -20,35 +19,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET ValueNullable(SqlString key, object value)
         {
-            Type type;
-            value = SqlTypeHelper.ConvertToType(value);
-
-            // CHECK for key containing type: int? x
-            if (key.Value.Contains(" "))
-            {
-                var split = key.Value.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-
-                if (split.Length == 1)
-                {
-                    type = value.GetType();
-                    key = key.Value.Trim();
-                }
-                else if (split.Length == 2)
-                {
-                    type = TypeHelper.GetTypeFromName(split[0]);
-                    key = split[1];
-                }
-                else
-                {
-                    throw new Exception(string.Format(ExceptionMessage.Invalid_ValueKey, key));
-                }
-            }
-            else
-            {
-                type = value.GetType();
-            }
-
-            return ValueInternal(key, type, value);
+            return ValNullable(key, value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
@@ -57,7 +28,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET valuenullable(SqlString key, object value)
         {
-            return Value(key, value);
+            return ValueNullable(key, value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
@@ -66,7 +37,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET VALUENULLABLE(SqlString key, object value)
         {
-            return Value(key, value);
+            return ValueNullable(key, value);
         }
     }
 }

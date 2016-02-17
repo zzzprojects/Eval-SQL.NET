@@ -15,10 +15,10 @@ namespace Z.Expressions
     public static class EvalManager
     {
         /// <summary>The cache for EvalDelegate.</summary>
-        public static readonly SharedCache<string, EvalDelegate> CacheDelegate = new SharedCache<string, EvalDelegate>();
+        public static readonly SharedBuckedCache<string, EvalDelegate> CacheDelegate = new SharedBuckedCache<string, EvalDelegate>();
 
         /// <summary>The cache for SQLNETItem.</summary>
-        public static readonly SharedCache<int, SQLNETItem> CacheItem = new SharedCache<int, SQLNETItem>();
+        public static readonly SharedBuckedCache<int, SQLNETItem> CacheItem = new SharedBuckedCache<int, SQLNETItem>();
 
         /// <summary>The default context used to compile the code or expression.</summary>
         public static readonly EvalContext Configuration;
@@ -54,26 +54,29 @@ namespace Z.Expressions
                         var expireDateDelegate = DateTime.Now.Subtract(Configuration.SlidingExpirationDelegate);
                         var keyToRemoves = new List<string>();
 
-                        try
+                        foreach (var bucket in CacheDelegate.Buckets)
                         {
-                            CacheDelegate.AcquireLock();
-
-                            foreach (var keyvalue in CacheDelegate.InnerDictionary)
+                            try
                             {
-                                if (keyvalue.Value.LastAccess < expireDateDelegate)
+                                bucket.AcquireLock();
+
+                                foreach (var keyvalue in bucket.InnerDictionary)
                                 {
-                                    keyToRemoves.Add(keyvalue.Key);
+                                    if (keyvalue.Value.LastAccess < expireDateDelegate)
+                                    {
+                                        keyToRemoves.Add(keyvalue.Key);
+                                    }
+                                }
+
+                                foreach (var key in keyToRemoves)
+                                {
+                                    bucket.InnerDictionary.Remove(key);
                                 }
                             }
-
-                            foreach (var key in keyToRemoves)
+                            finally
                             {
-                                CacheDelegate.InnerDictionary.Remove(key);
+                                bucket.ReleaseLock();
                             }
-                        }
-                        finally
-                        {
-                            CacheDelegate.ReleaseLock();
                         }
                     }
 
@@ -83,27 +86,30 @@ namespace Z.Expressions
                         var expireDateItem = DateTime.Now.Subtract(Configuration.SlidingExpirationItem);
                         var keyToRemoves = new List<int>();
 
-                        try
+                        foreach (var bucket in CacheItem.Buckets)
                         {
-                            CacheItem.AcquireLock();
-
-                            foreach (var keyvalue in CacheItem.InnerDictionary)
+                            try
                             {
-                                if (keyvalue.Value.LastAccess < expireDateItem)
+                                bucket.AcquireLock();
+
+                                foreach (var keyvalue in bucket.InnerDictionary)
                                 {
-                                    keyvalue.Value.IsCached = false;
-                                    keyToRemoves.Add(keyvalue.Key);
+                                    if (keyvalue.Value.LastAccess < expireDateItem)
+                                    {
+                                        keyvalue.Value.IsCached = false;
+                                        keyToRemoves.Add(keyvalue.Key);
+                                    }
+                                }
+
+                                foreach (var key in keyToRemoves)
+                                {
+                                    bucket.InnerDictionary.Remove(key);
                                 }
                             }
-
-                            foreach (var key in keyToRemoves)
+                            finally
                             {
-                                CacheItem.InnerDictionary.Remove(key);
+                                bucket.ReleaseLock();
                             }
-                        }
-                        finally
-                        {
-                            CacheItem.ReleaseLock();
                         }
                     }
 

@@ -6,6 +6,7 @@
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
 
 using System;
+using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
 
 // ReSharper disable InconsistentNaming
@@ -17,17 +18,16 @@ namespace Z.Expressions.SqlServer.Eval
         /// <summary>Eval the code or expression and return a bit value.</summary>
         /// <returns>The bit value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public bool? EvalBit()
+        public SqlBoolean EvalBit()
         {
-            var value = Eval();
-
-            return value == null || value == DBNull.Value ? (bool?) null : Convert.ToBoolean(value);
+            var value = InternalEval();
+            return value == null || value == DBNull.Value ? SqlBoolean.Null : new SqlBoolean(Convert.ToBoolean(value));
         }
 
         /// <summary>Eval the code or expression and return a bit value.</summary>
         /// <returns>The bit value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public bool? evalbit()
+        public SqlBoolean evalbit()
 
         {
             return EvalBit();
@@ -36,7 +36,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <summary>Eval the code or expression and return a bit value.</summary>
         /// <returns>The bit value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public bool? EVALBIT()
+        public SqlBoolean EVALBIT()
         {
             return EvalBit();
         }

@@ -7,37 +7,38 @@
 
 // ReSharper disable InconsistentNaming
 
+using System;
 using System.Data.SqlTypes;
 
 namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
     {
-        /// <summary>Add or update a binary value associated with the specified key.</summary>
+        /// <summary>Add or update a string value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
-        /// <param name="value">The binary value to add or update associated with the specified key.</param>
+        /// <param name="value">The string value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueBytes(SqlString key, SqlBytes value)
+        public SQLNET ValueNullableString(SqlString key, SqlString value)
         {
-            return ValueInternal(key, typeof (byte[]), value.Value);
+            return InternalValue(key, typeof(string), value.Value);
         }
 
-        /// <summary>Add or update a binary value associated with the specified key.</summary>
+        /// <summary>Add or update a string value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
-        /// <param name="value">The binary value to add or update associated with the specified key.</param>
+        /// <param name="value">The string value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET valuebytes(SqlString key, SqlBytes value)
+        public SQLNET valuenullablestring(SqlString key, SqlString value)
         {
-            return ValueBytes(key, value);
+            return ValueNullableString(key, value);
         }
 
-        /// <summary>Add or update a binary value associated with the specified key.</summary>
+        /// <summary>Add or update a string value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
-        /// <param name="value">The binary value to add or update associated with the specified key.</param>
+        /// <param name="value">The string value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUEBYTES(SqlString key, SqlBytes value)
+        public SQLNET VALUENULLABLESTRING(SqlString key, SqlString value)
         {
-            return ValueBytes(key, value);
+            return ValueNullableString(key, value);
         }
     }
 }

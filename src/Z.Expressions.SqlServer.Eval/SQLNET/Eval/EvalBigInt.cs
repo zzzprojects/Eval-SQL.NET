@@ -6,6 +6,7 @@
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
 
 using System;
+using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
 
 // ReSharper disable InconsistentNaming
@@ -17,17 +18,16 @@ namespace Z.Expressions.SqlServer.Eval
         /// <summary>Eval the code or expression and return a big int value.</summary>
         /// <returns>The big int value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public long? EvalBigInt()
+        public SqlInt64 EvalBigInt()
         {
-            var value = Eval();
-
-            return value == null || value == DBNull.Value ? (long?) null : Convert.ToInt64(value);
+            var value = InternalEval();
+            return value == null || value == DBNull.Value ? SqlInt64.Null : new SqlInt64(Convert.ToInt64(value));
         }
 
         /// <summary>Eval the code or expression and return a big int value.</summary>
         /// <returns>The big int value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public long? evalbigint()
+        public SqlInt64 evalbigint()
 
         {
             return EvalBigInt();
@@ -36,7 +36,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <summary>Eval the code or expression and return a big int value.</summary>
         /// <returns>The big int value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public long? EVALBIGINT()
+        public SqlInt64 EVALBIGINT()
         {
             return EvalBigInt();
         }

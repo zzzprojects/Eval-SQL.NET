@@ -19,7 +19,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET ValueNullableBigInt(SqlString key, SqlInt64 value)
         {
-            return ValueInternal(key, typeof (long?), value.IsNull ? (long?)null : value.Value);
+            return InternalValue(key, typeof (long?), value.IsNull ? (long?) null : value.Value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
@@ -28,7 +28,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET valuenullablebigint(SqlString key, SqlInt64 value)
         {
-            return ValueBigInt(key, value);
+            return ValueNullableBigInt(key, value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
@@ -37,7 +37,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET VALUENULLABLEBIGINT(SqlString key, SqlInt64 value)
         {
-            return ValueBigInt(key, value);
+            return ValueNullableBigInt(key, value);
         }
     }
 }

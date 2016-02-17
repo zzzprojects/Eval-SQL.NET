@@ -13,7 +13,7 @@ namespace Z.Expressions.SqlServer.Eval
     public class SharedLock
     {
         /// <summary>The counter lock.</summary>
-        public int CounterLock = 0;
+        public int CacheItemLock = 0;
 
         /// <summary>The expire cache lock.</summary>
         public int ExpireCacheLock = 0;

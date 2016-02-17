@@ -179,15 +179,38 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>true if it succeeds, false if it fails.</returns>
         public bool TryGetValue(TKey key, out TValue value)
         {
+            bool found;
             try
             {
-                return InnerDictionary.TryGetValue(key, out value);
+                found = InnerDictionary.TryGetValue(key, out value);
             }
-            catch (Exception)
+            catch
             {
                 value = default(TValue);
-                return false;
+                found = false;
             }
+
+            if (!found)
+            {
+                // May happen rarely in concurrency scenario
+                // We try again but with a lock
+                try
+                {
+                    AcquireLock();
+                    return InnerDictionary.TryGetValue(key, out value);
+                }
+                catch (Exception)
+                {
+                    value = default(TValue);
+                    return false;
+                }
+                finally
+                {
+                    ReleaseLock();
+                }
+            }
+
+            return true;
         }
     }
 }

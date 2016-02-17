@@ -15,29 +15,30 @@ namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
     {
-        /// <summary>Eval the code or expression and return a small int value.</summary>
-        /// <returns>The small int value from the evaluated code or expression.</returns>
+        /// <summary>Eval the code or expression and return a binary value.</summary>
+        /// <returns>The binary value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public SqlInt16 EvalSmallInt()
+        public SqlBytes EvalBinary()
         {
             var value = InternalEval();
-            return value == null || value == DBNull.Value ? SqlInt16.Null : new SqlInt16(Convert.ToInt16(value));
+            return value == null || value == DBNull.Value ? SqlBytes.Null : new SqlBytes((byte[]) value);
         }
 
-        /// <summary>Eval the code or expression and return a small int value.</summary>
-        /// <returns>The small int value from the evaluated code or expression.</returns>
+        /// <summary>Eval the code or expression and return a binary value.</summary>
+        /// <returns>The binary value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public SqlInt16 evalsmallint()
+        public SqlBytes evalbinary()
+
         {
-            return EvalSmallInt();
+            return EvalBinary();
         }
 
-        /// <summary>Eval the code or expression and return a small int value.</summary>
-        /// <returns>The small int value from the evaluated code or expression.</returns>
+        /// <summary>Eval the code or expression and return a binary value.</summary>
+        /// <returns>The binary value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public SqlInt16 EVALSMALLINT()
+        public SqlBytes EVALBINARY()
         {
-            return EvalSmallInt();
+            return EvalBinary();
         }
     }
 }

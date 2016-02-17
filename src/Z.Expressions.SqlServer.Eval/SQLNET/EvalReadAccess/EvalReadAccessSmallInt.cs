@@ -6,6 +6,7 @@
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
 
 using System;
+using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
 
 // ReSharper disable InconsistentNaming
@@ -17,17 +18,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <summary>Eval the code or expression and return a small int value.</summary>
         /// <returns>The small int value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public short? EvalReadAccessSmallInt()
-        {
-            var value = Eval();
-
-            return value == null || value == DBNull.Value ? (short?) null : Convert.ToInt16(value);
-        }
-
-        /// <summary>Eval the code or expression and return a small int value.</summary>
-        /// <returns>The small int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public short? evalreadaccesssmallint()
+        public SqlInt16 EvalReadAccessSmallInt()
         {
             return EvalSmallInt();
         }
@@ -35,9 +26,17 @@ namespace Z.Expressions.SqlServer.Eval
         /// <summary>Eval the code or expression and return a small int value.</summary>
         /// <returns>The small int value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public short? EVALREADACCESSSMALLINT()
+        public SqlInt16 evalreadaccesssmallint()
         {
-            return EvalSmallInt();
+            return EvalReadAccessSmallInt();
+        }
+
+        /// <summary>Eval the code or expression and return a small int value.</summary>
+        /// <returns>The small int value from the evaluated code or expression.</returns>
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public SqlInt16 EVALREADACCESSSMALLINT()
+        {
+            return EvalReadAccessSmallInt();
         }
     }
 }

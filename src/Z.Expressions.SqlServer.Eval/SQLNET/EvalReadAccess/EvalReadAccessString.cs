@@ -5,7 +5,6 @@
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
 
-using System;
 using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
 
@@ -21,9 +20,7 @@ namespace Z.Expressions.SqlServer.Eval
         [return: SqlFacet(MaxSize = -1)]
         public SqlString EvalReadAccessString()
         {
-            var value = Eval();
-
-            return value == null || value == DBNull.Value ? SqlString.Null : new SqlString(value.ToString());
+            return EvalString();
         }
 
         /// <summary>Eval the code or expression and return a string value.</summary>
@@ -32,7 +29,7 @@ namespace Z.Expressions.SqlServer.Eval
         [return: SqlFacet(MaxSize = -1)]
         public SqlString evalreadaccessstring()
         {
-            return EvalString();
+            return EvalReadAccessString();
         }
 
         /// <summary>Eval the code or expression and return a string value.</summary>
@@ -41,7 +38,7 @@ namespace Z.Expressions.SqlServer.Eval
         [return: SqlFacet(MaxSize = -1)]
         public SqlString EVALREADACCESSSTRING()
         {
-            return EvalString();
+            return EvalReadAccessString();
         }
     }
 }

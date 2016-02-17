@@ -6,6 +6,7 @@
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
 
 using System;
+using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
 
 // ReSharper disable InconsistentNaming
@@ -17,17 +18,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <summary>Eval the code or expression and return an int value.</summary>
         /// <returns>The int value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public int? EvalReadAccessInt()
-        {
-            var value = Eval();
-
-            return value == null || value == DBNull.Value ? (int?) null : Convert.ToInt32(value);
-        }
-
-        /// <summary>Eval the code or expression and return an int value.</summary>
-        /// <returns>The int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public int? evalreadaccessint()
+        public SqlInt32 EvalReadAccessInt()
         {
             return EvalInt();
         }
@@ -35,9 +26,17 @@ namespace Z.Expressions.SqlServer.Eval
         /// <summary>Eval the code or expression and return an int value.</summary>
         /// <returns>The int value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public int? EVALREADACCESSINT()
+        public SqlInt32 evalreadaccessint()
         {
-            return EvalInt();
+            return EvalReadAccessInt();
+        }
+
+        /// <summary>Eval the code or expression and return an int value.</summary>
+        /// <returns>The int value from the evaluated code or expression.</returns>
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public SqlInt32 EVALREADACCESSINT()
+        {
+            return EvalReadAccessInt();
         }
     }
 }

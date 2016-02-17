@@ -20,7 +20,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET ValueNullableDateTime(SqlString key, SqlDateTime value)
         {
-            return ValueInternal(key, typeof (DateTime?), value.IsNull ? (DateTime?)null : value.Value);
+            return InternalValue(key, typeof (DateTime?), value.IsNull ? (DateTime?) null : value.Value);
         }
 
         /// <summary>Add or update a binary value associated with the specified key.</summary>
@@ -29,7 +29,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET valuenullabledatetime(SqlString key, SqlDateTime value)
         {
-            return ValueDateTime(key, value);
+            return ValueNullableDateTime(key, value);
         }
 
         /// <summary>Add or update a binary value associated with the specified key.</summary>
@@ -38,7 +38,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET VALUENULLABLEDATETIME(SqlString key, SqlDateTime value)
         {
-            return ValueDateTime(key, value);
+            return ValueNullableDateTime(key, value);
         }
     }
 }

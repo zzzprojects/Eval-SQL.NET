@@ -13,31 +13,31 @@ namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
     {
-        /// <summary>Add or update a value associated with the specified key.</summary>
+        /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
-        /// <param name="value">The value to add or update associated with the specified key.</param>
+        /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueBool(SqlString key, SqlBoolean value)
+        public SQLNET ValueNullableBinary(SqlString key, SqlBinary value)
         {
-            return ValueInternal(key, typeof (bool), value.Value);
+            return InternalValue(key, typeof (byte[]), value.Value);
         }
 
-        /// <summary>Add or update a value associated with the specified key.</summary>
+        /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
-        /// <param name="value">The value to add or update associated with the specified key.</param>
+        /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET valuebool(SqlString key, SqlBoolean value)
+        public SQLNET valuenullablebinary(SqlString key, SqlBinary value)
         {
-            return ValueBool(key, value);
+            return ValueNullableBinary(key.Value, value);
         }
 
-        /// <summary>Add or update a value associated with the specified key.</summary>
+        /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
-        /// <param name="value">The value to add or update associated with the specified key.</param>
+        /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUEBOOL(SqlString key, SqlBoolean value)
+        public SQLNET VALUENULLABLEBINARY(SqlString key, SqlBinary value)
         {
-            return ValueBool(key, value);
+            return ValueNullableBinary(key.Value, value);
         }
     }
 }

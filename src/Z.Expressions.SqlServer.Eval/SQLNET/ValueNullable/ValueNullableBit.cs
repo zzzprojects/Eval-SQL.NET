@@ -17,27 +17,27 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueNullableLong(SqlString key, SqlInt64 value)
+        public SQLNET ValueNullableBit(SqlString key, SqlBoolean value)
         {
-            return ValueInternal(key, typeof (long?), value.IsNull ? (long?)null : value.Value);
+            return InternalValue(key, typeof (bool), value.Value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET valuenullablelong(SqlString key, SqlInt64 value)
+        public SQLNET valuenullablebit(SqlString key, SqlBoolean value)
         {
-            return ValueLong(key, value);
+            return ValueNullableBit(key, value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUENULLABLELONG(SqlString key, SqlInt64 value)
+        public SQLNET VALUENULLABLEBIT(SqlString key, SqlBoolean value)
         {
-            return ValueLong(key, value);
+            return ValueNullableBit(key, value);
         }
     }
 }

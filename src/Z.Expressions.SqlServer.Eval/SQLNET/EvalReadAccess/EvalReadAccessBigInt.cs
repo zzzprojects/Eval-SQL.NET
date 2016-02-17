@@ -5,7 +5,7 @@
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
 
-using System;
+using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
 
 // ReSharper disable InconsistentNaming
@@ -17,18 +17,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <summary>Eval the code or expression and return a big int value.</summary>
         /// <returns>The big int value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public long? EvalReadAccessBigInt()
-        {
-            var value = Eval();
-
-            return value == null || value == DBNull.Value ? (long?) null : Convert.ToInt64(value);
-        }
-
-        /// <summary>Eval the code or expression and return a big int value.</summary>
-        /// <returns>The big int value from the evaluated code or expression.</returns>
-        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public long? evalreadaccessbigint()
-
+        public SqlInt64 EvalReadAccessBigInt()
         {
             return EvalBigInt();
         }
@@ -36,9 +25,18 @@ namespace Z.Expressions.SqlServer.Eval
         /// <summary>Eval the code or expression and return a big int value.</summary>
         /// <returns>The big int value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public long? EVALREADACCESSBIGINT()
+        public SqlInt64 evalreadaccessbigint()
+
         {
-            return EvalBigInt();
+            return EvalReadAccessBigInt();
+        }
+
+        /// <summary>Eval the code or expression and return a big int value.</summary>
+        /// <returns>The big int value from the evaluated code or expression.</returns>
+        [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
+        public SqlInt64 EVALREADACCESSBIGINT()
+        {
+            return EvalReadAccessBigInt();
         }
     }
 }

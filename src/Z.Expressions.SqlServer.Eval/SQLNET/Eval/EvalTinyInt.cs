@@ -6,6 +6,7 @@
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
 
 using System;
+using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
 
 // ReSharper disable InconsistentNaming
@@ -17,17 +18,16 @@ namespace Z.Expressions.SqlServer.Eval
         /// <summary>Eval the code or expression and return a tiny int value.</summary>
         /// <returns>The tiny int value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public byte? EvalTinyInt()
+        public SqlByte EvalTinyInt()
         {
-            var value = Eval();
-
-            return value == null || value == DBNull.Value ? (byte?) null : Convert.ToByte(value);
+            var value = InternalEval();
+            return value == null || value == DBNull.Value ? SqlByte.Null : new SqlByte(Convert.ToByte(value));
         }
 
         /// <summary>Eval the code or expression and return a tiny int value.</summary>
         /// <returns>The tiny int value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public byte? evaltinyint()
+        public SqlByte evaltinyint()
         {
             return EvalTinyInt();
         }
@@ -35,7 +35,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <summary>Eval the code or expression and return a tiny int value.</summary>
         /// <returns>The tiny int value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public byte? EVALTINYINT()
+        public SqlByte EVALTINYINT()
         {
             return EvalTinyInt();
         }

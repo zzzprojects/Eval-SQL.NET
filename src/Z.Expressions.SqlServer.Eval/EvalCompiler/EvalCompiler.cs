@@ -27,7 +27,7 @@ namespace Z.Expressions
         /// <param name="parameterTypes">The dictionary of parameter (name / type) used in the code or expression to compile.</param>
         /// <param name="resultType">Type of the compiled code or expression result.</param>
         /// <returns>A TDelegate of type Func or Action that represents the compiled code or expression.</returns>
-        internal static EvalDelegate Compile(EvalContext context, string code, ListDictionary parameterTypes, Type resultType)
+        internal static EvalDelegate CompileSQLNET(EvalContext context, string code, IDictionary<string, Type> parameterTypes, Type resultType)
         {
             var cacheKey = ResolveCacheKey(context, typeof (Func<IDictionary, object>), code, parameterTypes);
 
@@ -35,12 +35,6 @@ namespace Z.Expressions
             if (EvalManager.CacheDelegate.TryGetValue(cacheKey, out cachedDelegate))
             {
                 return cachedDelegate;
-            }
-
-            var parameterDict = new Dictionary<string, Type>();
-            foreach (DictionaryEntry parameterType in parameterTypes)
-            {
-                parameterDict.Add((string) parameterType.Key, (Type) parameterType.Value);
             }
 
             // Options
@@ -80,7 +74,7 @@ namespace Z.Expressions
             }
 
             // Resolve Parameter
-            var parameterExpressions = ResolveParameter(scope, parameterDict);
+            var parameterExpressions = ResolveParameter(scope, EvalCompilerParameterKind.Dictionary, parameterTypes);
 
             // CodeAnalysis
             var syntaxRoot = SyntaxParser.ParseText(code);

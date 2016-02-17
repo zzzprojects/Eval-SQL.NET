@@ -20,27 +20,30 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET ValueTable(SqlString keyString, SqlString valueString)
         {
-            var key = keyString.Value;
-            var value = valueString.Value;
-            var type = typeof (DataTable);
+            //var key = keyString.Value;
+            //var value = valueString.Value;
+            //var type = typeof (DataTable);
 
-            object oldValue;
-            if (Item.ParameterTables.TryGetValue(key, out oldValue))
-            {
-                if (!oldValue.Equals(value))
-                {
-                    Item.ParameterTables[key] = value;
-                }
+            //object oldValue;
 
-                Item.ParameterTypes[key] = type;
-                Item.ParameterValues[key] = new DataTable();
-            }
-            else
-            {
-                Item.ParameterTables.Add(key, value);
-                Item.ParameterTypes.Add(key, type);
-                Item.ParameterValues.Add(key, new DataTable());
-            }
+            //var item = Item;
+
+            //if (item.ParameterTables.TryGetValue(key, out oldValue))
+            //{
+            //    if (!oldValue.Equals(value))
+            //    {
+            //        item.ParameterTables[key] = value;
+            //    }
+
+            //    item.ParameterTypes[key] = type;
+            //    item.ParameterValues[key] = new DataTable();
+            //}
+            //else
+            //{
+            //    item.ParameterTables.Add(key, value);
+            //    item.ParameterTypes.Add(key, type);
+            //    item.ParameterValues.Add(key, new DataTable());
+            //}
             return this;
 
 

@@ -48,7 +48,7 @@ namespace Z.Expressions.SqlServer.Eval
                 type = value.GetType();
             }
 
-            return ValueInternal(key, type, value);
+            return InternalValue(key, type, value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
@@ -57,7 +57,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET valnullable(SqlString key, object value)
         {
-            return Val(key, value);
+            return ValNullable(key, value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
@@ -66,7 +66,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET VALNULLABLE(SqlString key, object value)
         {
-            return Val(key, value);
+            return ValNullable(key, value);
         }
     }
 }

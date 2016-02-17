@@ -21,12 +21,17 @@ namespace Z.Expressions
     [Serializable]
     public class ListDictionary : IDictionary
     {
-        [NonSerialized] private object _syncRoot;
-
+        // todo: Do we still really need a list dictionary?
         private readonly IComparer comparer;
+
+        [NonSerialized] private object _syncRoot;
 
 
         private DictionaryNode head;
+
+        /// <summary>The lock value.</summary>
+        public int LockValue;
+
         private int version;
 
         /// <devdoc>
@@ -189,7 +194,7 @@ namespace Z.Expressions
         {
             if (key == null)
             {
-                throw new ArgumentNullException("key", "error");
+                throw new ArgumentNullException("Argument cannot be null", "key");
             }
             version++;
             DictionaryNode last = null;
@@ -199,10 +204,11 @@ namespace Z.Expressions
                 var oldKey = node.key;
                 if ((comparer == null) ? oldKey.Equals(key) : comparer.Compare(oldKey, key) == 0)
                 {
-                    throw new ArgumentException("error");
+                    throw new ArgumentException(string.Format("Duplicate keys: new key: {0}, old value: {1}, new value: {2}", key, this[oldKey], value));
                 }
                 last = node;
             }
+
             // Not found, so add a new one
             var newNode = new DictionaryNode();
             newNode.key = key;
@@ -357,10 +363,10 @@ namespace Z.Expressions
 
         private class NodeEnumerator : IDictionaryEnumerator
         {
-            private DictionaryNode current;
             private readonly ListDictionary list;
-            private bool start;
             private readonly int version;
+            private DictionaryNode current;
+            private bool start;
 
 
             public NodeEnumerator(ListDictionary list)
@@ -497,11 +503,11 @@ namespace Z.Expressions
 
             private class NodeKeyValueEnumerator : IEnumerator
             {
-                private DictionaryNode current;
                 private readonly bool isKeys;
                 private readonly ListDictionary list;
-                private bool start;
                 private readonly int version;
+                private DictionaryNode current;
+                private bool start;
 
                 public NodeKeyValueEnumerator(ListDictionary list, bool isKeys)
                 {

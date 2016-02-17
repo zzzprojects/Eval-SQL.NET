@@ -21,9 +21,8 @@ namespace Z.Expressions.SqlServer.Eval
         [return: SqlFacet(MaxSize = -1)]
         public SqlString EvalString()
         {
-            var value = Eval();
-
-            return value == null || value == DBNull.Value ? SqlString.Null : new SqlString(value.ToString());
+            var value = InternalEval();
+            return value == null || value == DBNull.Value ? SqlString.Null : new SqlString(Convert.ToString(value));
         }
 
         /// <summary>Eval the code or expression and return a string value.</summary>

@@ -20,7 +20,7 @@ namespace Z.Expressions.SqlServer.Eval
         public SQLNET ValueSQLNET(SqlString key, SQLNET value)
         {
             var internalValue = value.GetValue(InternalValueName);
-            return ValueInternal(key, internalValue.GetType(), internalValue);
+            return InternalValue(key, internalValue.GetType(), internalValue);
         }
 
         /// <summary>Add or update a SQLNET value associated with the specified key.</summary>

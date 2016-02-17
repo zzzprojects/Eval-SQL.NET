@@ -17,27 +17,27 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueNullableTinyInt(SqlString key, SqlInt16 value)
+        public SQLNET ValueNullableTinyInt(SqlString key, SqlByte value)
         {
-            return ValueInternal(key, typeof(short?), value.IsNull ? (short?)null : value.Value);
+            return InternalValue(key, typeof(byte?), value.IsNull ? (byte?)null : value.Value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET valuenullabletinyint(SqlString key, SqlInt16 value)
+        public SQLNET valuenullabletinyint(SqlString key, SqlByte value)
         {
-            return ValueTinyInt(key, value);
+            return ValueNullableTinyInt(key, value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUENULLABLETINYINT(SqlString key, SqlInt16 value)
+        public SQLNET VALUENULLABLETINYINT(SqlString key, SqlByte value)
         {
-            return ValueTinyInt(key, value);
+            return ValueNullableTinyInt(key, value);
         }
     }
 }

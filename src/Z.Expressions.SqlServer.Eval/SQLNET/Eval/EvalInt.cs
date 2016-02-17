@@ -6,6 +6,7 @@
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
 
 using System;
+using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
 
 // ReSharper disable InconsistentNaming
@@ -17,17 +18,16 @@ namespace Z.Expressions.SqlServer.Eval
         /// <summary>Eval the code or expression and return an int value.</summary>
         /// <returns>The int value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public int? EvalInt()
+        public SqlInt32 EvalInt()
         {
-            var value = Eval();
-
-            return value == null || value == DBNull.Value ? (int?) null : Convert.ToInt32(value);
+            var value = InternalEval();
+            return value == null || value == DBNull.Value ? SqlInt32.Null : new SqlInt32(Convert.ToInt32(value));
         }
 
         /// <summary>Eval the code or expression and return an int value.</summary>
         /// <returns>The int value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public int? evalint()
+        public SqlInt32 evalint()
         {
             return EvalInt();
         }
@@ -35,7 +35,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <summary>Eval the code or expression and return an int value.</summary>
         /// <returns>The int value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.None, SystemDataAccess = SystemDataAccessKind.None)]
-        public int? EVALINT()
+        public SqlInt32 EVALINT()
         {
             return EvalInt();
         }

@@ -7,7 +7,7 @@
 
 using System;
 using System.Data.SqlTypes;
-using System.Dynamic;
+using System.Linq;
 using Microsoft.SqlServer.Server;
 
 // ReSharper disable InconsistentNaming
@@ -18,6 +18,10 @@ namespace Z.Expressions.SqlServer.Eval
     [SqlUserDefinedType(Format.Native, IsByteOrdered = true)]
     public partial struct SQLNET : INullable
     {
+        public static int AddValue(int x, int y)
+        {
+            return x + y;
+        }
         //public static bool IsMatch(SqlString value)
         //{
         //    return Regex.IsMatch(value.Value, "toto");
@@ -25,6 +29,8 @@ namespace Z.Expressions.SqlServer.Eval
 
         /// <summary>The value serializable.</summary>
         public int ValueSerializable;
+
+        public int ValueParallel;
 
         /// <summary>Name of internal value.</summary>
         public static readonly string InternalValueName = "value";
@@ -34,7 +40,6 @@ namespace Z.Expressions.SqlServer.Eval
         {
             get
             {
-               
                 SQLNETItem item;
                 if (!EvalManager.CacheItem.TryGetValue(ValueSerializable, out item))
                 {
@@ -100,6 +105,37 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
             return EvalManager.CacheItem.Count;
         }
 
+        public SQLNET Compile()
+        {
+            var item = Item;
+
+            item.Delegate = EvalManager.Configuration.CompileSQLNET(item.Code, item.ParameterTypes.InnerDictionary);
+            item.IsCompiled = true;
+            Root();
+
+            return this;
+        }
+
+        public SQLNET compile()
+        {
+            return Compile();
+        }
+
+        public SQLNET COMPILE()
+        {
+            return Compile();
+        }
+
+        public static int Counter()
+        {
+            return EvalManager.DefaultContext.CacheItemCounter;
+        }
+
+        public int InstanceCounter()
+        {
+            return ValueSerializable;
+        }
+
         /// <summary>Expire caching item.</summary>
         /// <returns>true if it succeeds, false if it fails which usually means another process is already cleaning it.</returns>
         public static bool ExpireCache()
@@ -132,7 +168,7 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
                 code = TemplateConnection.Replace("[SQLNET_Code]", code);
             }
 
-            var sqlnet = new SQLNET {ValueSerializable = EvalManager.DefaultContext.GetNextCounter()};
+            var sqlnet = new SQLNET {ValueSerializable = EvalManager.DefaultContext.GetNextCacheItemCounter()};
             var sqlnetitem = new SQLNETItem {Code = code};
             EvalManager.CacheItem.TryAdd(sqlnet.ValueSerializable, sqlnetitem);
 
@@ -152,8 +188,8 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
         /// <returns>true if it succeeds, false if it fails.</returns>
         public static bool ReleaseLocks()
         {
-            EvalManager.CacheDelegate.ReleaseLock();
-            EvalManager.CacheItem.ReleaseLock();
+            EvalManager.CacheDelegate.Buckets.ToList().ForEach(x => x.ReleaseLock());
+            EvalManager.CacheItem.Buckets.ToList().ForEach(x => x.ReleaseLock());
             SharedLock.ReleaseLock(ref EvalManager.SharedLock.ExpireCacheLock);
 
             return true;
@@ -208,29 +244,6 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
             return Dispose();
         }
 
-        public SQLNET ValueInternal(SqlString keyString, Type type, object value)
-        {
-            var key = keyString.Value;
-
-            object oldType;
-            if (Item.ParameterTypes.TryGetValue(key, out oldType))
-            {
-                if (!Equals(oldType, type))
-                {
-                    Item.ParameterTypes[key] = type;
-                    Item.Delegate = null;
-                }
-
-                Item.ParameterValues[key] = value;
-            }
-            else
-            {
-                Item.ParameterTypes.Add(key, type);
-                Item.ParameterValues.Add(key, value);
-            }
-
-            return this;
-        }
 
         /// <summary>Parses the given value to a SQLNET object from the string representation.</summary>
         /// <param name="value">The value that reprensent a SQLNET object.</param>
@@ -239,6 +252,30 @@ using (SqlConnection connection = new SqlConnection(""context connection = true"
         public static SQLNET Parse(SqlString value)
         {
             throw new Exception(ExceptionMessage.GeneralException);
+        }
+
+        public SQLNET Root()
+        {
+            if (ValueParallel != 0)
+            {
+                var item = Item;
+                var parallelValue = item.GetParallelValue(ValueParallel);
+                item.ParameterValues = parallelValue.ParameterValues;
+                Item.ParallelItems.TryRemove(parallelValue);
+                ValueParallel = 0;
+            }
+
+            return this;
+        }
+
+        public SQLNET root()
+        {
+            return Root();
+        }
+
+        public SQLNET ROOT()
+        {
+            return Root();
         }
 
         /// <summary>Convert the SQLNET object into a string representation.</summary>

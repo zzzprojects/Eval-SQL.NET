@@ -5,6 +5,8 @@
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
 
+using System;
+using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
 
 // ReSharper disable InconsistentNaming
@@ -13,28 +15,28 @@ namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
     {
-        /// <summary>Eval the code or expression and return a SQLNET object value.</summary>
-        /// <returns>The SQLNET object value from the evaluated code or expression.</returns>
+        /// <summary>Eval the code or expression and return a varbinary value.</summary>
+        /// <returns>The varbinary value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public SQLNET EvalReadAccessSQLNET()
+        public SqlBinary EvalReadAccessVarBinary()
         {
-            return EvalSQLNET();
+            return EvalVarBinary();
         }
 
-        /// <summary>Eval the code or expression and return a SQLNET object value.</summary>
-        /// <returns>The SQLNET object value from the evaluated code or expression.</returns>
+        /// <summary>Eval the code or expression and return a varbinary value.</summary>
+        /// <returns>The varbinary value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public SQLNET evalreadaccesssqlnet()
+        public SqlBinary evalreadaccessvarbinary()
         {
-            return EvalReadAccessSQLNET();
+            return EvalReadAccessVarBinary();
         }
 
-        /// <summary>Eval the code or expression and return a SQLNET object value.</summary>
-        /// <returns>The SQLNET object value from the evaluated code or expression.</returns>
+        /// <summary>Eval the code or expression and return a varbinary value.</summary>
+        /// <returns>The varbinary value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public SQLNET EVALREADACCESSSQLNET()
+        public SqlBinary EVALREADACCESSVARBINARY()
         {
-            return EvalReadAccessSQLNET();
+            return EvalReadAccessVarBinary();
         }
     }
 }

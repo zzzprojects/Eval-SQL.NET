@@ -5,6 +5,8 @@
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
 
+using System;
+using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
 
 // ReSharper disable InconsistentNaming
@@ -13,28 +15,29 @@ namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
     {
-        /// <summary>Eval the code or expression and return a SQLNET object value.</summary>
-        /// <returns>The SQLNET object value from the evaluated code or expression.</returns>
+        /// <summary>Eval the code or expression and return a DateTime value.</summary>
+        /// <returns>The DateTime value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public SQLNET EvalReadAccessSQLNET()
+        public SqlDateTime EvalReadAccessDateTime()
         {
-            return EvalSQLNET();
+            return EvalDateTime();
         }
 
-        /// <summary>Eval the code or expression and return a SQLNET object value.</summary>
-        /// <returns>The SQLNET object value from the evaluated code or expression.</returns>
+        /// <summary>Eval the code or expression and return a DateTime value.</summary>
+        /// <returns>The DateTime value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public SQLNET evalreadaccesssqlnet()
+        public SqlDateTime evalreadaccessdatetime()
+
         {
-            return EvalReadAccessSQLNET();
+            return EvalReadAccessDateTime();
         }
 
-        /// <summary>Eval the code or expression and return a SQLNET object value.</summary>
-        /// <returns>The SQLNET object value from the evaluated code or expression.</returns>
+        /// <summary>Eval the code or expression and return a DateTime value.</summary>
+        /// <returns>The DateTime value from the evaluated code or expression.</returns>
         [SqlMethod(DataAccess = DataAccessKind.Read, SystemDataAccess = SystemDataAccessKind.Read)]
-        public SQLNET EVALREADACCESSSQLNET()
+        public SqlDateTime EVALREADACCESSDATETIME()
         {
-            return EvalReadAccessSQLNET();
+            return EvalReadAccessDateTime();
         }
     }
 }

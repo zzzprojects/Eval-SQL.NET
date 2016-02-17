@@ -30,6 +30,8 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
     <GenerateCreateScript>True</GenerateCreateScript>
+    <GenerateSqlClrDdl>True</GenerateSqlClrDdl>
+    <ValidateCasingOnIdentifiers>True</ValidateCasingOnIdentifiers>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -88,7 +90,6 @@
     <Folder Include="Helper" />
     <Folder Include="Extensions\Dictionary`2" />
     <Folder Include="Shared" />
-    <Folder Include="SQLNET\Type" />
     <Folder Include="ExtensionMethods" />
     <Folder Include="ExtensionMethods\String" />
     <Folder Include="ExtensionMethods\SqlCommand" />
@@ -97,6 +98,7 @@
     <Folder Include="EvalContext\Execute" />
     <Folder Include="SQLNET\ValueNullable" />
     <Folder Include="SQLNET\EvalReadAccess" />
+    <Folder Include="SQLNET\Internal" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -184,7 +186,6 @@
     <Compile Include="Shared\SharedLock.cs" />
     <Compile Include="Shared\SharedCache.cs" />
     <Compile Include="ListDictionary.cs" />
-    <Compile Include="SQLNET\Type\Type.cs" />
     <Compile Include="ExtensionMethods\String\String.Split.cs" />
     <Compile Include="SQLNET\Value\ValueTable.cs" />
     <Compile Include="ExtensionMethods\SqlCommand\ExecuteDataTable.cs" />
@@ -205,34 +206,20 @@
     <Compile Include="EvalCompiler\Parameter\ResolveParameterUntyped.cs" />
     <Compile Include="ExtensionMethods\System.Data\SaveChanges.cs" />
     <Compile Include="SQLNET\Value\ValueInt.cs" />
-    <Compile Include="SQLNET\Value\ValueBoolean.cs" />
-    <Compile Include="SQLNET\Value\ValueBool.cs" />
-    <Compile Include="SQLNET\Value\ValueByte.cs" />
+    <Compile Include="SQLNET\Value\ValueBit.cs" />
     <Compile Include="SQLNET\Value\ValueChars.cs" />
     <Compile Include="SQLNET\Value\ValueDateTime.cs" />
-    <Compile Include="SQLNET\Value\ValueGuid.cs" />
-    <Compile Include="SQLNET\Value\ValueInt16.cs" />
-    <Compile Include="SQLNET\Value\ValueInt32.cs" />
-    <Compile Include="SQLNET\Value\ValueShort.cs" />
-    <Compile Include="SQLNET\Value\ValueInt64.cs" />
-    <Compile Include="SQLNET\Value\ValueLong.cs" />
-    <Compile Include="SQLNET\Value\ValueBytes.cs" />
+    <Compile Include="SQLNET\Value\ValueUniqueIdentifier.cs" />
+    <Compile Include="SQLNET\Value\ValueSmallInt.cs" />
+    <Compile Include="SQLNET\Value\ValueVarBinary.cs" />
     <Compile Include="SQLNET\Value\ValueTinyInt.cs" />
     <Compile Include="SQLNET\Value\ValueBigInt.cs" />
     <Compile Include="SQLNET\ValueNullable\ValueNullableBigInt.cs" />
-    <Compile Include="SQLNET\ValueNullable\ValueNullableBool.cs" />
-    <Compile Include="SQLNET\ValueNullable\ValueNullableBoolean.cs" />
     <Compile Include="SQLNET\ValueNullable\ValueNullableDateTime.cs" />
     <Compile Include="SQLNET\ValueNullable\ValueNullableInt.cs" />
-    <Compile Include="SQLNET\ValueNullable\ValueNullableInt32.cs" />
-    <Compile Include="SQLNET\ValueNullable\ValueNullableLong.cs" />
-    <Compile Include="SQLNET\ValueNullable\ValueNullableInt64.cs" />
-    <Compile Include="SQLNET\ValueNullable\ValueNullableShort.cs" />
     <Compile Include="SQLNET\ValueNullable\ValueNullableTinyInt.cs" />
-    <Compile Include="SQLNET\ValueNullable\ValueNullableByte.cs" />
     <Compile Include="SQLNET\ValueNullable\ValNullable.cs" />
     <Compile Include="SQLNET\ValueNullable\ValueNullable.cs" />
-    <Compile Include="SQLNET\ValueNullable\ValueNullableInt16.cs" />
     <Compile Include="SQLNET\EvalReadAccess\EvalReadAccess.cs" />
     <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessBigInt.cs" />
     <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessBit.cs" />
@@ -241,5 +228,32 @@
     <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessSQLNET.cs" />
     <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessString.cs" />
     <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessTinyInt.cs" />
+    <Compile Include="SQLNET\EvalTVF\SQLNET_EvalTVF_String.cs" />
+    <Compile Include="SQLNET\Eval\EvalBinary.cs" />
+    <Compile Include="SQLNET\Eval\EvalVarBinary.cs" />
+    <Compile Include="SQLNET\Eval\EvalChars.cs" />
+    <Compile Include="SQLNET\Eval\EvalDateTime.cs" />
+    <Compile Include="SQLNET\Eval\EvalUniqueIdentifier.cs" />
+    <Compile Include="SQLNET\Eval\EvalXml.cs" />
+    <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessBinary.cs" />
+    <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessChars.cs" />
+    <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessDateTime.cs" />
+    <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessUniqueIdentifier.cs" />
+    <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessXml.cs" />
+    <Compile Include="SQLNET\EvalReadAccess\EvalReadAccessVarBinary.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableBinary.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableChars.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableXml.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableVarBinary.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableUniqueIdentifier.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableBit.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableSmallInt.cs" />
+    <Compile Include="SQLNET\ValueNullable\ValueNullableString.cs" />
+    <Compile Include="SQLNET\Internal\InternalValue.cs" />
+    <Compile Include="SQLNET\Internal\InternalEval.cs" />
+    <Compile Include="SQLNETItem\SQLNETParallelItem.cs" />
+    <Compile Include="Shared\SharedList.cs" />
+    <Compile Include="Shared\SharedBucketList.cs" />
+    <Compile Include="Shared\SharedBucketCache.cs" />
   </ItemGroup>
 </Project>

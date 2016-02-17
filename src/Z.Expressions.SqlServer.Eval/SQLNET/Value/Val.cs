@@ -20,7 +20,7 @@ namespace Z.Expressions.SqlServer.Eval
         public SQLNET Val(SqlString key, object value)
         {
             value = SqlTypeHelper.ConvertToType(value);
-            return ValueInternal(key, value.GetType(), value);
+            return InternalValue(key, value.GetType(), value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>

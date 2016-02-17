@@ -19,6 +19,7 @@ namespace Z.Expressions
         /// <summary>The delegate to cache.</summary>
         public Func<IDictionary, object> Delegate;
 
+        /// <summary>The inner delegate.</summary>
         public object InnerDelegate;
 
         /// <summary>The last access Date/Time of the delegate.</summary>
@@ -26,11 +27,11 @@ namespace Z.Expressions
 
         /// <summary>Constructor.</summary>
         /// <param name="cacheKey">The key used to cache the EvalDelegate.</param>
-        /// <param name="delegate">The delegate to cache.</param>
-        public EvalDelegate(string cacheKey, Func<IDictionary, object> @delegate)
+        /// <param name="delegateAction">The delegate to cache.</param>
+        public EvalDelegate(string cacheKey, Func<IDictionary, object> delegateAction)
         {
             CacheKey = cacheKey;
-            Delegate = @delegate;
+            Delegate = delegateAction;
             LastAccess = DateTime.Now;
         }
     }

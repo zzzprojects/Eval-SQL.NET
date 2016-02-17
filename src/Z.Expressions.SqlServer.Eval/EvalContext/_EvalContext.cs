@@ -28,14 +28,13 @@ namespace Z.Expressions
             BindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy;
             CacheKeyPrefix = GetType().FullName;
             UseCaretForExponent = false;
-
             RegisterDefaultAlias();
 
             ExpireCacheNextScheduled = DateTime.Now.Add(ExpireCacheDelay);
         }
 
-        /// <summary>The counter.</summary>
-        public int Counter = int.MinValue;
+        /// <summary>The cache item counter.</summary>
+        public int CacheItemCounter = int.MinValue;
 
         /// <summary>The delay between expire cache call.</summary>
         public TimeSpan ExpireCacheDelay = TimeSpan.FromMinutes(5);
@@ -128,19 +127,19 @@ namespace Z.Expressions
         /// <value>true if the caret should be used for exponent, false if not.</value>
         public bool UseCaretForExponent { get; set; }
 
-        /// <summary>Gets the next counter.</summary>
-        /// <returns>The next counter.</returns>
-        public int GetNextCounter()
+        /// <summary>Gets the next cache item counter.</summary>
+        /// <returns>The next cache item counter.</returns>
+        public int GetNextCacheItemCounter()
         {
             try
             {
-                SharedLock.AcquireLock(ref EvalManager.SharedLock.CounterLock);
-                Counter++;
-                return Counter;
+                SharedLock.AcquireLock(ref EvalManager.SharedLock.CacheItemLock);
+                CacheItemCounter++;
+                return CacheItemCounter;
             }
             finally
             {
-                SharedLock.ReleaseLock(ref EvalManager.SharedLock.CounterLock);
+                SharedLock.ReleaseLock(ref EvalManager.SharedLock.CacheItemLock);
             }
         }
     }

@@ -17,27 +17,27 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueByte(SqlString key, SqlByte value)
+        public SQLNET ValueNullableVarBinary(SqlString key, SqlBytes value)
         {
-            return ValueInternal(key, typeof (byte), value.Value);
+            return InternalValue(key, typeof (byte[]), value.Value);
         }
 
         /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET valuebyte(SqlString key, SqlByte value)
+        public SQLNET valuenullablevarbinary(SqlString key, SqlBytes value)
         {
-            return ValueByte(key, value);
+            return ValueNullableVarBinary(key, value);
         }
 
         /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUEBYTE(SqlString key, SqlByte value)
+        public SQLNET VALUENULLABLEVARBINARY(SqlString key, SqlBytes value)
         {
-            return ValueByte(key, value);
+            return ValueNullableVarBinary(key, value);
         }
     }
 }

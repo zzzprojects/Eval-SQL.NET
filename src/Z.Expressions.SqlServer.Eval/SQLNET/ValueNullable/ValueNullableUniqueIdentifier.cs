@@ -7,6 +7,7 @@
 
 // ReSharper disable InconsistentNaming
 
+using System;
 using System.Data.SqlTypes;
 
 namespace Z.Expressions.SqlServer.Eval
@@ -17,27 +18,27 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueNullableByte(SqlString key, SqlByte value)
+        public SQLNET ValueNullableUniqueIdentifier(SqlString key, SqlGuid value)
         {
-            return ValueInternal(key, typeof (byte?), value.IsNull ? (byte?)null : value.Value);
+            return InternalValue(key, typeof (Guid?), value.IsNull ? (Guid?) null : value.Value);
         }
 
         /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET valuenullablebyte(SqlString key, SqlByte value)
+        public SQLNET valuenullableuniqueidentifier(SqlString key, SqlGuid value)
         {
-            return ValueByte(key, value);
+            return ValueNullableUniqueIdentifier(key, value);
         }
 
         /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUENULLABLEBYTE(SqlString key, SqlByte value)
+        public SQLNET VALUENULLABLEUNIQUEIDENTIFIER(SqlString key, SqlGuid value)
         {
-            return ValueByte(key, value);
+            return ValueNullableUniqueIdentifier(key, value);
         }
     }
 }

@@ -17,27 +17,27 @@ namespace Z.Expressions.SqlServer.Eval
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueNullableInt64(SqlString key, SqlInt64 value)
+        public SQLNET ValueNullableSmallInt(SqlString key, SqlInt16 value)
         {
-            return ValueInternal(key, typeof (long?), value.IsNull ? (long?)null : value.Value);
+            return InternalValue(key, typeof(short?), value.IsNull ? (short?)null : value.Value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET valuenullableint64(SqlString key, SqlInt64 value)
+        public SQLNET valuenullablesmallint(SqlString key, SqlInt16 value)
         {
-            return ValueInt64(key, value);
+            return ValueNullableSmallInt(key, value);
         }
 
         /// <summary>Add or update a value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
         /// <param name="value">The value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUENULLABLEINT64(SqlString key, SqlInt64 value)
+        public SQLNET VALUENULLABLESMALLINT(SqlString key, SqlInt16 value)
         {
-            return ValueInt64(key, value);
+            return ValueNullableSmallInt(key, value);
         }
     }
 }

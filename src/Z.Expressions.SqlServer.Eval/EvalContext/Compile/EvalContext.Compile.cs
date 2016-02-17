@@ -18,9 +18,9 @@ namespace Z.Expressions
         /// <param name="code">The code or expression to compile.</param>
         /// <param name="parameterTypes">Parameter types used to compile the code or expression.</param>
         /// <returns>A delegate of type Func that represents the compiled code or expression.</returns>
-        public EvalDelegate Compile(string code, ListDictionary parameterTypes)
+        public EvalDelegate CompileSQLNET(string code, IDictionary<string, Type> parameterTypes)
         {
-            return EvalCompiler.Compile(this, code, parameterTypes, typeof (object));
+            return EvalCompiler.CompileSQLNET(this, code, parameterTypes, typeof (object));
         }
 
         /// <summary>Compile the code or expression and return a delegate of type Func to execute.</summary>

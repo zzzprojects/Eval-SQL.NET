@@ -20,7 +20,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET ValueString(SqlString key, SqlString value)
         {
-            return ValueInternal(key, typeof(string), value.Value);
+            return InternalValue(key, typeof(string), value.Value);
         }
 
         /// <summary>Add or update a string value associated with the specified key.</summary>

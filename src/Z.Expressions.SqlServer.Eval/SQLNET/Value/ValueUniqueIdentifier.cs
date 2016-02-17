@@ -7,37 +7,38 @@
 
 // ReSharper disable InconsistentNaming
 
+using System;
 using System.Data.SqlTypes;
 
 namespace Z.Expressions.SqlServer.Eval
 {
     public partial struct SQLNET
     {
-        /// <summary>Add or update a value associated with the specified key.</summary>
+        /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
-        /// <param name="value">The value to add or update associated with the specified key.</param>
+        /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET ValueNullableBool(SqlString key, SqlBoolean value)
+        public SQLNET ValueUniqueIdentifier(SqlString key, SqlGuid value)
         {
-            return ValueInternal(key, typeof (bool?), value.IsNull ? (bool?)null : value.Value);
+            return InternalValue(key, typeof (Guid), value.Value);
         }
 
-        /// <summary>Add or update a value associated with the specified key.</summary>
+        /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
-        /// <param name="value">The value to add or update associated with the specified key.</param>
+        /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET valuenullablebool(SqlString key, SqlBoolean value)
+        public SQLNET valueuniqueidentifier(SqlString key, SqlGuid value)
         {
-            return ValueBool(key, value);
+            return ValueUniqueIdentifier(key, value);
         }
 
-        /// <summary>Add or update a value associated with the specified key.</summary>
+        /// <summary>Add or update a binary value associated with the specified key.</summary>
         /// <param name="key">The key of the value to add or update.</param>
-        /// <param name="value">The value to add or update associated with the specified key.</param>
+        /// <param name="value">The binary value to add or update associated with the specified key.</param>
         /// <returns>A fluent SQLNET object.</returns>
-        public SQLNET VALUENULLABLEBOOL(SqlString key, SqlBoolean value)
+        public SQLNET VALUEUNIQUEIDENTIFIER(SqlString key, SqlGuid value)
         {
-            return ValueBool(key, value);
+            return ValueUniqueIdentifier(key, value);
         }
     }
 }

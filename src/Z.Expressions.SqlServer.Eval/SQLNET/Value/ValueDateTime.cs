@@ -20,7 +20,7 @@ namespace Z.Expressions.SqlServer.Eval
         /// <returns>A fluent SQLNET object.</returns>
         public SQLNET ValueDateTime(SqlString key, SqlDateTime value)
         {
-            return ValueInternal(key, typeof (DateTime), value.Value);
+            return InternalValue(key, typeof (DateTime), value.Value);
         }
 
         /// <summary>Add or update a binary value associated with the specified key.</summary>
