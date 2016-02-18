@@ -44,7 +44,7 @@ FROM @tableFormula
 
 _Minimum Requirements_
 - SQL CLR Permission Level: **SAFE**
-- SQL 2012
+- SQL 2012, SQL Azure v12
 - .NET Framework 4.0
 
 Stay updated with latest changes
