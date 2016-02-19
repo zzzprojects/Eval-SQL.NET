@@ -83,7 +83,7 @@ FROM    @table
 ```
 
 ##### Flexible
-You can use in your expressions almost the full C# language
+Use anything from C# to build your expression
 - C# Operators
 - C# Keywords
 - C# Objects
@@ -106,8 +106,8 @@ string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 var dir = new DirectoryInfo(path);
 return dir.GetFiles("*.*")
           .Select(x => new { x.FullName, FileContent = File.ReadAllText(x.FullName) })
-		  .OrderBy(x => x.FullName)')
-    .Impersonate()
+          .OrderBy(x => x.FullName)')
+          .Impersonate()
 
 -- SELECT FullName, FileContext FROM DesktopFiles ORDER BY Fullname
 EXEC dbo.SQLNET_EvalResultSet @sqlnet
