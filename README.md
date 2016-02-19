@@ -114,7 +114,7 @@ EXEC dbo.SQLNET_EvalResultSet @sqlnet
 ```
 
 ##### Security
-Stop compromising your SQL Server with **HIGH security risk** procedure like xp_cmdshell which has no restriction and can call bat/cmd script. 
+Stop compromising your SQL Server with **HIGH security risk** procedure like xp_cmdshell which has no restriction and can execute bat/cmd script. 
 
 Use a **more restrictive** solution with Eval SQL.NET and [EXTERNAL_ACCESS](https://msdn.microsoft.com/library/ms345101.aspx) permission which limit what the user can do.
 
