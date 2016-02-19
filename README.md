@@ -83,7 +83,7 @@ FROM    @table
 ```
 
 ##### Flexible
-Use anything from C# to build your expression
+Use the full C# language and features to build your expression
 - C# Operators
 - C# Keywords
 - C# Objects
