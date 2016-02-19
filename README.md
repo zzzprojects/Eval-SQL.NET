@@ -52,7 +52,7 @@ FROM    @t AS A
                     ) AS B
 ```
 
-##### Performance
+##### Scalability
 Stop using **slow** user-defined function (UDF) and table-valued function (TVF) and **drastically improve** query performance with Eval SQL.NET.
 
 | Methods | 1,000 rows | 10,000 rows | 100,000 rows | 1,000,000 rows |
@@ -82,7 +82,7 @@ SELECT  @sqlnet.ValueInt('x', X)
 FROM    @table
 ```
 
-##### Flexible
+##### Flexibility
 Use C# language and features to build your expression
 - C# Operators
 - C# Keywords
