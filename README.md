@@ -82,6 +82,12 @@ SELECT  @sqlnet.ValueInt('x', X)
 FROM    @table
 ```
 
+##### Flexible
+You can access to everything C# allow you to do
+- C# Operators (+, -, *, /, etc.)
+- C# Keywords (if/else, switch/case, try/catch, etc.)
+- C# Objects (Math, Regex, etc.)
+
 ## File Operation - Use FileInfo and DirectoryInfo
 ##### Problem
 You need to read/write files and need a readable, maintenable and secure solution without enabling xp_cmdshell.
