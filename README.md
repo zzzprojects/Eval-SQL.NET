@@ -83,10 +83,13 @@ FROM    @table
 ```
 
 ##### Flexible
-You can access to everything C# allow you to do
-- C# Operators (+, -, *, /, etc.)
-- C# Keywords (if/else, switch/case, try/catch, etc.)
-- C# Objects (Math, Regex, etc.)
+You can access to everything C# allow you to do to create your expression
+- C# Operators
+- C# Keywords
+- C# Objects
+- Anonymous Type
+- LINQ
+- Etc.
 
 ## File Operation - Use FileInfo and DirectoryInfo
 ##### Problem
