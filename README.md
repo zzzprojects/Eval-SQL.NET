@@ -17,7 +17,7 @@ SELECT  @SQLNET::New('x > y ? x+y : x*y').ValueInt('x', 1).ValueInt('y', 2).Eval
 
 The library is for C# lover who would like to extend SQL capabilities and get the best of both language.
 
-##### Scalabile
+##### Scalable
 Stop using **slow** user-defined function (UDF) and table-valued function (TVF) and **drastically improve** query performance with Eval SQL.NET.
 
 | Methods | 1,000 rows | 10,000 rows | 100,000 rows | 1,000,000 rows |
