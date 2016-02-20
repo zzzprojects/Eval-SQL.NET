@@ -17,6 +17,14 @@ SELECT  @SQLNET::New('x > y ? x+y : x*y').ValueInt('x', 1).ValueInt('y', 2).Eval
 
 The library is for C# lover who would like to extend SQL capabilities and get the best of both language.
 
+##### Scalability
+Stop using **slow** user-defined function (UDF) and table-valued function (TVF) and **drastically improve** query performance with Eval SQL.NET.
+
+| Methods | 1,000 rows | 10,000 rows | 100,000 rows | 1,000,000 rows |
+| -------- | ---: | ---: | ---: | ---: |
+|Eval SQL.NET | 4 ms | 13 ms | 160 ms | 1,650 ms |
+|fn_split (TVF) | 100 ms | 625 ms | 5,500 ms | 55,000 ms |
+
 ## Download
 **[Eval-SQL.NET-Install.sql](https://github.com/zzzprojects/Eval-SQL.NET/releases)**
 
@@ -52,13 +60,7 @@ FROM    @t AS A
                     ) AS B
 ```
 
-##### Scalability
-Stop using **slow** user-defined function (UDF) and table-valued function (TVF) and **drastically improve** query performance with Eval SQL.NET.
 
-| Methods | 1,000 rows | 10,000 rows | 100,000 rows | 1,000,000 rows |
-| -------- | ---: | ---: | ---: | ---: |
-|Eval SQL.NET | 4 ms | 13 ms | 160 ms | 1,650 ms |
-|fn_split (TVF) | 100 ms | 625 ms | 5,500 ms | 55,000 ms |
 
 ## Arithmetic Expression - Evaluate dynamic expression
 
