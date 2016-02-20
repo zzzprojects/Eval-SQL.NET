@@ -1,5 +1,5 @@
 ## Eval SQL.NET
-**DO ALL** the things which is normally impossible do with SQL!
+**DO ALL** the things which is normally impossible to do with SQL!
 - Arithmetic Expression
 - Dynamic Pivot Table
 - Regular Expression
