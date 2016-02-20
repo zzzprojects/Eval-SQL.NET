@@ -1,10 +1,10 @@
 ## Eval SQL.NET
 **DO ALL** the things which is normally impossible to do with SQL!
-- Arithmetic Expression
+- Dynamic Arithmetic Expression
 - Dynamic Pivot Table
 - Regular Expression
 - String Interpolation
-- Use DirectoryInfo & FileInfo
+- Replace xp_cmdshell with DirectoryInfo & FileInfo
 
 It’s easy to use, flexible, secure and scalable by performing **3-20x faster** than User-Defined Function (UDF).
 
