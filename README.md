@@ -59,7 +59,7 @@ FROM    @t AS A
 ```
 
 ##### Capability
-Regex allow to resolve all case unsupported by “LIKE” and “PATHINDEX” and more.
+Regex allow to resolve all case unsupported by “LIKE” and “PATHINDEX”. You can easily validate email or website url using regular expression.
 
 ## Arithmetic Expression - Evaluate dynamic expression
 
