@@ -16,7 +16,7 @@ SELECT  @SQLNET::New('x > y ? x+y : x*y').ValueInt('x', 1).ValueInt('y', 2).Eval
 ```
 
 ##### Scalable
-Stop using **slow** user-defined function (UDF) and table-valued function (TVF) and **drastically improve** query performance with Eval SQL.NET.
+Stop using **slow** user-defined function (UDF) and table-valued function (TVF) and **dramatically improve** query performance with Eval SQL.NET.
 
 | Methods | 1,000 rows | 10,000 rows | 100,000 rows | 1,000,000 rows |
 | -------- | ---: | ---: | ---: | ---: |
