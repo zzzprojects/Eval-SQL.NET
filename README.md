@@ -15,8 +15,6 @@ You can evaluate an expression **ONE MILLION** times under a second!
 SELECT  @SQLNET::New('x > y ? x+y : x*y').ValueInt('x', 1).ValueInt('y', 2).EvalInt()
 ```
 
-The library is for C# lover who would like to extend SQL capabilities and get the best of both language.
-
 ##### Scalable
 Stop using **slow** user-defined function (UDF) and table-valued function (TVF) and **drastically improve** query performance with Eval SQL.NET.
 
