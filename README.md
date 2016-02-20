@@ -58,7 +58,8 @@ FROM    @t AS A
                     ) AS B
 ```
 
-
+##### Capability
+Regex allow to resolve all case unsupported by “LIKE” and “PATHINDEX” and more.
 
 ## Arithmetic Expression - Evaluate dynamic expression
 
