@@ -1,5 +1,4 @@
-## Eval SQL.NET
-**DO ALL** the things which is normally impossible to do with SQL!
+# Dramatically improve query performance and overcome SQL limitations with Eval Function
 - Dynamic Arithmetic Expression
 - Dynamic Pivot Table
 - Regular Expression
