@@ -142,10 +142,10 @@ Help us to make this library a **MUST-HAVE** by contributing
 
 **Entity Framework**
 - [EntityFramework Extensions](http://entityframework-extensions.net/)
-- [EntityFramework-Plus.NET](http://entityframework-plus.net)
+- [EntityFramework Plus](http://entityframework-plus.net)
 
 **Bulk Operations**
-- [Bulk-Operations.NET](http://bulk-operations.net/)
+- [Bulk Operations](http://bulk-operations.net/)
 
 **Expression Evaluator**
 - [Eval-SQL.NET](http://eval-sql.net/)
