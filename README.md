@@ -1,6 +1,6 @@
 Got a complex Problem? Limited by SQL Server?
 
-**Find your solutions**
+**Find your solutions:**
 - Dynamic Arithmetic Expression
 - Dynamic Pivot Table
 - Regular Expression
