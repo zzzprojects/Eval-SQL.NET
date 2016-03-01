@@ -1,4 +1,4 @@
-# Dramatically improve query performance and overcome SQL limitations with Eval Function
+Got a Problem? Limited by SQL Server? **Find your solutions**
 - Dynamic Arithmetic Expression
 - Dynamic Pivot Table
 - Regular Expression
