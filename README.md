@@ -1,4 +1,4 @@
-Got a complex Problem? Limited by SQL Server?
+Got a complex SQL problem? Limited by SQL Server?
 
 **Find your solutions:**
 - Dynamic Arithmetic Expression
