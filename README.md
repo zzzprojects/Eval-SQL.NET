@@ -10,8 +10,8 @@ It’s easy to use, flexible, secure and scalable by performing **3-20x faster**
 You can evaluate an expression **ONE MILLION** times under a second!
 
 ```sql
--- SELECT 2
-SELECT  @SQLNET::New('x > y ? x+y : x*y').ValueInt('x', 1).ValueInt('y', 2).EvalInt()
+-- SELECT 3
+SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt()
 ```
 
 ##### Scalable
