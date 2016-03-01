@@ -1,4 +1,4 @@
-Got a Problem? Limited by SQL Server? **Find your solutions**
+Got a Complex Problem? Limited by SQL Server? **Find your Solutions**
 - Dynamic Arithmetic Expression
 - Dynamic Pivot Table
 - Regular Expression
