@@ -12,12 +12,6 @@ SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt()
 - String Interpolation
 - Replace xp_cmdshell with DirectoryInfo & FileInfo
 
-It’s easy to use, flexible, secure and scalable by performing **3-20x faster** than User-Defined Function (UDF).
-
-You can evaluate an expression **ONE MILLION** times under a second!
-
-
-
 ## Performance & Scalability
 Performance tuning is one of the most important task for a DBA. Don’t miss the chance to **dramatically improve query performance** by **300%** for simple expression and by more than **2000%** for complex code over User-Defined Function (UDF) and Table-Valued Function (TVF).
 
