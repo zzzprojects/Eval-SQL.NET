@@ -16,7 +16,7 @@ You can evaluate an expression **ONE MILLION** times under a second!
 SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt()
 ```
 
-##### Performance & Scalability
+## Performance & Scalability
 Performance tuning is one of the most important task for a DBA. Don’t miss the chance to **dramatically improve query performance** by **300%** for simple expression and by more than **2000%** for complex code over User-Defined Function (UDF) and Table-Valued Function (TVF).
 
 _Benchmark to split string with delimiters in SQL_
