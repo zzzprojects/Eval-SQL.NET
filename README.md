@@ -1,4 +1,4 @@
-Provide to SQL Server all missing pieces like regular expression and dynamic arithmetic string evaluation.
+Provide to your SQL Server all missing pieces like regular expression and dynamic arithmetic string evaluation.
 
 ```sql
 -- SELECT 3
