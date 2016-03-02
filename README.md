@@ -34,13 +34,32 @@ Stay updated with latest changes
 <a href="https://twitter.com/zzzprojects" target="_blank"><img src="http://www.zzzprojects.com/images/twitter_follow.png" alt="Twitter Follow" height="24" /></a>
 <a href="https://www.facebook.com/zzzprojects/" target="_blank"><img src="http://www.zzzprojects.com/images/facebook_like.png" alt="Facebook Like" height="24" /></a>
 
-## Regular Expression - Split text with delimiters
+## Evaluate dynamic arithmetic/math expression in SQL
+_Make the impossible now possible. Evaluate C# expression in SQL to overcome limitations._
 
-##### Problem
-You need to split a text with delimiter and need a flexible and scalable solution which allow multiple delimiters and perform with millions rows.
+- Allow trusted users to create report field and filter
+- Consume Web Service
+- Replace text in template with String Interpolation
 
-##### Solution
-The Regex.Split function allow to use a regular expression to split a text which make it the most extensible solution.
+```csharp
+-- CREATE test
+DECLARE @table TABLE ( X INT, Y INT, Z INT )
+INSERT  INTO @table VALUES  ( 2, 4, 6 ),  ( 3, 5, 7 ), ( 4, 6, 8 )
+
+-- Result: 14, 22, 32
+DECLARE @sqlnet SQLNET = SQLNET::New('x*y+z')
+SELECT  @sqlnet.ValueInt('x', X)
+               .ValueInt('y', Y)
+               .ValueInt('z', Z)
+               .EvalInt()
+FROM    @table
+```
+
+## Split text with delimiter
+_Improve performance and capability for splitting text with an easy to use split function and LINQ expression_
+- Split text with multiple delimiters
+- Split text using a regular expression
+- Include row index
 
 ```
 -- CREATE test
@@ -57,46 +76,35 @@ FROM    @t AS A
                     ) AS B
 ```
 
-##### Capability
-Regex allow to resolve all case unsupported by “LIKE” and “PATHINDEX”. You can easily validate email or website url using regular expression.
+## Use regular expression in SQL Server
+_Use Regex flexibility to overcome “LIKE” and “PATHINDEX” limitations._
+- IsMatch
+- Match
+- Matches
+- Replace
+- Split
 
-## Arithmetic Expression - Evaluate dynamic expression
+```sql
+DECLARE @customer TABLE ( Email VARCHAR(255) )
 
-##### Problem
-You need a fast and flexible solution to support custom report fields and filters.
+INSERT  INTO @customer
+VALUES  ( 'info@zzzprojects.com' ),
+        ( 'invalid.com' ),
+        ( 'sales@zzzprojects.com' )
 
-##### Solution
-Evalute C# expression in SELECT statement and WHERE clause. The compiler honor operators precedence and parenthesis.
+DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email, 
+@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$")')
 
-```csharp
--- CREATE test
-DECLARE @table TABLE ( X INT, Y INT, Z INT )
-INSERT  INTO @table VALUES  ( 2, 4, 6 ),  ( 3, 5, 7 ), ( 4, 6, 8 )
-
--- Result: 14, 22, 32
-DECLARE @sqlnet SQLNET = SQLNET::New('x*y+z')
-SELECT  @sqlnet.ValueInt('x', X)
-               .ValueInt('y', Y)
-               .ValueInt('z', Z)
-               .EvalInt()
-FROM    @table
+-- SELECT 'invalid.com'
+SELECT * FROM @customer WHERE @valid_email.ValueString('email', Email).EvalBit() = 0
 ```
 
-##### Flexibility
-Use C# language and features to build your expression
-- C# Operators
-- C# Keywords
-- C# Objects
-- Anonymous Type
-- LINQ
-- Etc.
-
-## File Operation - Use FileInfo and DirectoryInfo
-##### Problem
-You need to read/write files and need a readable, maintenable and secure solution without enabling xp_cmdshell.
-
-##### Solution
-Use well-known and documented C# object to read and write your files and improve your server security by impersonating the current user context.
+## Replace xp_cmdshell with restrictive alternative
+_Avoid enabling xp_cmdshell and compromising your SQL Server and use instead a more restrictive solution._
+- Impersonate Context
+- Improve maintainability
+- Improve readability
+- Improve security
 
 ```csharp
 -- REQUIRE EXTERNAL_ACCESS permission
@@ -112,11 +120,6 @@ return dir.GetFiles("*.*")
 -- SELECT FullName, FileContext FROM DesktopFiles ORDER BY Fullname
 EXEC dbo.SQLNET_EvalResultSet @sqlnet
 ```
-
-##### Security
-Stop compromising your SQL Server with **HIGH security risk** procedure like xp_cmdshell which has no restriction and can execute bat/cmd script. 
-
-Use a **more restrictive** solution with Eval SQL.NET and [EXTERNAL_ACCESS](https://msdn.microsoft.com/library/ms345101.aspx) permission which limit what the user can do.
 
 ## FREE vs PRO
 
