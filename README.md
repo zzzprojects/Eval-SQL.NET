@@ -1,12 +1,9 @@
-Provide to SQL Server all missing pieces like regular expression and dynamic arithmetic expression evaluation.
+Provide to SQL Server all missing pieces like regular expression and dynamic arithmetic string evaluation.
 
 ```sql
 -- SELECT 3
 SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt()
 ```
-
-
-Got a complex SQL problem? Limited by SQL Server?
 
 **Find your solutions:**
 - Dynamic Arithmetic Expression
