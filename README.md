@@ -1,3 +1,11 @@
+Provide to SQL Server all missing pieces like regular expression and dynamic arithmetic expression evaluation.
+
+```sql
+-- SELECT 3
+SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt()
+```
+
+
 Got a complex SQL problem? Limited by SQL Server?
 
 **Find your solutions:**
@@ -11,10 +19,7 @@ It’s easy to use, flexible, secure and scalable by performing **3-20x faster**
 
 You can evaluate an expression **ONE MILLION** times under a second!
 
-```sql
--- SELECT 3
-SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt()
-```
+
 
 ## Performance & Scalability
 Performance tuning is one of the most important task for a DBA. Don’t miss the chance to **dramatically improve query performance** by **300%** for simple expression and by more than **2000%** for complex code over User-Defined Function (UDF) and Table-Valued Function (TVF).
