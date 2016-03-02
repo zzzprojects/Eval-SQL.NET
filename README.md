@@ -23,7 +23,7 @@ _Benchmark to split string with delimiters in SQL_
 
 | Methods       | 1,000 rows | 10,000 rows | 100,000 rows | 1,000,000 rows |
 | ------------- | ---------: | ----------: | -----------: | -------------: |
-|Eval SQL.NET   | 4 ms       | 13 ms       | 160 ms       | 1,650 ms       |
+|Eval-SQL.NET   | 4 ms       | 13 ms       | 160 ms       | 1,650 ms       |
 |fn_split (TVF) | 100 ms     | 625 ms      | 5,500 ms     | 55,000 ms      |
 
 ## Download
