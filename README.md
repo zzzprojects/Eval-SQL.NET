@@ -125,11 +125,11 @@ EXEC dbo.SQLNET_EvalResultSet @sqlnet
 
 ## FREE vs PRO
 
-Features | FREE Version | **[PRO Version](http://eval-sql.net/#pro)**
------------- | :-------------: | :-------------:
-Maximum Characters | 50 | Unlimited
-Commercial License | No | Yes
-Support & Upgrades (1 year) | No | Yes
+Features | **[PRO Version](http://eval-sql.net/#pro)**
+------------ | :-------------:
+Maximum Characters | Unlimited
+Commercial License | Yes
+Support & Upgrades (1 year) | Yes
 
 Learn more about the **[PRO Version](http://eval-sql.net/#pro)**
 
