@@ -25,6 +25,8 @@ _Benchmark to split string with delimiters in SQL_
 ## Download
 **[Eval-SQL.NET-Install.sql](https://github.com/zzzprojects/Eval-SQL.NET/releases)**
 
+_* PRO Version unlocked for the current month_
+
 _Minimum Requirements:_
 - SQL 2012 / SQL Azure v12
 - SAFE Permission (SQL CLR)
