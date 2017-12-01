@@ -1,0 +1,38 @@
+---
+permalink: installing
+---
+
+**Eval SQL.NET** can be installed easily.
+
+This library is **NOT FREE**
+
+The latest version always contains a trial that expires at the end of the month. You can extend your trial for several months by downloading the latest version at the start of every month.
+
+## Download
+
+First, let install the library in a test database.
+
+ - Create a new SQL Server database (using SQL Server 2012, 2014 or 2016)
+ - Install the latest version: Eval SQL.NET-Install.sql
+ - Change [DATABASE_NAME] by the newly created database name
+
+*The script enable SQL CLR.**
+
+<div class="row">
+	<div class="col-lg-6">
+		<div class="card card-layout-z2 wow slideInLeft">
+			<div class="card-header wow slideInDown">
+				<h3>Eval SQL.NET</h3>
+			</div>
+			<div class="card-body wow slideInUp">
+				<a class="btn btn-lg btn-z" role="button" href="https://github.com/zzzprojects/Eval-SQL.NET/releases/" onclick="ga('send', 'event', { eventAction: 'download'});" style="visibility: visible; animation-name: pulse;">
+					<i class="fa fa-cloud-download" aria-hidden="true"></i>
+					NuGet Download
+				</a>
+				<div>Download Count:</div>
+				<div class="download-count2"><img src="https://zzzprojects.github.io/images/nuget/ef6-full-version-big-d.svg"></div>
+			</div>
+		</div>
+	</div>
+</div>
+

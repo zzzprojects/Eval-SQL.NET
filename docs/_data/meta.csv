@@ -1,0 +1,27 @@
+permalink,title,meta-description,meta-keywords,h1,h2,nagivation,template
+index,Learn how to use Eval SQL.NET with Tutorials & Examples using C# syntax.,Learn how to use Eval SQL.NET with Tutorials & Examples using C# syntax.,,,,,full
+/404.html,Page Moved,Page Moved,,Page Moved,,,container-h1
+download,Download,Download,,Download,,no,full-h1
+pricing,Purchase,Purchase,,Purchase,,no,full-h1
+contact-us,Contact Us,Contact Us,,Contact Us,,no,full-h1
+tutorials,Tutorials,Tutorials,,Tutorials,,,container-h1
+overview,Overview,Overview,,Overview,,,
+requirements,Requirements,Requirements,,Requirements,,,
+installing,Installing,Installing,,Installing,,,
+upgrading,Upgrading,Upgrading,,Upgrading,,,
+licensing,Licensing,Licensing,,Licensing,,,
+arithmetic-expressions,Arithmetic Expressions,Arithmetic Expressions,,Arithmetic Expressions,,,
+split-text,Split Text,Split Text,,Split Text,,,
+regular-expressions,Reqular Expressions,Reqular Expressions,,Reqular Expressions,,,
+api,API,API,,API,,,
+eval,Eval,Eval,,Eval,,,
+value,Value,Value,,Value,,,
+options,Options,Options,,Options,,,
+configuration,Configuration,Configuration,,Configuration,,,
+articles,Articles,Articles,,Articles,,,
+faq,FAQ,FAQ,,FAQ,,,
+problems,Problems,Problems,,Problems,,,
+sql-server-function,SQL Server Function (UDF),SQL Server Function (UDF),,SQL Server Function (UDF),,,
+sql-server-regex,SQL Server Regex,SQL Server Regex,,SQL Server Regex,,,
+sql-server-file-operation,SQL Server File Operation,SQL Server File Operation,,SQL Server File Operation,,,
+sql-server-eval,SQL Server Eval,SQL Server Eval,,SQL Server Eval,,,

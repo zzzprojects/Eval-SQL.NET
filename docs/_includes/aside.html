@@ -1,0 +1,63 @@
+{% if page.path contains "/tutorials/" %}
+<div class="card card-layout-z1">
+	<div class="card-header">
+		<h2>Tutorials</h2>
+	</div>
+	<div class="card-body">
+	
+		<h3>Getting Started</h3>
+		<ul>
+			<li><a href="{{ site.github.url }}/overview">Overview</a></li>
+			<li><a href="{{ site.github.url }}/requirements">Requirements</a></li>
+			<li><a href="{{ site.github.url }}/installing">Installing</a></li>
+			<li><a href="{{ site.github.url }}/upgrading">Upgrading</a></li>
+			<li><a href="{{ site.github.url }}/licensing">Licensing</a></li>
+		</ul>
+		
+		<h4>Tutorials</h4>
+		<ul>
+			<li><a href="{{ site.github.url }}/arithmetic-expressions">Arithmetic Expressions</a></li>
+			<li><a href="{{ site.github.url }}/split-text">Split Text</a></li>
+			<li><a href="{{ site.github.url }}/regular-expressions">Reqular Expressions</a></li>
+		</ul>
+
+	</div>
+</div>
+
+{% elsif page.path contains "/api/" %}
+<div class="card card-layout-z1">
+	<div class="card-header">
+		<h3>API</h3>
+	</div>
+	<div class="card-body">
+		<ul>
+			<li><a href="{{ site.github.url }}/eval">Eval</a></li>
+			<li><a href="{{ site.github.url }}/value">Value</a></li>
+			<li><a href="{{ site.github.url }}/options">Options</a></li>
+			<li><a href="{{ site.github.url }}/configuration">Configuration</a></li>
+		</ul>
+
+	</div>
+</div>
+
+{% elsif page.path contains "/articles/" %}
+<div class="card card-layout-z1">
+
+</div>
+
+{% elsif page.path contains "/problems/" %}
+<div class="card card-layout-z1">
+	<div class="card-header">
+		<h3>Problems</h3>
+	</div>
+	<div class="card-body">
+        <ul>
+            <li><a href="{{ site.github.url }}/sql-server-eval">SQL Server Eval</a></li>
+            <li><a href="{{ site.github.url }}/sql-server-function">SQL Server Function (UDF)</a></li>
+            <li><a href="{{ site.github.url }}/sql-server-file-operation">SQL Server File Operation</a></li>
+            <li><a href="{{ site.github.url }}/sql-server-regex">SQL Server Regex</a></li>
+        </ul>
+	</div>
+</div>
+
+{% endif %}
