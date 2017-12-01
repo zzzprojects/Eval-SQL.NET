@@ -45,6 +45,30 @@
 
 </div>
 
+{% elsif page.path contains "/faq/" %}
+<div class="card card-layout-z1">
+	<div class="card-header">
+		<h3>FAQ</h3>
+	</div>
+	<div class="card-body">
+	
+		<h4>Getting Help</h4>
+		<ul>
+			<li><a href="{{ site.github.url }}/contact-us">Contact Us</a></li>
+			<li><a href="{{ site.github.url }}/issue-tracker">Issue Tracker</a></li>
+		</ul>
+		
+		<h4>FAQ</h4>
+		<ul>
+			<li><a href="{{ site.github.url }}/faq-general">General</a></li>
+			<li><a href="{{ site.github.url }}/faq-installation">Installation</a></li>
+			<li><a href="{{ site.github.url }}/faq-license">License</a></li>
+            <li><a href="{{ site.github.url }}/faq-eval-sql-net">Eval SQL.NET</a></li>
+		</ul>
+
+	</div>
+</div>
+
 {% elsif page.path contains "/problems/" %}
 <div class="card card-layout-z1">
 	<div class="card-header">
