@@ -26,9 +26,10 @@ permalink: pricing
 
 			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" onsubmit="return purchase_validate()">
 				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="H8RME3A5PQ5V6" />
 				<input type="hidden" name="currency_code" value="USD">
 				<input type="hidden" name="on0" value="Seats">
-				<p>Every month, a <a href="https://github.com/zzzprojects/Eval-SQL.NET/releases">FREE trial</a> of the <b>PRO</b> version is available to let you evaluate all its features without limitations.</p>
+				<p>Every month, a <a href="{{ site.github.url }}/download">FREE trial</a> of the <b>PRO</b> version is available to let you evaluate all its features without limitations.</p>
 				<h2>Step 1 - Choose License</h2>
 				<div style="width: 450px;">
 					<label class="form-label form-label-lg">Seat:</label> 

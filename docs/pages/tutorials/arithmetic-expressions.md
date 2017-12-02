@@ -1,5 +1,5 @@
 ---
-permalink: sql-server-eval
+permalink: arithmetic-expressions
 ---
 
 ## Definition

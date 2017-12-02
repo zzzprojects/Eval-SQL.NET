@@ -19,7 +19,7 @@ permalink: index
 				
 				<div class="wow zoomIn">
 					<a class="btn btn-xl btn-z" href="{{ site.github.url }}/download"
-							onclick="ga('send', 'event', { eventAction: 'download'});">
+							onclick="ga('send', 'event', { eventAction: 'download-hero'});">
 						<i class="fa fa-cloud-download" aria-hidden="true"></i>
 						NuGet Download
 						<i class="fa fa-angle-right"></i>
@@ -182,7 +182,7 @@ FROM @tableFormula
 					<li>Replace text in template with String Interpolation</li>
 				</ul>
 				<div class="more-info">
-					<a href="{{ site.github.url }}/tutorial-bulk-savechanges" class="btn btn-lg btn-z" role="button">
+					<a href="{{ site.github.url }}/arithmetic-expressions" class="btn btn-lg btn-z" role="button">
 						<i class="fa fa-book"></i>&nbsp;
 						Read More
 					</a>
@@ -224,7 +224,7 @@ FROM    @table
 					<li>Include row index</li>
 				</ul>
 				<div class="more-info">
-					<a href="{{ site.github.url }}/tutorial-bulk-operations" class="btn btn-lg btn-z" role="button">
+					<a href="{{ site.github.url }}/split-text" class="btn btn-lg btn-z" role="button">
 						<i class="fa fa-book"></i>&nbsp;
 						Read More
 					</a>
@@ -269,7 +269,7 @@ FROM    @t AS A
 					<li>Split</li>
 				</ul>
 				<div class="more-info">
-					<a href="{{ site.github.url }}/tutorial-batch-operations" class="btn btn-lg btn-z" role="button">
+					<a href="{{ site.github.url }}/regular-expressions" class="btn btn-lg btn-z" role="button">
 						<i class="fa fa-book"></i>&nbsp;
 						Read More
 					</a>
@@ -312,7 +312,7 @@ SELECT * FROM @customer WHERE @valid_email.ValueString('email', Email).EvalBit()
 					<li>Improve security</li>
 				</ul>
 				<div class="more-info">
-					<a href="{{ site.github.url }}/tutorial-batch-operations" class="btn btn-lg btn-z" role="button">
+					<a href="{{ site.github.url }}/sql-server-file-operation" class="btn btn-lg btn-z" role="button">
 						<i class="fa fa-book"></i>&nbsp;
 						Read More
 					</a>
