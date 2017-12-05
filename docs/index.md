@@ -63,7 +63,7 @@ INSERT INTO @tableFormula VALUES ('x+y*z', 1, 2, 3 ),
 SELECT SQLNET::New(Formula)
               .ValueInt('x', X)
               .ValueInt('y', Y)
-              .ValueInt('z', Z).EvalInt()
+              .ValueInt('z', Z).EvalInt() as Result
 FROM @tableFormula
 {% endhighlight %}
 							</div>
@@ -203,8 +203,8 @@ DECLARE @sqlnet SQLNET = SQLNET::New('x*y+z')
 SELECT  @sqlnet.ValueInt('x', X)
                .ValueInt('y', Y)
                .ValueInt('z', Z)
-               .EvalInt()
-FROM    @table
+               .EvalInt() as Result
+FROM    @table			
 {% endhighlight %}
 					</div>
 				</div>
