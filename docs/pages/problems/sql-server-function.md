@@ -79,10 +79,10 @@ catch (Exception ex)
 GO
 	
 -- SELECT 4
-SELECT  dbo.fn_try_catch(4, 0)
+SELECT  dbo.fn_try_catch(4, 0) as Result
 
 -- SELECT 2
-SELECT  dbo.fn_try_catch(4, 2)
+SELECT  dbo.fn_try_catch(4, 2) as Result
 
 {% endhighlight %}
 
