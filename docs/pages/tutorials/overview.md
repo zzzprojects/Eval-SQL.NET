@@ -12,7 +12,7 @@ Provide to your SQL Server all missing pieces like regular expression and dynami
 {% include template-example.html %} 
 {% highlight csharp %}
 -- SELECT 3
-SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt()
+SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt() as Result
 {% endhighlight %}
 
 ### Find your solutions:
@@ -53,7 +53,7 @@ DECLARE @sqlnet SQLNET = SQLNET::New('x*y+z')
 SELECT  @sqlnet.ValueInt('x', X)
                .ValueInt('y', Y)
                .ValueInt('z', Z)
-               .EvalInt()
+               .EvalInt() as Result
 FROM    @table
 {% endhighlight %}
 
