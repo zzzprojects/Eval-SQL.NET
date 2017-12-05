@@ -200,14 +200,14 @@ using(var connection = new SqlConnection(s))
         return dt.Rows.Count;
     }
 }
-').ValueString('sql', @sql).EvalInt()
+').ValueString('sql', @sql).EvalReadAccessInt()
 
     END
 
 GO
 
 -- SELECT 2
-SELECT  dbo.fn_Exec_Count('SELECT 1 UNION SELECT 2')
+SELECT  dbo.fn_Exec_Count('SELECT 1 UNION SELECT 2') as Result
 
 {% endhighlight %}
 
