@@ -9,7 +9,7 @@ AutoDispose object and delegate from the cache after the code has been evaluated
 {% include template-example.html %} 
 {% highlight csharp %}
 -- SELECT 3
-SELECT SQLNET::New('1+2').AutoDispose().EvalInt()
+SELECT SQLNET::New('1+2').AutoDispose().EvalInt() as Result
 
 {% endhighlight %}
 
@@ -23,8 +23,10 @@ DECLARE @sqlnet SQLNET = SQLNET::New('')
 
 {% include template-example.html %} 
 {% highlight csharp %}
+DECLARE @sqlnet SQLNET = SQLNET::New('')
+
 -- SELECT 3
-SELECT @sqlnet.Code('1+2').EvalInt()
+SELECT @sqlnet.Code('1+2').EvalInt() as Result
 
 {% endhighlight %}
 
@@ -37,13 +39,24 @@ Dispose object and delegate from the cache
 DECLARE @sqlnet SQLNET = SQLNET::New('x + y')
 
 SELECT  @sqlnet
-    .ValueInt('x', ColumnValueX)
-    .ValueInt('y', ColumnValueY)
-    .EvalInt()
-FROM TableFormula
+    .ValueInt('x', 1)
+    .ValueInt('y', 2)
+    .EvalInt() as Result
+
+
+SELECT  @sqlnet.getcode() as Result
 
 DECLARE @dispose BIT = @sqlnet.Dispose()
 
+--Not work because dipose...
+SELECT  @sqlnet
+    .ValueInt('x', 1)
+    .ValueInt('y', 2)
+    .EvalInt() as Result
+
+
+--Not work because dipose...
+SELECT  @sqlnet.getcode() as Result
 {% endhighlight %}
 
 Don't worry, we have you covered! Object and Delegate are automatically disposed after a period of time without activity.
@@ -78,6 +91,6 @@ Root is required when the expression already specified value. This feature has b
 DECLARE @sqlnet SQLNET = SQLNET::New('x+y').ValueInt('y', 2).Root()
 
 -- SELECT 3
-SELECT @sqlnet.ValueInt('x', 1).EvalInt()
+SELECT @sqlnet.ValueInt('x', 1).EvalInt()  as Result
 
 {% endhighlight %}
