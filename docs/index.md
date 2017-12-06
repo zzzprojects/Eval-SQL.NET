@@ -193,7 +193,8 @@ FROM @tableFormula
 					<div class="card-header">Dynamic Expression Example</div>
 					<div class="card-body">
 {% highlight csharp %}
-// Easy to use
+-- Easy to use
+
 -- CREATE test
 DECLARE @table TABLE ( X INT, Y INT, Z INT )
 INSERT  INTO @table VALUES  ( 2, 4, 6 ),  ( 3, 5, 7 ), ( 4, 6, 8 )
