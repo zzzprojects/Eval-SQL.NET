@@ -23,10 +23,10 @@ SET @result = SQLNET::New('x*y+z')
                      .ValueInt('x', @x)
                      .ValueInt('y', @y)
                      .ValueInt('z', @z)
-                     .EvalInt()
+                     .EvalInt()  
 
 -- SELECT 14
-SELECT  @result
+SELECT  @result as Result
 {% endhighlight %}
 
 ### Using formula & table variables
@@ -48,7 +48,7 @@ DECLARE @sqlnet SQLNET = SQLNET::New('x*y+z')
 SELECT  @sqlnet.ValueInt('x', X)
                .ValueInt('y', Y)
                .ValueInt('z', Z)
-               .EvalInt()
+               .EvalInt() as Result
 FROM    @table
 
 {% endhighlight %}
@@ -78,6 +78,6 @@ DECLARE @sqlnet SQLNET = SQLNET::New('')
 SELECT  @sqlnet.Code(Formula)
                .ValueInt('x', X)
                .ValueInt('y', Y)
-               .ValueInt('z', Z).EvalInt()
+               .ValueInt('z', Z).EvalInt() as Result
 FROM    @table
 {% endhighlight %}

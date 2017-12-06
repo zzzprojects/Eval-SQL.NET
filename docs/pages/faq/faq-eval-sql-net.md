@@ -87,8 +87,8 @@ In C#, decimal must be suffixed with "m" to make them valid. By default "1.1" in
 {% highlight csharp %}
 
 // Trow exception
-SELECT SQLNET::New('(x)+1.1234').Val('x', 1.1).Eval()
+SELECT SQLNET::New('(x)+1.1234').Val('x', 1.1).Eval() as Result
 
 -- SELECT 2.2234
-SELECT SQLNET::New('(x)+1.1234m').Val('x', 1.1).Eval()
+SELECT SQLNET::New('(x)+1.1234m').Val('x', 1.1).Eval() as Result
 {% endhighlight %}

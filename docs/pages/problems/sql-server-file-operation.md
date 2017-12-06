@@ -104,7 +104,7 @@ backupFiles.ForEach(x => x.CopyTo(x.FullName.Replace(path, backupPath)));
 
 // RETURN the number of affected files
 return backupFiles.Count;
-').Impersonate().EvalReadAccessInt()
+').Impersonate().EvalReadAccessInt() as Result
 
 {% endhighlight %}
 

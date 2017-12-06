@@ -26,7 +26,7 @@ DECLARE @value_int INT = @sqlnet.EvalInt();
 DECLARE @value_decimal DECIMAL(18, 2) = CAST(@sqlnet.Eval() AS DECIMAL(18, 2))
 
 -- SELECT 3, 3, 3.00
-SELECT @value_variant, @value_int, @value_decimal
+SELECT @value_variant as variant , @value_int as int, @value_decimal as decimal
 {% endhighlight %}
 
 ## EvalReadAccess
@@ -57,7 +57,7 @@ DECLARE @result SQLNET = @sqlnet.EvalSQLNET()
 
 -- Use the value previously resolved
 -- SELECT 4
-SELECT @result.Code('value.Count').EvalInt()
+SELECT @result.Code('value.Count').EvalInt()  as Result
 Useful to optimize code with object initialization like Regex.
 {% endhighlight %}
 

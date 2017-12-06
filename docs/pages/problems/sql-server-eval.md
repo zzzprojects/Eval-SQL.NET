@@ -19,7 +19,7 @@ VALUES  ( 'x+y*z', 1, 2, 3 ),
 
 -- Select_0: 7
 -- Select_1: 9
-SELECT  SQLNET::New(Formula).ValueInt('x', X).ValueInt('y', Y).ValueInt('z', Z).EvalInt()
+SELECT  SQLNET::New(Formula).ValueInt('x', X).ValueInt('y', Y).ValueInt('z', Z).EvalInt() as Result
 FROM    @tableFormula
 {% endhighlight %}
 
@@ -57,7 +57,7 @@ DECLARE @customFilter SQLNET = SQLNET::New('quantity > 3 && price > 0')
 -- Select_1: 15, 2.00, $30.00
 -- Select_2: 84, 5.00, $420.00
 SELECT  * ,
-        @customColumn.ValueInt('quantity', Quantity).Val('price', Price).EvalString()
+        @customColumn.ValueInt('quantity', Quantity).Val('price', Price).EvalString() as Result
 FROM    @items
 WHERE   @customFilter.ValueInt('quantity', Quantity).Val('price', Price).EvalBit() = 1
 {% endhighlight %}
@@ -98,7 +98,7 @@ switch(x)
 }
    ').ValueInt('x', @x).ValueInt('y', @y).ValueInt('z', @z).EvalInt()
 
-        SELECT  @result
+        SELECT  @result as Result
     END
 
 GO

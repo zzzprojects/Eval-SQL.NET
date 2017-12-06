@@ -79,10 +79,10 @@ catch (Exception ex)
 GO
 	
 -- SELECT 4
-SELECT  dbo.fn_try_catch(4, 0)
+SELECT  dbo.fn_try_catch(4, 0) as Result
 
 -- SELECT 2
-SELECT  dbo.fn_try_catch(4, 2)
+SELECT  dbo.fn_try_catch(4, 2) as Result
 
 {% endhighlight %}
 
@@ -200,14 +200,14 @@ using(var connection = new SqlConnection(s))
         return dt.Rows.Count;
     }
 }
-').ValueString('sql', @sql).EvalInt()
+').ValueString('sql', @sql).EvalReadAccessInt()
 
     END
 
 GO
 
 -- SELECT 2
-SELECT  dbo.fn_Exec_Count('SELECT 1 UNION SELECT 2')
+SELECT  dbo.fn_Exec_Count('SELECT 1 UNION SELECT 2') as Result
 
 {% endhighlight %}
 
