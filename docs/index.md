@@ -66,7 +66,7 @@ SELECT SQLNET::New(Formula)
               .ValueInt('z', Z).EvalInt() as Result
 FROM @tableFormula
 {% endhighlight %}
-{% include  component-try-it.html href='http://eval-sql.net/' %}
+{% include  component-try-it.html href='http://sqlfiddle.com/#!18/19808/2' %}
 							</div>
 						</div>
 					</div>
