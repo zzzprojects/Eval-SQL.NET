@@ -4,6 +4,7 @@ Provide to your SQL Server all missing pieces like regular expression and dynami
 -- SELECT 3
 SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt() as Result
 ```
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1105' %}
 
 **Find your solutions:**
 - Dynamic Arithmetic Expression
