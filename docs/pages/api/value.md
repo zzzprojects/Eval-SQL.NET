@@ -35,6 +35,7 @@ SELECT SQLNET::New('x.Length').ValueBinary('x', 0x11).Eval() as Result
 SELECT SQLNET::New('"ZZZ " + x').ValueString('x', 'Projects').Eval() as Result
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/009cc/2' %}
 
 For maximum performance, the right Value[Type] should be always used over Val && Value
 
@@ -64,6 +65,7 @@ SELECT @sqlnet.ValueNullableInt('x', @x1).EvalInt() as Result
 SELECT @sqlnet.ValueNullableInt('x', @x2).EvalInt() as Result
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/1cdb6/5' %}
 
 ## ValueSQLNET
 
@@ -78,6 +80,7 @@ DECLARE @result SQLNET = @sqlnet.EvalSQLNET()
 SELECT SQLNET::New('x.Count').ValueSQLNET('x', @result).Eval()  AS Result 
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/3149e/2' %}
 
 ## GetValue
 
@@ -100,3 +103,4 @@ SELECT SQLNET::New('x + 1').Val('x', 1).GetValue('x') as Result
 SELECT SQLNET::New('x + 1').Val('x', 1).GetValueBigInt('x') as Result
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/3149e/6' %}
