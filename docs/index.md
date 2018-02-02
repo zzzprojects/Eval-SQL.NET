@@ -296,7 +296,7 @@ DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email,
 -- SELECT 'invalid.com'
 SELECT * FROM @customer WHERE @valid_email.ValueString('email', Email).EvalBit() = 0
 {% endhighlight %}	
-{% include  component-try-it.html href='http://sqlfiddle.com/#!18/7cefe/1' %}
+{% include  component-try-it.html href='http://sqlfiddle.com/#!18/7cefe/3' %}
 					</div>
 				</div>
 			</div>
