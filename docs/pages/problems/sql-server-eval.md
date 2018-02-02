@@ -22,6 +22,7 @@ VALUES  ( 'x+y*z', 1, 2, 3 ),
 SELECT  SQLNET::New(Formula).ValueInt('x', X).ValueInt('y', Y).ValueInt('z', Z).EvalInt() as Result
 FROM    @tableFormula
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/2f73a/1' %}
 
 ## SQL Eval - Arithmetic / Math Expression
 
@@ -61,6 +62,7 @@ SELECT  * ,
 FROM    @items
 WHERE   @customFilter.ValueInt('quantity', Quantity).Val('price', Price).EvalBit() = 1
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/4ed27/1' %}
 
 ## SQL Eval - Dynamic Expression
 
@@ -112,6 +114,7 @@ EXEC Select_Switch 3, 2, 3
 -- RETURN 8
 EXEC Select_Switch 4, 2, 3
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/6b73d/2' %}
 
 ## SQL Eval - Framework class Library
 
@@ -142,6 +145,7 @@ FROM    @t AS A
                       FROM      dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', Input))
                     ) AS B
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/ca1ba/2' %}
 
 ## Conclusion
 

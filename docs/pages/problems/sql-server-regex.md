@@ -25,6 +25,7 @@ DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email,
 SELECT * FROM @customer WHERE @valid_email.Val('email', Email).EvalBit() = 0
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/213f9/1' %}
 
 
 ## SQL Regex - IsMatch
@@ -59,6 +60,7 @@ DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email,
 SELECT * FROM @customer WHERE @valid_email.ValueString('email', Email).EvalBit() = 0
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/213f9/2' %}
 
 ## SQL Regex - Match
 
@@ -97,6 +99,8 @@ return value != "" ? value : null;
 SELECT @website
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1012' %}
+
 
 ## SQL Regex - Matches
 
@@ -148,6 +152,7 @@ INSERT  INTO @websites
 SELECT * FROM @websites
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/d48e7/3' %}
 
 ## SQL Regex - Replace
 
@@ -180,6 +185,7 @@ return Regex.Replace(input, pattern, replacement);
 SELECT @post
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/b308e/1' %}
 
 ## SQL Regex - Split
 
@@ -205,6 +211,7 @@ SELECT  *
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', @s))
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1069' %}
 
 ### Discussion
 

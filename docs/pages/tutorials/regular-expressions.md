@@ -33,6 +33,7 @@ SELECT  *
 FROM    @customer
 WHERE   @valid_email.Val('email', Email).EvalBit() = 0
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/58f2b/1' %}
 
 ### Find and insert in a table, all website from a text
 
@@ -63,3 +64,4 @@ INSERT  INTO @websites
 -- 'https://github.com/zzzprojects/EntityFramework-Plus'
 SELECT * FROM @websites
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1111' %}

@@ -4,6 +4,7 @@ Provide to your SQL Server all missing pieces like regular expression and dynami
 -- SELECT 3
 SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt() as Result
 ```
+**[try it online](http://sqlfiddle.com/#!18/9eecb/1105)** 
 
 **Find your solutions:**
 - Dynamic Arithmetic Expression
@@ -56,6 +57,7 @@ SELECT  @sqlnet.ValueInt('x', X)
                .EvalInt() as Result
 FROM    @table
 ```
+**[try it online](http://sqlfiddle.com/#!18/f3624/2)** 
 
 ## Split text with delimiter
 _Improve performance and capability for splitting text with an easy to use split function and LINQ expression_
@@ -77,6 +79,7 @@ FROM    @t AS A
                       FROM      dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', Input))
                     ) AS B
 ```
+**[try it online](http://sqlfiddle.com/#!18/01dcf/1)** 
 
 ## Use regular expression in SQL Server
 _Use Regex flexibility to overcome “LIKE” and “PATHINDEX” limitations._
@@ -100,6 +103,7 @@ DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email,
 -- SELECT 'invalid.com'
 SELECT * FROM @customer WHERE @valid_email.ValueString('email', Email).EvalBit() = 0
 ```
+**[try it online](http://sqlfiddle.com/#!18/92200/2)** 
 
 ## Replace xp_cmdshell with restrictive alternative
 _Avoid enabling xp_cmdshell and compromising your SQL Server and use instead a more restrictive solution._

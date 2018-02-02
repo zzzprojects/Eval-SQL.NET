@@ -10,6 +10,7 @@ Let take a very short overview with the API
 {% highlight csharp %}
 SELECT SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt() as Result
 {% endhighlight %}
+{% include  component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1123' %}
 
  - **SQLNET:** A CLR Type created by Eval SQL.NET library
  - **"::":** This is how you call static method in SQL CLR

@@ -28,6 +28,7 @@ DECLARE @sqlnet SQLNET = SQLNET::New('s.Split(",")').ValueString('s', @s)
 SELECT  *
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1112' %}
 
 ### Split using multiple delimiters
 
@@ -46,6 +47,7 @@ DECLARE @sqlnet SQLNET = SQLNET::New('s.Split(",", ";", "|")').ValueString('s', 
 SELECT  *
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1117' %}
 
 ### Split and Trim
 
@@ -66,6 +68,7 @@ DECLARE @sqlnet SQLNET = SQLNET::New('s.Split(",", ";", "|")
 SELECT  *
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1118' %}
 
 ### Split and Trim with Regex
 
@@ -88,3 +91,4 @@ SELECT  *
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1119' %}

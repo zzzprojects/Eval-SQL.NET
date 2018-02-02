@@ -33,6 +33,7 @@ SELECT  *
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', @s))
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1069' %}
 
 ### Discussion
 
@@ -85,6 +86,7 @@ SELECT  dbo.fn_try_catch(4, 0) as Result
 SELECT  dbo.fn_try_catch(4, 2) as Result
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/d0cf1/1' %}
 
 ## SQL Function - Call stored procedure
 

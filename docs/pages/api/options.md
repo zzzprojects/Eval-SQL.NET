@@ -12,6 +12,7 @@ AutoDispose object and delegate from the cache after the code has been evaluated
 SELECT SQLNET::New('1+2').AutoDispose().EvalInt() as Result
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/994' %}
 
 Don't worry, we have you covered! Object and Delegate are automatically disposed after a period of time without activity.
 
@@ -29,6 +30,7 @@ DECLARE @sqlnet SQLNET = SQLNET::New('')
 SELECT @sqlnet.Code('1+2').EvalInt() as Result
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1125' %}
 
 ## Dispose()
 
@@ -58,6 +60,7 @@ SELECT  @sqlnet
 --Not work because dipose...
 SELECT  @sqlnet.getcode() as Result
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/996' %}
 
 Don't worry, we have you covered! Object and Delegate are automatically disposed after a period of time without activity.
 
@@ -80,6 +83,7 @@ EXEC dbo.SQLNET_EvalResultSet @sqlnet
 
 {% endhighlight %}
 
+
 Impersonate the current execution context under which the routine is executing.
 
 ## Root()
@@ -94,3 +98,4 @@ DECLARE @sqlnet SQLNET = SQLNET::New('x+y').ValueInt('y', 2).Root()
 SELECT @sqlnet.ValueInt('x', 1).EvalInt()  as Result
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/997' %}
