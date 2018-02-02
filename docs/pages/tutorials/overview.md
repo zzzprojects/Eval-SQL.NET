@@ -14,6 +14,7 @@ Provide to your SQL Server all missing pieces like regular expression and dynami
 -- SELECT 3
 SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt() as Result
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1105' %}
 
 ### Find your solutions:
 
@@ -56,6 +57,7 @@ SELECT  @sqlnet.ValueInt('x', X)
                .EvalInt() as Result
 FROM    @table
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9bc9b/1' %}
 
 ## Split text with delimiter
 
@@ -81,6 +83,7 @@ FROM    @t AS A
                       FROM      dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', Input))
                     ) AS B
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/98a4b/1' %}
 
 ## Use regular expression in SQL Server
 
@@ -107,6 +110,7 @@ DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email,
 -- SELECT 'invalid.com'
 SELECT * FROM @customer WHERE @valid_email.ValueString('email', Email).EvalBit() = 0
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/79508/1' %}
 
 ## Replace xp_cmdshell with restrictive alternative
 
