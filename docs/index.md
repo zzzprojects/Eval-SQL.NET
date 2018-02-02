@@ -207,6 +207,7 @@ SELECT  @sqlnet.ValueInt('x', X)
                .EvalInt() as Result
 FROM    @table			
 {% endhighlight %}
+{% include  component-try-it.html href='http://sqlfiddle.com/#!18/19808/2' %}
 					</div>
 				</div>
 			</div>
@@ -250,6 +251,7 @@ FROM    @t AS A
                       FROM      dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', Input))
                     ) AS B
 {% endhighlight %}	
+{% include  component-try-it.html href='http://sqlfiddle.com/#!18/b75fc/4' %}
 					</div>
 				</div>
 			</div>
@@ -294,6 +296,7 @@ DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email,
 -- SELECT 'invalid.com'
 SELECT * FROM @customer WHERE @valid_email.ValueString('email', Email).EvalBit() = 0
 {% endhighlight %}	
+{% include  component-try-it.html href='http://sqlfiddle.com/#!18/7cefe/1' %}
 					</div>
 				</div>
 			</div>
