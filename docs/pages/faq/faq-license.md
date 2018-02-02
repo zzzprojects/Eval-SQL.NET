@@ -58,12 +58,7 @@ Renewing your support & upgrade give the following benefits:
 
 ## Royalty Free
 
-### Can I install Entity Framework Extensions on Client Machine?
-Yes, the product is royalty free.
-
-That mean, you paid for developer seat, but customer using your product doesn't have to pay.
-
-### Is Entity Framework Extensions Royalty Free?
+### Is Eval-SQL.NET Royalty Free?
 Yes, the product is royalty free.
 
 This mean, you can develop a project and install it on thousands of clients.
