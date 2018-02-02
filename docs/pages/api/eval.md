@@ -28,6 +28,7 @@ DECLARE @value_decimal DECIMAL(18, 2) = CAST(@sqlnet.Eval() AS DECIMAL(18, 2))
 -- SELECT 3, 3, 3.00
 SELECT @value_variant as variant , @value_int as int, @value_decimal as decimal
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/58568/15' %}
 
 ## EvalReadAccess
 
@@ -60,6 +61,7 @@ DECLARE @result SQLNET = @sqlnet.EvalSQLNET()
 SELECT @result.Code('value.Count').EvalInt()  as Result
 Useful to optimize code with object initialization like Regex.
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/989' %}
 
 ## EXEC SQLNET_EvalResultSet
 
@@ -79,6 +81,7 @@ return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
 EXEC dbo.SQLNET_EvalResultSet @sqlnet
 You can output the result to the client or insert it in a table like a normal procedure.
 {% endhighlight %}
+
 
 ## EvalTVF
 
@@ -115,3 +118,4 @@ GO
 -- SPLIT with multiple delimiters (',' and ';')
 SELECT * FROM dbo.fn_Split('1, 2, 3; 4; 5', ',|;')
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/b738f/2' %}
