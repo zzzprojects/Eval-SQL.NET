@@ -28,6 +28,7 @@ SET @result = SQLNET::New('x*y+z')
 -- SELECT 14
 SELECT  @result as Result
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1101' %}
 
 ### Using formula & table variables
 
@@ -52,6 +53,7 @@ SELECT  @sqlnet.ValueInt('x', X)
 FROM    @table
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/e44cf/2' %}
 
 ### Using table formula & variables
 
@@ -81,3 +83,4 @@ SELECT  @sqlnet.Code(Formula)
                .ValueInt('z', Z).EvalInt() as Result
 FROM    @table
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/ed8f7/1' %}
