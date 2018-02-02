@@ -207,7 +207,7 @@ SELECT  @sqlnet.ValueInt('x', X)
                .EvalInt() as Result
 FROM    @table			
 {% endhighlight %}
-{% include  component-try-it.html href='http://sqlfiddle.com/#!18/19808/2' %}
+{% include  component-try-it.html href='http://sqlfiddle.com/#!18/4b417/1' %}
 					</div>
 				</div>
 			</div>
