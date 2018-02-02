@@ -30,6 +30,7 @@ DECLARE @sqlnet SQLNET = SQLNET::New('')
 SELECT @sqlnet.Code('1+2').EvalInt() as Result
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1125' %}
 
 ## Dispose()
 
