@@ -60,7 +60,7 @@ DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email,
 SELECT * FROM @customer WHERE @valid_email.ValueString('email', Email).EvalBit() = 0
 
 {% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/213f9/1' %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/213f9/2' %}
 
 ## SQL Regex - Match
 
