@@ -64,6 +64,7 @@ PRINT 'EndTime = ' + CONVERT(VARCHAR(30), @endTime, 121)
 PRINT 'Duration = ' + CONVERT(VARCHAR(30), @endTime - @starttime, 114)
 
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/3149e/10' %}
 
 ## Security
 
@@ -92,3 +93,4 @@ SELECT SQLNET::New('(x)+1.1234').Val('x', 1.1).Eval() as Result
 -- SELECT 2.2234
 SELECT SQLNET::New('(x)+1.1234m').Val('x', 1.1).Eval() as Result
 {% endhighlight %}
+{% include component-try-it.html href='http://sqlfiddle.com/#!18/3149e/11' %}
