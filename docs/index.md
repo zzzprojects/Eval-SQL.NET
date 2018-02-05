@@ -28,7 +28,7 @@ permalink: index
 				
 				<div class="download-count">
 					<div class="item-text">Download Count:</div>
-					<div class="item-image wow lightSpeedIn"><img src="https://zzzprojects.github.io/images/nuget/ef6-full-version-big-d.svg" /></div>
+					<div class="item-image wow lightSpeedIn"><img src="https://zzzprojects.github.io/images/nuget/eval-sql-net-big-d.svg" /></div>
 				</div>
 
 				
