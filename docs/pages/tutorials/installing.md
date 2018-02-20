@@ -12,8 +12,9 @@ The latest version always contains a trial that expires at the end of the month.
 
 First, let install the library in a test database.
 
- - Create a new SQL Server database (using SQL Server 2012, 2014 or 2016)
+ - Create a new SQL Server database (using SQL Server 2012 or more recent)
  - Install the latest version: Eval SQL.NET-Install.sql
+   - Read the SETUP section
  - Change [DATABASE_NAME] by the newly created database name
 
 *The script enable SQL CLR.**

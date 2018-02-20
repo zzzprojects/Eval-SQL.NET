@@ -3,14 +3,14 @@
  *	1 - Replace '[DATABASE_NAME]' by the target database name
  *	2 - Run the script
  *
+ * FOR SQL Server 2017
+ *  - Disabling clr strict security is required. You can re-enable it after.
+ *
  * For EXTERNAL_ACCESS && UNSAFE
  *	1 - Uncomment ALTER DATABASE [DATABASE_NAME] SET TRUSTWORTHY ON
  *  2- 	Uncomment either:
  *		- WITH PERMISSION_SET = EXTERNAL_ACCESS
  *		- WITH PERMISSION_SET = UNSAFE
- *
- * SQL Azure:
- *  1- Comment the sp_configure section (or leave it uncommented, the script will run even with the error)
  */
 
 USE [DATABASE_NAME]
@@ -18,12 +18,23 @@ GO
 
 -- Required for: EXTERNAL_ACCESS && UNSAFE permission
 -- ALTER DATABASE [DATABASE_NAME] SET TRUSTWORTHY ON
+
 GO
+EXEC sys.sp_configure N'show advanced options', N'1';
+RECONFIGURE;
+GO
+DECLARE @version VARCHAR(MAX) = @@VERSION
 
-
--- THIS line fail on SQL Azure, don't worry!
+IF @version LIKE '%Microsoft SQL Server 2017%'
+BEGIN
+    EXEC sp_configure N'clr strict security', N'0';
+    RECONFIGURE;
+END
+GO
 sp_configure 'clr enabled', 1;
+RECONFIGURE;
 GO
+EXEC sys.sp_configure N'show advanced options', N'0';
 RECONFIGURE;
 GO
 
