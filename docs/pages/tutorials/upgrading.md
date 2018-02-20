@@ -11,7 +11,10 @@ Before upgrading:
 
 ## Step 2 - Download
 
-<a href="{{ site.github.url }}/downloads/Eval-SQL.NET-Install.sql"
-				onclick="ga('send', 'event', { eventAction: 'download-installing'});">
-	<img src="https://zzzprojects.github.io/images/nuget/ef6-full-version-big-d.svg">
+Choose the version to download **Eval SQL.NET**.
+
+<a class="btn btn-lg btn-z" role="button" href="{{ site.github.url }}/downloads/Eval-SQL.NET-Install.sql" 
+		onclick="ga('send', 'event', { eventAction: 'download-upgrading'});" style="visibility: visible; animation-name: pulse;">
+	<i class="fa fa-cloud-download" aria-hidden="true"></i>
+	Download
 </a>

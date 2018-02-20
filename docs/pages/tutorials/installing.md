@@ -17,7 +17,8 @@ First, let install the library in a test database.
    - Read the SETUP section
  - Change [DATABASE_NAME] by the newly created database name
 
-<a href="{{ site.github.url }}/downloads/Eval-SQL.NET-Install.sql"
-				onclick="ga('send', 'event', { eventAction: 'download-installing'});">
-	<img src="https://zzzprojects.github.io/images/nuget/ef6-full-version-big-d.svg">
+<a class="btn btn-lg btn-z" role="button" href="{{ site.github.url }}/downloads/Eval-SQL.NET-Install.sql" 
+		onclick="ga('send', 'event', { eventAction: 'download-upgrading'});" style="visibility: visible; animation-name: pulse;">
+	<i class="fa fa-cloud-download" aria-hidden="true"></i>
+	Download
 </a>
