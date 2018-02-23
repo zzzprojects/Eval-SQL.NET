@@ -9,7 +9,7 @@ permalink: requirements
 - SAFE Permission (SQL CLR)
 
 ## SQL Server 2017
-- clr strict security disabled during installation
+- clr strict security disabled
 
 ## EXTERNAL_ACCESS & UNSAFE permission
 - database must be set TRUSTWORTHY ON
