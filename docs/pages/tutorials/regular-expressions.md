@@ -14,15 +14,18 @@ Use Regex flexibility to overcome "LIKE" and "PATHINDEX" limitations. All Regex 
 
 ### Find rows with invalid email
 
-{% include template-example.html %} 
-{% highlight csharp %}
-DECLARE @regex VARCHAR(255) = '^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$'
-DECLARE @customer TABLE ( Email VARCHAR(255) )
+<div class="sqlfiddle">
+                <pre class="schema">
+CREATE TABLE customer ( Email VARCHAR(255) )
 
-INSERT  INTO @customer
+INSERT  INTO customer
 VALUES  ( 'info@zzzprojects.com' ),
         ( 'invalid.com' ),
         ( 'sales@zzzprojects.com' )
+                </pre>
+                <pre class="sql">
+DECLARE @regex VARCHAR(255) = '^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$'
+
 
 -- "Regex" is optional, you can directly use IsMatch
 DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email, pattern')
@@ -30,16 +33,17 @@ DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email, pattern')
 
 -- SELECT 'invalid.com'
 SELECT  *
-FROM    @customer
+FROM    customer
 WHERE   @valid_email.Val('email', Email).EvalBit() = 0
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/58f2b/1' %}
+                </pre>
+</div>
 
 ### Find and insert in a table, all website from a text
 
-
-{% include template-example.html %} 
-{% highlight csharp %}
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql"> 
 DECLARE @websites TABLE ( Website VARCHAR(250) )
 DECLARE @regex VARCHAR(255) = '(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})'
 DECLARE @post VARCHAR(MAX) = 'zzz ... zzz... http://zzzprojects.com ... zzzz
@@ -50,18 +54,13 @@ DECLARE @post VARCHAR(MAX) = 'zzz ... zzz... http://zzzprojects.com ... zzzz
 -- "Regex" is optional, you can directly use Matches
 DECLARE @sqlnet SQLNET = SQLNET::New('Regex.Matches(input, pattern)')
                                 .ValueString('input', @post)
-								.ValueString('pattern', @regex)
+				.ValueString('pattern', @regex)
 
--- INSERT result in table
-INSERT  INTO @websites
-        SELECT  CAST(Value_1 AS VARCHAR(250))
-        FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
-
--- SELECT result
 -- 'http://zzzprojects.com'
 -- 'https://github.com/zzzprojects/Eval-SQL.NET'
 -- 'https://github.com/zzzprojects/Eval-Expression.NET'
 -- 'https://github.com/zzzprojects/EntityFramework-Plus'
-SELECT * FROM @websites
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1111' %}
+        SELECT  CAST(Value_1 AS VARCHAR(250)) as websites
+        FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
+                </pre>
+</div>
