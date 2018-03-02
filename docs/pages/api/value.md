@@ -105,7 +105,7 @@ Add or update a value associated with the specified key. The parameter "value" f
                 <pre class="schema">
                 </pre>
                 <pre class="sql">
-DECLARE @sqlnet SQLNET = SQLNET::New('var list = new List<int>() { 1, 2, 3, 4}')
+DECLARE @sqlnet SQLNET = SQLNET::New('var list = new List&lt;int&gt;() { 1, 2, 3, 4}')
 DECLARE @result SQLNET = @sqlnet.EvalSQLNET()
 
 -- SELECT 4
