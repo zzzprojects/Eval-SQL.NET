@@ -34,7 +34,6 @@ Set @value_decimal = @value_decimal + 0.01
 SELECT @value_variant as variant  , @value_int as int, @value_decimal as decimal
 	</pre>
 </div>
- 
 
 ## EvalReadAccess
 
