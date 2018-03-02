@@ -6,13 +6,14 @@ permalink: options
 
 AutoDispose object and delegate from the cache after the code has been evaluated.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql">
 -- SELECT 3
 SELECT SQLNET::New('1+2').AutoDispose().EvalInt() as Result
-
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/994' %}
+                </pre>
+</div>
 
 Don't worry, we have you covered! Object and Delegate are automatically disposed after a period of time without activity.
 
@@ -22,22 +23,25 @@ Sets the code or expression to evaluate.
 
 DECLARE @sqlnet SQLNET = SQLNET::New('')
 
-{% include template-example.html %} 
-{% highlight csharp %}
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql">
 DECLARE @sqlnet SQLNET = SQLNET::New('')
 
 -- SELECT 3
 SELECT @sqlnet.Code('1+2').EvalInt() as Result
-
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1125' %}
+                </pre>
+</div>
 
 ## Dispose()
 
 Dispose object and delegate from the cache
 
-{% include template-example.html %} 
-{% highlight csharp %}
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql">
 DECLARE @sqlnet SQLNET = SQLNET::New('x + y')
 
 SELECT  @sqlnet
@@ -50,17 +54,14 @@ SELECT  @sqlnet.getcode() as Result
 
 DECLARE @dispose BIT = @sqlnet.Dispose()
 
---Not work because dipose...
-SELECT  @sqlnet
-    .ValueInt('x', 1)
-    .ValueInt('y', 2)
-    .EvalInt() as Result
+-- Not work because dipose...
+-- SELECT  @sqlnet.ValueInt('x', 1).ValueInt('y', 2).EvalInt() as Result
 
 
---Not work because dipose...
-SELECT  @sqlnet.getcode() as Result
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/996' %}
+-- Not work because dipose...
+-- SELECT  @sqlnet.getcode() as Result
+                </pre>
+</div>
 
 Don't worry, we have you covered! Object and Delegate are automatically disposed after a period of time without activity.
 
@@ -83,19 +84,20 @@ EXEC dbo.SQLNET_EvalResultSet @sqlnet
 
 {% endhighlight %}
 
-
 Impersonate the current execution context under which the routine is executing.
 
 ## Root()
 
 Root is required when the expression already specified value. This feature has been added to allow Parallelism.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql">
+-- SELECT 3
 DECLARE @sqlnet SQLNET = SQLNET::New('x+y').ValueInt('y', 2).Root()
 
 -- SELECT 3
 SELECT @sqlnet.ValueInt('x', 1).EvalInt()  as Result
-
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/997' %}
+                </pre>
+</div>
