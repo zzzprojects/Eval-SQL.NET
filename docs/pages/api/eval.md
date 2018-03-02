@@ -60,10 +60,13 @@ Evaluate the code or expression and return a new SQLNET object with the result i
                 <pre class="schema">
                 </pre>
                 <pre class="sql"> 
--- Eval and create a new SQLNET object
 DECLARE @sqlnet SQLNET = SQLNET::New('var list = new List<int>() { 1, 2, 3, 4}')
 DECLARE @result SQLNET = @sqlnet.EvalSQLNET()
 
+-- Use the value previously resolved
+-- SELECT 4
+SELECT @result.Code('value.Count').EvalInt()  as Result
+-- Useful to optimize code with object initialization like Regex.
                 </pre>
 </div>
 
