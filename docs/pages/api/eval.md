@@ -67,8 +67,7 @@ DECLARE @result SQLNET = @sqlnet.EvalSQLNET()
 -- Use the value previously resolved
 -- SELECT 4
 SELECT @result.Code('value.Count').EvalInt()  as Result
--- Useful to optimize code with object initialization like Regex.
-                </pre>
+-- Useful to optimize code with object initialization like Regex.</pre>
 </div>
 
 ## EXEC SQLNET_EvalResultSet
