@@ -60,7 +60,7 @@ DECLARE @sqlnet SQLNET = SQLNET::New('Regex.Matches(input, pattern)')
 -- 'https://github.com/zzzprojects/Eval-SQL.NET'
 -- 'https://github.com/zzzprojects/Eval-Expression.NET'
 -- 'https://github.com/zzzprojects/EntityFramework-Plus'
-        SELECT  CAST(Value_1 AS VARCHAR(250)) as websites
-        FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
+SELECT  CAST(Value_1 AS VARCHAR(250)) as websites
+FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
                 </pre>
 </div>
