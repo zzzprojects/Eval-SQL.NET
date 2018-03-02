@@ -60,6 +60,8 @@ Evaluate the code or expression and return a new SQLNET object with the result i
                 <pre class="schema">
                 </pre>
                 <pre class="sql">  
+
+SELECT @result.Code('value.Count').EvalInt()  as Result
 -- Useful to optimize code with object initialization like Regex.
                 </pre>
 </div>
