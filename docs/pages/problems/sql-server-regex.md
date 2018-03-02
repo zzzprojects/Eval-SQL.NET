@@ -172,7 +172,7 @@ DECLARE @post VARCHAR(800) = 'website: http://zzzprojects.com'
 
 -- SELECT 'website: <a href="http://zzzprojects.com">http://zzzprojects.com</a>'
 SELECT code.ValueString('post', @post).EvalString() AS website
- FROM tableSqlnet
+FROM tableSqlnet
                 </pre>
 </div>
 
