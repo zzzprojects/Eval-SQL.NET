@@ -23,17 +23,18 @@ You need to write a function but the code soon becomes very complex and unmainta
 
 Eval SQL.NET improves the readability and maintainability of complex functions by using well-known C# objects.
 
-{% include template-example.html %} 
-{% highlight csharp %}
-
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql">
 DECLARE @s VARCHAR(MAX) = '1, 2, 3; 4; 5'
 DECLARE @sqlnet SQLNET = SQLNET::New('Regex.Split(input, ",|;")')
 
 SELECT  *
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', @s))
+                </pre>
+</div>
 
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1069' %}
 
 ### Discussion
 
@@ -57,9 +58,8 @@ You need to handle an error with a TRY/CATCH but you receive the SQL error:
 
 Eval SQL.NET makes it possible to handle errors with TRY/CATCH within a T-SQL function.
 
-{% include template-example.html %} 
-{% highlight csharp %}
-
+<div class="sqlfiddle">
+                <pre class="schema">
 CREATE FUNCTION [dbo].[fn_try_catch] ( @x INT, @y INT )
 RETURNS INT
 AS
@@ -67,26 +67,25 @@ AS
         RETURN SQLNET::New('
 try
 {
-	return x / y
+	return x / y' + CHAR(59) + ' 
 }
 catch (Exception ex)
 {
-	return x;
+	return x' + CHAR(59) + ' 
 }
 ').ValueInt('x', @x).ValueInt('y', @y).EvalInt()
 
     END
-
-GO
-	
+                </pre>
+                <pre class="sql">
+SELECT  
 -- SELECT 4
-SELECT  dbo.fn_try_catch(4, 0) as Result
-
+dbo.fn_try_catch(4, 0) as Result1,
 -- SELECT 2
-SELECT  dbo.fn_try_catch(4, 2) as Result
+dbo.fn_try_catch(4, 2) as Result2
+                </pre>
+</div>
 
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/d0cf1/1' %}
 
 ## SQL Function - Call stored procedure
 
