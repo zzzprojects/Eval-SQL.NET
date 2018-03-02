@@ -118,7 +118,7 @@ INSERT INTO dbo.tableSqlnet ( code )  VALUES (SQLNET::New('
 var matches = Regex.Matches(post, 
 "(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})")' + CHAR(59) + '
 
-var list = new List<string>()' + CHAR(59) + '
+var list = new List&lt;string&gt;()' + CHAR(59) + '
 foreach(Match match in matches)
 {
 	list.Add(match.Value)' + CHAR(59) + '
