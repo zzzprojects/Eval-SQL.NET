@@ -68,23 +68,6 @@ Improve performance and capability for splitting text with an easy to use split 
 - Split text using a regular expression
 - Include row index
 
-
-{% include template-example.html title='Split Text Example' %} 
-{% highlight csharp %}
--- CREATE test
-DECLARE @t TABLE (Id INT , Input VARCHAR(MAX))
-INSERT  INTO @t VALUES  ( 1, '1, 2, 3; 4; 5' ), ( 2, '6;7,8;9,10' )
-
--- SPLIT with many delimiters: ',' and ';'
-DECLARE @sqlnet SQLNET = SQLNET::New('Regex.Split(input, ",|;")')
-
-SELECT  *
-FROM    @t AS A
-        CROSS APPLY ( SELECT    *
-                      FROM      dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', Input))
-                    ) AS B
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/98a4b/1' %}
 <div class="sqlfiddle">
                 <pre class="schema">
 -- CREATE test
@@ -112,23 +95,7 @@ Use Regex flexibility to overcome "LIKE" and "PATHINDEX" limitations.
  - Matches
  - Replace
  - Split
-
-{% include template-example.html title='Regular Expression Example' %} 
-{% highlight csharp %}
-DECLARE @customer TABLE ( Email VARCHAR(255) )
-
-INSERT  INTO @customer
-VALUES  ( 'info@zzzprojects.com' ),
-        ( 'invalid.com' ),
-        ( 'sales@zzzprojects.com' )
-
-DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email, 
-@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$")')
-
--- SELECT 'invalid.com'
-SELECT * FROM @customer WHERE @valid_email.ValueString('email', Email).EvalBit() = 0
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/79508/1' %}
+ 
 <div class="sqlfiddle">
                 <pre class="schema">
 Create Table customer ( Email VARCHAR(255) )
