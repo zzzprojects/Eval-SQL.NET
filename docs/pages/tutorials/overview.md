@@ -9,12 +9,13 @@ permalink: overview
 
 Provide to your SQL Server all missing pieces like regular expression and dynamic arithmetic string evaluation.
 
-{% include template-example.html %} 
-{% highlight csharp %}
--- SELECT 3
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql">
 SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt() as Result
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1105' %}
+                </pre>
+</div>
 
 ### Find your solutions:
 
@@ -43,21 +44,21 @@ Make the impossible now possible. Evaluate C# expression in SQL to overcome limi
 - Consume Web Service
 - Replace text in template with String Interpolation
 
-{% include template-example.html title='Dynamic Expression Example' %} 
-{% highlight csharp %}
--- CREATE test
-DECLARE @table TABLE ( X INT, Y INT, Z INT )
-INSERT  INTO @table VALUES  ( 2, 4, 6 ),  ( 3, 5, 7 ), ( 4, 6, 8 )
-
+<div class="sqlfiddle">
+                <pre class="schema">
+CREATE TABLE tableValue  ( X INT, Y INT, Z INT )
+INSERT  INTO tableValue VALUES  ( 2, 4, 6 ),  ( 3, 5, 7 ), ( 4, 6, 8 )
+                </pre>
+                <pre class="sql">
 -- Result: 14, 22, 32
 DECLARE @sqlnet SQLNET = SQLNET::New('x*y+z')
 SELECT  @sqlnet.ValueInt('x', X)
                .ValueInt('y', Y)
                .ValueInt('z', Z)
                .EvalInt() as Result
-FROM    @table
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9bc9b/1' %}
+FROM    tableValue
+                </pre>
+</div>
 
 ## Split text with delimiter
 
@@ -84,6 +85,23 @@ FROM    @t AS A
                     ) AS B
 {% endhighlight %}
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/98a4b/1' %}
+<div class="sqlfiddle">
+                <pre class="schema">
+-- CREATE test
+CREATE TABLE t (Id INT , Input VARCHAR(MAX))
+INSERT  INTO t VALUES  ( 1, '1, 2, 3; 4; 5' ), ( 2, '6;7,8;9,10' )
+                </pre>
+                <pre class="sql">
+-- SPLIT with many delimiters: ',' and ';'
+DECLARE @sqlnet SQLNET = SQLNET::New('Regex.Split(input, ",|;")')
+
+SELECT  *
+FROM    t AS A
+        CROSS APPLY ( SELECT    *
+                      FROM      dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', Input))
+                    ) AS B
+                </pre>
+</div>
 
 ## Use regular expression in SQL Server
 
@@ -111,6 +129,23 @@ DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email,
 SELECT * FROM @customer WHERE @valid_email.ValueString('email', Email).EvalBit() = 0
 {% endhighlight %}
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/79508/1' %}
+<div class="sqlfiddle">
+                <pre class="schema">
+Create Table customer ( Email VARCHAR(255) )
+
+INSERT  INTO customer
+VALUES  ( 'info@zzzprojects.com' ),
+        ( 'invalid.com' ),
+        ( 'sales@zzzprojects.com' )
+                </pre>
+                <pre class="sql">
+DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email, 
+@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$")')
+
+-- SELECT 'invalid.com'
+SELECT * FROM customer WHERE @valid_email.ValueString('email', Email).EvalBit() = 0
+                </pre>
+</div>
 
 ## Replace xp_cmdshell with restrictive alternative
 
