@@ -63,21 +63,6 @@ For maximum performance, the right Value[Type] should be always used over Val &&
  - ValueInt
  - ValueTinyInt
 
-{% include template-example.html %} 
-{% highlight csharp %}
-DECLARE @x1 INT = NULL;
-DECLARE @x2 INT = 2;
-
-DECLARE @sqlnet SQLNET = SQLNET::New('x.HasValue ? x.Value + 1 : 0');
-
--- SELECT 0
-SELECT @sqlnet.ValueNullableInt('x', @x1).EvalInt() as Result
-
--- SELECT 3
-SELECT @sqlnet.ValueNullableInt('x', @x2).EvalInt() as Result
-
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/1cdb6/5' %}
 <div class="sqlfiddle">
                 <pre class="schema">
 CREATE TABLE tableSqlnet  (code1 SQLNET, code2 SQLNET)
