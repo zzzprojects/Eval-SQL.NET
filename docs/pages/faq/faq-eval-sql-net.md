@@ -40,9 +40,10 @@ You are worried about performance? Don't worry, Eval SQL.NET is super-fast and c
 
 Result highly vary depending of your SQL Server performance and expression to evaluate.
 
-{% include template-example.html %} 
-{% highlight csharp %}
-
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql">
 DECLARE @startTime DATETIME,
 @endTime DATETIME
 
@@ -59,12 +60,11 @@ WHILE @I < 125000
     END
 
 SET @endTime = GETDATE()
-PRINT 'StartTime = ' + CONVERT(VARCHAR(30), @startTime, 121)
-PRINT 'EndTime = ' + CONVERT(VARCHAR(30), @endTime, 121)
-PRINT 'Duration = ' + CONVERT(VARCHAR(30), @endTime - @starttime, 114)
-
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/3149e/10' %}
+select 'StartTime = ' + CONVERT(VARCHAR(30), @startTime, 121) as StartTime , 
+'EndTime = ' + CONVERT(VARCHAR(30), @endTime, 121)  as EndTime
+,'Duration = ' + CONVERT(VARCHAR(30), @endTime - @starttime, 114) as Duration
+                </pre>
+</div>
 
 ## Security
 
@@ -84,13 +84,14 @@ However if you build the string to evaluate as you build a dynamic SQL, then the
 
 In C#, decimal must be suffixed with "m" to make them valid. By default "1.1" in C# is a double which cannot be added with decimal value.
 
-{% include template-example.html %} 
-{% highlight csharp %}
-
-// Trow exception
-SELECT SQLNET::New('(x)+1.1234').Val('x', 1.1).Eval() as Result
-
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql">
 -- SELECT 2.2234
 SELECT SQLNET::New('(x)+1.1234m').Val('x', 1.1).Eval() as Result
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/3149e/11' %}
+
+-- Trow exception
+-- SELECT SQLNET::New('(x)+1.1234').Val('x', 1.1).Eval() as Result
+                </pre>
+</div>
