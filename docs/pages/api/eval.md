@@ -60,7 +60,7 @@ Evaluate the code or expression and return a new SQLNET object with the result i
                 <pre class="schema">
                 </pre>
                 <pre class="sql">  
-DECLARE @sqlnet SQLNET = SQLNET::New('var list = new List<int>() { 1, 2, 3, 4}')
+
 DECLARE @result SQLNET = @sqlnet.EvalSQLNET()
 
 -- Use the value previously resolved
