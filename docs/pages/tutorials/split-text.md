@@ -58,7 +58,7 @@ FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
                 <pre class="schema">
                 </pre>
                 <pre class="sql">
-                DECLARE @s VARCHAR(MAX) = '1, 2;3, 4|5'
+DECLARE @s VARCHAR(MAX) = '1, 2;3, 4|5'
 
 DECLARE @sqlnet SQLNET = SQLNET::New('s.Split(",", ";", "|")
                                        .Select(x => x.Trim())')
