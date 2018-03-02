@@ -9,20 +9,21 @@ Multiple partial solutions exists like using "EXEC(Transact-SQL)" which is limit
 
 **SQL Eval.NET** is a complete solution which, not only lets you evaluate dynamic arithmetic expression, but lets you use the full C# language directly in T-SQL stored procedures, functions and triggers.
 
-{% include template-example.html %} 
-{% highlight csharp %}
-DECLARE @tableFormula TABLE (Formula VARCHAR(255), X INT, Y INT, Z INT)
+<div class="sqlfiddle">
+                <pre class="schema">
+CREATE TABLE tableFormula (Formula VARCHAR(255), X INT, Y INT, Z INT)
 
-INSERT  INTO @tableFormula
+INSERT  INTO tableFormula
 VALUES  ( 'x+y*z', 1, 2, 3 ),
         ( '(x+y)*z', 1, 2, 3 )
-
+                </pre>
+                <pre class="sql">
 -- Select_0: 7
 -- Select_1: 9
 SELECT  SQLNET::New(Formula).ValueInt('x', X).ValueInt('y', Y).ValueInt('z', Z).EvalInt() as Result
-FROM    @tableFormula
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/2f73a/1' %}
+FROM   tableFormula
+                </pre>
+</div>
 
 ## SQL Eval - Arithmetic / Math Expression
 
@@ -40,17 +41,18 @@ Eval SQL.NET supports all C# operators including operators precedence and parent
 
 Evaluating an expression is very fast and scalable. You can see performance 3-20x faster than User-Defined Function (UDF) and you can evaluate an expression as much as ONE MILLION times under a second.
 
-{% include template-example.html %} 
-{% highlight csharp %}
-DECLARE @items TABLE (Quantity INT, Price MONEY)
+<div class="sqlfiddle">
+                <pre class="schema">
+CREATE TABLE items  (Quantity INT, Price MONEY)
 
-INSERT  INTO @items
+INSERT  INTO items
 VALUES  ( 2, 10 ),
         ( 9, 6 ),
         ( 15, 2 ),
         ( 6, 0 ),
         ( 84, 5 )
-
+                </pre>
+                <pre class="sql">
 DECLARE @customColumn SQLNET = SQLNET::New('(quantity * price).ToString("$#.00")')
 DECLARE @customFilter SQLNET = SQLNET::New('quantity > 3 && price > 0')
 
@@ -59,10 +61,11 @@ DECLARE @customFilter SQLNET = SQLNET::New('quantity > 3 && price > 0')
 -- Select_2: 84, 5.00, $420.00
 SELECT  * ,
         @customColumn.ValueInt('quantity', Quantity).Val('price', Price).EvalString() as Result
-FROM    @items
+FROM    items
 WHERE   @customFilter.ValueInt('quantity', Quantity).Val('price', Price).EvalBit() = 1
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/4ed27/1' %}
+                </pre>
+</div>
+
 
 ## SQL Eval - Dynamic Expression
 
@@ -82,9 +85,9 @@ Eval SQL.NET is flexible and supports almost all C# keywords and features includ
  - Generic Type
  - Lambda Expression
  - LINQ
-
-{% include template-example.html %} 
-{% highlight csharp %}
+ 
+<div class="sqlfiddle">
+                <pre class="schema">
 CREATE PROCEDURE [dbo].[Select_Switch] @x INT, @y INT, @z INT
 AS
     BEGIN
@@ -93,28 +96,33 @@ AS
         SET @result = SQLNET::New('
 switch(x)
 {
-	case 1: return y + z;
-	case 2: return y - z;
-	case 3: return y * z;
-	default: return Convert.ToInt32(y ^^ z); // Pow
+	case 1: return y + z' + CHAR(59) + '
+	case 2: return y - z' + CHAR(59) + '
+	case 3: return y * z' + CHAR(59) + '
+	default: return Convert.ToInt32(y ^^ z)' + CHAR(59) + ' // Pow
 }
    ').ValueInt('x', @x).ValueInt('y', @y).ValueInt('z', @z).EvalInt()
 
-        SELECT  @result as Result
+        return  @result 
     END
-
-GO
-
+                </pre>
+                <pre class="sql">
 -- RETURN 5
-EXEC Select_Switch 1, 2, 3
+declare @ValueInt1 int 
+EXEC @ValueInt1 = Select_Switch 1, 2, 3
 -- RETURN -1
-EXEC Select_Switch 2, 2, 3
+declare @ValueInt2 int
+EXEC @ValueInt2 = Select_Switch 2, 2, 3
 -- RETURN 6
-EXEC Select_Switch 3, 2, 3
+declare @ValueInt3 int 
+EXEC @ValueInt3 = Select_Switch 3, 2, 3
 -- RETURN 8
-EXEC Select_Switch 4, 2, 3
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/6b73d/2' %}
+declare @ValueInt4 int  
+EXEC @ValueInt4 = Select_Switch 4, 2, 3
+
+select @ValueInt1, @ValueInt2, @ValueInt3, @ValueInt4
+                </pre>
+</div>
 
 ## SQL Eval - Framework class Library
 
@@ -130,22 +138,22 @@ You have a complex SQL and you know C# Syntax and C# Object could make this prob
 
 Eval SQL.NET improve readability and maintainability over complex SQL. It supports all [.NET framework class libraries](https://msdn.microsoft.com/en-us/library/gg145045.aspx) (FCL) that are supported by [SQL CLR Framework Libraries](https://docs.microsoft.com/en-us/sql/relational-databases/clr-integration/database-objects/supported-net-framework-libraries).
 
-{% include template-example.html %} 
-{% highlight csharp %}
--- CREATE test
-DECLARE @t TABLE (Id INT , Input VARCHAR(MAX))
-INSERT  INTO @t VALUES  ( 1, '1, 2, 3; 4; 5' ), ( 2, '6;7,8;9,10' )
-
+<div class="sqlfiddle">
+                <pre class="schema">
+CREATE TABLE t  (Id INT , Input VARCHAR(MAX))
+INSERT  INTO t VALUES  ( 1, '1, 2, 3; 4; 5' ), ( 2, '6;7,8;9,10' )
+                </pre>
+                <pre class="sql">
 -- SPLIT with many delimiters: ',' and ';'
 DECLARE @sqlnet SQLNET = SQLNET::New('Regex.Split(input, ",|;")')
 
 SELECT  *
-FROM    @t AS A
+FROM    t AS A
         CROSS APPLY ( SELECT    *
                       FROM      dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', Input))
                     ) AS B
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/ca1ba/2' %}
+                </pre>
+</div>
 
 ## Conclusion
 
