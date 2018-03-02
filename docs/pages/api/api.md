@@ -7,19 +7,11 @@ permalink: api
 Let take a very short overview with the API
 
 <div class="sqlfiddle">
-
                 <pre class="schema">
-
-The Schema Code
-
                 </pre>
-
                 <pre class="sql">
-
-The Sql Code
-
+SELECT SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt() as Result
                 </pre>
-
 </div>
 
 
