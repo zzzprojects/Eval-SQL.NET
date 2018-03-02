@@ -8,24 +8,25 @@ Finding or replacing text in SQL is a very frequent scenario. "LIKE" and "PATHIN
 
 Eval SQL.NET lets you use and exploit fully C# regular expression features directly in T-SQL stored procedures, functions and triggers. It's possible to use regex in SQL search condition and select statement.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+<div class="sqlfiddle">
+                <pre class="schema">
+CREATE TABLE customer ( Email VARCHAR(255) )
 
-DECLARE @customer TABLE ( Email VARCHAR(255) )
-
-INSERT  INTO @customer
+INSERT  INTO customer
 VALUES  ( 'info@zzzprojects.com' ),
         ( 'invalid.com' ),
         ( 'sales@zzzprojects.com' )
-
+                </pre>
+                <pre class="sql">
+-- More examples: http://eval-sql.net/tutorials 
+        
 DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email, 
 @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$")')
 
 -- SELECT 'invalid.com'
-SELECT * FROM @customer WHERE @valid_email.Val('email', Email).EvalBit() = 0
-
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/213f9/1' %}
+SELECT * FROM customer WHERE @valid_email.Val('email', Email).EvalBit() = 0
+                </pre>
+</div>
 
 
 ## SQL Regex - IsMatch
@@ -43,24 +44,23 @@ You need to perform a rule validation or search with a condition to find valid/i
 
 SQL Regex IsMatch indicates whether the regular expression finds a match in the string or not.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+<div class="sqlfiddle">
+                <pre class="schema">
+CREATE TABLE customer ( Email VARCHAR(255) )
 
-DECLARE @customer TABLE ( Email VARCHAR(255) )
-
-INSERT  INTO @customer
+INSERT  INTO customer
 VALUES  ( 'info@zzzprojects.com' ),
         ( 'invalid.com' ),
         ( 'sales@zzzprojects.com' )
-
+                </pre>
+                <pre class="sql">
 DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email, 
 @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$")')
 
 -- SELECT 'invalid.com'
-SELECT * FROM @customer WHERE @valid_email.ValueString('email', Email).EvalBit() = 0
-
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/213f9/2' %}
+SELECT * FROM customer WHERE @valid_email.ValueString('email', Email).EvalBit() = 0
+                </pre>
+</div>
 
 ## SQL Regex - Match
 
@@ -76,31 +76,26 @@ You need to extract the first occurrence from a string such as user profile desc
 
 SQL Regex Match searches in a string for the first occurrence of the regular expression and returns the match.
 
-{% include template-example.html %} 
-{% highlight csharp %}
-
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql">
 DECLARE @shortDescription VARCHAR(800) = 'zzz ... zzz... http://zzzprojects.com ... zzzz'
-DECLARE @website VARCHAR(255) = NULL;
+DECLARE @website VARCHAR(255) = NULL 
 
 IF ( @website IS NULL )
     BEGIN
 	-- IF user has not specified a website, try get it from the short description
-        SET @website = SQLNET::New('
-string value = Regex.Match(shortDescription, 
-"(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})").Value;
-
-return value != "" ? value : null;
-')
-	                          .ValueString('shortDescription', @shortDescription)
-						      .EvalString();
+       SET @website = SQLNET::New(' 
+return  Regex.Match(shortDescription, 
+@"(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})") 
+').ValueString('shortDescription', @shortDescription).EvalString()
     END
 
 -- return 'http://zzzprojects.com'
-SELECT @website
-
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1012' %}
-
+SELECT @website as website
+                </pre>
+</div>
 
 ## SQL Regex - Matches
 
@@ -116,43 +111,36 @@ You need to extract all occurrences from a string such as blog post:
 
 SQL Regex Matches searches in the string for all occurrences of the regular expression and returns all the matches.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+<div class="sqlfiddle">
+                <pre class="schema">
+CREATE TABLE tableSqlnet  (code SQLNET)
+INSERT INTO dbo.tableSqlnet ( code )  VALUES (SQLNET::New('
+var matches = Regex.Matches(post, 
+"(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})")' + CHAR(59) + '
 
+var list = new List<string>()' + CHAR(59) + '
+foreach(Match match in matches)
+{
+	list.Add(match.Value)' + CHAR(59) + '
+}
+
+return list' + CHAR(59) + '
+').ROOT() )
+                </pre>
+                <pre class="sql">
 DECLARE @post VARCHAR(800) = 'zzz ... zzz... http://zzzprojects.com ... zzzz
 . zzz... https://github.com/zzzprojects/Eval-SQL.NET ... zzzz
 . zzz... zzz... https://github.com/zzzprojects/Eval-Expression.NET ... zzzz
 . zzz.... zzz.... zzz... https://github.com/zzzprojects/EntityFramework-Plus ... zzzz
-'
-
-DECLARE @websites TABLE ( Website VARCHAR(250) )
-
-DECLARE @sqlnet_matchs SQLNET = SQLNET::New('
-var matches = Regex.Matches(post, 
-"(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})");
-
-var list = new List<string>();
-foreach(Match match in matches)
-{
-	list.Add(match.Value);
-}
-
-return list;
-').ValueString('post', @post)
-
-
-INSERT  INTO @websites
-        SELECT  CAST(Value_1 AS VARCHAR(250))
-        FROM    dbo.SQLNET_EvalTVF_1(@sqlnet_matchs)
-
+'   
 -- SELECT 'http://zzzprojects.com'
 -- SELECT 'https://github.com/zzzprojects/Eval-SQL.NET'
 -- SELECT 'https://github.com/zzzprojects/Eval-Expression.NET'
 -- SELECT 'https://github.com/zzzprojects/EntityFramework-Plus'
-SELECT * FROM @websites
-
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/d48e7/3' %}
+SELECT  CAST(Value_1 AS VARCHAR(250)) as websites
+FROM    dbo.SQLNET_EvalTVF_1( CAST ((SELECT code.ValueString('post', @post)  FROM tableSqlnet) AS SQLNET ) )
+                </pre>
+</div>
 
 ## SQL Regex - Replace
 
@@ -168,24 +156,25 @@ You need to convert, remove or substitute a text with a specific format:
 
 SQL Regex Replace searches for strings that match a regular expression pattern and replaces a value with a replacement string.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+<div class="sqlfiddle">
+                <pre class="schema">
+CREATE TABLE tableSqlnet  (code SQLNET)
+INSERT INTO dbo.tableSqlnet ( code )  VALUES ( SQLNET::New('
+var input = post' + CHAR(59) + '
+var pattern = @"(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})"' + CHAR(59) + '
+var replacement = "<a href=\"$1\">$1</a>"' + CHAR(59) + '
 
+return Regex.Replace(input, pattern, replacement)' + CHAR(59) + '
+'))
+                </pre>
+                <pre class="sql">
 DECLARE @post VARCHAR(800) = 'website: http://zzzprojects.com'
 
-SET @post = SQLNET::New('
-var input = post;
-var pattern = @"(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})";
-var replacement = "<a href=\"$1\">$1</a>";
-
-return Regex.Replace(input, pattern, replacement);
-').ValueString('post', @post).EvalString()
-
 -- SELECT 'website: <a href="http://zzzprojects.com">http://zzzprojects.com</a>'
-SELECT @post
-
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/b308e/1' %}
+SELECT code.ValueString('post', @post).EvalString() AS website
+ FROM tableSqlnet
+                </pre>
+</div>
 
 ## SQL Regex - Split
 
@@ -201,17 +190,18 @@ You need to split a string but the traditional "fn_split" method is limited and 
 
 SQL Regex Split lets you split a string into an array of substrings using a regular expression.
 
-{% include template-example.html %} 
-{% highlight csharp %}
-
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql">
 DECLARE @s VARCHAR(MAX) = '1, 2, 3; 4; 5'
 DECLARE @sqlnet SQLNET = SQLNET::New('Regex.Split(input, ",|;")')
 
 SELECT  *
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', @s))
+                </pre>
+</div>
 
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1069' %}
 
 ### Discussion
 
