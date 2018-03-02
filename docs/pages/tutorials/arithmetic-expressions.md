@@ -10,9 +10,10 @@ Eval SQL.NET is a complete C# runtime compiler which honor operator precedence a
 ### Using formula & variables
 
 
-
-{% include template-example.html %} 
-{% highlight csharp %}
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql">
 DECLARE @x INT = 2
 DECLARE @y INT = 4
 DECLARE @z INT = 6
@@ -27,21 +28,21 @@ SET @result = SQLNET::New('x*y+z')
 
 -- SELECT 14
 SELECT  @result as Result
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1101' %}
+                </pre>
+</div>
 
 ### Using formula & table variables
 
-{% include template-example.html %} 
-{% highlight csharp %}
+<div class="sqlfiddle">
+                <pre class="schema">
+CREATE TABLE tableValue ( X INT, Y INT, Z INT )
 
-DECLARE @table TABLE ( X INT, Y INT, Z INT )
-
-INSERT  INTO @table
+INSERT  INTO tableValue
 VALUES  ( 2, 4, 6 ),
         ( 3, 5, 7 ),
         ( 4, 6, 8 )
-
+                </pre>
+                <pre class="sql">
 -- 14
 -- 22
 -- 32
@@ -50,17 +51,15 @@ SELECT  @sqlnet.ValueInt('x', X)
                .ValueInt('y', Y)
                .ValueInt('z', Z)
                .EvalInt() as Result
-FROM    @table
-
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/e44cf/2' %}
+FROM    tableValue
+                </pre>
+</div>
 
 ### Using table formula & variables
 
-{% include template-example.html %} 
-{% highlight csharp %}
-
-DECLARE @table TABLE
+<div class="sqlfiddle">
+                <pre class="schema">
+CREATE TABLE tableValue
     (
       Formula VARCHAR(50) ,
       X INT ,
@@ -68,11 +67,12 @@ DECLARE @table TABLE
       Z INT
     )
 
-INSERT  INTO @table
+INSERT  INTO tableValue
 VALUES  ( 'x*y+z', 2, 4, 6 ),
         ( 'x+y*z', 2, 4, 6 ),
         ( '(x+y)*z', 2, 4, 6 )
-
+                </pre>
+                <pre class="sql">
 -- 14
 -- 26
 -- 36
@@ -81,6 +81,6 @@ SELECT  @sqlnet.Code(Formula)
                .ValueInt('x', X)
                .ValueInt('y', Y)
                .ValueInt('z', Z).EvalInt() as Result
-FROM    @table
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/ed8f7/1' %}
+FROM    tableValue
+                </pre>
+</div>
