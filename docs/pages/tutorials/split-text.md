@@ -16,8 +16,10 @@ Using C# code and String.Split or Regex.Split, you are no longer limited and can
 
 ### Split using single delimiter
 
-{% include template-example.html %} 
-{% highlight csharp %}
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql">
 DECLARE @s VARCHAR(MAX) = '1, 2;3, 4|5'
 
 DECLARE @sqlnet SQLNET = SQLNET::New('s.Split(",")').ValueString('s', @s)
@@ -26,15 +28,16 @@ DECLARE @sqlnet SQLNET = SQLNET::New('s.Split(",")').ValueString('s', @s)
 -- 2;3
 -- 4|5
 SELECT  *
-FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1112' %}
+FROM    dbo.SQLNET_EvalTVF_1(@sqlnet) 
+                </pre>
+</div>
 
 ### Split using multiple delimiters
 
-{% include template-example.html %} 
-{% highlight csharp %}
-
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql">
 DECLARE @s VARCHAR(MAX) = '1, 2;3, 4|5'
 
 DECLARE @sqlnet SQLNET = SQLNET::New('s.Split(",", ";", "|")').ValueString('s', @s)
@@ -43,18 +46,19 @@ DECLARE @sqlnet SQLNET = SQLNET::New('s.Split(",", ";", "|")').ValueString('s', 
 --  2
 -- 3
 --  4
--- 5
-SELECT  *
-FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1117' %}
+-- 5 
+SELECT REPLACE(cast (Value_1 AS VARCHAR(20)),' ', '_') AS Result
+FROM    dbo.SQLNET_EvalTVF_1(@sqlnet) 
+                </pre>
+</div>
 
 ### Split and Trim
 
-{% include template-example.html %} 
-{% highlight csharp %}
-
-DECLARE @s VARCHAR(MAX) = '1, 2;3, 4|5'
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql">
+                DECLARE @s VARCHAR(MAX) = '1, 2;3, 4|5'
 
 DECLARE @sqlnet SQLNET = SQLNET::New('s.Split(",", ";", "|")
                                        .Select(x => x.Trim())')
@@ -65,17 +69,17 @@ DECLARE @sqlnet SQLNET = SQLNET::New('s.Split(",", ";", "|")
 -- 3
 -- 4
 -- 5
-SELECT  *
+SELECT  REPLACE(cast (Value_1 AS VARCHAR(20)),' ', '_') AS Result
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1118' %}
+                </pre>
+</div>
 
 ### Split and Trim with Regex
 
-
-{% include template-example.html %} 
-{% highlight csharp %}
-
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql">
 DECLARE @s VARCHAR(MAX) = '1, 2;3, 4|5'
 
 DECLARE @sqlnet SQLNET = SQLNET::New('Regex.Split(s, ",|;|\|")
@@ -87,8 +91,7 @@ DECLARE @sqlnet SQLNET = SQLNET::New('Regex.Split(s, ",|;|\|")
 -- 3
 -- 4
 -- 5
-SELECT  *
+SELECT  REPLACE(cast (Value_1 AS VARCHAR(20)),' ', '_') AS Result
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
-
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1119' %}
+                </pre>
+</div>
