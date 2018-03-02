@@ -16,19 +16,25 @@ Evaluate the code or expression and return the result.
  - EvalTinyInt
  - EvalUniqueIdentifier
  - EvalVarBinary
+ 
+ <div class="sqlfiddle">
+	<pre class="schema">
+CREATE TABLE tableSqlnet  (code SQLNET)
+INSERT INTO dbo.tableSqlnet ( code )  VALUES (SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).Root())
+	</pre>
+	<pre class="sql"> 
+DECLARE @value_variant SQL_VARIANT = (SELECT  code.Eval() FROM  tableSqlnet) 
 
-{% include template-example.html %} 
-{% highlight csharp %}
-DECLARE @sqlnet SQLNET = SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).Root();
+DECLARE @value_int INT = (SELECT  code.EvalInt() FROM  tableSqlnet) 
+DECLARE @value_decimal DECIMAL(18, 2) = Convert(DECIMAL(18, 2),(SELECT  code.Eval() FROM  tableSqlnet)   )
 
-DECLARE @value_variant SQL_VARIANT = @sqlnet.Eval();
-DECLARE @value_int INT = @sqlnet.EvalInt();
-DECLARE @value_decimal DECIMAL(18, 2) = CAST(@sqlnet.Eval() AS DECIMAL(18, 2))
+Set @value_decimal = @value_decimal + 0.01
 
--- SELECT 3, 3, 3.00
-SELECT @value_variant as variant , @value_int as int, @value_decimal as decimal
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/58568/15' %}
+-- SELECT 3, 3, 3.01 
+  SELECT @value_variant as variant  , @value_int as int, @value_decimal as decimal
+	</pre>
+</div>
+ 
 
 ## EvalReadAccess
 
@@ -50,8 +56,10 @@ Evaluate the code or expression allowing "Read" and return the result.
 
 Evaluate the code or expression and return a new SQLNET object with the result in the parameter name "value"
 
-{% include template-example.html %} 
-{% highlight csharp %}
+<div class="sqlfiddle">
+                <pre class="schema">
+                </pre>
+                <pre class="sql"> 
 -- Eval and create a new SQLNET object
 DECLARE @sqlnet SQLNET = SQLNET::New('var list = new List<int>() { 1, 2, 3, 4}')
 DECLARE @result SQLNET = @sqlnet.EvalSQLNET()
@@ -59,9 +67,9 @@ DECLARE @result SQLNET = @sqlnet.EvalSQLNET()
 -- Use the value previously resolved
 -- SELECT 4
 SELECT @result.Code('value.Count').EvalInt()  as Result
-Useful to optimize code with object initialization like Regex.
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/989' %}
+-- Useful to optimize code with object initialization like Regex.
+                </pre>
+</div>
 
 ## EXEC SQLNET_EvalResultSet
 
@@ -94,8 +102,8 @@ Evaluate the code or expression from a Table-Valued Function (TVF).
  - SQLNET_EvalTVF_5 (SQL_VARIANT, ..., SQL_VARIANT)
  - SQLNET_EvalTVF_String
 
-{% include template-example.html %} 
-{% highlight csharp %}
+<div class="sqlfiddle">
+                <pre class="schema">
 CREATE FUNCTION [dbo].[fn_Split]
     (
       @input VARCHAR(MAX) ,
@@ -112,10 +120,9 @@ RETURNS @split TABLE ( item VARCHAR(8000) )
                 FROM    [dbo].[SQLNET_EvalTVF_1](@regex_split)
         RETURN
     END
-
-GO
-
+                </pre>
+                <pre class="sql">
 -- SPLIT with multiple delimiters (',' and ';')
 SELECT * FROM dbo.fn_Split('1, 2, 3; 4; 5', ',|;')
-{% endhighlight %}
-{% include component-try-it.html href='http://sqlfiddle.com/#!18/b738f/2' %}
+                </pre>
+</div>
