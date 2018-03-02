@@ -6,8 +6,21 @@ permalink: api
 
 Let take a very short overview with the API
 
-{% include  sqlfiddle.html Code='SELECT SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt() as Result
-' %}
+<div class="sqlfiddle">
+
+                <pre class="schema">
+
+The Schema Code
+
+                </pre>
+
+                <pre class="sql">
+
+The Sql Code
+
+                </pre>
+
+</div>
 
 
  - **SQLNET:** A CLR Type created by Eval SQL.NET library
