@@ -1,6 +1,4 @@
----
-permalink: regular-expressions
----
+# Reqular Expressions
 
 ## Definition
 

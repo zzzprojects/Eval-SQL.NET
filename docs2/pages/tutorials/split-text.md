@@ -1,6 +1,4 @@
----
-permalink: split-text
----
+# Split Text
 
 ## Definition
 

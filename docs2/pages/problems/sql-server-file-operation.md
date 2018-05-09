@@ -1,6 +1,4 @@
----
-permalink: sql-server-file-operation
----
+# SQL Server File Operation
 
 ## Introduction
 

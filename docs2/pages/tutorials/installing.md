@@ -1,6 +1,4 @@
----
-permalink: installing
----
+# Installing
 
 **Eval SQL.NET** can be installed easily.
 

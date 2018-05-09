@@ -1,6 +1,4 @@
----
-permalink: value
----
+# Value
 
 ## Value
 

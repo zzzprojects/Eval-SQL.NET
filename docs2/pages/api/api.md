@@ -1,6 +1,4 @@
----
-permalink: api
----
+# API
 
 ## Overview
 

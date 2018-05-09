@@ -1,6 +1,4 @@
----
-permalink: arithmetic-expressions
----
+# Arithmetic Expressions
 
 ## Definition
 An arithmetic expression is an expression that results in a numeric value. Try these examples to see how easy is to resolve an arithmetic expression.

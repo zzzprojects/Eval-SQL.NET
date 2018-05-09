@@ -1,6 +1,4 @@
----
-permalink: tutorial-introduction
----
+# Introduction
 
 ## Introduction
 Entity Framework Extensions allow you to improve dramatically your save operations performance.

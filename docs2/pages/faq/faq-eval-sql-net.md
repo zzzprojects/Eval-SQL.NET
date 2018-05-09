@@ -1,6 +1,4 @@
----
-permalink: faq-eval-sql-net
----
+# FAQ - Eval SQL.NET
 
 ## Bug Fixing
 

@@ -1,6 +1,5 @@
----
-permalink: sql-server-eval
----
+# SQL Server Eval
+
 ## Introduction
 
 How to evaluate an arithmetic expression in SQL Server is a common subject. There are several reasons why an "Eval" function like JavaScript could be useful in SQL such as evaluating custom report field for a trusted user.

@@ -1,6 +1,4 @@
----
-permalink: requirements
----
+# Requirements
 
 ## Minimus Requirements
 

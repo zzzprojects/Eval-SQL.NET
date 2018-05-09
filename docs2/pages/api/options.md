@@ -1,6 +1,4 @@
----
-permalink: options
----
+# Options
 
 ## AutoDispose()
 

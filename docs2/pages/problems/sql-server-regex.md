@@ -1,6 +1,4 @@
----
-permalink: sql-server-regex
----
+# SQL Server Regex
 
 ## Introduction
 

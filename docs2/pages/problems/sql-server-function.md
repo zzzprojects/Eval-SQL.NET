@@ -1,6 +1,4 @@
----
-permalink: sql-server-function
----
+# SQL Server Function (UDF)
 
 ## Introduction
 
