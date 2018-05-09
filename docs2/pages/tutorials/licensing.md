@@ -17,8 +17,8 @@ permalink: licensing
 
 Upon purchase completion, an email will be sent with your license key information.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 CREATE PROCEDURE SQLNET_Configuration
 AS
 BEGIN
@@ -30,16 +30,16 @@ BEGIN
 	-- SELECT 1
 	SELECT @isValid
 END
-{% endhighlight %}
+```
 
 *We recommend to always re-install the Eval-SQL.NET Script after enabling the license to ensure everything work if the server restart.*
 
 You can verify if the license is valid with the following command:
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 -- RETURN 1 if the license is valid.
 SELECT SQLNET::AddLicense('[LicenseName]', '[LicenseKey]')
 
-{% endhighlight %}
+```
 

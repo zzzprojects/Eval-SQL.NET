@@ -16,8 +16,8 @@ Using C# code and String.Split or Regex.Split, you are no longer limited and can
 
 ### Split using single delimiter
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 DECLARE @s VARCHAR(MAX) = '1, 2;3, 4|5'
 
 DECLARE @sqlnet SQLNET = SQLNET::New('s.Split(",")').ValueString('s', @s)
@@ -27,13 +27,13 @@ DECLARE @sqlnet SQLNET = SQLNET::New('s.Split(",")').ValueString('s', @s)
 -- 4|5
 SELECT  *
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1112' %}
 
 ### Split using multiple delimiters
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 DECLARE @s VARCHAR(MAX) = '1, 2;3, 4|5'
 
@@ -46,13 +46,13 @@ DECLARE @sqlnet SQLNET = SQLNET::New('s.Split(",", ";", "|")').ValueString('s', 
 -- 5
 SELECT  *
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1117' %}
 
 ### Split and Trim
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 DECLARE @s VARCHAR(MAX) = '1, 2;3, 4|5'
 
@@ -67,14 +67,14 @@ DECLARE @sqlnet SQLNET = SQLNET::New('s.Split(",", ";", "|")
 -- 5
 SELECT  *
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1118' %}
 
 ### Split and Trim with Regex
 
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 DECLARE @s VARCHAR(MAX) = '1, 2;3, 4|5'
 
@@ -90,5 +90,5 @@ DECLARE @sqlnet SQLNET = SQLNET::New('Regex.Split(s, ",|;|\|")
 SELECT  *
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet)
 
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1119' %}

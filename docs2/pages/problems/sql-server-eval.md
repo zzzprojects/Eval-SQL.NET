@@ -9,8 +9,8 @@ Multiple partial solutions exists like using "EXEC(Transact-SQL)" which is limit
 
 **SQL Eval.NET** is a complete solution which, not only lets you evaluate dynamic arithmetic expression, but lets you use the full C# language directly in T-SQL stored procedures, functions and triggers.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 DECLARE @tableFormula TABLE (Formula VARCHAR(255), X INT, Y INT, Z INT)
 
 INSERT  INTO @tableFormula
@@ -21,7 +21,7 @@ VALUES  ( 'x+y*z', 1, 2, 3 ),
 -- Select_1: 9
 SELECT  SQLNET::New(Formula).ValueInt('x', X).ValueInt('y', Y).ValueInt('z', Z).EvalInt() as Result
 FROM    @tableFormula
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/2f73a/1' %}
 
 ## SQL Eval - Arithmetic / Math Expression
@@ -40,8 +40,8 @@ Eval SQL.NET supports all C# operators including operators precedence and parent
 
 Evaluating an expression is very fast and scalable. You can see performance 3-20x faster than User-Defined Function (UDF) and you can evaluate an expression as much as ONE MILLION times under a second.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 DECLARE @items TABLE (Quantity INT, Price MONEY)
 
 INSERT  INTO @items
@@ -61,7 +61,7 @@ SELECT  * ,
         @customColumn.ValueInt('quantity', Quantity).Val('price', Price).EvalString() as Result
 FROM    @items
 WHERE   @customFilter.ValueInt('quantity', Quantity).Val('price', Price).EvalBit() = 1
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/4ed27/1' %}
 
 ## SQL Eval - Dynamic Expression
@@ -83,8 +83,8 @@ Eval SQL.NET is flexible and supports almost all C# keywords and features includ
  - Lambda Expression
  - LINQ
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 CREATE PROCEDURE [dbo].[Select_Switch] @x INT, @y INT, @z INT
 AS
     BEGIN
@@ -113,7 +113,7 @@ EXEC Select_Switch 2, 2, 3
 EXEC Select_Switch 3, 2, 3
 -- RETURN 8
 EXEC Select_Switch 4, 2, 3
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/6b73d/2' %}
 
 ## SQL Eval - Framework class Library
@@ -130,8 +130,8 @@ You have a complex SQL and you know C# Syntax and C# Object could make this prob
 
 Eval SQL.NET improve readability and maintainability over complex SQL. It supports all [.NET framework class libraries](https://msdn.microsoft.com/en-us/library/gg145045.aspx) (FCL) that are supported by [SQL CLR Framework Libraries](https://docs.microsoft.com/en-us/sql/relational-databases/clr-integration/database-objects/supported-net-framework-libraries).
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 -- CREATE test
 DECLARE @t TABLE (Id INT , Input VARCHAR(MAX))
 INSERT  INTO @t VALUES  ( 1, '1, 2, 3; 4; 5' ), ( 2, '6;7,8;9,10' )
@@ -144,7 +144,7 @@ FROM    @t AS A
         CROSS APPLY ( SELECT    *
                       FROM      dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', Input))
                     ) AS B
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/ca1ba/2' %}
 
 ## Conclusion

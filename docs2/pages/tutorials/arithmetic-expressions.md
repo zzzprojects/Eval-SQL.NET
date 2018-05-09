@@ -11,8 +11,8 @@ Eval SQL.NET is a complete C# runtime compiler which honor operator precedence a
 
 
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 DECLARE @x INT = 2
 DECLARE @y INT = 4
 DECLARE @z INT = 6
@@ -27,13 +27,13 @@ SET @result = SQLNET::New('x*y+z')
 
 -- SELECT 14
 SELECT  @result as Result
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1101' %}
 
 ### Using formula & table variables
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 DECLARE @table TABLE ( X INT, Y INT, Z INT )
 
@@ -52,13 +52,13 @@ SELECT  @sqlnet.ValueInt('x', X)
                .EvalInt() as Result
 FROM    @table
 
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/e44cf/2' %}
 
 ### Using table formula & variables
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 DECLARE @table TABLE
     (
@@ -82,5 +82,5 @@ SELECT  @sqlnet.Code(Formula)
                .ValueInt('y', Y)
                .ValueInt('z', Z).EvalInt() as Result
 FROM    @table
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/ed8f7/1' %}

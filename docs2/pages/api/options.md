@@ -6,12 +6,12 @@ permalink: options
 
 AutoDispose object and delegate from the cache after the code has been evaluated.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 -- SELECT 3
 SELECT SQLNET::New('1+2').AutoDispose().EvalInt() as Result
 
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/994' %}
 
 Don't worry, we have you covered! Object and Delegate are automatically disposed after a period of time without activity.
@@ -22,22 +22,22 @@ Sets the code or expression to evaluate.
 
 DECLARE @sqlnet SQLNET = SQLNET::New('')
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 DECLARE @sqlnet SQLNET = SQLNET::New('')
 
 -- SELECT 3
 SELECT @sqlnet.Code('1+2').EvalInt() as Result
 
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1125' %}
 
 ## Dispose()
 
 Dispose object and delegate from the cache
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 DECLARE @sqlnet SQLNET = SQLNET::New('x + y')
 
 SELECT  @sqlnet
@@ -59,7 +59,7 @@ SELECT  @sqlnet
 
 --Not work because dipose...
 SELECT  @sqlnet.getcode() as Result
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/996' %}
 
 Don't worry, we have you covered! Object and Delegate are automatically disposed after a period of time without activity.
@@ -68,8 +68,8 @@ Don't worry, we have you covered! Object and Delegate are automatically disposed
 
 Change the security context to impersonate the credential of the one who runs the T-SQL statements.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 -- REQUIRE EXTERNAL_ACCESS permission
 DECLARE @sqlnet SQLNET = SQLNET::New('
 string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -81,7 +81,7 @@ return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
 -- SELECT * FROM DesktopFiles ORDER BY File.Fullname
 EXEC dbo.SQLNET_EvalResultSet @sqlnet
 
-{% endhighlight %}
+```
 
 
 Impersonate the current execution context under which the routine is executing.
@@ -90,12 +90,12 @@ Impersonate the current execution context under which the routine is executing.
 
 Root is required when the expression already specified value. This feature has been added to allow Parallelism.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 DECLARE @sqlnet SQLNET = SQLNET::New('x+y').ValueInt('y', 2).Root()
 
 -- SELECT 3
 SELECT @sqlnet.ValueInt('x', 1).EvalInt()  as Result
 
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/997' %}

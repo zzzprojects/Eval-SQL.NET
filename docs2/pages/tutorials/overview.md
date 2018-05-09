@@ -9,11 +9,11 @@ permalink: overview
 
 Provide to your SQL Server all missing pieces like regular expression and dynamic arithmetic string evaluation.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 -- SELECT 3
 SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt() as Result
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1105' %}
 
 ### Find your solutions:
@@ -44,7 +44,7 @@ Make the impossible now possible. Evaluate C# expression in SQL to overcome limi
 - Replace text in template with String Interpolation
 
 {% include template-example.html title='Dynamic Expression Example' %} 
-{% highlight csharp %}
+```csharp
 -- CREATE test
 DECLARE @table TABLE ( X INT, Y INT, Z INT )
 INSERT  INTO @table VALUES  ( 2, 4, 6 ),  ( 3, 5, 7 ), ( 4, 6, 8 )
@@ -56,7 +56,7 @@ SELECT  @sqlnet.ValueInt('x', X)
                .ValueInt('z', Z)
                .EvalInt() as Result
 FROM    @table
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9bc9b/1' %}
 
 ## Split text with delimiter
@@ -69,7 +69,7 @@ Improve performance and capability for splitting text with an easy to use split 
 
 
 {% include template-example.html title='Split Text Example' %} 
-{% highlight csharp %}
+```csharp
 -- CREATE test
 DECLARE @t TABLE (Id INT , Input VARCHAR(MAX))
 INSERT  INTO @t VALUES  ( 1, '1, 2, 3; 4; 5' ), ( 2, '6;7,8;9,10' )
@@ -82,7 +82,7 @@ FROM    @t AS A
         CROSS APPLY ( SELECT    *
                       FROM      dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', Input))
                     ) AS B
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/98a4b/1' %}
 
 ## Use regular expression in SQL Server
@@ -96,7 +96,7 @@ Use Regex flexibility to overcome "LIKE" and "PATHINDEX" limitations.
  - Split
 
 {% include template-example.html title='Regular Expression Example' %} 
-{% highlight csharp %}
+```csharp
 DECLARE @customer TABLE ( Email VARCHAR(255) )
 
 INSERT  INTO @customer
@@ -109,7 +109,7 @@ DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email,
 
 -- SELECT 'invalid.com'
 SELECT * FROM @customer WHERE @valid_email.ValueString('email', Email).EvalBit() = 0
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/79508/1' %}
 
 ## Replace xp_cmdshell with restrictive alternative
@@ -122,7 +122,7 @@ Avoid enabling xp_cmdshell and compromising your SQL Server and use instead a mo
  - Improve security
 
 {% include template-example.html title='Example' %} 
-{% highlight csharp %}
+```csharp
 -- REQUIRE EXTERNAL_ACCESS permission
 DECLARE @sqlnet SQLNET = SQLNET::New('
 string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -135,7 +135,7 @@ return dir.GetFiles("*.*")
 
 -- SELECT FullName, FileContext FROM DesktopFiles ORDER BY Fullname
 EXEC dbo.SQLNET_EvalResultSet @sqlnet
-{% endhighlight %}
+```
 
 ## Contribute
 

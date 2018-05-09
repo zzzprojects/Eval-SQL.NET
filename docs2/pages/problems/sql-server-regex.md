@@ -8,8 +8,8 @@ Finding or replacing text in SQL is a very frequent scenario. "LIKE" and "PATHIN
 
 Eval SQL.NET lets you use and exploit fully C# regular expression features directly in T-SQL stored procedures, functions and triggers. It's possible to use regex in SQL search condition and select statement.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 DECLARE @customer TABLE ( Email VARCHAR(255) )
 
@@ -24,7 +24,7 @@ DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email,
 -- SELECT 'invalid.com'
 SELECT * FROM @customer WHERE @valid_email.Val('email', Email).EvalBit() = 0
 
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/213f9/1' %}
 
 
@@ -43,8 +43,8 @@ You need to perform a rule validation or search with a condition to find valid/i
 
 SQL Regex IsMatch indicates whether the regular expression finds a match in the string or not.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 DECLARE @customer TABLE ( Email VARCHAR(255) )
 
@@ -59,7 +59,7 @@ DECLARE @valid_email SQLNET = SQLNET::New('Regex.IsMatch(email,
 -- SELECT 'invalid.com'
 SELECT * FROM @customer WHERE @valid_email.ValueString('email', Email).EvalBit() = 0
 
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/213f9/2' %}
 
 ## SQL Regex - Match
@@ -76,8 +76,8 @@ You need to extract the first occurrence from a string such as user profile desc
 
 SQL Regex Match searches in a string for the first occurrence of the regular expression and returns the match.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 DECLARE @shortDescription VARCHAR(800) = 'zzz ... zzz... http://zzzprojects.com ... zzzz'
 DECLARE @website VARCHAR(255) = NULL;
@@ -98,7 +98,7 @@ return value != "" ? value : null;
 -- return 'http://zzzprojects.com'
 SELECT @website
 
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1012' %}
 
 
@@ -116,8 +116,8 @@ You need to extract all occurrences from a string such as blog post:
 
 SQL Regex Matches searches in the string for all occurrences of the regular expression and returns all the matches.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 DECLARE @post VARCHAR(800) = 'zzz ... zzz... http://zzzprojects.com ... zzzz
 . zzz... https://github.com/zzzprojects/Eval-SQL.NET ... zzzz
@@ -151,7 +151,7 @@ INSERT  INTO @websites
 -- SELECT 'https://github.com/zzzprojects/EntityFramework-Plus'
 SELECT * FROM @websites
 
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/d48e7/3' %}
 
 ## SQL Regex - Replace
@@ -168,8 +168,8 @@ You need to convert, remove or substitute a text with a specific format:
 
 SQL Regex Replace searches for strings that match a regular expression pattern and replaces a value with a replacement string.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 DECLARE @post VARCHAR(800) = 'website: http://zzzprojects.com'
 
@@ -184,7 +184,7 @@ return Regex.Replace(input, pattern, replacement);
 -- SELECT 'website: <a href="http://zzzprojects.com">http://zzzprojects.com</a>'
 SELECT @post
 
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/b308e/1' %}
 
 ## SQL Regex - Split
@@ -201,8 +201,8 @@ You need to split a string but the traditional "fn_split" method is limited and 
 
 SQL Regex Split lets you split a string into an array of substrings using a regular expression.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 DECLARE @s VARCHAR(MAX) = '1, 2, 3; 4; 5'
 DECLARE @sqlnet SQLNET = SQLNET::New('Regex.Split(input, ",|;")')
@@ -210,7 +210,7 @@ DECLARE @sqlnet SQLNET = SQLNET::New('Regex.Split(input, ",|;")')
 SELECT  *
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', @s))
 
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1069' %}
 
 ### Discussion

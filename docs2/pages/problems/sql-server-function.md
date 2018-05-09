@@ -23,8 +23,8 @@ You need to write a function but the code soon becomes very complex and unmainta
 
 Eval SQL.NET improves the readability and maintainability of complex functions by using well-known C# objects.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 DECLARE @s VARCHAR(MAX) = '1, 2, 3; 4; 5'
 DECLARE @sqlnet SQLNET = SQLNET::New('Regex.Split(input, ",|;")')
@@ -32,7 +32,7 @@ DECLARE @sqlnet SQLNET = SQLNET::New('Regex.Split(input, ",|;")')
 SELECT  *
 FROM    dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', @s))
 
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1069' %}
 
 ### Discussion
@@ -57,8 +57,8 @@ You need to handle an error with a TRY/CATCH but you receive the SQL error:
 
 Eval SQL.NET makes it possible to handle errors with TRY/CATCH within a T-SQL function.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 CREATE FUNCTION [dbo].[fn_try_catch] ( @x INT, @y INT )
 RETURNS INT
@@ -85,7 +85,7 @@ SELECT  dbo.fn_try_catch(4, 0) as Result
 -- SELECT 2
 SELECT  dbo.fn_try_catch(4, 2) as Result
 
-{% endhighlight %}
+```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/d0cf1/1' %}
 
 ## SQL Function - Call stored procedure
@@ -100,8 +100,8 @@ You need to call a procedure within a function but you receive the SQL error:
 
 Eval SQL.NET makes it possible to call stored procedures within a T-SQL function.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 CREATE FUNCTION [dbo].[fn_CallProcedure] ( )
 RETURNS SQL_VARIANT
@@ -116,7 +116,7 @@ return defaultCommand.ExecuteScalar();
 
     END
 
-{% endhighlight %}
+```
 
 Using this feature is highly **NOT RECOMMANDED**.
 
@@ -132,8 +132,8 @@ User-defined functions cannot be used to perform actions that modify the databas
 
 Eval SQL.NET makes it possible to modify table state (insert, update and delete) within a T-SQL function.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 CREATE FUNCTION [dbo].[fn_modify_table_state]
     (
@@ -164,7 +164,7 @@ DECLARE @sql VARCHAR(8000) = 'UPDATE [Table_1] SET Value = -1 WHERE Name = ''zzz
 
 DECLARE @rowAffecteds INT =  dbo.fn_modify_table_state(@conn, @sql)
 
-{% endhighlight %}
+```
 
 Using this feature is highly **NOT RECOMMANDED**.
 
@@ -180,8 +180,8 @@ Invalid use of a side-effecting operator 'EXECUTE STRING' within a function.
 
 Eval SQL.NET makes it possible to run "EXECUTE" and evaluate dynamic expressions within a T-SQL function.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 CREATE FUNCTION [dbo].[fn_Exec_Count] ( @sql VARCHAR(8000) )
 RETURNS INT
@@ -211,7 +211,7 @@ GO
 -- SELECT 2
 SELECT  dbo.fn_Exec_Count('SELECT 1 UNION SELECT 2') as Result
 
-{% endhighlight %}
+```
 
 Using this feature is highly **NOT RECOMMANDED**.
 

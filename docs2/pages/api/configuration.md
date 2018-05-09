@@ -7,8 +7,8 @@ permalink: configuration
 Optional stored procedure for License and Configuration
 
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 CREATE PROCEDURE SQLNET_GlobalConfiguration
 AS
@@ -31,7 +31,7 @@ return true;
 ').Eval()
 
 END
-{% endhighlight %}
+```
 
 ## Configuration Register & Unregister
 

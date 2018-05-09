@@ -12,8 +12,8 @@ Eval SQL.NET allows you to use C# features and objects such as FileInfo and Dire
 
 It's safe and easy to use.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 -- REQUIRE EXTERNAL_ACCESS permission
 DECLARE @sqlnet SQLNET = SQLNET::New('
 string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -24,7 +24,7 @@ return dir.GetFiles("*.*").Select(x => x.FullName).OrderBy(x => x).ToList();')
 
 -- SELECT * FROM DesktopFiles ORDER BY File.Fullname
 EXEC dbo.SQLNET_EvalResultSet @sqlnet
-{% endhighlight %}
+```
 
 ## SQL File Operation - Better flexibility
 
@@ -40,8 +40,8 @@ You need to perform file operations but SQL xp_cmdshell limits you.
 
 Eval SQL.NET lets you use C# language and makes file operations very easy to perform.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 
 -- REQUIRE EXTERNAL_ACCESS permission
 DECLARE @FileInfo TABLE
@@ -65,7 +65,7 @@ INSERT  INTO @FileInfo
 SELECT  *
 FROM    @FileInfo
 
-{% endhighlight %}
+```
 
 
 ## SQL File Operation - Better maintainability
@@ -78,8 +78,8 @@ You need to develop a file operation but you're afraid your code will be very ha
 
 Eval SQL.NET improves the maintainability by letting you use well known and well documented C# objects such as DirectoryInfo and FileInfo.
 
-{% include template-example.html %} 
-{% highlight csharp %}
+
+```csharp
 -- REQUIRE EXTERNAL_ACCESS permission
 -- BACKUP all ".txt" files created before 3 days ago
 -- RETURN the number of files affected
@@ -106,7 +106,7 @@ backupFiles.ForEach(x => x.CopyTo(x.FullName.Replace(path, backupPath)));
 return backupFiles.Count;
 ').Impersonate().EvalReadAccessInt() as Result
 
-{% endhighlight %}
+```
 
 ## SQL File Operation - Better readability
 
