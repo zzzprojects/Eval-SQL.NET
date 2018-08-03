@@ -2,7 +2,6 @@
 
 ## Definition
 
-
 **Eval SQL.NET** is a library that allow to evaluate dynamically C# expression directly in T-SQL. You never used Eval SQL.NET? Don't worry, this step-by-step walkthrough will help you to understand the library.
 
 Provide to your SQL Server all missing pieces like regular expression and dynamic arithmetic string evaluation.
@@ -13,6 +12,24 @@ Provide to your SQL Server all missing pieces like regular expression and dynami
 SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt() as Result
 ```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1105' %}
+
+## Installing
+Download the <a href="/download">NuGet Package</a>
+
+## Requirements
+
+### Minimus Requirements
+
+- SQL Server 2012+
+- SQL Azure
+- SAFE Permission (SQL CLR)
+
+### SQL Server 2017
+- clr strict security disabled
+
+### EXTERNAL_ACCESS & UNSAFE permission
+- database must be set TRUSTWORTHY ON
+
 
 ### Find your solutions:
 
