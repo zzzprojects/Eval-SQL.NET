@@ -57,7 +57,7 @@ Make the impossible now possible. Evaluate C# expression in SQL to overcome limi
 - Consume Web Service
 - Replace text in template with String Interpolation
 
-{% include template-example.html title='Dynamic Expression Example' %} 
+### Dynamic Expression Example
 ```csharp
 -- CREATE test
 DECLARE @table TABLE ( X INT, Y INT, Z INT )
@@ -82,7 +82,7 @@ Improve performance and capability for splitting text with an easy to use split 
 - Include row index
 
 
-{% include template-example.html title='Split Text Example' %} 
+### Split Text Example
 ```csharp
 -- CREATE test
 DECLARE @t TABLE (Id INT , Input VARCHAR(MAX))
@@ -109,7 +109,7 @@ Use Regex flexibility to overcome "LIKE" and "PATHINDEX" limitations.
  - Replace
  - Split
 
-{% include template-example.html title='Regular Expression Example' %} 
+### Regular Expression Example
 ```csharp
 DECLARE @customer TABLE ( Email VARCHAR(255) )
 
@@ -135,7 +135,7 @@ Avoid enabling xp_cmdshell and compromising your SQL Server and use instead a mo
  - Improve readability
  - Improve security
 
-{% include template-example.html title='Example' %} 
+### Example
 ```csharp
 -- REQUIRE EXTERNAL_ACCESS permission
 DECLARE @sqlnet SQLNET = SQLNET::New('
