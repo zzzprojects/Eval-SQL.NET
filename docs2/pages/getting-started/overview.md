@@ -14,7 +14,7 @@ SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt() as Result
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/9eecb/1105' %}
 
 ## Installing
-Download the <a href="/download">SQL Script</a>
+Download the <a href="/download">SQLNET.zip</a>
 
 ### SQL Server 2017 - prerequisite
 1. Open the script SQLNET-Cert.sql
