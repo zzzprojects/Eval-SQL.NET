@@ -16,19 +16,33 @@ SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt() as Result
 ## Installing
 Download the <a href="/download">SQL Script</a>
 
+## SQL Server 2017 - prerequisite
+1. Open the script SQLNET-Cert.sql
+2. Run the script
+3. Continue the install with next step
+
+## SQL Server 2008 or higher
+1. Open the script SQLNET-Install.sql
+2. Replace '[DATABASE_NAME]' with your database name
+3. Run the script
+
+## Note
+- For EXTERNAL_ACCESS PERMISSION
+	- Uncomment "ALTER DATABASE [DATABASE_NAME] SET TRUSTWORTHY ON"
+	- Uncomment "WITH PERMISSION_SET = EXTERNAL_ACCESS"
+	- Comment "WITH PERMISSION_SET = SAFE"
+	
+- For UNSAFE PERMISSION
+	- Uncomment "ALTER DATABASE [DATABASE_NAME] SET TRUSTWORTHY ON"
+	- Uncomment "WITH PERMISSION_SET = UNSAFE"
+	- Comment "WITH PERMISSION_SET = SAFE"
+
 ## Requirements
 
 ### Minimus Requirements
 
 - SQL Server 2012+
 - SAFE Permission (SQL CLR)
-
-### SQL Server 2017
-- clr strict security disabled
-
-### EXTERNAL_ACCESS & UNSAFE permission
-- database must be set TRUSTWORTHY ON
-
 
 ### Find your solutions:
 
