@@ -116,7 +116,7 @@ return defaultCommand.ExecuteScalar();
 
 ```
 
-Using this feature is highly **NOT RECOMMANDED**.
+Using this feature is highly **NOT RECOMMENDED**.
 
 ## SQL Function - Modify table state
 
