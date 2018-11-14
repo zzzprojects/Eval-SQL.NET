@@ -37,7 +37,7 @@ FROM    dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', @s))
 
 For simple code, SQL syntax may work like a charm but when the code's complexity increases, less SQL is best suited for the job. It is designed to write queries, not to create long spaghetti code. We all have seen some functions that could have been written so much easier using another language like C#.
 
-One of the most common function is probably the fn_split function. It's not that hard to understand but thousands of variance exist and most of them are limited to only one delimiter. Using Eval SQL.NET, the fn_split function takes regular expression to split text which makes it very powerful.
+One of the most common function is probably the fn_split function. It's not that hard to understand but thousands of variances exist and most of them are limited to only one delimiter. Using Eval SQL.NET, the fn_split function takes regular expression to split text which makes it very powerful.
 
 
 ## SQL Function - Error handling
