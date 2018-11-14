@@ -30,7 +30,7 @@ BEGIN
 END
 ```
 
-*"We recommend to always re-install the Eval-SQL.NET Script after enabling the license to ensure everything works if the server restart."*
+_We recommend to always re-install the Eval-SQL.NET Script after enabling the license to ensure everything works if the server restart._
 
 You can verify if the license is valid with the following command:
 
