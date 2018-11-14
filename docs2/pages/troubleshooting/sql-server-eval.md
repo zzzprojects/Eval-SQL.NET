@@ -2,7 +2,7 @@
 
 ## Introduction
 
-How to evaluate an arithmetic expression in SQL Server is a common subject. There are several reasons why an "Eval" function like JavaScript could be useful in SQL such as evaluating custom report field for a trusted user.
+How to evaluate an arithmetic expression in SQL Server is a common subject. There are several reasons why an "Eval" function like JavaScript could be useful in SQL such as evaluating custom report fields for a trusted user.
 
 Multiple partial solutions exists like using "EXEC(Transact-SQL)" which is limited, cannot be used inside SELECT statement and lead to SQL Injection or using an homemade function which, most of time, fail at supporting simple operator priority and parenthesis.
 
