@@ -164,7 +164,7 @@ DECLARE @rowAffecteds INT =  dbo.fn_modify_table_state(@conn, @sql)
 
 ```
 
-Using this feature is highly **NOT RECOMMANDED**.
+Using this feature is highly **NOT RECOMMENDED**.
 
 ## SQL Function - Run dynamic SQL
 
@@ -211,11 +211,11 @@ SELECT  dbo.fn_Exec_Count('SELECT 1 UNION SELECT 2') as Result
 
 ```
 
-Using this feature is highly **NOT RECOMMANDED**.
+Using this feature is highly **NOT RECOMMENDED**.
 
 ## Conclusion
 
 Eval SQL.NET improve the readability and make the code easier to develop and maintain with C# syntax over complex SQL code.
 
-Even if you are now allowed to make some table modification, we don't recommend using this feature and use a stored procedure instead. Make sure you use the right tool for the right job.
+Even if you are now allowed to make some table modifications, we don't recommend using this feature and use a stored procedure instead. Make sure you use the right tool for the right job.
 
