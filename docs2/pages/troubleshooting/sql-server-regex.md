@@ -213,7 +213,7 @@ FROM    dbo.SQLNET_EvalTVF_1(@sqlnet.ValueString('input', @s))
 
 ### Discussion
 
-If you are currently using an fn_split User-Defined Functions (UDF), this benchmark will probably make change your mind!
+If you are currently using an fn_split User-Defined Functions (UDF), this benchmark will probably make you change your mind!
 
 |Methods	|1,000 rows	|10,000 rows	|100,000 rows	|1,000,000 rows |
 |:--------- |:--------- |:------------- |:------------- |:------------- |

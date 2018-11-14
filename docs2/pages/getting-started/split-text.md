@@ -8,7 +8,7 @@ Improve performance and capability for splitting text with an easy to use split 
 - Split text using a regular expression
 - Include row index
 
-You probably already had to use the fn_split function in the past to split a string with a delimiter. They exists hundreds of variance for this function which are limited to one delimiter.
+You probably already had to use the fn_split function in the past to split a string with a delimiter. Hundreds of variances exist for this function which are limited to one delimiter.
 
 Using C# code and String.Split or Regex.Split, you are no longer limited and can even use LINQ methods!
 

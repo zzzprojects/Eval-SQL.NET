@@ -63,9 +63,9 @@ Sets a span of time within the next time the ExpireCache method is invoked to ev
 
 ## Configuration.SlidingExpirationDelegate
 
-Sets a span of time within which a delegate must be accessed before it evicted from the cache
+Sets a span of time within which a delegate must be accessed before it is evicted from the cache.
 
 ## Configuration.SlidingExpirationItem
 
-Sets a span of time within which an item must be accessed before it evicted from the cache
+Sets a span of time within which an item must be accessed before it is evicted from the cache.
 
