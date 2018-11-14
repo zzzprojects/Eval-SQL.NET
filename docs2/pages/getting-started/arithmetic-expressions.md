@@ -1,7 +1,7 @@
 # Arithmetic Expressions
 
 ## Definition
-An arithmetic expression is an expression that results in a numeric value. Try these examples to see how easy is to resolve an arithmetic expression.
+An arithmetic expression is an expression that results in a numeric value. Try these examples to see how easy it is to resolve an arithmetic expression.
 
 Eval SQL.NET is a complete C# runtime compiler which honor operator precedence and parenthesis.
 
