@@ -2,7 +2,6 @@
 
 Represents text as a sequence of UTF-16 code units.
 
-
 | Name | Description | Example |
 | :--- | :---------- | :------ |
 | [String_Compare(strA, strB)](/string-compare) | Compares two specified String objects. | [Try it]()|
@@ -36,3 +35,4 @@ Represents text as a sequence of UTF-16 code units.
 | [String_PadRight(source, totalWidth, paddingChar)](/string-padright) | Returns a new string that left-aligns the characters in this instance by padding them on the right with a specified Unicode character, for a specified total length. | [Try it]()|
 | [String_Remove(source, startIndex)](/string-remove) | Returns a new string in which all the characters in the `source` string, beginning at a specified position are deleted till the end of the `source` string. | [Try it]()|
 | [String_RemoveNumOfChars(source, startIndex, count)](/string-remove-num-of-chars) | Returns a new string in which a specified number of characters in the `source` beginning at a specified position have been deleted. | [Try it]()|
+| [String_Replace(source, oldValue, newValue)](/string-remove) | Returns a new string in which all occurrences of a specified Unicode character or String in the current string are replaced with another specified Unicode character or String. | [Try it]()|
