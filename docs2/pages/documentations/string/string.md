@@ -32,3 +32,4 @@ Represents text as a sequence of UTF-16 code units.
 | [String_LastIndexOfOrdinalIgnoreCase(source, searchValue)](/string-last-indexof-ordinal-ignore-case) | Returns the zero-based index of the last occurrence of the specified string using ordinal (binary) sort rules, and ignoring the case of the strings. | [Try it]()|
 | [String_Length(source)](/string-length) | Returns the number of characters in the specified string. | [Try it]()|
 | [String_Occurrences(source, searchValue, isCaseSensitive)](/string-occurrences) | Returns the number of occurrences in the specified string. | [Try it]()|
+| [String_PadLeft(source, totalWidth, paddingChar)](/string-padleft) | Returns a new string that right-aligns the characters in this instance by padding them on the left with a specified Unicode character, for a specified total length. | [Try it]()|
