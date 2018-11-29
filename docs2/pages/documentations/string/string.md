@@ -30,4 +30,5 @@ Represents text as a sequence of UTF-16 code units.
 | [String_LastIndexOfInvariantCultureIgnoreCase(source, searchValue)](/string-last-indexof-invariant-culture-ignore-case) | Returns the zero-based index of the last occurrence of the specified string using culture-sensitive sort rules, the invariant culture, and ignoring the case of the strings. | [Try it]()|
 | [String_LastIndexOfOrdinal(source, searchValue)](/string-last-indexof-ordinal) | Returns the zero-based index of the last occurrence of the specified string using ordinal (binary) sort rules. | [Try it]()|
 | [String_LastIndexOfOrdinalIgnoreCase(source, searchValue)](/string-last-indexof-ordinal-ignore-case) | Returns the zero-based index of the last occurrence of the specified string using ordinal (binary) sort rules, and ignoring the case of the strings. | [Try it]()|
-| [String_Leangth(source)](/string-length) | Returns the number of characters in the specified string. | [Try it]()|
+| [String_Length(source)](/string-length) | Returns the number of characters in the specified string. | [Try it]()|
+| [String_Occurrences(source, searchValue, isCaseSensitive)](/string-occurrences) | Returns the number of occurrences in the specified string. | [Try it]()|
