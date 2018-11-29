@@ -33,3 +33,4 @@ Represents text as a sequence of UTF-16 code units.
 | [String_Length(source)](/string-length) | Returns the number of characters in the specified string. | [Try it]()|
 | [String_Occurrences(source, searchValue, isCaseSensitive)](/string-occurrences) | Returns the number of occurrences in the specified string. | [Try it]()|
 | [String_PadLeft(source, totalWidth, paddingChar)](/string-padleft) | Returns a new string that right-aligns the characters in this instance by padding them on the left with a specified Unicode character, for a specified total length. | [Try it]()|
+| [String_PadRight(source, totalWidth, paddingChar)](/string-padright) | Returns a new string that left-aligns the characters in this instance by padding them on the right with a specified Unicode character, for a specified total length. | [Try it]()|
