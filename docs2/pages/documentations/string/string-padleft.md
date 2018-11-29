@@ -8,7 +8,7 @@ String_PadLeft (
 	@totalWidth INT, 
 	@paddingChar NVARCHAR (1)
 	)
-RETURNS INT
+RETURNS NVARCHAR (MAX)
 ```
 
 ## Parameters
@@ -40,7 +40,7 @@ String_PadLeft4k (
 	@totalWidth INT, 
 	@paddingChar NVARCHAR (1)
 	)
-RETURNS INT
+RETURNS NVARCHAR (4000)
 ```
 
 ## Example
