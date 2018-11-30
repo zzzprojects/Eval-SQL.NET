@@ -39,3 +39,4 @@ Represents text as a sequence of UTF-16 code units.
 | [String_Split(source, delimStr)](/string-split) | Returns a string array that contains the substrings in this instance that are delimited by elements of a specified string. | [Try it]()|
 | [String_SplitRemoveEmptyEntries(source, delimStr)](/string-split-remove-empty-entries) | Returns a string array that contains the substrings in this instance that are delimited by elements of a specified string and remove elements that contain an empty string. | [Try it]()|
 | [String_StartsWith(source, target)](/string-startswith) | Determines whether the beginning of this string instance matches a specified string. | [Try it]()|
+| [String_Substring(source, startIndex, length)](/string-startswith) | Returns a substring from the `source` string starting at a specified character position and has a specified length. | [Try it]()|
