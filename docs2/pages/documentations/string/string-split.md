@@ -42,6 +42,6 @@ RETURNS TABLE ([Match] NVARCHAR (4000) NULL)
 ## Example
 
 ```csharp
-SELECT SQLNET::String_Split4k(',ONE,,TWO,,,THREE,,', ',')
-SELECT SQLNET::String_Split4k('1,2,3,4;5;6;:7:8:9', ',;:')
+SELECT * FROM String_Split4k(',ONE,,TWO,,,THREE,,', ',')
+SELECT * FROM String_Split4k('1,2,3,4;5;6;:7:8:9', ',;:')
 ```
