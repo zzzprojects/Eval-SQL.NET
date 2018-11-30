@@ -7,7 +7,7 @@ String_SplitRemoveEmptyEntries (
 	@source NVARCHAR (MAX),
 	@delimStr NVARCHAR (MAX)
 	)
-TABLE ([Match] NVARCHAR (MAX) NULL)
+RETURNS TABLE ([Match] NVARCHAR (MAX) NULL)
 ```
 
 ## Parameters
@@ -36,7 +36,7 @@ String_SplitRemoveEmptyEntries4k (
 	@source NVARCHAR (4000),
 	@delimStr NVARCHAR (4000)
 	)
-TABLE ([Match] NVARCHAR (4000) NULL)
+RETURNS TABLE ([Match] NVARCHAR (4000) NULL)
 ```
 
 ## Example
