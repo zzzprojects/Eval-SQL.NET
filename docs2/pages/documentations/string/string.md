@@ -43,3 +43,4 @@ Represents text as a sequence of UTF-16 code units.
 | [String_ToLower(source)](/string-tolower) | Returns a copy of this string converted to lowercase. | [Try it]()|
 | [String_ToLowerInvariant(source)](/string-tolower-invariant) | Returns a copy of this string converted to lowercase using the casing rules of the invariant culture. | [Try it]()|
 | [String_ToTitleCase(source)](/string-totitle-case) | Converts the specified string to title case (except for words that are entirely in uppercase, which are considered to be acronyms). | [Try it]()|
+| [String_ToUpper(source)](/string-toupper) | Returns a copy of this string converted to uppercase. | [Try it]()|

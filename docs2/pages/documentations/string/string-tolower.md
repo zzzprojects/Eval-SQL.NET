@@ -20,7 +20,7 @@ A string in lowercase.
 ## Example
 
 ```csharp
-SELECT SQLNET::String_ToLower('Felica Walker')
+SELECT SQLNET::String_ToLower('wAr aNd pEaCe')
 ```
 
 # String_ToLower4k
@@ -37,5 +37,5 @@ RETURNS NVARCHAR (4000)
 ## Example
 
 ```csharp
-SELECT SQLNET::String_ToLower4k('Felica Walker')
+SELECT SQLNET::String_ToLower4k('wAr aNd pEaCe')
 ```
