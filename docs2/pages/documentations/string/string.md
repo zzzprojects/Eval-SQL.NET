@@ -45,3 +45,7 @@ Represents text as a sequence of UTF-16 code units.
 | [String_ToTitleCase(source)](/string-totitle-case) | Converts the specified string to title case (except for words that are entirely in uppercase, which are considered to be acronyms). | [Try it]()|
 | [String_ToUpper(source)](/string-toupper) | Returns a copy of this string converted to uppercase. | [Try it]()|
 | [String_ToUpperInvariant(source)](/string-tolower-invariant) | Returns a copy of this string converted to uppercase using the casing rules of the invariant culture. | [Try it]()|
+| [String_Trim(source)](/string-trim) | Removes all the leading and trailing white-space characters from the `source` string. | [Try it]()|
+| [String_TrimChars(source, charsToTrimStr)](/string-trimchars) | Removes all the leading and trailing occurrences of a set of characters specified in `charsToTrimStr` from the `source` string. | [Try it]()|
+| [String_TrimEnd(source, charsToTrimStr)](/string-trimend) | Removes all the trailing occurrences of a set of characters specified in `charsToTrimStr` from the `source` string. | [Try it]()|
+| [String_TrimStart(source, charsToTrimStr)](/string-trimstart) | Removes all the leading occurrences of a set of characters specified in `charsToTrimStr` from the `source` string. | [Try it]()|

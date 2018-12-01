@@ -13,7 +13,7 @@ RETURNS TABLE ([Match] NVARCHAR (MAX) NULL)
 ## Parameters
 
   - **source**: The source string.
-  - **delimStr**: The string to be replaced.
+  - **delimStr**: A string that is converted to character array that delimits the substrings in the `source` string, an empty array that contains no delimiters, or `null`.
 
 ## Returns
 
