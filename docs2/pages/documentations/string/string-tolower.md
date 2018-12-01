@@ -1,6 +1,6 @@
 # String_ToLower
 
-`String_ToLower` returns a copy of this string converted to lowercase.
+`String_ToLower` returns a copy of the `source` string converted to lowercase.
 
 ```csharp
 String_ToLower (

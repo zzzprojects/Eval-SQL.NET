@@ -41,3 +41,4 @@ Represents text as a sequence of UTF-16 code units.
 | [String_StartsWith(source, target)](/string-startswith) | Determines whether the beginning of this string instance matches a specified string. | [Try it]()|
 | [String_Substring(source, startIndex, length)](/string-substring) | Returns a substring from the `source` string starting at a specified character position and has a specified length. | [Try it]()|
 | [String_ToLower(source)](/string-tolower) | Returns a copy of this string converted to lowercase. | [Try it]()|
+| [String_ToLowerInvariant(source)](/string-tolower-invariant) | Returns a copy of this string converted to lowercase using the casing rules of the invariant culture. | [Try it]()|
