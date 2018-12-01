@@ -37,5 +37,5 @@ RETURNS NVARCHAR (4000)
 ## Example
 
 ```csharp
-SELECT SQLNET::String_ToLower('Felica Walker')
+SELECT SQLNET::String_ToLower4k('Felica Walker')
 ```

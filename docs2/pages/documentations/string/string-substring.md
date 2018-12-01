@@ -43,5 +43,5 @@ RETURNS NVARCHAR (4000)
 ## Example
 
 ```csharp
-SELECT SQLNET::String_Substring('Name: Felica Walker', 6, 13)
+SELECT SQLNET::String_Substring4k('Name: Felica Walker', 6, 13)
 ```
