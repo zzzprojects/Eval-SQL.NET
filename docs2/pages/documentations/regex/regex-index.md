@@ -4,7 +4,7 @@
 
 ```csharp
 Regex_Index (
-	@input NVARCHAR (MAX)
+	@input NVARCHAR (MAX),
 	@pattern NVARCHAR (MAX)
 	)
 RETURNS INT
@@ -31,7 +31,7 @@ It is equivalent to `Regex_Index` except no NVARCHAR(MAX) parameters; it can be 
 
 ```csharp
 Regex_Index4k (
-	@input NVARCHAR (4000)
+	@input NVARCHAR (4000),
 	@pattern NVARCHAR (4000)
 	)
 RETURNS INT
