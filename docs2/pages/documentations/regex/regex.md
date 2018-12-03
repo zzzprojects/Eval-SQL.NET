@@ -9,3 +9,4 @@ Represents an immutable regular expression.
 | [Regex_IndexOp(input, pattern, options)](/regex-indexop) | Returns the position in the original string where the first character of the captured substring is found using the specified matching options. | [Try it]()|
 | [Regex_IsMatch(input, pattern)](/regex-ismatch) | Indicates whether the specified regular expression finds a match in the specified input string. | [Try it]()|
 | [Regex_IsMatchOp(input, pattern, options)](/regex-ismatchop) | Indicates whether the specified regular expression finds a match in the specified input string using the specified matching options. | [Try it]()|
+| [Regex_Match(input, pattern)](/regex-match) | searches an input string for a substring that matches a regular expression pattern and returns the first occurrence of that string. | [Try it]()|
