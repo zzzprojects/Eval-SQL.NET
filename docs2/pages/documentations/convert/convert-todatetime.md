@@ -6,7 +6,7 @@
 Convert_ToDateTime (
 	@value NVARCHAR (MAX)
 	)
-RETURNS TINYINT
+RETURNS DATETIME
 ```
 
 ## Parameters
