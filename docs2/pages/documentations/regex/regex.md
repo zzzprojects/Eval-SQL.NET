@@ -13,3 +13,5 @@ Represents an immutable regular expression.
 | [Regex_MatchOp(input, pattern, options)](/regex-matchop) | Searches an input string for a substring that matches a regular expression pattern and returns the first occurrence of that string using the specified matching options. | [Try it]()|
 | [Regex_Replace(input, pattern, replacement)](/regex-replace) | Replaces all strings that match a specified regular expression with a specified replacement string. | [Try it]()|
 | [Regex_ReplaceOp(input, pattern, replacement, options)](/regex-replaceop) | Replaces all strings that match a specified regular expression with a specified replacement string using the specified matching options. | [Try it]()|
+| [Regex_Split(input, pattern, replacement)](/regex-split) | Splits an input string into an array of substrings at the positions defined by a regular expression pattern. | [Try it]()|
+| [Regex_SplitOp(input, pattern, replacement, options)](/regex-splitop) | Splits an input string into an array of substrings at the positions defined by a regular expression pattern using the specified matching options. | [Try it]()|
