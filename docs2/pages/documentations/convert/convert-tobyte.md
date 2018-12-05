@@ -14,7 +14,7 @@ RETURNS TINYINT
 
 ## Returns
 
-An 8-bit unsigned integer that is equivalent to `value`, or `zero` if `value` is `null`.
+An 8-bit unsigned integer that is equivalent to the `value`.
 
 ## Example
 

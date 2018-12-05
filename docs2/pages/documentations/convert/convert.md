@@ -10,3 +10,4 @@ Converts a string to another base data type.
 | [Convert_ToDecimal(value)](/convert-todecimal) | Converts the specified string representation of a date and time to an equivalent decimal value. | [Try it]()|
 | [Convert_ToDouble(value)](/convert-todouble) | Converts the specified string representation of a number to an equivalent double-precision floating-point number. | [Try it]()|
 | [Convert_ToInt16(value)](/convert-toint16) | Converts the string representation of a number in a specified base to an equivalent 16-bit signed integer. | [Try it]()|
+| [Convert_ToInt32(value)](/convert-toint32) | Converts the specified string representation of a number to an equivalent 32-bit signed integer. | [Try it]()|

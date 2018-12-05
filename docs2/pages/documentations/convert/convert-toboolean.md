@@ -14,7 +14,7 @@ RETURNS BIT
 
 ## Returns
 
-`true` if `value` equals `TrueString`, or false if `value` equals `FalseString` or `null`.
+`true` if `value` equals `TrueString`, or false if `value` equals `FalseString`.
 
 ## Example
 

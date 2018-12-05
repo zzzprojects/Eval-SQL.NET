@@ -15,7 +15,7 @@ RETURNS NUMERIC (18)
 
 ## Returns
 
-A decimal number that is equivalent to the number in `value`, or 0 (zero) if `value` is `null`.
+A decimal number that is equivalent to the number in `value`.
 
 ## Example
 

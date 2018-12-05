@@ -15,7 +15,7 @@ RETURNS DATETIME
 
 ## Returns
 
-The date and time equivalent of the value of `value`, or the date and time equivalent of `MinValue` if `value` is null.
+The date and time that is equivalent to the `value`.
 
 ## Example
 

@@ -15,7 +15,7 @@ RETURNS SMALLINT
 
 ## Returns
 
-A 16-bit signed integer that is equivalent to the number in `value`, or 0 (zero) if `value` is `null`.
+A 16-bit signed integer that is equivalent to the number in `value`.
 
 ## Example
 

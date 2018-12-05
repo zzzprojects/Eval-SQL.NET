@@ -15,7 +15,7 @@ RETURNS FLOAT (53)
 
 ## Returns
 
-A double-precision floating-point number that is equivalent to the number in `value`, or 0 (zero) if `value` is `null`.
+A double-precision floating-point number that is equivalent to the number in `value`.
 
 ## Example
 
