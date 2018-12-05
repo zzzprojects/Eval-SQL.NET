@@ -11,4 +11,8 @@ Represents an instant in time, typically expressed as a date and time of day.
 | [DateTime_DayOfWeek(currDate)](/datetime-dayofweek) | Returns the day of the week represented by `currDate`. | [Try it]()|
 | [DateTime_DayOfYear(currDate)](/datetime-dayofyear) | Returns the day of the year represented by `currDate`. | [Try it]()|
 | [DateTime_DaysInMonth(year, month)](/datetime-days-in-month) | Returns the number of days in the specified month and year. | [Try it]()|
+| [DateTime_FromBinary(dateData)](/datetime-from-binary) | Deserializes a 64-bit binary value and recreates an original serialized DateTime object. | [Try it]()|
+| [DateTime_FromFileTime(fileTime)](/datetime-from-file-time) | Converts the specified Windows file time to an equivalent local time. | [Try it]()|
+| [DateTime_FromFileTimeUtc(fileTime)](/datetime-from-file-time-utc) | Converts the specified Windows file time to an equivalent UTC time. | [Try it]()|
+| [DateTime_FromOADate(fileTime)](/datetime-from-oadate) | Converts the specified Windows file time to an equivalent UTC time. | [Try it]()|
 
