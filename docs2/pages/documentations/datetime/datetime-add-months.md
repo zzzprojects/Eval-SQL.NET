@@ -5,7 +5,7 @@
 ```csharp
 DateTime_AddMonths (
 	@currDate DATETIME, 
-	@value FLOAT (53))
+	@value INT)
 	)
 RETURNS DATETIME
 ```
