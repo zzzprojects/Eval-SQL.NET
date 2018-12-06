@@ -9,6 +9,10 @@ DateTime_Ticks(
 RETURNS BIGINT
 ```
 
+## Parameters
+
+  - **currDate**: The current datetime object.
+
 ## Returns
 
 The number of ticks that represent the date and time of the `currDate` instance. The value is between `DateTime.MinValue.Ticks` and `DateTime.MaxValue.Ticks`.
