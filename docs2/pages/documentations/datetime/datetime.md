@@ -24,4 +24,13 @@ Represents an instant in time, typically expressed as a date and time of day.
 | [DateTime_ToFileTime(currDate)](/datetime-tofile-time) | Converts the value of the current DateTime object to a Windows file time. | [Try it]()|
 | [DateTime_ToFileTimeUtc(currDate)](/datetime-tofile-time-utc) | Converts the value of the current DateTime object to a Windows file time. | [Try it]()|
 | [DateTime_ToLocalTime(currDate)](/datetime-tolocal-time) | Converts the value of the current DateTime object to local time. | [Try it]()|
+| [DateTime_ToLongDateString(currDate)](/datetime-tolong-date-string) | Converts the value of the current DateTime object to its equivalent long date string representation. | [Try it]()|
+| [DateTime_ToLongTimeString(currDate)](/datetime-tolong-time-string) | Converts the value of the current DateTime object to its equivalent long time string representation. | [Try it]()|
+| [DateTime_ToOADate(currDate)](/datetime-to-oadate) | Converts the value of this instance to the equivalent OLE Automation date. | [Try it]()|
+| [DateTime_ToShortDateString(currDate)](/datetime-toshort-date-string) | Converts the value of the current DateTime object to its equivalent short date string representation. | [Try it]()|
+| [DateTime_ToShortTimeString(currDate)](/datetime-toshort-time-string) | Converts the value of the current DateTime object to its equivalent short time string representation. | [Try it]()|
+| [DateTime_ToString(currDate)](/datetime-tostring) | Converts the value of the current DateTime object to its equivalent string representation. | [Try it]()|
+| [DateTime_ToStringWithFormat(currDate, format)](/datetime-tostring-with-format) | Converts the value of the current DateTime object to its equivalent string representation using the specified format and the formatting conventions of the current culture. | [Try it]()|
+| [DateTime_ToUniversalTime(currDate)](/datetime-to-universal-time) | Converts the value of the current DateTime object to Coordinated Universal Time (UTC) time. | [Try it]()|
+| [DateTime_UtcNow()](/datetime-utc-now) | Returns a DateTime object that is set to the current date and time on this computer, expressed as the Coordinated Universal Time (UTC) time. | [Try it]()|
 
