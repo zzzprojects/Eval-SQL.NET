@@ -19,7 +19,8 @@ Represents an instant in time, typically expressed as a date and time of day.
 | [DateTime_IsLeapYear(year)](/datetime-isleap-year) | Returns an indication whether the specified year is a leap year. | [Try it]()|
 | [DateTime_Now()](/datetime-now) | Returns a DateTime object that is set to the current date and time on this computer, expressed as the local time. | [Try it]()|
 | [DateTime_Ticks(currDate)](/datetime-ticks) | Returns the number of ticks that represent the date and time of the `currDate` instance. | [Try it]()|
-| [DateTime_ToBinary()](/datetime-totobinary) | Serializes the current DateTime object to a 64-bit binary value that subsequently can be used to recreate the DateTime object. | [Try it]()|
+| [DateTime_ToBinary(currDate)](/datetime-totobinary) | Serializes the current DateTime object to a 64-bit binary value that subsequently can be used to recreate the DateTime object. | [Try it]()|
 | [DateTime_Today()](/datetime-today) | Returns a DateTime object that is set to the today's date and the time component set to 00:00:00. | [Try it]()|
-| [DateTime_ToFileTime()](/datetime-tofile-time) | Converts the value of the current DateTime object to a Windows file time. | [Try it]()|
+| [DateTime_ToFileTime(currDate)](/datetime-tofile-time) | Converts the value of the current DateTime object to a Windows file time. | [Try it]()|
+| [DateTime_ToFileTimeUtc(currDate)](/datetime-tofile-time-utc) | Converts the value of the current DateTime object to a Windows file time. | [Try it]()|
 
