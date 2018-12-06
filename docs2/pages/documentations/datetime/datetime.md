@@ -23,4 +23,5 @@ Represents an instant in time, typically expressed as a date and time of day.
 | [DateTime_Today()](/datetime-today) | Returns a DateTime object that is set to the today's date and the time component set to 00:00:00. | [Try it]()|
 | [DateTime_ToFileTime(currDate)](/datetime-tofile-time) | Converts the value of the current DateTime object to a Windows file time. | [Try it]()|
 | [DateTime_ToFileTimeUtc(currDate)](/datetime-tofile-time-utc) | Converts the value of the current DateTime object to a Windows file time. | [Try it]()|
+| [DateTime_ToLocalTime(currDate)](/datetime-tolocal-time) | Converts the value of the current DateTime object to local time. | [Try it]()|
 
