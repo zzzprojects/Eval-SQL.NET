@@ -15,4 +15,6 @@ Represents an instant in time, typically expressed as a date and time of day.
 | [DateTime_FromFileTime(fileTime)](/datetime-from-file-time) | Converts the specified Windows file time to an equivalent local time. | [Try it]()|
 | [DateTime_FromFileTimeUtc(fileTime)](/datetime-from-file-time-utc) | Converts the specified Windows file time to an equivalent UTC time. | [Try it]()|
 | [DateTime_FromOADate(fileTime)](/datetime-from-oadate) | Converts the specified Windows file time to an equivalent UTC time. | [Try it]()|
+| [DateTime_IsDaylightSavingTime(currDate)](/datetime-isdaylight-saving-time) | Indicates whether `currDate` instance of DateTime is within the daylight saving time range for the current time zone. | [Try it]()|
+| [DateTime_IsLeapYear(year)](/datetime-isleap-year) | Returns an indication whether the specified year is a leap year. | [Try it]()|
 
