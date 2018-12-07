@@ -1,9 +1,9 @@
-# DateTime_ToLocalTime
+# DateTime_ToUniversalTime
 
-`DateTime_ToLocalTime` converts the value of the `currDate` DateTime object to Coordinated Universal Time (UTC) time.
+`DateTime_ToUniversalTime` converts the value of the `currDate` DateTime object to Coordinated Universal Time (UTC) time.
 
 ```csharp
-DateTime_ToLocalTime (
+DateTime_ToUniversalTime (
 	@currDate DATETIME
 	)
 RETURNS BIGINT
@@ -20,6 +20,6 @@ A DateTime object in Coordinated Universal Time (UTC) time equivalent to the val
 ## Example
 
 ```csharp
-SELECT SQLNET::DateTime_ToLocalTime('2015-5-25')
+SELECT SQLNET::DateTime_ToUniversalTime('2015-5-25')
 ```
 
