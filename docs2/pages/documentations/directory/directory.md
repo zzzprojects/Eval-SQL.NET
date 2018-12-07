@@ -12,3 +12,5 @@ Provides methods for creating, moving, and enumerating through directories and s
 | [Directory_GetAllDirectories(path)](/directory-get-all-directories) | Returns the names of subdirectories (including their paths) in the specified directory. | [Try it]()|
 | [Directory_GetAllFiles(path)](/directory-get-all-files) | Returns the names of files (including their paths) in the specified directory. | [Try it]()|
 | [Directory_GetAllFileSystemEntries(path)](/directory-get-all-file-system-entries) | Returns the names of all files and subdirectories in a specified path. | [Try it]()|
+| [Directory_GetFiles(path)](/directory-get-files) | Returns the names of files (including their paths) that match the specified search pattern in the specified directory, using a value to determine whether to search subdirectories. | [Try it]()|
+| [Directory_GetFileSystemEntries(path)](/directory-get-file-system-entries) | Returns a list of all the file names and directory names that match a search pattern in a specified path, and optionally searches subdirectories. | [Try it]()|
