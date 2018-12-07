@@ -13,6 +13,6 @@ Directory_Create @path NVARCHAR (MAX)
 ## Example
 
 ```csharp
-EXEC Directory_Create @path = 'C:\Temp1'
+EXEC Directory_Create @path = 'C:\Temp'
 ```
 
