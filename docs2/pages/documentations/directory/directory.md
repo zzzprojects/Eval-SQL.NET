@@ -19,3 +19,5 @@ Provides methods for creating, moving, and enumerating through directories and s
 | [Directory_GetFileSystemEntries(path)](/directory-get-file-system-entries) | Returns a list of all the file names and directory names that match a search pattern in a specified path, and optionally searches subdirectories. | [Try it]()|
 | [Directory_GetLastAccessTime(path)](/directory-get-last-access-time) | Returns the date and time the specified file or directory was last accessed. | [Try it]()|
 | [Directory_GetLastAccessTimeUtc(path)](/directory-get-last-access-time-utc) | Returns the date and time, in Coordinated Universal Time (UTC) format, that the specified file or directory was last accessed. | [Try it]()|
+| [Directory_GetLastWriteTime(path)](/directory-get-last-write-time) | Returns the date and time the specified file or directory was last written to. | [Try it]()|
+| [Directory_GetLastWriteTimeUtc(path)](/directory-get-last-write-time-utc) | Returns the date and time, in Coordinated Universal Time (UTC) format, that the specified file or directory was last written to. | [Try it]()|
