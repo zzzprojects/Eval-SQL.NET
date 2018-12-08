@@ -24,3 +24,4 @@ Provides methods for creating, moving, and enumerating through directories and s
 | [Directory_Move(sourceDirName, destDirName)](/directory-move) | Moves a file or a directory and its contents to a new location. | [Try it]()|
 | [Directory_SetCreationTime(path, creationTime)](/directory-set-creation-time) | Sets the creation date and time for the specified file or directory. | [Try it]()|
 | [Directory_SetCreationTimeUtc(path, creationTime)](/directory-set-creation-time-utc) | Sets the creation date and time, in Coordinated Universal Time (UTC) format, for the specified file or directory. | [Try it]()|
+| [Directory_SetLastAccessTime(path, lastTime)](/directory-set-last-access-time) | Sets the date and time the specified file or directory was last accessed. | [Try it]()|
