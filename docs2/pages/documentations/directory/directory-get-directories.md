@@ -1,9 +1,9 @@
-# Directory_GetFiles
+# Directory_GetDirectories
 
-`Directory_GetFiles` returns the names of files (including their paths) that match the specified search pattern in the specified directory, using a value to determine whether to search subdirectories.
+`Directory_GetDirectories` returns the names of the subdirectories (including their paths) that match the specified search pattern in the specified directory, and optionally searches subdirectories.
 
 ```csharp
-Directory_GetFiles (
+Directory_GetDirectories (
 	@path NVARCHAR (MAX),
 	@searchPattern NVARCHAR (MAX)
 	@searchOption
@@ -28,12 +28,12 @@ You can use one of the following options.
 
 ## Returns
 
-A list of the full names (including paths) for the files in the specified directory that match the specified search pattern and option, or an empty list if no files are found.
+A list of the full names (including paths) of the subdirectories that match the specified criteria, or an empty array if no directories are found.
 
 ## Example
 
 ```csharp
-SELECT * FROM Directory_GetFiles('C:\Logs', '*.html', 1)
-SELECT * FROM Directory_GetFiles('C:\Temp', '*.pdf', 0)
+SELECT * FROM Directory_GetDirectories('C:\', 'p*', 1)
+SELECT * FROM Directory_GetDirectories('C:\', 'U*', 0)
 ```
 

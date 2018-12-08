@@ -14,5 +14,6 @@ Provides methods for creating, moving, and enumerating through directories and s
 | [Directory_GetAllFileSystemEntries(path)](/directory-get-all-file-system-entries) | Returns the names of all files and subdirectories in a specified path. | [Try it]()|
 | [Directory_GetCreationTime(path)](/directory-get-creation-time) | Returns the creation date and time of a directory. | [Try it]()|
 | [Directory_GetCreationTimeUtc(path)](/directory-get-creation-time-utc) | Returns the creation date and time, in Coordinated Universal Time (UTC) format, of a directory. | [Try it]()|
+| [Directory_GetDirectories(path)](/directory-get-directories) | Returns the names of the subdirectories (including their paths) that match the specified search pattern in the specified directory, and optionally searches subdirectories. | [Try it]()|
 | [Directory_GetFiles(path)](/directory-get-files) | Returns the names of files (including their paths) that match the specified search pattern in the specified directory, using a value to determine whether to search subdirectories. | [Try it]()|
 | [Directory_GetFileSystemEntries(path)](/directory-get-file-system-entries) | Returns a list of all the file names and directory names that match a search pattern in a specified path, and optionally searches subdirectories. | [Try it]()|
