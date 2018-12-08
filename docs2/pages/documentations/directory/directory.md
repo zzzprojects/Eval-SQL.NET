@@ -21,3 +21,4 @@ Provides methods for creating, moving, and enumerating through directories and s
 | [Directory_GetLastAccessTimeUtc(path)](/directory-get-last-access-time-utc) | Returns the date and time, in Coordinated Universal Time (UTC) format, that the specified file or directory was last accessed. | [Try it]()|
 | [Directory_GetLastWriteTime(path)](/directory-get-last-write-time) | Returns the date and time the specified file or directory was last written to. | [Try it]()|
 | [Directory_GetLastWriteTimeUtc(path)](/directory-get-last-write-time-utc) | Returns the date and time, in Coordinated Universal Time (UTC) format, that the specified file or directory was last written to. | [Try it]()|
+| [Directory_Move(sourceDirName, destDirName)](/directory-move) | Moves a file or a directory and its contents to a new location. | [Try it]()|
