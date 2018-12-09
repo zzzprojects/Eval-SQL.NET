@@ -11,8 +11,8 @@ File_Copy
 
 ## Parameters
 
- - **sourceFileName**: The file to append the specified string to.
- - **destFileName**: The string to append to the file.
+ - **sourceFileName**: The file to copy.
+ - **destFileName**: The name of the destination file. This cannot be a directory.
  - **overwrite**: `true` if the destination file can be overwritten; otherwise, `false`.
 
 ## Example
