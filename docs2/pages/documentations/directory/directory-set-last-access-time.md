@@ -10,7 +10,7 @@ Directory_SetLastAccessTime
 
 ## Parameters
 
- - **path**: The file or directory for which to set the creation date and time information.
+ - **path**: The path of the directory.
  - **lastAccessTime**: An object that contains the value to set for the access date and time of `path`. This value is expressed in local time.
 
 ## Example

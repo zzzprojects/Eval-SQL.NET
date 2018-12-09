@@ -26,3 +26,5 @@ Provides methods for creating, moving, and enumerating through directories and s
 | [Directory_SetCreationTimeUtc(path, creationTime)](/directory-set-creation-time-utc) | Sets the creation date and time, in Coordinated Universal Time (UTC) format, for the specified file or directory. | [Try it]()|
 | [Directory_SetLastAccessTime(path, lastTime)](/directory-set-last-access-time) | Sets the date and time the specified file or directory was last accessed. | [Try it]()|
 | [Directory_SetLastAccessTimeUtc(path, lastTime)](/directory-set-last-access-time-utc) | Sets the date and time, in Coordinated Universal Time (UTC) format, that the specified file or directory was last accessed. | [Try it]()|
+| [Directory_SetLastWriteTime(path, lastTime)](/directory-set-last-write-time) | Sets the date and time a directory was last written to. | [Try it]()|
+| [Directory_SetLastWriteTimeUtc(path, lastTime)](/directory-set-last-write-time-utc) | Sets the date and time, in Coordinated Universal Time (UTC) format, that a directory was last written to. | [Try it]()|
