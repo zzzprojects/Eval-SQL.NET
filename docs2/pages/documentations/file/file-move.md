@@ -16,6 +16,6 @@ File_Move
 ## Example
 
 ```csharp
-EXEC File_Move @sourceFileName = 'C:\Temp\MyTest.txt', @destFileName = 'C:\Temp\MyTest.txt'
+EXEC File_Move @sourceFileName = 'C:\Temp\MyTest.txt', @destFileName = 'C:\Temp\MyNewTest.txt'
 ```
 
