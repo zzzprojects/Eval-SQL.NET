@@ -17,3 +17,5 @@ Provides methods for the creation, copying, deletion, moving, and opening of a s
 | [File_GetLastWriteTime(path)](/file-get-last-write-time) | Returns the date and time the specified file or directory was last written to. |  [Try it]()|
 | [File_GetLastWriteTimeUtc(path)](/file-get-last-write-time-utc) | Returns the date and time, in coordinated universal time (UTC), that the specified file or directory was last written to. |  [Try it]()|
 | [File_IsExists(path)](/file-isexists) | Determines whether the specified file exists. | [Try it]()|
+| [File_Move(sourceFileName, destFileName)](/file-move) | Moves a specified file to a new location, providing the option to specify a new file name. | [Try it]()|
+| [File_ReadAllText(path)](/file-move) | Opens a text file, reads and returns all the text in the file, and then closes the file. | [Try it]()|
