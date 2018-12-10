@@ -12,3 +12,7 @@ Provides methods for the creation, copying, deletion, moving, and opening of a s
 | [File_Encrypt(path)](/file-encrypt) | Encrypts a file so that only the account used to encrypt the file can decrypt it. | [Try it]()|
 | [File_GetCreationTime](/file-get-creation-time) | Returns the creation date and time of the specified file or directory. |  [Try it]()|
 | [File_GetCreationTimeUtc](/file-get-creation-time-utc) | Returns the creation date and time, in coordinated universal time (UTC), of the specified file or directory. |  [Try it]()|
+| [File_GetLastAccessTime](/file-get-last-access-time) | Returns the date and time the specified file or directory was last accessed. |  [Try it]()|
+| [File_GetLastAccessTimeUtc](/file-get-last-access-time-utc) | Returns the date and time, in coordinated universal time (UTC), that the specified file or directory was last accessed. |  [Try it]()|
+| [File_GetLastWriteTime](/file-get-last-write-time) | Returns the date and time the specified file or directory was last written to. |  [Try it]()|
+| [File_GetLastWriteTimeUtc](/file-get-last-write-time-utc) | Returns the date and time, in coordinated universal time (UTC), that the specified file or directory was last written to. |  [Try it]()|
