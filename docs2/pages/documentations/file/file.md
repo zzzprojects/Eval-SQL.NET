@@ -9,3 +9,4 @@ Provides methods for the creation, copying, deletion, moving, and opening of a s
 | [File_Create(path)](/file-create) | Creates or overwrites a file in the specified path. | [Try it]()|
 | [File_Decrypt(path)](/file-decrypt) | Decrypts a file that was encrypted by the current account using the [File_Encrypt](/file_encrypt) procedure. | [Try it]()|
 | [File_Delete(path)](/file-delete) | Deletes the specified file. | [Try it]()|
+| [File_Encrypt(path)](/file-encrypt) | Encrypts a file so that only the account used to encrypt the file can decrypt it. | [Try it]()|
