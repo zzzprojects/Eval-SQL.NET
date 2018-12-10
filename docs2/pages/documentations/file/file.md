@@ -22,3 +22,7 @@ Provides methods for the creation, copying, deletion, moving, and opening of a s
 | [File_Replace(sourceFileName, destFileName, destBackupFileName, ignoreMetadataErrors)](/file-replace) | Replaces the contents of a specified file with the contents of another file, deleting the original file, and creating a backup of the replaced file and optionally ignores merge errors. | [Try it]()|
 | [File_SetCreationTime(path, creationTime)](/file-set-creation-time) | Sets the date and time the file was created. | [Try it]()|
 | [File_SetCreationTimeUtc(path, creationTime)](/file-set-creation-time-utc) | Sets the date and time, in coordinated universal time (UTC), that the file was created. | [Try it]()|
+| [File_SetLastAccessTime(path, lastAccessTime)](/file-set-last-access-time) | Sets the date and time the file was created. | [Try it]()|
+| [File_SetLastAccessTimeUtc(path, lastAccessTime)](/file-set-last-access-time-utc) | Sets the date and time, in coordinated universal time (UTC), that the specified file was last accessed. | [Try it]()|
+| [File_SetLastWriteTime(path, lastWriteTime)](/file-set-last-write-time) | Sets the date and time that the specified file was last written to. | [Try it]()|
+| [File_SetLastWriteTimeUtc(path, lastWriteTime)](/file-set-last-write-time-utc) | Sets the date and time, in coordinated universal time (UTC), that the specified file was last written to. | [Try it]()|

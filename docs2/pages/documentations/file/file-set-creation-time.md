@@ -16,6 +16,6 @@ File_SetCreationTime
 ## Example
 
 ```csharp
-EXEC File_SetCreationTime @path = 'C:\destination', @creationTime = '2018-12-05'
+EXEC File_SetCreationTime @path = 'C:\Temp\MyTest.txt', @creationTime = '2018-12-05'
 ```
 
