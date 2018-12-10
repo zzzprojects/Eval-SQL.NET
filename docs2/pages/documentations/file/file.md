@@ -26,3 +26,4 @@ Provides methods for the creation, copying, deletion, moving, and opening of a s
 | [File_SetLastAccessTimeUtc(path, lastAccessTime)](/file-set-last-access-time-utc) | Sets the date and time, in coordinated universal time (UTC), that the specified file was last accessed. | [Try it]()|
 | [File_SetLastWriteTime(path, lastWriteTime)](/file-set-last-write-time) | Sets the date and time that the specified file was last written to. | [Try it]()|
 | [File_SetLastWriteTimeUtc(path, lastWriteTime)](/file-set-last-write-time-utc) | Sets the date and time, in coordinated universal time (UTC), that the specified file was last written to. | [Try it]()|
+| [File_WriteAllText(path, contents)](/file-write-all-text) | Creates a new file, write the contents to the file, and then closes the file. If the target file already exists, it is overwritten. | [Try it]()|
