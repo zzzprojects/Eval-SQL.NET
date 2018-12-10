@@ -11,3 +11,4 @@ Provides methods for the creation, copying, deletion, moving, and opening of a s
 | [File_Delete(path)](/file-delete) | Deletes the specified file. | [Try it]()|
 | [File_Encrypt(path)](/file-encrypt) | Encrypts a file so that only the account used to encrypt the file can decrypt it. | [Try it]()|
 | [File_GetCreationTime](/file-get-creation-time) | Returns the creation date and time of the specified file or directory. |  [Try it]()|
+| [File_GetCreationTimeUtc](/file-get-creation-time-utc) | Returns the creation date and time, in coordinated universal time (UTC), of the specified file or directory. |  [Try it]()|
