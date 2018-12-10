@@ -21,3 +21,4 @@ Provides methods for the creation, copying, deletion, moving, and opening of a s
 | [File_ReadAllText(path)](/file-move) | Opens a text file, reads and returns all the text in the file, and then closes the file. | [Try it]()|
 | [File_Replace(sourceFileName, destFileName, destBackupFileName, ignoreMetadataErrors)](/file-replace) | Replaces the contents of a specified file with the contents of another file, deleting the original file, and creating a backup of the replaced file and optionally ignores merge errors. | [Try it]()|
 | [File_SetCreationTime(path, creationTime)](/file-set-creation-time) | Sets the date and time the file was created. | [Try it]()|
+| [File_SetCreationTimeUtc(path, creationTime)](/file-set-creation-time-utc) | Sets the date and time, in coordinated universal time (UTC), that the file was created. | [Try it]()|
