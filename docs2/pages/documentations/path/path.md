@@ -5,3 +5,4 @@ Performs operations on string instances that contain file or directory path info
 | Name | Description | Example |
 | :--- | :---------- | :------ |
 | [Path_ChangeExtension(path, extension)](/path-change-extension) | Changes the extension of a path string. | [Try it]()|
+| [Path_Combine(path1, path2)](/path-combine) | Combines two strings into a path. | [Try it]()|
