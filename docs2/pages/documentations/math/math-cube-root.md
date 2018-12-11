@@ -19,6 +19,6 @@ The cube root of a `value`.
 ## Example
 
 ```csharp
-SELECT SQLNET::Math_CubeRoot(2147483647)
+SELECT SQLNET::Math_CubeRoot(8)
 ```
 
