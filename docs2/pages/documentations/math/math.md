@@ -11,3 +11,5 @@ Provides methods for trigonometric, and other common mathematical functions.
 | [Math_NthRoot(value, nth)](/math-nth-root) | Returns the nth root of a specified number. | [Try it]()|
 | [Math_RemainderInt32(a, b)](/math-remainder-int32) | Returns the remainder of two 32-bit signed integers. | [Try it]()|
 | [Math_RemainderInt64(a, b)](/math-remainder-int32) | Returns the remainder of two 64-bit signed integers. | [Try it]()|
+| [Math_Sinh(value)](/math-sinh) | Returns the hyperbolic sine of the specified angle. | [Try it]()|
+| [Math_Tanh(value)](/math-sinh) | Returns the hyperbolic tangent of the specified angle. | [Try it]()|

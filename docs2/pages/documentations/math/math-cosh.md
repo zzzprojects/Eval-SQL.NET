@@ -19,6 +19,6 @@ The hyperbolic cosine of value. If value is equal to NegativeInfinity or Positiv
 ## Example
 
 ```csharp
-SELECT SQLNET::Math_Cosh(2147483647, 2147483647)
+SELECT SQLNET::Math_Cosh(0.1)
 ```
 
