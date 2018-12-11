@@ -10,3 +10,4 @@ Performs operations on string instances that contain file or directory path info
 | [Path_GetExtension(path)](/path-get-extension) | Returns the extension of the specified path string. | [Try it]()|
 | [Path_GetFileName(path)](/path-get-file-name) | Returns the file name and extension of the specified path string. | [Try it]()|
 | [Path_GetFileNameWithoutExtension(path)](/path-get-file-name-without-extension) | Returns the file name and extension of the specified path string without the extension. | [Try it]()|
+| [Path_GetFullPath(path)](/path-get-full-path) | Returns the absolute path for the specified path string. | [Try it]()|
