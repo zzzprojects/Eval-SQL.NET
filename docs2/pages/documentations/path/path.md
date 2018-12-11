@@ -6,3 +6,4 @@ Performs operations on string instances that contain file or directory path info
 | :--- | :---------- | :------ |
 | [Path_ChangeExtension(path, extension)](/path-change-extension) | Changes the extension of a path string. | [Try it]()|
 | [Path_Combine(path1, path2)](/path-combine) | Combines two strings into a path. | [Try it]()|
+| [Path_GetDirectoryName(path)](/path-get-directory-name) | Returns the directory information for the specified path string. | [Try it]()|
