@@ -12,3 +12,4 @@ Performs operations on string instances that contain file or directory path info
 | [Path_GetFileNameWithoutExtension(path)](/path-get-file-name-without-extension) | Returns the file name and extension of the specified path string without the extension. | [Try it]()|
 | [Path_GetFullPath(path)](/path-get-full-path) | Returns the absolute path for the specified path string. | [Try it]()|
 | [Path_GetPathRoot(path)](/path-get-path-root) | Returns the root directory information of the specified path. | [Try it]()|
+| [Path_GetRandomFileName()](/path-get-random-file-name) | Returns a random folder name or file name. | [Try it]()|
