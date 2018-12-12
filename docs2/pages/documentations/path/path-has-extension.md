@@ -6,7 +6,7 @@
 Path_HasExtension (
 	@path NVARCHAR (4000)
 	)
-RETURNS NVARCHAR (4000)
+RETURNS BIT
 ```
 
 ## Parameters
@@ -15,7 +15,7 @@ RETURNS NVARCHAR (4000)
 
 ## Returns
 
-`true`  if the characters that follow the last directory separator (\\ or /) or volume separator (:) in the path include a period (.) followed by one or more characters; otherwise, `false`.
+`true` if the characters that follow the last directory separator (\\ or /) or volume separator (:) in the path include a period (.) followed by one or more characters; otherwise, `false`.
 
 ## Example
 
