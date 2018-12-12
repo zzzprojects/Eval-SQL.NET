@@ -13,3 +13,4 @@ Performs operations on string instances that contain file or directory path info
 | [Path_GetFullPath(path)](/path-get-full-path) | Returns the absolute path for the specified path string. | [Try it]()|
 | [Path_GetPathRoot(path)](/path-get-path-root) | Returns the root directory information of the specified path. | [Try it]()|
 | [Path_GetRandomFileName()](/path-get-random-file-name) | Returns a random folder name or file name. | [Try it]()|
+| [Path_GetTempFileName()](/path-get-temp-file-name) | Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file. | [Try it]()|
