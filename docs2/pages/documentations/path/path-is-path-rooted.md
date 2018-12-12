@@ -21,4 +21,5 @@ RETURNS BIT
 
 ```csharp
 SELECT SQLNET::Path_IsPathRooted('C:\Temp\MyTest.txt')
+SELECT SQLNET::Path_IsPathRooted('Temp\MyTest.txt')
 ```
