@@ -15,3 +15,5 @@ Performs operations on string instances that contain file or directory path info
 | [Path_GetRandomFileName()](/path-get-random-file-name) | Returns a random folder name or file name. | [Try it]()|
 | [Path_GetTempFileName()](/path-get-temp-file-name) | Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file. | [Try it]()|
 | [Path_GetTempPath()](/path-get-temp-path) | Returns the path of the current user's temporary folder. | [Try it]()|
+| [Path_GetFileName(path)](/path-get-file-name) | Returns the file name and extension of the specified path string. | [Try it]()|
+| [Path_HasExtension(path)](/path-get-has-extension) | Determines whether a path includes a file name extension. | [Try it]()|
