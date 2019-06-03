@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Finding or replacing text in SQL is a very frequent scenario. "LIKE" and "PATHINDEX" are often used but, unfortunately, are not close to be as much powerful and offering the same possibilities as regular expression (Regex) does.
+Finding or replacing text in SQL is a very frequent scenario. "LIKE" and "PATINDEX" are often used but, unfortunately, are not close to be as much powerful and offering the same possibilities as regular expression (Regex) does.
 
 Eval SQL.NET lets you use and exploit fully C# regular expression features directly in T-SQL stored procedures, functions and triggers. It's possible to use regex in SQL search condition and select statement.
 
