@@ -2,7 +2,7 @@
 
 ## Definition
 
-Use Regex flexibility to overcome "LIKE" and "PATHINDEX" limitations. All Regex methods are also available such as;
+Use Regex flexibility to overcome "LIKE" and "PATINDEX" limitations. All Regex methods are also available such as;
 
  - IsMatch
  - Match
