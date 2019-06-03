@@ -115,7 +115,7 @@ FROM    @t AS A
 
 ## Use regular expression in SQL Server
 
-Use Regex flexibility to overcome "LIKE" and "PATHINDEX" limitations.
+Use Regex flexibility to overcome "LIKE" and "PATINDEX" limitations.
 
  - IsMatch
  - Match
