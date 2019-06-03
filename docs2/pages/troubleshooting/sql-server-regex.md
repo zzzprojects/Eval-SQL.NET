@@ -30,7 +30,7 @@ SELECT * FROM @customer WHERE @valid_email.Val('email', Email).EvalBit() = 0
 
 ### Problem
 
-You need to perform a rule validation or search with a condition to find valid/invalid rows but "LIKE" and "PATHINDEX" limitations don't cover your requirements:
+You need to perform a rule validation or search with a condition to find valid/invalid rows but "LIKE" and "PATINDEX" limitations don't cover your requirements:
 
  - Find customer with invalid email
  - Find customer with invalid phone
@@ -224,5 +224,5 @@ fn_split (TVF)	|100 ms	|625 ms	|5,500 ms	|55,000 ms|
 
 Eval SQL.NET offers all advanced C# regular expression features in T-SQL statements and search conditions. Even more, you can use C# syntax to return from SQL what you really want and not only the regex result.
 
-While it should never replace scenarios where pure SQL operators/functions such as "LIKE" and "PATHINDEX" are sufficient, Eval SQL.NET will help you easily cover all unsupported ones.
+While it should never replace scenarios where pure SQL operators/functions such as "LIKE" and "PATINDEX" are sufficient, Eval SQL.NET will help you easily cover all unsupported ones.
 
