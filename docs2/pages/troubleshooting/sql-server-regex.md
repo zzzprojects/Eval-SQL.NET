@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Finding or replacing text in SQL is a very frequent scenario. "LIKE" and "PATINDEX" are often used but, unfortunately, are not close to be as much powerful and offering the same possibilities as regular expression (Regex) does.
+Finding or replacing text in SQL is a very frequent scenario. "LIKE" and "PATINDEX" are often used but, unfortunately, are not close to be as powerful and offering the same possibilities as regular expression (Regex) does.
 
 Eval SQL.NET lets you use and exploit fully C# regular expression features directly in T-SQL stored procedures, functions and triggers. It's possible to use regex in SQL search condition and select statement.
 
@@ -82,7 +82,7 @@ DECLARE @website VARCHAR(255) = NULL;
 
 IF ( @website IS NULL )
     BEGIN
-	-- IF user has not specified a website, try get it from the short description
+	-- IF user has not specified a website, try to get it from the short description
         SET @website = SQLNET::New('
 string value = Regex.Match(shortDescription, 
 "(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})").Value;
