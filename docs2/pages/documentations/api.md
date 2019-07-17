@@ -13,9 +13,9 @@ SELECT SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt() as Result
 
  - **SQLNET:** A CLR Type created by Eval SQL.NET library
  - **"::":** This is how you call static method in SQL CLR
- - **New:** A static method which create a new instance of SQLNET Type
- - **ValueInt:** Set a int value for a specific parameter name used in the expression
- - **EvalInt:** Evaluate the expression and return a result of type INT
+ - **New:** A static method which creates a new instance of SQLNET Type
+ - **ValueInt:** Sets a int value for a specific parameter name used in the expression
+ - **EvalInt:** Evaluates the expression and return a result of type INT
 
 <div class="card-group">
 	
