@@ -10,7 +10,7 @@ Use Regex flexibility to overcome "LIKE" and "PATINDEX" limitations. All Regex m
  - Replace
  - Split
 
-### Find rows with invalid email
+### Find rows with invalid emails
 
 
 ```csharp
@@ -33,7 +33,7 @@ WHERE   @valid_email.Val('email', Email).EvalBit() = 0
 ```
 {% include component-try-it.html href='http://sqlfiddle.com/#!18/58f2b/1' %}
 
-### Find and insert in a table, all website from a text
+### Find and insert in a table, all websites from a text
 
 
 
