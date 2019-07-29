@@ -1,14 +1,14 @@
 # Introduction
 
 ## Introduction
-Entity Framework Extensions allow you to improve dramatically your save operations performance.
+Entity Framework Extensions allows you to improve dramatically your save operations performance.
 
 It's easy to use, and easy to customize.
 
 ## Bulk SaveChanges
 The BulkSaveChanges works like SaveChanges but way faster.
 
-BulkSaveChanges use Bulk Operations to save all entities in the Change Tracker efficiently instead of performing a database round-trip for every entity like SaveChanges does.
+BulkSaveChanges uses Bulk Operations to save all entities in the Change Tracker efficiently instead of performing a database round-trip for every entity like SaveChanges does.
 
 BulkSaveChanges support everything:
 

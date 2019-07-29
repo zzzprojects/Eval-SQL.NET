@@ -4,7 +4,7 @@
 
 How to evaluate an arithmetic expression in SQL Server is a common subject. There are several reasons why an "Eval" function like JavaScript could be useful in SQL such as evaluating custom report fields for a trusted user.
 
-Multiple partial solutions exists like using "EXEC(Transact-SQL)" which is limited, cannot be used inside SELECT statement and lead to SQL Injection or using an homemade function which, most of time, fail at supporting simple operator priority and parenthesis.
+Multiple partial solutions exist like using "EXEC(Transact-SQL)" which is limited, it cannot be used inside SELECT statement and lead to SQL Injection or using an homemade function which, most of time, fail supporting simple operator priorities and parenthesis.
 
 **SQL Eval.NET** is a complete solution which, not only lets you evaluate dynamic arithmetic expression, but lets you use the full C# language directly in T-SQL stored procedures, functions and triggers.
 
@@ -119,7 +119,7 @@ EXEC Select_Switch 4, 2, 3
 
 ### Problem
 
-You have a complex SQL and you know C# Syntax and C# Object could make this problem very easy.
+You have a complex SQL and you know C# Syntax and C# Object could very easily solve this problem.
 
  - Regex
  - DirectoryInfo / FileInfo
@@ -127,7 +127,7 @@ You have a complex SQL and you know C# Syntax and C# Object could make this prob
 
 ### Solution
 
-Eval SQL.NET improve readability and maintainability over complex SQL. It supports all [.NET framework class libraries](https://msdn.microsoft.com/en-us/library/gg145045.aspx) (FCL) that are supported by [SQL CLR Framework Libraries](https://docs.microsoft.com/en-us/sql/relational-databases/clr-integration/database-objects/supported-net-framework-libraries).
+Eval SQL.NET improves readability and maintainability over complex SQL. It supports all [.NET framework class libraries](https://msdn.microsoft.com/en-us/library/gg145045.aspx) (FCL) that are supported by [SQL CLR Framework Libraries](https://docs.microsoft.com/en-us/sql/relational-databases/clr-integration/database-objects/supported-net-framework-libraries).
 
 
 ```csharp
@@ -148,7 +148,7 @@ FROM    @t AS A
 
 ## Conclusion
 
-Eval SQL.NET can really be seen in SQL Server as the function "eval()" equivalent of JavaScript. Unlike common solutions limited to very simple math expressions, Eval SQL.NET features go way beyond:
+Eval SQL.NET can be seen in SQL Server as the function "eval()" equivalent of JavaScript. Unlike common solutions limited to very simple math expressions, Eval SQL.NET features go way beyond:
 
  - Access to C# Operators
  - Access to C# Keywords

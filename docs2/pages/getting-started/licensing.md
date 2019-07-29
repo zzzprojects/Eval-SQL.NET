@@ -3,7 +3,7 @@
 ## Evaluation Period
 - You can evaluate the library for several months before purchasing it.
 - The latest version always contains a trial that expires at the **end of the month**. 
-- You can extend your trial for several months by downloading the latest version at the start of every month.
+- You can extend your trial for several months by downloading the latest version at the beginning of each month.
 
 ## How can I purchase the library?
 - You can purchase the library [here](/pricing)
@@ -34,7 +34,7 @@ BEGIN
 END
 ```
 
-_We recommend to always re-install the Eval-SQL.NET Script after enabling the license to ensure everything works if the server restart._
+_We recommend to always re-install the Eval-SQL.NET Script after enabling the license to ensure everything works if the server restarts._
 
 You can verify if the license is valid with the following command:
 

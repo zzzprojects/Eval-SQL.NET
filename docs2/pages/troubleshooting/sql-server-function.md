@@ -215,7 +215,7 @@ Using this feature is highly **NOT RECOMMENDED**.
 
 ## Conclusion
 
-Eval SQL.NET improve the readability and make the code easier to develop and maintain with C# syntax over complex SQL code.
+Eval SQL.NET improves the readability and make the code easier to develop and maintain with C# syntax over complex SQL code.
 
 Even if you are now allowed to make some table modifications, we don't recommend using this feature and use a stored procedure instead. Make sure you use the right tool for the right job.
 

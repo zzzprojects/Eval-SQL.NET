@@ -2,7 +2,7 @@
 
 ## Bug Fixing
 
-You find a bug when compiling? [Report it](https://github.com/zzzprojects/Eval-SQL.NET/issues) and it will be fixed usually within one business day.
+You found a bug when compiling? [Report it](https://github.com/zzzprojects/Eval-SQL.NET/issues) and it will be fixed, usually within one business day.
 
 ## Namespace
 
@@ -26,17 +26,17 @@ All namespace support by SQL CLR are supported by Eval SQL.NET.
  - System.Xml
  - System.Core.dll
  - System.Xml.Linq.dll
- - All common namespace and extensions method can be used without specifying the fullname.
+ - All common namespaces and extension methods can be used without specifying the fullname.
 
 You can see the full list [here](https://github.com/zzzprojects/Eval-SQL.NET/blob/master/src/Z.Expressions.SqlServer.Eval/EvalContext/EvalContext.RegisterDefaultAlias.cs)
 
-Let us know if you believe we have missing some.
+Let us know if you believe we missed some.
 
 ## Performance
 
 You are worried about performance? Don't worry, Eval SQL.NET is super-fast and can evaluate over 150,000 expressions in a loop under one second and over 1,000,000 using a table!
 
-Result highly vary depending of your SQL Server performance and expression to evaluate.
+Result highly vary depending of your SQL Server performance and expressions to evaluate.
 
 
 ```csharp
@@ -66,21 +66,21 @@ PRINT 'Duration = ' + CONVERT(VARCHAR(30), @endTime - @starttime, 114)
 
 ## Security
 
-SQL CLR allow three type of permission:
+SQL CLR allows three types of permissions:
 
  - SAFE
  - EXTERNAL_ACCESS
- - UNSAFE Eval SQL.NET support all types and is installed by default with SAFE permissions. Read more about [SQL CLR Permissions](https://msdn.microsoft.com/en-CA/library/ms345101.aspx)
+ - UNSAFE Eval SQL.NET supports all types and is installed by default with SAFE permissions. Read more about [SQL CLR Permissions](https://msdn.microsoft.com/en-CA/library/ms345101.aspx)
 
 ## SQL Injection
 
-This library allow to use parameter, so no SQL Injection is possible!
+This library allows to use parameter, so no SQL Injection is possible!
 
-However if you build the string to evaluate as you build a dynamic SQL, then there is nothing we can do for you.
+However, if you build the string to evaluate as you build a dynamic SQL, then there is nothing we can do for you.
 
 ## Decimal throw an error!
 
-In C#, decimal must be suffixed with "m" to make them valid. By default "1.1" in C# is a double which cannot be added with decimal value.
+In C#, decimals must be suffixed with "m" to make them valid. By default "1.1" in C# is a double which cannot be added with decimal value.
 
 
 ```csharp
