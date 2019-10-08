@@ -36,3 +36,16 @@ Represents text as a sequence of UTF-16 code units.
 | [String_Remove(source, startIndex)](/string-remove) | Returns a new string in which all the characters in the `source` string, beginning at a specified position are deleted till the end of the `source` string. | [Try it]()|
 | [String_RemoveNumOfChars(source, startIndex, count)](/string-remove-num-of-chars) | Returns a new string in which a specified number of characters in the `source` beginning at a specified position have been deleted. | [Try it]()|
 | [String_Replace(source, oldValue, newValue)](/string-remove) | Returns a new string in which all occurrences of a specified Unicode character or String in the current string are replaced with another specified Unicode character or String. | [Try it]()|
+| [String_Split(source, delimStr)](/string-split) | Returns a string array that contains the substrings in this instance that are delimited by elements of a specified string. | [Try it]()|
+| [String_SplitRemoveEmptyEntries(source, delimStr)](/string-split-remove-empty-entries) | Returns a string array that contains the substrings in this instance that are delimited by elements of a specified string and remove elements that contain an empty string. | [Try it]()|
+| [String_StartsWith(source, target)](/string-startswith) | Determines whether the beginning of this string instance matches a specified string. | [Try it]()|
+| [String_Substring(source, startIndex, length)](/string-substring) | Returns a substring from the `source` string starting at a specified character position and has a specified length. | [Try it]()|
+| [String_ToLower(source)](/string-tolower) | Returns a copy of this string converted to lowercase. | [Try it]()|
+| [String_ToLowerInvariant(source)](/string-tolower-invariant) | Returns a copy of this string converted to lowercase using the casing rules of the invariant culture. | [Try it]()|
+| [String_ToTitleCase(source)](/string-totitle-case) | Converts the specified string to title case (except for words that are entirely in uppercase, which are considered to be acronyms). | [Try it]()|
+| [String_ToUpper(source)](/string-toupper) | Returns a copy of this string converted to uppercase. | [Try it]()|
+| [String_ToUpperInvariant(source)](/string-tolower-invariant) | Returns a copy of this string converted to uppercase using the casing rules of the invariant culture. | [Try it]()|
+| [String_Trim(source)](/string-trim) | Removes all the leading and trailing white-space characters from the `source` string. | [Try it]()|
+| [String_TrimChars(source, charsToTrimStr)](/string-trimchars) | Removes all the leading and trailing occurrences of a set of characters specified in `charsToTrimStr` from the `source` string. | [Try it]()|
+| [String_TrimEnd(source, charsToTrimStr)](/string-trimend) | Removes all the trailing occurrences of a set of characters specified in `charsToTrimStr` from the `source` string. | [Try it]()|
+| [String_TrimStart(source, charsToTrimStr)](/string-trimstart) | Removes all the leading occurrences of a set of characters specified in `charsToTrimStr` from the `source` string. | [Try it]()|
