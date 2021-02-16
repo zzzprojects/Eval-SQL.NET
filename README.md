@@ -1,4 +1,7 @@
-Provide to your SQL Server all missing pieces like regular expression and dynamic arithmetic string evaluation.
+# What's Eval-SQL.Net?
+Eval SQL.NET is a library that allows to evaluate dynamically C# expression directly in T-SQL.
+
+It provides to your SQL Server all missing pieces like regular expression and dynamic arithmetic string evaluation.
 
 ```sql
 -- SELECT 3
@@ -14,7 +17,7 @@ SELECT  SQLNET::New('x+y').ValueInt('x', 1).ValueInt('y', 2).EvalInt() as Result
 - Replace xp_cmdshell with DirectoryInfo & FileInfo
 
 ## Performance & Scalability
-Performance tuning is one of the most important task for a DBA. Don’t miss the chance to **dramatically improve query performance** by **300%** for simple expression and by more than **2000%** for complex code over User-Defined Function (UDF) and Table-Valued Function (TVF).
+Performance tuning is one of the most important tasks for a DBA. Don’t miss the chance to **dramatically improve query performance** by **300%** for simple expression and more than **2000%** for complex code over User-Defined Function (UDF) and Table-Valued Function (TVF).
 
 _Benchmark to split string with delimiters in SQL_
 
