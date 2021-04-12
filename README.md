@@ -1,5 +1,5 @@
 # What's Eval-SQL.Net?
-Eval SQL.NET is a library that allows to evaluate dynamically C# expression directly in T-SQL.
+Eval SQL.NET is a library that allows evaluating C# expression dynamically directly in T-SQL.
 
 It provides to your SQL Server all missing pieces like regular expression and dynamic arithmetic string evaluation.
 
@@ -35,17 +35,12 @@ _Minimum Requirements:_
 - SQL 2012 / SQL Azure v12
 - SAFE Permission (SQL CLR)
 
-Stay updated with latest changes
-
-<a href="https://twitter.com/zzzprojects" target="_blank"><img src="http://www.zzzprojects.com/images/twitter_follow.png" alt="Twitter Follow" height="24" /></a>
-<a href="https://www.facebook.com/zzzprojects/" target="_blank"><img src="http://www.zzzprojects.com/images/facebook_like.png" alt="Facebook Like" height="24" /></a>
-
 ## Evaluate dynamic arithmetic/math expression in SQL
 _Make the impossible now possible. Evaluate C# expression in SQL to overcome limitations._
 
 - Allow trusted users to create report field and filter
 - Consume Web Service
-- Replace text in template with String Interpolation
+- Replace text in the template with String Interpolation
 
 ```csharp
 -- CREATE test
@@ -109,7 +104,7 @@ SELECT * FROM @customer WHERE @valid_email.ValueString('email', Email).EvalBit()
 **<a href="http://sqlfiddle.com/#!18/92200/2" target="_blank">Try it online</a>** 
 
 ## Replace xp_cmdshell with restrictive alternative
-_Avoid enabling xp_cmdshell and compromising your SQL Server and use instead a more restrictive solution._
+_Avoid enabling xp_cmdshell and compromising your SQL Server and use a more restrictive solution instead._
 - Impersonate Context
 - Improve maintainability
 - Improve readability
@@ -145,7 +140,6 @@ The best way to contribute is by **spreading the word** about the library:
 
  - Blog it
  - Comment it
- - Fork it
  - Star it
  - Share it
  
@@ -156,11 +150,8 @@ A **HUGE THANKS** for your help.
 - [EntityFramework Extensions](https://entityframework-extensions.net/)
 - [Dapper Plus](https://dapper-plus.net/)
 - [C# Eval Expression](https://eval-expression.net/)
-- [Entity Framework Classic](https://entityframework-classic.net/)
-- [Bulk Operations](https://bulk-operations.net/)
-- [SQL Eval Function](https://eval-sql.net/)
-- [LINQ To SQL Plus](https://linqtosql-plus.net/)
 - and much more! 
-To view all our free and paid librariries visit our [website](https://zzzprojects.com/).
 
-Contact our outstanding customer support for any request. We usually answer within the next business day, hour, or minutes!
+To view all our free and paid projects, visit our [website](https://zzzprojects.com/).
+
+Contact our outstanding **[customer support](https://entityframework-extensions.net/contact-us)** for any request. We usually answer within the next day, hour, or minutes!
