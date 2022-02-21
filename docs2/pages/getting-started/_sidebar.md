@@ -1,6 +1,0 @@
-- [Overview](overview.md)
-- [Licensing](licensing.md)
-- Tutorials
-   - [Arithmetic Expressions](arithmetic-expressions.md)
-   - [Split Text](split-text.md)
-   - [Reqular Expressions](regular-expressions.md)
